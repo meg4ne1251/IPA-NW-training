@@ -1,0 +1,18 @@
+{
+  "2022r04h_koudo_am1_ans.pdf": {
+    "sha256": "5b74b3f967d84df242b652da743356a420e4ff88dae1b3dc99d4bd93d6b14a2c",
+    "answers": "アアエイウイウウアイエアエウウイアエウエイアイウアウエウイエ",
+    "verification": "公式解答PDFの原本画像を目視照合。1～10、11～20、21～30の各列を確認。"
+  },
+  "2022r04h_nw_am2_qs.pdf": {
+    "sha256": "bff91041bc093499c82499bac421b021fb3ea8bd679b32bdce6c99b217d6557a",
+    "positions": [
+      {
+        "number": 7,
+        "page": 4,
+        "top": 0.567
+      }
+    ],
+    "verification": "原本4ページの問7（IGMP）を目視確認。"
+  }
+}

@@ -7,3 +7,7 @@ coverage/
 *.local
 .DS_Store
 *.log
+data/
+.venv/
+test-results/
+playwright-report/

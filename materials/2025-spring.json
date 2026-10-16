@@ -1,0 +1,2312 @@
+[
+  {
+    "id": "ipa-2025-spring-a1-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "二分法"
+    ],
+    "prompt": "原本の問1：二分法",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 0,
+    "explanation": "二分法では区間の幅が反復ごとに半分になります。2^10=1024なので、初期幅1は10回で1/1024となり0.001未満です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-01",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-01.png",
+      "page": 4,
+      "number": 1,
+      "crop": [
+        0.08951,
+        0.49554
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論",
+    "tags": [
+      "過学習"
+    ],
+    "prompt": "原本の問2：過学習",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "過学習は訓練データへの適合が強過ぎ、未知データへの汎化性能が落ちる状態です。元のデータに加えて訓練データを増やすことは対策になります。訓練データをテストに流用すると公平に評価できません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-02",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-02.png",
+      "page": 4,
+      "number": 2,
+      "crop": [
+        0.49554,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "スタック"
+    ],
+    "prompt": "原本の問3：スタック",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "A→B→Cを順に入力するスタックで、可能な出力はABC、ACB、BAC、BCA、CBAの5通りです。CABはCを出す時点でBがAの上にあるため不可能です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-03",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問3",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-03.png",
+      "page": 5,
+      "number": 3,
+      "crop": [
+        0.09019,
+        0.39815
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成要素",
+    "tags": [
+      "CPU性能"
+    ],
+    "prompt": "原本の問4：CPU性能",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "同じ命令数なら実行時間は命令数×CPI×クロック周期です。Aは4×1=4、Bは0.5×4=2なので、Aの処理時間はBの2倍です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-04",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問4",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-04.png",
+      "page": 5,
+      "number": 4,
+      "crop": [
+        0.39815,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成要素",
+    "tags": [
+      "稼働率"
+    ],
+    "prompt": "原本の問5：稼働率",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "稼働率はMTBF/(MTBF+MTTR)です。両方の稼働率が等しいならMTTR/MTBFの比が等しくなります。MTBFとMTTRそれぞれが等しいとは限りません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-05",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問5",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-05.png",
+      "page": 6,
+      "number": 5,
+      "crop": [
+        0.08882,
+        0.36386
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-06",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア",
+    "tags": [
+      "LRU"
+    ],
+    "prompt": "原本の問6：LRU",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "LRUは最後の参照が最も古いページを置換します。参照列を追うと、5で1、1で4、6で2、5で3を置換し、最後の4は3が入っている6000番地に入ります。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-06",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問6",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-06.png",
+      "page": 6,
+      "number": 6,
+      "crop": [
+        0.36386,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-07",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ハードウェア",
+    "tags": [
+      "消費電流"
+    ],
+    "prompt": "原本の問7：消費電流",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "平均1μAにする条件は(10000μA×0.01秒+0.1μA×待機時間)/(0.01秒+待機時間)=1μAです。待機時間は約111.1秒となります。動作時間10ミリ秒の単位に注意してください。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-07",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問7",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-07.png",
+      "page": 7,
+      "number": 7,
+      "crop": [
+        0.09225,
+        0.62312
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-08",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報メディア",
+    "tags": [
+      "SVG"
+    ],
+    "prompt": "原本の問8：SVG",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "SVGは図形をXML形式で表すベクトル画像形式です。PNGとTIFFはラスタ画像形式、OpenGLは描画用APIです。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-08",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問8",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-08.png",
+      "page": 7,
+      "number": 8,
+      "crop": [
+        0.62312,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-09",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース",
+    "tags": [
+      "正規化"
+    ],
+    "prompt": "原本の問9：正規化",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "第3正規形では、候補キー以外の属性から他の非キー属性への関数従属性を分離します。第2正規形で除くのは候補キーの一部への部分関数従属性です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-09",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問9",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-09.png",
+      "page": 8,
+      "number": 9,
+      "crop": [
+        0.08951,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-10",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース",
+    "tags": [
+      "参照整合性"
+    ],
+    "prompt": "原本の問10：参照整合性",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 0,
+    "explanation": "ON DELETE CASCADEを指定すると、参照される商品行の削除に連動して受注の参照行も削除されます。RESTRICTは削除を制限し、SET DEFAULTやSET NULLは参照値を変更します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-10",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問10",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-10.png",
+      "page": 9,
+      "number": 10,
+      "crop": [
+        0.09088,
+        0.72325
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-11",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク",
+    "tags": [
+      "PoE"
+    ],
+    "prompt": "原本の問11：PoE",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "PoEはイーサネットのLANケーブルで通信と給電を行う仕組みです。PLCは電力線通信、UPSは無停電電源装置です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-11",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問11",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-11.png",
+      "page": 9,
+      "number": 11,
+      "crop": [
+        0.72325,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-12",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "CRYPTREC"
+    ],
+    "prompt": "原本の問12：CRYPTREC",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "電子政府推奨暗号リストは、安全性・実装性能が確認され、市場での利用実績が十分又は今後の普及が見込まれる推奨暗号を掲載します。推奨候補・運用監視のリストとは目的が異なります。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-12",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問12",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-12.png",
+      "page": 10,
+      "number": 12,
+      "crop": [
+        0.08677,
+        0.52641
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-13",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "SBOM"
+    ],
+    "prompt": "原本の問13：SBOM",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "SBOMはソフトウェア部品の一覧です。利用する部品とバージョンを把握し、脆弱なライブラリを検出できます。アカウント管理やソースへのアクセス制御そのものではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-13",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問13",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-13.png",
+      "page": 10,
+      "number": 13,
+      "crop": [
+        0.52641,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-14",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "OSコマンドインジェクション"
+    ],
+    "prompt": "原本の問14：OSコマンドインジェクション",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "OSコマンドを扱う際はシェルを起動できる言語機能の利用を避け、外部入力をコマンドとして解釈させない設計にします。SQLのプレースホルダーはSQLインジェクションの対策です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-14",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問14",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-14.png",
+      "page": 11,
+      "number": 14,
+      "crop": [
+        0.09088,
+        0.36591
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-15",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "VPNの階層"
+    ],
+    "prompt": "原本の問15：VPNの階層",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "TLSはトランスポート層の上、IPsecはネットワーク層、L2TPはデータリンク層に対応します。上からTLS→IPsec→L2TPとなるCが該当します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-15",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問15",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-15.png",
+      "page": 11,
+      "number": 15,
+      "crop": [
+        0.36591,
+        0.69582
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-16",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム開発技術",
+    "tags": [
+      "デザインレビュー"
+    ],
+    "prompt": "原本の問16：デザインレビュー",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 0,
+    "explanation": "デザインレビューでは設計成果物をレビューして、設計段階で品質上の問題を早期に見つけます。出荷可否の判定や製品の抜取検査とは異なります。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-16",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問16",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-16.png",
+      "page": 11,
+      "number": 16,
+      "crop": [
+        0.69582,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-17",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "スクラム"
+    ],
+    "prompt": "原本の問17：スクラム",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "スプリントレビューでは成果をステークホルダーに示し、プロダクトゴールへの進捗と今後の適応を検討します。レトロスペクティブはチームの進め方を改善するイベントです。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-17",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問17",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-17.png",
+      "page": 12,
+      "number": 17,
+      "crop": [
+        0.08882,
+        0.30899
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-18",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "EVM"
+    ],
+    "prompt": "原本の問18：EVM",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "CPI=0.9はコスト効率の悪化、SPI=1.1は計画より進捗が先行していることを示します。TCPI=1.2は残作業の効率改善が必要な状態です。コスト超過を見込み、改善策と予備費の活用を検討します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-18",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問18",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-18.png",
+      "page": 12,
+      "number": 18,
+      "crop": [
+        0.30899,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-19",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "クラッシング"
+    ],
+    "prompt": "原本の問19：クラッシング",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "クラッシングはクリティカルパス上の作業に追加資源を投入して期間を短縮します。並行化による短縮はファストトラッキングです。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-19",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問19",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-19.png",
+      "page": 13,
+      "number": 19,
+      "crop": [
+        0.09362,
+        0.31379
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-20",
+    "version": 1,
+    "section": "A-1",
+    "topic": "サービスマネジメント",
+    "tags": [
+      "SLA"
+    ],
+    "prompt": "原本の問20：SLA",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "提供時間は15時間×20日=300時間です。可用性を99.3%から99.5%へ0.2ポイント上げるには、停止時間を300×0.002=0.6時間短縮します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-20",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問20",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-20.png",
+      "page": 13,
+      "number": 20,
+      "crop": [
+        0.31379,
+        0.67113
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-21",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム監査",
+    "tags": [
+      "ウォークスルー"
+    ],
+    "prompt": "原本の問21：ウォークスルー",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "ウォークスルー法は、データの生成・入力・処理・出力・利用までを追跡し、組み込まれたコントロールを確認します。関係者への質問はインタビュー、実際の状況を見る方法は観察です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-21",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問21",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-21.png",
+      "page": 13,
+      "number": 21,
+      "crop": [
+        0.67113,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-22",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム監査",
+    "tags": [
+      "監査手続"
+    ],
+    "prompt": "原本の問22：監査手続",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "監査手続は十分かつ適切な監査証拠を得るために行う具体的な手順です。計画や業務進捗の管理、報告書の指摘事項の選定とは区別します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-22",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問22",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-22.png",
+      "page": 14,
+      "number": 22,
+      "crop": [
+        0.08745,
+        0.30762
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-23",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略",
+    "tags": [
+      "DX"
+    ],
+    "prompt": "原本の問23：DX",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "DX認定では、経営ビジョンとビジネスモデルの方向性を公表し、それを実現するデジタル活用戦略を公表するなどの取組が求められます。企業規模の限定や特定技術への単純な準拠ではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-23",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問23",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-23.png",
+      "page": 14,
+      "number": 23,
+      "crop": [
+        0.30762,
+        0.58196
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-24",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム企画",
+    "tags": [
+      "プロビジョニング"
+    ],
+    "prompt": "原本の問24：プロビジョニング",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "プロビジョニングは必要なネットワーク・システム資源などを計画に従って準備し、利用者の需要に合わせてサービスを提供できる状態にすることです。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-24",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問24",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-24.png",
+      "page": 14,
+      "number": 24,
+      "crop": [
+        0.58196,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-25",
+    "version": 1,
+    "section": "A-1",
+    "topic": "法務",
+    "tags": [
+      "契約形態"
+    ],
+    "prompt": "原本の問25：契約形態",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "準委任は業務遂行を目的とし、請負は仕事の完成を目的とします。原本のモデル契約では、要件定義aと運用テストdが準委任です。設計・開発の完成責任を負う工程と区別します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-25",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問25",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-25.png",
+      "page": 15,
+      "number": 25,
+      "crop": [
+        0.09157,
+        0.48731
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-26",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営戦略マネジメント",
+    "tags": [
+      "PPM"
+    ],
+    "prompt": "原本の問26：PPM",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "PPMは市場成長率と相対的市場シェアで事業を分類し、資源配分を検討します。3Cは顧客・競合・自社、BSCは複数の視点による評価、SWOTは強み・弱み・機会・脅威です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-26",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問26",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-26.png",
+      "page": 15,
+      "number": 26,
+      "crop": [
+        0.48731,
+        0.65192
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-27",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論",
+    "tags": [
+      "機械学習の推論"
+    ],
+    "prompt": "原本の問27：機械学習の推論",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "推論は学習済みのモデルに新しいデータを入力して識別・予測する処理です。モデル更新は学習であり、エッジではクラウドで学習したモデルによる推論ができます。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-27",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問27",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-27.png",
+      "page": 15,
+      "number": 27,
+      "crop": [
+        0.65192,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-28",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ビジネスインダストリ",
+    "tags": [
+      "マシンビジョン"
+    ],
+    "prompt": "原本の問28：マシンビジョン",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "マシンビジョンはカメラなどの視覚情報を機械で処理する技術です。AIが人の目視検査を代替する用途が該当します。需要予測、作業ガイド、音声伝達はこの設問の対象ではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-28",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問28",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-28.png",
+      "page": 16,
+      "number": 28,
+      "crop": [
+        0.08814,
+        0.38992
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-29",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動",
+    "tags": [
+      "損益分岐点"
+    ],
+    "prompt": "原本の問29：損益分岐点",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "売上が2000万円増えると利益が800万円増えるため、限界利益率は40%、変動費率は60%です。売上8000万円の変動費は8000×0.6=4800万円です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-29",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問29",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-29.png",
+      "page": 16,
+      "number": 29,
+      "crop": [
+        0.38992,
+        0.58196
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a1-30",
+    "version": 1,
+    "section": "A-1",
+    "topic": "法務",
+    "tags": [
+      "生成AIと著作権"
+    ],
+    "prompt": "原本の問30：生成AIと著作権",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "本問は「著作権侵害となる可能性がある」という記述を選びます。既存の著作物に類似する生成画像を公開した場合などは、類似性・依拠性や利用態様によって侵害となる可能性があります。「常に侵害」「常に対象外」と断定する選択肢は適切ではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a1-30",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 高度試験 午前Ⅰ 問30",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf",
+      "image": "/assets/2025-spring/a1-30.png",
+      "page": 16,
+      "number": 30,
+      "crop": [
+        0.58196,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_koudo_am1_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-01",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "呼量"
+    ],
+    "prompt": "原本の問1：呼量",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "1台当たりの呼量は80秒/180秒です。180台分では180×80/180=80アーランになります。呼量は呼の発生率と平均保留時間の積です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-01",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-01.png",
+      "page": 3,
+      "number": 1,
+      "crop": [
+        0.09088,
+        0.28292
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-02",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "イーサネットフレーム"
+    ],
+    "prompt": "原本の問2：イーサネットフレーム",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "宛先MAC 6、送信元MAC 6、長さ/タイプ2、FCS4の計18オクテットを1400に加え、1418オクテットです。設問では宛先からFCSまでを数えるのでプリアンブル等は含めません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-02",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-02.png",
+      "page": 3,
+      "number": 2,
+      "crop": [
+        0.28292,
+        0.47428
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-03",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "再送回数"
+    ],
+    "prompt": "原本の問3：再送回数",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "1パケット100バイト=800ビットです。パケット誤り率は近似800×10^-5=0.008。20万バイト/100=2000パケットなので平均再送回数は2000×0.008=16回です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-03",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問3",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-03.png",
+      "page": 3,
+      "number": 3,
+      "crop": [
+        0.47428,
+        0.6677
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-04",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "10GBASE-T"
+    ],
+    "prompt": "原本の問4：10GBASE-T",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "カテゴリ6Aによる10GBASE-Tの最大ケーブル長は100mです。伝送速度の数値と最大長を混同しないようにします。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-04",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問4",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-04.png",
+      "page": 3,
+      "number": 4,
+      "crop": [
+        0.6677,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-05",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "CoAP"
+    ],
+    "prompt": "原本の問5：CoAP",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "CoAPは制約のある小型IoT機器や損失のあるネットワーク向けの通信プロトコルで、コンパクトなバイナリー表現を使います。大量データや音声・映像のリアルタイム配信向けではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-05",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問5",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-05.png",
+      "page": 4,
+      "number": 5,
+      "crop": [
+        0.08471,
+        0.38649
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-06",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "HTTP"
+    ],
+    "prompt": "原本の問6：HTTP",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "GETでフォーム値を送る場合はURLのクエリーとしてリクエスト行に含まれます。POSTでは通常メッセージボディに含まれます。ヘッダーとは区別します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-06",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問6",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-06.png",
+      "page": 4,
+      "number": 6,
+      "crop": [
+        0.38649,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-07",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "ICMP"
+    ],
+    "prompt": "原本の問7：ICMP",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 0,
+    "explanation": "IPv4ヘッダーのプロトコル番号で上位プロトコルを識別します。ICMPは1、TCPは6、UDPは17です。MACのタイプ値はIP等のネットワーク層プロトコルを識別します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-07",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問7",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-07.png",
+      "page": 5,
+      "number": 7,
+      "crop": [
+        0.09157,
+        0.33848
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-08",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "CIDR"
+    ],
+    "prompt": "原本の問8：CIDR",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "既存セグメントはBが.32～.63、Dが.64～.127、Cが.224～.227です。Aを172.16.1.128/26（.128～.191）にすると重複しません。/25の.0～.127や.128～.255は既存と重なります。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-08",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問8",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-08.png",
+      "page": 5,
+      "number": 8,
+      "crop": [
+        0.33848,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-09",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "PPP"
+    ],
+    "prompt": "原本の問9：PPP",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "PPPはリンク確立後に認証プロトコルによる認証を行えます。同期・非同期に対応するポイントツーポイントのプロトコルで、専用線に使用できないという記述は誤りです。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-09",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問9",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-09.png",
+      "page": 6,
+      "number": 9,
+      "crop": [
+        0.08745,
+        0.30693
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-10",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "RIP"
+    ],
+    "prompt": "原本の問10：RIP",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "RIPはUDPを使用するルーティングプロトコルです。BGPはTCPを使用し、OSPFはIP上で直接動作します。RARPはルーティング用ではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-10",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問10",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-10.png",
+      "page": 6,
+      "number": 10,
+      "crop": [
+        0.30693,
+        0.47154
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-11",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "TCP状態遷移"
+    ],
+    "prompt": "原本の問11：TCP状態遷移",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 0,
+    "explanation": "サーバーがSYNを受け取りSYN+ACKを返して、最後のACKを待つ状態はSYN-RECEIVEDです。接続要求を待っている状態がLISTEN、接続要求を送信した側はSYN-SENTです。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-11",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問11",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-11.png",
+      "page": 6,
+      "number": 11,
+      "crop": [
+        0.47154,
+        0.66358
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-12",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "IPv6近隣探索"
+    ],
+    "prompt": "原本の問12：IPv6近隣探索",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 0,
+    "explanation": "IPv6の近隣要請メッセージは、同一リンク内でIPv6アドレスが重複していないか確認するDADにも使います。パスMTUの決定やDHCPv6サーバー探索、プレフィックス取得とは区別します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-12",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問12",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-12.png",
+      "page": 6,
+      "number": 12,
+      "crop": [
+        0.66358,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-13",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "OpenFlow"
+    ],
+    "prompt": "原本の問13：OpenFlow",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "Packet-Inはスイッチが受信パケットの情報をコントローラーへ通知するメッセージです。Packet-Outはコントローラーからスイッチへの送出指示、Flow-Modはフローの変更です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-13",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問13",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-13.png",
+      "page": 7,
+      "number": 13,
+      "crop": [
+        0.09088,
+        0.28292
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-14",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "FTP"
+    ],
+    "prompt": "原本の問14：FTP",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "PASVはサーバー側で待ち受けるデータ接続先を取得し、クライアントから接続するパッシブモードです。PORTはアクティブモードでクライアント側の接続先を通知します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-14",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問14",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-14.png",
+      "page": 7,
+      "number": 14,
+      "crop": [
+        0.28292,
+        0.47565
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-15",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "無線LAN"
+    ],
+    "prompt": "原本の問15：無線LAN",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "IEEE 802.11nは2.4GHz帯と5GHz帯、IEEE 802.11acは5GHz帯を使います。両者が同じ周波数帯の組合せになるとは限りません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-15",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問15",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-15.png",
+      "page": 7,
+      "number": 15,
+      "crop": [
+        0.47565,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-16",
+    "version": 1,
+    "section": "A-2",
+    "topic": "セキュリティ",
+    "tags": [
+      "TLS"
+    ],
+    "prompt": "原本の問16：TLS",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "個人認証用の証明書と秘密鍵はICカード等に格納して利用でき、認証するPCを特定のPCに固定する必要はありません。TLSはWeb専用ではなく、利用者全員の事前登録も必須ではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-16",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問16",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-16.png",
+      "page": 8,
+      "number": 16,
+      "crop": [
+        0.08677,
+        0.41598
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-17",
+    "version": 1,
+    "section": "A-2",
+    "topic": "セキュリティ",
+    "tags": [
+      "テンペスト攻撃"
+    ],
+    "prompt": "原本の問17：テンペスト攻撃",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "テンペスト攻撃は機器から漏れる電磁波を受信・解析して情報を得る攻撃です。電磁波を遮蔽する対策が有効です。通信データの改ざんや無線LANの盗聴とは区別します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-17",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問17",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-17.png",
+      "page": 8,
+      "number": 17,
+      "crop": [
+        0.41598,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-18",
+    "version": 1,
+    "section": "A-2",
+    "topic": "セキュリティ",
+    "tags": [
+      "DRDoS"
+    ],
+    "prompt": "原本の問18：DRDoS",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 2,
+    "explanation": "DRDoSは送信元を標的のIPアドレスに偽装した要求を多数のサーバーへ送り、その応答を標的へ集中させます。DNSリフレクションは代表例です。SYNフラッド等とは手口が異なります。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-18",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問18",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-18.png",
+      "page": 9,
+      "number": 18,
+      "crop": [
+        0.08882,
+        0.47291
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-19",
+    "version": 1,
+    "section": "A-2",
+    "topic": "セキュリティ",
+    "tags": [
+      "WPA3-Enterprise"
+    ],
+    "prompt": "原本の問19：WPA3-Enterprise",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "WPA3-EnterpriseはIEEE 802.1X等による認証を用いる企業向け方式です。SSIDは暗号鍵ではなく、RADIUSも無線区間の暗号通信そのものを定める規格ではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-19",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問19",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-19.png",
+      "page": 9,
+      "number": 19,
+      "crop": [
+        0.47291,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-20",
+    "version": 1,
+    "section": "A-2",
+    "topic": "セキュリティ",
+    "tags": [
+      "DNSSEC"
+    ],
+    "prompt": "原本の問20：DNSSEC",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "DNSSECはDNSの応答にデジタル署名を用いて、応答の正当性とデータ完全性を検証します。内容の暗号化やDNSサーバーの冗長化そのものではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-20",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問20",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-20.png",
+      "page": 10,
+      "number": 20,
+      "crop": [
+        0.08539,
+        0.41461
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-21",
+    "version": 1,
+    "section": "A-2",
+    "topic": "セキュリティ",
+    "tags": [
+      "OP25B"
+    ],
+    "prompt": "原本の問21：OP25B",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "OP25BはISP配下の動的IPアドレス等からISP管理外へ出るTCP25番の通信を制限し、スパムの直接送信を抑えます。外部から入る通信を一律に遮断する仕組みではありません。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-21",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問21",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-21.png",
+      "page": 10,
+      "number": 21,
+      "crop": [
+        0.41461,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-22",
+    "version": 1,
+    "section": "A-2",
+    "topic": "コンピュータ構成要素",
+    "tags": [
+      "キャッシュ"
+    ],
+    "prompt": "原本の問22：キャッシュ",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 1,
+    "explanation": "ライトスルーはキャッシュと主記憶の両方へ書き込み、主記憶を最新状態に保ちます。ライトバックは主記憶への反映を遅らせる方式で、書き換えたラインの追い出し時には反映が必要です。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-22",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問22",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-22.png",
+      "page": 11,
+      "number": 22,
+      "crop": [
+        0.09088,
+        0.43999
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-23",
+    "version": 1,
+    "section": "A-2",
+    "topic": "システム構成要素",
+    "tags": [
+      "MTTR"
+    ],
+    "prompt": "原本の問23：MTTR",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 0,
+    "explanation": "命令再試行機能は異常発生後の回復を支援し、修復・回復時間であるMTTRの短縮に役立ちます。予防保全等の故障予防と回復支援を区別します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-23",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問23",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-23.png",
+      "page": 11,
+      "number": 23,
+      "crop": [
+        0.43999,
+        0.61489
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-24",
+    "version": 1,
+    "section": "A-2",
+    "topic": "システム開発技術",
+    "tags": [
+      "ブローカー"
+    ],
+    "prompt": "原本の問24：ブローカー",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "ブローカーパターンでは仲介役がサービスの登録・検索やメッセージ中継を行い、クライアントとサーバーの相互依存を弱めます。他の選択肢はマイクロカーネル、パイプとフィルター、MVCに対応します。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-24",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問24",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-24.png",
+      "page": 11,
+      "number": 24,
+      "crop": [
+        0.61489,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  },
+  {
+    "id": "ipa-2025-spring-a2-25",
+    "version": 1,
+    "section": "A-2",
+    "topic": "システム開発技術",
+    "tags": [
+      "ステージング"
+    ],
+    "prompt": "原本の問25：ステージング",
+    "choices": [
+      "ア",
+      "イ",
+      "ウ",
+      "エ"
+    ],
+    "correctIndex": 3,
+    "explanation": "ステージング環境は本番に近い構成でリリース前の最終確認を行う環境です。開発環境、一般利用者向けベータテスト、ネットワーク境界のDMZとは目的が異なります。",
+    "origin": "past",
+    "groupId": "ipa-2025-spring-a2-25",
+    "heldOut": false,
+    "source": {
+      "label": "出典：令和7年度 春期 ネットワークスペシャリスト試験 午前Ⅱ 問25",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf",
+      "image": "/assets/2025-spring/a2-25.png",
+      "page": 12,
+      "number": 25,
+      "crop": [
+        0.08539,
+        0.925
+      ]
+    },
+    "review": {
+      "status": "verified",
+      "method": "公式解答との照合、原本画像の確認。解説は本アプリ独自作成。",
+      "reviewer": "教材初期取り込み",
+      "at": "2026-10-16T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_am2_ans.pdf"
+      ]
+    }
+  }
+]
