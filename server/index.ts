@@ -28,10 +28,11 @@ export function createApp(store: TrainingStore, staticRoot = resolve('dist')) {
         }
         if (req.method === 'GET' && path === '/api/dashboard') return json(200, store.dashboard());
         if (req.method === 'POST' && path === '/api/sessions') return json(201, store.create(body.section, body.mode, body.count, body.collection));
-        const match = path.match(/^\/api\/sessions\/([a-zA-Z0-9-]+)(?:\/(draft|submit))?$/);
+        const match = path.match(/^\/api\/sessions\/([a-zA-Z0-9-]+)(?:\/(draft|submit|grade))?$/);
         if (match) {
           if (req.method === 'GET' && !match[2]) { store.expire(); return json(200, store.publicSession(store.session(match[1]))); }
           if (req.method === 'PUT' && match[2] === 'draft') return json(200, store.save(match[1], body));
+          if (req.method === 'POST' && match[2] === 'grade') return json(200, store.grade(match[1], body.questionId, body.revision));
           if (req.method === 'POST' && match[2] === 'submit') return json(200, store.submit(match[1], body.revision));
         }
         if (req.method === 'POST' && path === '/api/export') return json(200, store.exportContext(body.section as Section));

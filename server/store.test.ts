@@ -13,6 +13,56 @@ afterEach(() => { for (const store of stores.splice(0)) { try { store.close(); }
 function completed(store: TrainingStore) { const s = store.create('A-1', 'practice', 3); const saved = store.save(s.id, { revision: 0, currentIndex: 1, answers: { [s.questions[0].id]: { ...blankAnswer(), choice: 1, confidence: 'unsure' } } }); return store.submit(s.id, saved.revision); }
 
 describe('SQLiteでの学習とAI受け渡し', () => {
+  it('1問ずつ正答を公開し、再開・履歴・AI出力で途中の採点を保持する', () => {
+    const store = make(); const s = store.create('A-1', 'practice', 2); const id = s.questions[0].id;
+    expect(() => store.grade(s.id, id, 0)).toThrow('解答を選ぶか');
+    const saved = store.save(s.id, { revision: s.revision, currentIndex: 0, answers: { [id]: { ...blankAnswer(), choice: 1, confidence: 'sure', seconds: 12 } } });
+    expect(() => store.grade(s.id, 'unknown', saved.revision)).toThrow('セットにない');
+    expect(() => store.grade(s.id, id, 0)).toThrow('回答が更新');
+    const graded = store.grade(s.id, id, saved.revision);
+    expect(graded.status).toBe('active');
+    expect(graded.questions[0].correctIndex).toBe(1);
+    expect(graded.questions[0].explanation).toBeTruthy();
+    expect(graded.questions[1].correctIndex).toBeUndefined();
+    expect(graded.questions[1].explanation).toBeUndefined();
+    expect(store.grade(s.id, id, saved.revision)).toEqual(graded);
+    expect(store.history()).toHaveLength(1);
+    expect(store.dashboard().stats[0].attempts).toBe(1);
+    const context = store.exportContext('A-1');
+    expect(context.history).toHaveLength(1);
+    expect(context.history[0].answer.seconds).toBe(12);
+    const reopened = new TrainingStore(store.directory); stores.push(reopened);
+    expect(reopened.publicSession(reopened.session(s.id))).toEqual(graded);
+    const next = reopened.save(s.id, { revision: graded.revision, currentIndex: 1, answers: { ...graded.answers, [s.questions[1].id]: { ...blankAnswer(), confidence: 'unknown' } } });
+    const result = reopened.grade(s.id, s.questions[1].id, next.revision);
+    expect(result.status).toBe('submitted');
+    expect(reopened.history()).toHaveLength(2);
+    expect(reopened.history().filter(r => r.correct)).toHaveLength(1);
+    expect(reopened.history()[1].answer.confidence).toBe('unknown');
+    expect(reopened.history()[0].at).toBe(graded.graded![id]);
+    expect(reopened.grade(s.id, id, 0)).toEqual(result);
+    expect(reopened.revision()).toBeGreaterThan(context.historyRevision);
+  });
+  it('採点後の解答・自信度を変更できず、解説を読む時間を解答時間に加算しない', () => {
+    const store = make(); const s = store.create('A-1', 'practice', 2); const id = s.questions[0].id;
+    const saved = store.save(s.id, { revision: 0, currentIndex: 0, answers: { [id]: { ...blankAnswer(), choice: 0, confidence: 'guess', seconds: 4 } } });
+    const graded = store.grade(s.id, id, saved.revision);
+    for (const patch of [{ choice: 1 }, { confidence: 'sure' }, { reason: 'changed' }]) {
+      expect(() => store.save(s.id, { revision: graded.revision, currentIndex: 0, answers: { ...graded.answers, [id]: { ...graded.answers[id], ...patch } } })).toThrow('採点済み');
+    }
+    const moved = store.save(s.id, { revision: graded.revision, currentIndex: 1, answers: { ...graded.answers, [id]: { ...graded.answers[id], seconds: 99, flagged: true } } });
+    expect(moved.answers[id]).toMatchObject({ choice: 0, confidence: 'guess', seconds: 4, flagged: true });
+    expect(store.history()[0].correct).toBe(false);
+  });
+  it('1問ずつの採点でも時間切れ時は保存済み回答で終了する', () => {
+    const store = make(); const s = store.create('A-1', 'practice', 2);
+    const internal = store.session(s.id); internal.deadline = new Date(Date.now() - 1000).toISOString(); store.writeSession(internal);
+    const result = store.grade(s.id, s.questions[0].id, 0);
+    expect(result.status).toBe('submitted');
+    expect(result.graded).toBeUndefined();
+    expect(store.history()).toHaveLength(2);
+  });
+
   it('わからないを再接続・提出・AI出力まで保持し、未入力や推測と区別する', () => {
     const store = make(); const s = store.create('A-1', 'practice', 3);
     const answers = Object.fromEntries(s.questions.map((q, i) => [q.id, { ...blankAnswer(), choice: i === 0 ? 1 : null, confidence: (['unknown', 'guess', null] as const)[i] }]));

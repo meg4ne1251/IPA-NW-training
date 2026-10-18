@@ -17,6 +17,7 @@ export interface Session {
   status: 'active' | 'submitted'; revision: number; startedAt: string; submittedAt: string | null;
   deadline: string | null; currentIndex: number; questions: TrainingQuestion[]; answers: Record<string, Answer>;
   selectionReasons: Record<string, string>;
+  graded?: Record<string, string>; // Question ID -> time of answer confirmation; absent in older sessions.
 }
 export type PublicSession = Omit<Session, 'questions'> & { questions: PublicQuestion[] };
 export interface Outcome { question: TrainingQuestion; answer: Answer; correct: boolean; at: string; sessionId: string }
@@ -59,11 +60,10 @@ export function validateAnswers(input: unknown, questions: TrainingQuestion[]): 
   }));
 }
 export function outcomes(sessions: Session[]): Outcome[] {
-  return sessions.filter(s => s.status === 'submitted').sort((a, b) => a.submittedAt!.localeCompare(b.submittedAt!))
-    .flatMap(s => s.questions.map(question => {
+  return sessions.flatMap(s => s.questions.filter(q => s.status === 'submitted' || s.graded?.[q.id]).map(question => {
       const answer = s.answers[question.id] ?? blankAnswer();
-      return { question, answer, correct: answer.choice === question.correctIndex, at: s.submittedAt!, sessionId: s.id };
-    }));
+      return { question, answer, correct: answer.choice === question.correctIndex, at: s.graded?.[question.id] ?? s.submittedAt!, sessionId: s.id };
+    })).sort((a, b) => a.at.localeCompare(b.at));
 }
 export function topicStats(rows: Outcome[]): TopicStat[] {
   const map = new Map<string, TopicStat>(); const seen = new Set<string>();

@@ -23,7 +23,7 @@ test('演習→保存・再読込→提出→AIファイル出力・取り込み
   await expect(page.getByRole('radio', { name: 'イ　30', exact: true })).toBeChecked();
   await expect(page.getByRole('radio', { name: '迷った', exact: true })).toBeChecked();
   await expect(page.getByRole('status')).toContainText('保存済み');
-  await page.getByRole('button', { name: '採点・解説へ進む', exact: true }).click();
+  await page.getByRole('button', { name: 'セットを終了して結果を見る', exact: true }).click();
   await page.getByRole('button', { name: 'この回答で提出する', exact: true }).click();
   await expect(page.getByRole('heading', { name: '1 / 10問正解' })).toBeVisible();
   await expect(page.getByText('迷った・推測・わからない・自信度未入力の正解：1問 · 未回答：9問')).toBeVisible();

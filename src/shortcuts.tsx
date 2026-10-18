@@ -36,6 +36,9 @@ export function KeyboardShortcuts() {
         event.preventDefault();
         targets = controls().map((element, index) => ({ element, key: code(index) }));
         setHints(targets); setPrefix('');
+      } else if (key === 'e') {
+        const button = document.querySelector<HTMLButtonElement>('[data-answer-confirm]');
+        if (button) { event.preventDefault(); if (!button.disabled) button.click(); }
       } else if (key === 'h' || key === 'l') {
         const button = document.querySelector<HTMLButtonElement>(key === 'h' ? '[data-question-prev]' : '[data-question-next]');
         if (button) { event.preventDefault(); if (!button.disabled) button.click(); }
@@ -51,7 +54,7 @@ export function KeyboardShortcuts() {
     return () => { document.removeEventListener('keydown', keydown); window.removeEventListener('resize', clear); window.removeEventListener('scroll', clear, true); };
   }, []);
   return <>
-    <details className="keyboard-help"><summary>キーボード操作</summary><p><kbd>h</kbd> 前の問題 / <kbd>l</kbd> 次の問題 · <kbd>j</kbd> 次の入力・ボタン / <kbd>k</kbd> 前へ · <kbd>Enter</kbd> ボタンを実行 / <kbd>Space</kbd> 選択</p><p><kbd>f</kbd> ですべての操作に2文字のキーを表示。表示されたキーを順に入力するとクリックと同じ操作ができます。入力欄はフォーカスします。<kbd>Esc</kbd> で解除。文字入力中は無効です。</p></details>
+    <details className="keyboard-help"><summary>キーボード操作</summary><p><kbd>e</kbd> 回答を確定 · <kbd>h</kbd> 前の問題 / <kbd>l</kbd> 次の問題 · <kbd>j</kbd> 次の入力・ボタン / <kbd>k</kbd> 前へ · <kbd>Enter</kbd> ボタンを実行 / <kbd>Space</kbd> 選択</p><p><kbd>f</kbd> ですべての操作に2文字のキーを表示。表示されたキーを順に入力するとクリックと同じ操作ができます。入力欄はフォーカスします。<kbd>Esc</kbd> で解除。文字入力中は無効です。</p></details>
     {hints.length > 0 && <div className="shortcut-layer" aria-live="polite"><span className="shortcut-status">操作キーを入力：{prefix || '2文字'} · Escで解除</span>{hints.filter(item => item.key.startsWith(prefix)).map(({ element, key }) => {
       const rect = element.getBoundingClientRect();
       return <span key={key} className="shortcut-badge" style={{ top: Math.max(0, rect.top), left: Math.max(0, Math.min(window.innerWidth - 32, rect.left)) }}>{key}</span>;

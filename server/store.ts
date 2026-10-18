@@ -48,14 +48,15 @@ export class TrainingStore {
   publicSession(s: Session): PublicSession {
     if (s.status === 'submitted') return s;
     return { ...s, questions: s.questions.map(q => {
+      if (s.graded?.[q.id]) return q;
       const { correctIndex: _correct, explanation: _explanation, choiceExplanations: _choices, ...safe } = q;
       const { answerUrl: _answerURL, ...source } = safe.source;
-      // Concept labels such as "PoE" can reveal an answer; only show them after submission.
+      // Concept labels such as "PoE" can reveal an answer; only show them after answer confirmation.
       return { ...safe, tags: [], prompt: q.origin === 'past' ? `原本の問${q.source.number ?? ''}を解いてください` : safe.prompt,
         source, review: { ...safe.review, references: [] } };
     }) };
   }
-  revision() { return this.sessions().filter(s => s.status === 'submitted').length; }
+  revision() { return this.sessions().reduce((n, s) => n + Object.keys(s.graded ?? {}).length + +(s.status === 'submitted'), 0); }
   history() {
     const versions = new Map(this.records<TrainingQuestion>('questions').map(q => [`${q.id}:${q.version}`, q]));
     return outcomes(this.sessions()).map(r => {
@@ -120,7 +121,29 @@ export class TrainingStore {
       if (s.deadline && Date.now() >= Date.parse(s.deadline)) return this.publicSession(this.finalize(s));
       if (s.revision !== body.revision) throw new RevisionConflictError('別の画面で更新されています。再読込して保存済みの回答を確認してください。');
       assert(Number.isInteger(body.currentIndex) && body.currentIndex >= 0 && body.currentIndex < s.questions.length, '問題の位置が不正です。');
-      s = { ...s, answers: validateAnswers(body.answers, s.questions), currentIndex: body.currentIndex, revision: s.revision + 1 };
+      const answers = validateAnswers(body.answers, s.questions);
+      for (const questionId of Object.keys(s.graded ?? {})) {
+        const before = s.answers[questionId]; const after = answers[questionId];
+        assert(after.choice === before.choice && after.confidence === before.confidence && after.reason === before.reason,
+          '採点済みの回答・自信度は変更できません。');
+        // Reading explanations must not add to the original answering time.
+        answers[questionId] = { ...before, flagged: after.flagged };
+      }
+      s = { ...s, answers, currentIndex: body.currentIndex, revision: s.revision + 1 };
+      this.writeSession(s); return this.publicSession(s);
+    });
+  }
+  grade(id: string, questionId: string, revision: number) {
+    return this.transaction(() => {
+      const s = this.session(id);
+      assert(typeof questionId === 'string' && s.questions.some(q => q.id === questionId), 'セットにない問題です。');
+      if (s.status === 'submitted' || s.graded?.[questionId]) return this.publicSession(s);
+      if (s.deadline && Date.now() >= Date.parse(s.deadline)) return this.publicSession(this.finalize(s));
+      if (revision !== s.revision) throw new RevisionConflictError('回答が更新されています。保存済みの回答を再読込してください。');
+      const answer = s.answers[questionId] ?? blankAnswer();
+      assert(answer.choice !== null || answer.confidence === 'unknown', '解答を選ぶか、自信度の「わからない」を選んでください。');
+      s.graded = { ...s.graded, [questionId]: new Date().toISOString() }; s.revision++;
+      if (s.questions.every(q => s.graded?.[q.id])) return this.publicSession(this.finalize(s));
       this.writeSession(s); return this.publicSession(s);
     });
   }
@@ -144,7 +167,7 @@ export class TrainingStore {
   exportContext(section: Section) {
     assert(section === 'A-1' || section === 'A-2', '科目が不正です。'); this.expire();
     const history = this.history().filter(r => r.question.section === section && !r.question.heldOut);
-    assert(history.length > 0, 'まず演習を提出してください。');
+    assert(history.length > 0, 'まず1問の回答を確定してください。');
     const requestId = randomUUID(); const revision = this.revision();
     const bank = this.bank().filter(q => q.section === section && !q.heldOut);
     const selected = selectPractice(bank, history, section, Math.min(30, bank.length));
