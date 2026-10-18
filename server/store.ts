@@ -149,7 +149,7 @@ export class TrainingStore {
     const bank = this.bank().filter(q => q.section === section && !q.heldOut);
     const selected = selectPractice(bank, history, section, Math.min(30, bank.length));
     const context = { schemaVersion: 1, requestId, section, historyRevision: revision, exportedAt: new Date().toISOString(),
-      instruction: '履歴と画像を読み、誤解・不安定な正解・未着手を分析してください。既存問題の選抜と新規類題を最大6問作成し、nextSetTemplateの形式で返してください。新規問題はdraftとし、正答の一意性、各選択肢の説明、根拠URLを記載してください。画像の問題はlocalImagePathを開いて確認してください。ファイル出力先はこの依頼のimportsディレクトリです。',
+      instruction: 'confidenceのunknownは「わからない」を明示した回答です。未入力(null)や推測(guess)と区別し、正誤にかかわらず基礎から学習すべき分野・概念を特定してください。履歴と画像を読み、誤解・不安定な正解・未着手を分析してください。既存問題の選抜と新規類題を最大6問作成し、nextSetTemplateの形式で返してください。新規問題はdraftとし、正答の一意性、各選択肢の説明、根拠URLを記載してください。画像の問題はlocalImagePathを開いて確認してください。ファイル出力先はこの依頼のimportsディレクトリです。',
       stats: topicStats(history),
       history: history.slice(-200).map(r => ({ ...r, localImagePath: r.question.source.image ? join(this.directory, r.question.source.image.slice(1)) : null })),
       availableQuestions: bank.filter(q => q.review.status === 'verified'),

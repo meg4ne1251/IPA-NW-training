@@ -26,7 +26,7 @@ test('演習→保存・再読込→提出→AIファイル出力・取り込み
   await page.getByRole('button', { name: '採点・解説へ進む', exact: true }).click();
   await page.getByRole('button', { name: 'この回答で提出する', exact: true }).click();
   await expect(page.getByRole('heading', { name: '1 / 10問正解' })).toBeVisible();
-  await expect(page.getByText('迷った・推測・自信度未入力の正解：1問 · 未回答：9問')).toBeVisible();
+  await expect(page.getByText('迷った・推測・わからない・自信度未入力の正解：1問 · 未回答：9問')).toBeVisible();
   await page.getByRole('button', { name: '履歴・AI連携へ', exact: true }).click();
   await page.getByRole('button', { name: 'AIとの受け渡し', exact: true }).click();
   const exported = page.waitForResponse(r => r.url().endsWith('/api/export') && r.request().method() === 'POST');
@@ -49,4 +49,40 @@ test('スマートフォン幅で画面がはみ出さず、キーボードで�
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole('button', { name: '履歴と苦手分野', exact: true }).focus(); await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: '履歴と苦手分野', exact: true })).toBeVisible();
+});
+
+
+test('わからないの永続化・vim移動・全ボタンのヒント操作', async ({ page, request }) => {
+  const dashboard = await (await request.get('/api/dashboard')).json();
+  for (const active of dashboard.sessions.filter((s: { status: string }) => s.status === 'active')) {
+    const session = await (await request.get(`/api/sessions/${active.id}`)).json();
+    expect((await request.post(`/api/sessions/${active.id}/submit`, { data: { revision: session.revision } })).ok()).toBe(true);
+  }
+  await page.setViewportSize({ width: 360, height: 780 });
+  await page.goto('/');
+  await page.getByRole('button', { name: '10問を解く', exact: true }).click();
+  await page.getByRole('radio', { name: 'わからない', exact: true }).check();
+  await expect(page.getByRole('status')).toContainText('保存済み');
+  await page.reload();
+  await expect(page.getByRole('radio', { name: 'わからない', exact: true })).toBeChecked();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.keyboard.press('l');
+  await expect(page.getByText('2 / 10問', { exact: true })).toBeVisible();
+  await expect(page.getByRole('status')).toContainText('保存済み');
+  await page.keyboard.press('h');
+  await expect(page.getByText('1 / 10問', { exact: true })).toBeVisible();
+  await expect(page.getByRole('status')).toContainText('保存済み');
+  await page.keyboard.press('j');
+  const before = await page.evaluate(() => document.activeElement?.outerHTML);
+  await page.keyboard.press('j');
+  expect(await page.evaluate(() => document.activeElement?.outerHTML)).not.toBe(before);
+  await page.keyboard.press('f');
+  await expect(page.locator('.shortcut-badge').first()).toBeVisible();
+  const hint = await page.evaluate(() => {
+    const controls = Array.from(document.querySelectorAll<HTMLElement>('button, a[href], input, select, textarea, summary')).filter(el => !el.matches(':disabled') && el.getClientRects().length > 0 && !el.closest('[inert]'));
+    const index = controls.indexOf(document.querySelector('[data-question-next]')!);
+    const keys = 'asdfghjklqwertyuiopzxcvbnm'; return keys[Math.floor(index / keys.length)] + keys[index % keys.length];
+  });
+  await page.keyboard.type(hint);
+  await expect(page.getByText('2 / 10問', { exact: true })).toBeVisible();
 });

@@ -1,5 +1,5 @@
 export type Section = 'A-1' | 'A-2';
-export type Confidence = 'sure' | 'unsure' | 'guess' | null;
+export type Confidence = 'sure' | 'unsure' | 'guess' | 'unknown' | null;
 export type ReviewStatus = 'draft' | 'verified' | 'disputed' | 'retired';
 export interface TrainingQuestion {
   id: string; version: number; section: Section; topic: string; tags: string[];
@@ -52,7 +52,7 @@ export function validateAnswers(input: unknown, questions: TrainingQuestion[]): 
   return Object.fromEntries(questions.map(q => {
     const a = source[q.id] ?? blankAnswer();
     assert(a && (a.choice === null || (Number.isInteger(a.choice) && a.choice >= 0 && a.choice < 4)), '選択した回答が不正です。');
-    assert([null, 'sure', 'unsure', 'guess'].includes(a.confidence), '自信度が不正です。');
+    assert([null, 'sure', 'unsure', 'guess', 'unknown'].includes(a.confidence), '自信度が不正です。');
     assert(typeof a.reason === 'string' && a.reason.length <= 1000 && typeof a.flagged === 'boolean', '誤答理由・見直し状態が不正です。');
     assert(Number.isFinite(a.seconds) && a.seconds >= 0 && a.seconds <= 86400, '回答時間が不正です。');
     return [q.id, { choice: a.choice, confidence: a.confidence, reason: a.reason, seconds: a.seconds, flagged: a.flagged }];

@@ -13,6 +13,18 @@ afterEach(() => { for (const store of stores.splice(0)) { try { store.close(); }
 function completed(store: TrainingStore) { const s = store.create('A-1', 'practice', 3); const saved = store.save(s.id, { revision: 0, currentIndex: 1, answers: { [s.questions[0].id]: { ...blankAnswer(), choice: 1, confidence: 'unsure' } } }); return store.submit(s.id, saved.revision); }
 
 describe('SQLiteでの学習とAI受け渡し', () => {
+  it('わからないを再接続・提出・AI出力まで保持し、未入力や推測と区別する', () => {
+    const store = make(); const s = store.create('A-1', 'practice', 3);
+    const answers = Object.fromEntries(s.questions.map((q, i) => [q.id, { ...blankAnswer(), choice: i === 0 ? 1 : null, confidence: (['unknown', 'guess', null] as const)[i] }]));
+    const saved = store.save(s.id, { revision: 0, currentIndex: 0, answers });
+    const reopened = new TrainingStore(store.directory); stores.push(reopened);
+    expect(reopened.session(s.id).answers[s.questions[0].id].confidence).toBe('unknown');
+    reopened.submit(s.id, saved.revision);
+    const context = reopened.exportContext('A-1');
+    expect(context.history.map(r => r.answer.confidence)).toEqual(['unknown', 'guess', null]);
+    expect(context.history[0].correct).toBe(true);
+    expect(context.instruction).toContain('基礎から学習');
+  });
   it('回答の保存・再開・未回答採点・二重提出・教材版の保持', () => {
     const store = make(); const s = store.create('A-1', 'practice', 3);
     expect(s.questions[0].correctIndex).toBeUndefined();
