@@ -1,5 +1,5 @@
 import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { openStore, RevisionConflictError } from './store.ts';
@@ -27,13 +27,13 @@ export function createApp(store: TrainingStore, staticRoot = resolve('dist')) {
           try { body = JSON.parse(Buffer.concat(parts).toString('utf8')); } catch { return json(400, { error: 'JSONを読み取れません。' }); }
         }
         if (req.method === 'GET' && path === '/api/dashboard') return json(200, store.dashboard());
-        if (req.method === 'POST' && path === '/api/sessions') return json(201, store.create(body.section, body.mode, body.count, body.collection));
+        if (req.method === 'POST' && path === '/api/sessions') return json(201, store.create(body.section, body.mode, body.count, body.collection, { topic: body.topic, tag: body.tag }));
         const match = path.match(/^\/api\/sessions\/([a-zA-Z0-9-]+)(?:\/(draft|submit|grade))?$/);
         if (match) {
           if (req.method === 'GET' && !match[2]) { store.expire(); return json(200, store.publicSession(store.session(match[1]))); }
           if (req.method === 'PUT' && match[2] === 'draft') return json(200, store.save(match[1], body));
-          if (req.method === 'POST' && match[2] === 'grade') return json(200, store.grade(match[1], body.questionId, body.revision));
-          if (req.method === 'POST' && match[2] === 'submit') return json(200, store.submit(match[1], body.revision));
+          if (req.method === 'POST' && match[2] === 'grade') return json(200, store.grade(match[1], body.questionId, body.revision, body.draft));
+          if (req.method === 'POST' && match[2] === 'submit') return json(200, store.submit(match[1], body.revision, body.draft));
         }
         if (req.method === 'POST' && path === '/api/export') return json(200, store.exportContext(body.section as Section));
         if (req.method === 'POST' && path === '/api/import') return json(200, store.importSet(body));
@@ -51,15 +51,23 @@ export function createApp(store: TrainingStore, staticRoot = resolve('dist')) {
       const allowed: Record<string, string> = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.pdf': 'application/pdf', '.svg': 'image/svg+xml' };
       if (!allowed[extname(file)]) return json(404, { error: 'ファイルが見つかりません。' });
       try {
-        const content = await readFile(file); res.writeHead(200, { 'Content-Type': allowed[extname(file)], 'Cache-Control': 'no-cache' }); res.end(req.method === 'HEAD' ? undefined : content);
+        const info = await stat(file);
+        const etag = `W/"${info.size.toString(16)}-${info.mtimeMs.toString(16)}"`;
+        const hashedAsset = /^\/assets\/[^/]+-[\w-]{8,}\.(js|css)$/.test(path);
+        const cache = hashedAsset ? 'public, max-age=31536000, immutable' : isMaterial && extname(file) === '.png' ? 'private, max-age=3600' : 'no-cache';
+        const headers = { 'Content-Type': allowed[extname(file)], 'Cache-Control': cache, ETag: etag };
+        if (req.headers['if-none-match']?.split(',').map(tag => tag.trim()).includes(etag)) { res.writeHead(304, headers); return res.end(); }
+        const content = req.method === 'HEAD' ? undefined : await readFile(file);
+        res.writeHead(200, headers); res.end(content);
       } catch { return json(404, { error: isMaterial ? '教材画像がありません。npm run setup:materials を確認してください。' : 'ビルドがありません。npm run build を実行してください。' }); }
     } catch (error) { json(error instanceof RevisionConflictError ? 409 : 400, { error: error instanceof Error ? error.message : '処理に失敗しました。' }); }
   });
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const store = openStore(); const port = Number(process.env.PORT || 3001);
+  const host = process.env.HOST || '127.0.0.1';
   if (store.sessions().length) store.backup();
-  const server = createApp(store); server.listen(port, '127.0.0.1', () => console.log(`NW Training: http://127.0.0.1:${port}`));
+  const server = createApp(store); server.listen(port, host, () => console.log(`NW Training: http://${host}:${port}`));
   const interval = setInterval(() => { try { store.expire(); } catch (error) { console.error('時間切れの保存に失敗しました。', error); } }, 5000);
   const daily = setInterval(() => { try { store.backup(); } catch (error) { console.error('バックアップに失敗しました。', error); } }, 86400000);
   const stop = () => { clearInterval(interval); clearInterval(daily); server.close(() => { store.close(); process.exit(0); }); };

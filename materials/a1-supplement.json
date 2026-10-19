@@ -1,0 +1,4894 @@
+[
+  {
+    "id": "supplement-a1-numeric-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・数値表現",
+    "tags": [
+      "基数変換"
+    ],
+    "prompt": "16進数の2Dを10進数で表した値はどれか。",
+    "choices": [
+      "45",
+      "29",
+      "32",
+      "47"
+    ],
+    "correctIndex": 0,
+    "explanation": "2×16＋13＝45。16進数のDは10進数の13に当たる。",
+    "choiceExplanations": [
+      "2×16＋13＝45。16進数のDは10進数の13に当たる。",
+      "Dを3などとして扱ってはいけない。",
+      "下位桁Dの値13が加算されていない。",
+      "Dは15ではなく13である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-numeric-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-numeric-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・数値表現",
+    "tags": [
+      "2の補数"
+    ],
+    "prompt": "8ビットの2の補数で表した11110110の10進数の値はどれか。",
+    "choices": [
+      "246",
+      "−10",
+      "−9",
+      "118"
+    ],
+    "correctIndex": 1,
+    "explanation": "最上位ビットの重みを−128とすると、−128＋64＋32＋16＋4＋2＝−10。",
+    "choiceExplanations": [
+      "246は符号なし整数として解釈した値である。",
+      "最上位ビットの重みを−128とすると、−128＋64＋32＋16＋4＋2＝−10。",
+      "ビット反転後に1を加える必要がある。",
+      "符号ビットは正の128ではなく負の重みを持つ。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-numeric-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-numeric-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・数値表現",
+    "tags": [
+      "固定小数点"
+    ],
+    "prompt": "符号なし2進固定小数点数101.011の10進数の値はどれか。",
+    "choices": [
+      "5.75",
+      "10.375",
+      "5.375",
+      "5.3"
+    ],
+    "correctIndex": 2,
+    "explanation": "整数部は4＋1＝5、小数部は0/2＋1/4＋1/8＝0.375である。",
+    "choiceExplanations": [
+      "小数部011は0.25＋0.125である。",
+      "整数部101は10進数の5である。",
+      "整数部は4＋1＝5、小数部は0/2＋1/4＋1/8＝0.375である。",
+      "小数部を10進数の桁として読み替えることはできない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-numeric-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-numeric-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・数値表現",
+    "tags": [
+      "論理シフト"
+    ],
+    "prompt": "8ビットの符号なし整数00101100を2ビット論理左シフトした結果はどれか。あふれたビットは捨てる。",
+    "choices": [
+      "00001011",
+      "10110011",
+      "01011000",
+      "10110000"
+    ],
+    "correctIndex": 3,
+    "explanation": "左へ2ビット移動して下位に00を補う。44×4＝176で、10110000となる。",
+    "choiceExplanations": [
+      "これは2ビット論理右シフトの結果である。",
+      "空いた下位ビットには元の値でなく0を入れる。",
+      "これは1ビット左シフトの結果である。",
+      "左へ2ビット移動して下位に00を補う。44×4＝176で、10110000となる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-numeric-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-numeric-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・数値表現",
+    "tags": [
+      "丸め誤差"
+    ],
+    "prompt": "2進浮動小数点で10進数0.1を有限ビットで格納するとき、誤差が生じ得る主な理由はどれか。",
+    "choices": [
+      "2進数では循環小数となり有限桁で打ち切るため",
+      "整数部の桁数が必ず上限を超えるため",
+      "負数しか格納できないため",
+      "すべての小数が正確に表現できないため"
+    ],
+    "correctIndex": 0,
+    "explanation": "0.1は2進数で無限に続く。有限の仮数部で近似するため丸め誤差が生じる。",
+    "choiceExplanations": [
+      "0.1は2進数で無限に続く。有限の仮数部で近似するため丸め誤差が生じる。",
+      "0.1の整数部の大きさが原因ではない。",
+      "浮動小数点は正数も表現できる。",
+      "0.5など有限2進小数は正確に表現できる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-numeric-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-probability-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・確率と情報",
+    "tags": [
+      "独立事象"
+    ],
+    "prompt": "表の確率が1/2の硬貨を独立に3回投げる。ちょうど2回が表となる確率はどれか。",
+    "choices": [
+      "3/4",
+      "3/8",
+      "1/8",
+      "1/2"
+    ],
+    "correctIndex": 1,
+    "explanation": "8通りの等確率な結果のうち、表が2回なのは表表裏・表裏表・裏表表の3通り。",
+    "choiceExplanations": [
+      "有利な結果は8通り中3通りである。",
+      "8通りの等確率な結果のうち、表が2回なのは表表裏・表裏表・裏表表の3通り。",
+      "1/8は特定の並び1通りの確率である。",
+      "3回中ちょうど2回という条件を数える必要がある。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-probability-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://openstax.org/books/introductory-statistics-2e/pages/3-1-terminology"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-probability-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・確率と情報",
+    "tags": [
+      "条件付き確率"
+    ],
+    "prompt": "公平な六面体サイコロを1回振り、偶数だったことが分かった。出目が4以上である条件付き確率はどれか。",
+    "choices": [
+      "1/3",
+      "1/6",
+      "2/3",
+      "1/2"
+    ],
+    "correctIndex": 2,
+    "explanation": "条件を満たす標本空間は2、4、6で、このうち4以上は4、6の2通り。",
+    "choiceExplanations": [
+      "条件内で該当する結果は1通りではなく2通り。",
+      "分母は全6通りではなく偶数の3通りである。",
+      "条件を満たす標本空間は2、4、6で、このうち4以上は4、6の2通り。",
+      "条件なしで4以上となる確率と混同している。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-probability-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://openstax.org/books/introductory-statistics-2e/pages/3-1-terminology"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-probability-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・確率と情報",
+    "tags": [
+      "期待値"
+    ],
+    "prompt": "利益が100円の結果が確率0.6、損失が50円の結果が確率0.4で生じる。1回の利益の期待値はどれか。",
+    "choices": [
+      "25円",
+      "60円",
+      "80円",
+      "40円"
+    ],
+    "correctIndex": 3,
+    "explanation": "100×0.6＋(−50)×0.4＝60−20＝40円。",
+    "choiceExplanations": [
+      "各結果を単純平均せず確率で重み付けする。",
+      "損失側の期待値−20円も加える必要がある。",
+      "損失を利益として加算してはいけない。",
+      "100×0.6＋(−50)×0.4＝60−20＝40円。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-probability-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://openstax.org/books/introductory-statistics-2e/pages/3-1-terminology"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-probability-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・確率と情報",
+    "tags": [
+      "情報量"
+    ],
+    "prompt": "生起確率が1/8の事象が起きたことによる情報量を−log2(p)で定義する。情報量は何ビットか。",
+    "choices": [
+      "3ビット",
+      "1/8ビット",
+      "8ビット",
+      "24ビット"
+    ],
+    "correctIndex": 0,
+    "explanation": "1/8＝2の−3乗なので、−log2(1/8)＝3ビット。",
+    "choiceExplanations": [
+      "1/8＝2の−3乗なので、−log2(1/8)＝3ビット。",
+      "確率そのものが情報量ではない。",
+      "確率の逆数ではなく、その2を底とする対数を取る。",
+      "8と3を乗算する式ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-probability-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://openstax.org/books/introductory-statistics-2e/pages/3-1-terminology"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-probability-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・確率と情報",
+    "tags": [
+      "待ち行列"
+    ],
+    "prompt": "M/M/1待ち行列で平均到着率が毎秒4件、平均サービス率が毎秒5件のとき、系内の平均滞在時間W＝1/(μ−λ)はいくらか。",
+    "choices": [
+      "5秒",
+      "1秒",
+      "0.2秒",
+      "0.25秒"
+    ],
+    "correctIndex": 1,
+    "explanation": "W＝1/(5−4)＝1秒。待ち時間とサービス時間の両方を含む。",
+    "choiceExplanations": [
+      "μとμ−λを混同している。",
+      "W＝1/(5−4)＝1秒。待ち時間とサービス時間の両方を含む。",
+      "0.2秒は平均サービス時間1/μである。",
+      "0.25秒は平均到着間隔1/λである。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-probability-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://openstax.org/books/introductory-statistics-2e/pages/3-1-terminology"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-algorithm-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "二分探索"
+    ],
+    "prompt": "異なる値が昇順に並ぶ配列から二分探索する。要素数nに対する最悪時間計算量はどれか。",
+    "choices": [
+      "O(n)",
+      "O(n²)",
+      "O(log n)",
+      "O(1)"
+    ],
+    "correctIndex": 2,
+    "explanation": "探索区間を毎回ほぼ半分にするため、比較回数はnの対数に比例する。",
+    "choiceExplanations": [
+      "全要素を順に調べる線形探索の計算量である。",
+      "二重ループで全組合せを調べる処理とは異なる。",
+      "探索区間を毎回ほぼ半分にするため、比較回数はnの対数に比例する。",
+      "すべての探索が1回の比較で終わるわけではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-algorithm-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-algorithm-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "挿入ソート"
+    ],
+    "prompt": "通常の挿入ソートで、既に昇順に並ぶn個の要素を昇順に整列する場合の比較回数のオーダはどれか。",
+    "choices": [
+      "O(1)",
+      "O(n log n)",
+      "O(n²)",
+      "O(n)"
+    ],
+    "correctIndex": 3,
+    "explanation": "各要素は直前の要素と比較して移動不要と分かるため、比較回数はほぼn−1回。",
+    "choiceExplanations": [
+      "整列済みでも各要素の位置の確認は必要である。",
+      "通常の挿入ソートの最良ケースは線形である。",
+      "逆順などの最悪ケースと区別する。",
+      "各要素は直前の要素と比較して移動不要と分かるため、比較回数はほぼn−1回。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-algorithm-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-algorithm-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "再帰"
+    ],
+    "prompt": "f(0)=1、n>0のときf(n)=n×f(n−1)とする。f(4)の値はどれか。",
+    "choices": [
+      "24",
+      "10",
+      "16",
+      "120"
+    ],
+    "correctIndex": 0,
+    "explanation": "f(4)＝4×3×2×1×1＝24。停止条件f(0)まで展開する。",
+    "choiceExplanations": [
+      "f(4)＝4×3×2×1×1＝24。停止条件f(0)まで展開する。",
+      "1から4の加算ではなく乗算である。",
+      "4の2乗ではなく階乗である。",
+      "120はf(5)の値である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-algorithm-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-algorithm-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "幅優先探索"
+    ],
+    "prompt": "すべての辺の重みが等しいグラフで、始点から各頂点への最小辺数を求めるのに適した探索はどれか。",
+    "choices": [
+      "辺の重みを無視した任意の巡回",
+      "幅優先探索",
+      "深さ優先探索だけで訪問順を距離とする",
+      "頂点名の辞書順ソート"
+    ],
+    "correctIndex": 1,
+    "explanation": "幅優先探索は始点からの辺数が小さい層から順に探索する。",
+    "choiceExplanations": [
+      "任意の巡回では最短距離を保証できない。",
+      "幅優先探索は始点からの辺数が小さい層から順に探索する。",
+      "深さ優先の訪問順は最短距離を保証しない。",
+      "頂点の名前の順序から経路の距離は求まらない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-algorithm-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-algorithm-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "動的計画法"
+    ],
+    "prompt": "同じ部分問題が何度も現れる最適化問題で、計算結果を保存して再利用する手法はどれか。",
+    "choices": [
+      "常に局所最適を選ぶ貪欲法",
+      "衝突を無視するハッシュ法",
+      "動的計画法",
+      "単純な全列挙だけを行う方法"
+    ],
+    "correctIndex": 2,
+    "explanation": "動的計画法では部分問題の結果を表やメモに保持し、重複計算を減らす。",
+    "choiceExplanations": [
+      "貪欲法は局所選択を積み重ね、部分問題の保存を要件としない。",
+      "ハッシュの衝突を無視すると正しさを保てない。",
+      "動的計画法では部分問題の結果を表やメモに保持し、重複計算を減らす。",
+      "単純な全列挙だけでは部分問題の再計算が残る。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-algorithm-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-structure-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データ構造",
+    "tags": [
+      "スタック"
+    ],
+    "prompt": "空のスタックへA、B、Cの順でpushし、2回popした後にDをpushする。次のpopで取り出す値はどれか。",
+    "choices": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "correctIndex": 3,
+    "explanation": "2回のpopでC、Bを取り出し、残ったAの上にDを積むので次はD。",
+    "choiceExplanations": [
+      "Aは底に残っており、上のDが先に出る。",
+      "Bは既に2回目のpopで取り出されている。",
+      "Cは既に1回目のpopで取り出されている。",
+      "2回のpopでC、Bを取り出し、残ったAの上にDを積むので次はD。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-structure-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://docs.python.org/3/tutorial/datastructures.html",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-structure-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データ構造",
+    "tags": [
+      "キュー"
+    ],
+    "prompt": "空のFIFOキューへA、Bを入れ、1回取り出してからCを入れた。次に取り出される値はどれか。",
+    "choices": [
+      "B",
+      "A",
+      "C",
+      "最後に入れた値なので必ずC"
+    ],
+    "correctIndex": 0,
+    "explanation": "最初の取り出しでAが出る。残ったBの後ろへCを入れるため、次はB。",
+    "choiceExplanations": [
+      "最初の取り出しでAが出る。残ったBの後ろへCを入れるため、次はB。",
+      "Aは既に取り出されている。",
+      "Cより先に入れたBが残っている。",
+      "後入れ先出しはスタックの規則である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-structure-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://docs.python.org/3/tutorial/datastructures.html",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-structure-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データ構造",
+    "tags": [
+      "連結リスト"
+    ],
+    "prompt": "単方向連結リストで、挿入位置の直前ノードへの参照が既に分かっている。ノード1個の挿入の時間計算量はどれか。",
+    "choices": [
+      "O(n²)",
+      "O(1)",
+      "O(log n)",
+      "O(n)"
+    ],
+    "correctIndex": 1,
+    "explanation": "必要な参照を一定個数つなぎ替えるだけなので、ノード数nに依存しない。",
+    "choiceExplanations": [
+      "すべてのノードの組合せを調べる必要はない。",
+      "必要な参照を一定個数つなぎ替えるだけなので、ノード数nに依存しない。",
+      "探索処理を伴う二分探索とは異なる。",
+      "直前ノードを先頭から探すコストは問題条件で除外されている。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-structure-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://docs.python.org/3/tutorial/datastructures.html",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-structure-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データ構造",
+    "tags": [
+      "ハッシュ衝突"
+    ],
+    "prompt": "異なるキーが同じハッシュ値になることがある。連鎖法による対処はどれか。",
+    "choices": [
+      "ハッシュ値だけを比較して常に同一キーとみなす",
+      "衝突した時点で全キーを削除する",
+      "同じ位置に属する要素をリストなどで保持し元のキーを比較する",
+      "後から来た要素で必ず前の要素を上書きする"
+    ],
+    "correctIndex": 2,
+    "explanation": "連鎖法は同じバケットの要素を複数保持し、検索時にキーを確認する。",
+    "choiceExplanations": [
+      "ハッシュ値が等しくてもキーが等しいとは限らない。",
+      "全データの削除は衝突解決にならない。",
+      "連鎖法は同じバケットの要素を複数保持し、検索時にキーを確認する。",
+      "別キーのデータを失ってしまう。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-structure-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://docs.python.org/3/tutorial/datastructures.html",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-structure-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データ構造",
+    "tags": [
+      "二分探索木"
+    ],
+    "prompt": "重複キーのない二分探索木で、左部分木→節点→右部分木の順に走査するとキーはどの順になるか。",
+    "choices": [
+      "降順",
+      "挿入順",
+      "深さの大きい順",
+      "昇順"
+    ],
+    "correctIndex": 3,
+    "explanation": "左のキーは節点より小さく、右は大きいので、中順走査は昇順になる。",
+    "choiceExplanations": [
+      "降順には右→節点→左の順で走査する。",
+      "木の走査順と挿入順は一般に一致しない。",
+      "中順走査は節点の深さ順ではない。",
+      "左のキーは節点より小さく、右は大きいので、中順走査は昇順になる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-structure-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://docs.python.org/3/tutorial/datastructures.html",
+        "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/pages/lecture-notes/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-architecture-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成要素",
+    "tags": [
+      "CPU性能"
+    ],
+    "prompt": "2GHzのCPUが平均CPI=4で動作する。10億命令の実行時間はいくらか。周波数とCPIは一定とする。",
+    "choices": [
+      "2秒",
+      "0.125秒",
+      "0.5秒",
+      "8秒"
+    ],
+    "correctIndex": 0,
+    "explanation": "必要クロック数は10億×4＝40億。毎秒20億クロックなので2秒。",
+    "choiceExplanations": [
+      "必要クロック数は10億×4＝40億。毎秒20億クロックなので2秒。",
+      "CPIは命令数に掛ける量であり、割る量ではない。",
+      "CPI=1とした場合の時間である。",
+      "2GHzは毎秒20億クロックである。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-architecture-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/pipelining.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/pipelining.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-architecture-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成要素",
+    "tags": [
+      "キャッシュ"
+    ],
+    "prompt": "キャッシュヒット率90%、ヒット時10ns、ミス時はキャッシュ参照を含め合計110nsかかる。平均アクセス時間はどれか。",
+    "choices": [
+      "120ns",
+      "20ns",
+      "11ns",
+      "100ns"
+    ],
+    "correctIndex": 1,
+    "explanation": "0.9×10＋0.1×110＝9＋11＝20ns。ミス時110nsに10nsを重ねて加算しない。",
+    "choiceExplanations": [
+      "すべてのアクセスで両時間を足すわけではない。",
+      "0.9×10＋0.1×110＝9＋11＝20ns。ミス時110nsに10nsを重ねて加算しない。",
+      "ヒット分の期待時間9nsが抜けている。",
+      "ミス率10%で重み付けする必要がある。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-architecture-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/caches.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/caches.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-architecture-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成要素",
+    "tags": [
+      "局所性"
+    ],
+    "prompt": "配列を先頭から連続して読む処理で、近傍のデータをまとめてキャッシュへ取り込むと効果が出る主な性質はどれか。",
+    "choices": [
+      "排他制御",
+      "デッドロック",
+      "空間的局所性",
+      "時間的局所性だけ"
+    ],
+    "correctIndex": 2,
+    "explanation": "参照したアドレスの近くが続けて参照されやすい性質を空間的局所性という。",
+    "choiceExplanations": [
+      "共有資源の同時更新を防ぐ仕組みとは異なる。",
+      "相互の資源待ちで処理が進まない状態とは異なる。",
+      "参照したアドレスの近くが続けて参照されやすい性質を空間的局所性という。",
+      "同じ場所を短時間で再参照する性質とは区別する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-architecture-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/caches.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/caches.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-architecture-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成要素",
+    "tags": [
+      "パイプライン"
+    ],
+    "prompt": "命令パイプラインで直前の命令結果を次の命令が必要とし、結果の用意が間に合わない。この障害はどれか。",
+    "choices": [
+      "制御ハザード",
+      "構造ハザード",
+      "ページフォールト",
+      "データハザード"
+    ],
+    "correctIndex": 3,
+    "explanation": "命令間のデータ依存によるハザード。フォワーディングやストールなどで対処する。",
+    "choiceExplanations": [
+      "分岐先が未確定な場合などの障害である。",
+      "同時に必要とするハードウェア資源の競合である。",
+      "仮想記憶のページが主記憶にない場合の例外である。",
+      "命令間のデータ依存によるハザード。フォワーディングやストールなどで対処する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-architecture-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://plg.uwaterloo.ca/~olhotak/cs744/slides/Bsched.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://plg.uwaterloo.ca/~olhotak/cs744/slides/Bsched.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-architecture-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成要素",
+    "tags": [
+      "アムダールの法則"
+    ],
+    "prompt": "実行時間の80%を占める部分だけを4倍に高速化する。全体の高速化率はどれか。並列化の追加コストは無視する。",
+    "choices": [
+      "2.5倍",
+      "3.2倍",
+      "4倍",
+      "5倍"
+    ],
+    "correctIndex": 0,
+    "explanation": "元の時間を1とすると新しい時間は0.2＋0.8/4＝0.4。高速化率は1/0.4＝2.5倍。",
+    "choiceExplanations": [
+      "元の時間を1とすると新しい時間は0.2＋0.8/4＝0.4。高速化率は1/0.4＝2.5倍。",
+      "高速化されない20%の所要時間も残る。",
+      "全体のすべてを4倍にした場合とは異なる。",
+      "高速化部分を無限に速くした場合の上限である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-architecture-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-reliability-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成・信頼性",
+    "tags": [
+      "直列稼働率"
+    ],
+    "prompt": "独立に故障する装置2台を直列につなぎ、両方動作したときだけシステムが動く。各装置の稼働率が0.9のとき全体の稼働率はどれか。",
+    "choices": [
+      "1.8",
+      "0.81",
+      "0.9",
+      "0.99"
+    ],
+    "correctIndex": 1,
+    "explanation": "両方が動作する確率は0.9×0.9＝0.81。独立性が前提である。",
+    "choiceExplanations": [
+      "確率を単純に足すことはできない。",
+      "両方が動作する確率は0.9×0.9＝0.81。独立性が前提である。",
+      "直列構成は片方が停止すると全体も停止する。",
+      "0.99は同条件の並列構成の稼働率である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-reliability-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-raid.pdf",
+        "https://csrc.nist.gov/pubs/sp/800/145/final"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-reliability-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成・信頼性",
+    "tags": [
+      "並列稼働率"
+    ],
+    "prompt": "独立に故障する装置2台のうち1台以上が動けばシステムが動く。各装置の稼働率が0.9で切替失敗がないとき全体の稼働率はどれか。",
+    "choices": [
+      "0.9",
+      "1.0",
+      "0.99",
+      "0.81"
+    ],
+    "correctIndex": 2,
+    "explanation": "両方が停止する確率は0.1×0.1＝0.01。少なくとも1台動作する確率は1−0.01＝0.99。",
+    "choiceExplanations": [
+      "冗長化による効果を無視している。",
+      "両方とも停止する可能性は残る。",
+      "両方が停止する確率は0.1×0.1＝0.01。少なくとも1台動作する確率は1−0.01＝0.99。",
+      "両方の動作を要求する直列構成と区別する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-reliability-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-raid.pdf",
+        "https://csrc.nist.gov/pubs/sp/800/145/final"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-reliability-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成・信頼性",
+    "tags": [
+      "MTBFとMTTR"
+    ],
+    "prompt": "修理可能なシステムのMTBFが990時間、MTTRが10時間である。稼働率MTBF/(MTBF＋MTTR)はどれか。",
+    "choices": [
+      "1%",
+      "90%",
+      "100%",
+      "99%"
+    ],
+    "correctIndex": 3,
+    "explanation": "990/(990＋10)＝0.99＝99%。修復時間も分母へ含める。",
+    "choiceExplanations": [
+      "1%は停止時間の割合である。",
+      "分母は1000時間であり、990/1100ではない。",
+      "修復に要する10時間を無視できない。",
+      "990/(990＋10)＝0.99＝99%。修復時間も分母へ含める。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-reliability-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-raid.pdf",
+        "https://csrc.nist.gov/pubs/sp/800/145/final"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-reliability-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成・信頼性",
+    "tags": [
+      "RAID 5"
+    ],
+    "prompt": "同容量2TBのディスク4台でRAID 5を構成する。メタデータなどの容量を無視した利用可能容量はどれか。",
+    "choices": [
+      "6TB",
+      "2TB",
+      "4TB",
+      "8TB"
+    ],
+    "correctIndex": 0,
+    "explanation": "RAID 5の分散パリティは合計で1台分を使うため、(4−1)×2＝6TB。",
+    "choiceExplanations": [
+      "RAID 5の分散パリティは合計で1台分を使うため、(4−1)×2＝6TB。",
+      "利用可能な容量は1台分だけではない。",
+      "2台ずつミラーリングするRAID 10の容量と混同している。",
+      "パリティ用の容量を確保する必要がある。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-reliability-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-raid.pdf",
+        "https://csrc.nist.gov/pubs/sp/800/145/final"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-reliability-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成・信頼性",
+    "tags": [
+      "クラウドサービス"
+    ],
+    "prompt": "利用者がOSとアプリケーションを管理し、提供者が物理サーバーや仮想化基盤を管理するサービスモデルはどれか。",
+    "choices": [
+      "利用者が物理設備も保守するオンプレミス",
+      "IaaS",
+      "PaaS",
+      "SaaS"
+    ],
+    "correctIndex": 1,
+    "explanation": "IaaSでは処理・記憶・ネットワークなどを提供し、利用者がOSやアプリケーションを管理する。",
+    "choiceExplanations": [
+      "オンプレミスでは物理設備の管理も利用者側が担う。",
+      "IaaSでは処理・記憶・ネットワークなどを提供し、利用者がOSやアプリケーションを管理する。",
+      "PaaSでは提供者側がOSや実行基盤も管理する。",
+      "SaaSは提供者のアプリケーションを利用する形態である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-reliability-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/file-raid.pdf",
+        "https://csrc.nist.gov/pubs/sp/800/145/final"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-os-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア・OS",
+    "tags": [
+      "ラウンドロビン"
+    ],
+    "prompt": "ラウンドロビン方式のCPUスケジューリングの説明はどれか。",
+    "choices": [
+      "常に最も長い処理から実行する",
+      "優先度の低いプロセスを永久に実行しない",
+      "一定時間ずつCPUを割り当て、未完了なら実行可能待ち行列の末尾へ戻す",
+      "すべてのプロセスを終了まで中断せず実行する"
+    ],
+    "correctIndex": 2,
+    "explanation": "タイムクォンタムを区切って実行権を回し、複数のプロセスがCPUを使えるようにする。",
+    "choiceExplanations": [
+      "処理時間の長い順に実行する方式ではない。",
+      "実行可能なプロセスへ順番に実行権を回す。",
+      "タイムクォンタムを区切って実行権を回し、複数のプロセスがCPUを使えるようにする。",
+      "これは非プリエンプティブな実行である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-os-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-os-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア・OS",
+    "tags": [
+      "ページング"
+    ],
+    "prompt": "仮想アドレスのページ番号から物理ページ枠を求める情報を保持するものはどれか。",
+    "choices": [
+      "ファイルの拡張子一覧",
+      "CPUの命令レジスタだけ",
+      "DNSのMXレコード",
+      "ページテーブル"
+    ],
+    "correctIndex": 3,
+    "explanation": "ページテーブルは仮想ページと物理ページ枠の対応や保護情報を保持する。",
+    "choiceExplanations": [
+      "ファイル名の拡張子から物理アドレスは求められない。",
+      "命令レジスタは実行する命令を保持する。",
+      "MXレコードはメール配送先を示す。",
+      "ページテーブルは仮想ページと物理ページ枠の対応や保護情報を保持する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-os-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-os-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア・OS",
+    "tags": [
+      "ページフォールト"
+    ],
+    "prompt": "要求した仮想ページが現在主記憶に存在しない場合に起きるものはどれか。",
+    "choices": [
+      "ページフォールト",
+      "必ずデッドロック",
+      "必ずプログラムの構文エラー",
+      "CPUクロックの周波数変換"
+    ],
+    "correctIndex": 0,
+    "explanation": "OSが例外を処理し、必要なら補助記憶などからページを用意する。必ず異常終了するわけではない。",
+    "choiceExplanations": [
+      "OSが例外を処理し、必要なら補助記憶などからページを用意する。必ず異常終了するわけではない。",
+      "資源の循環待ちが必要なデッドロックとは別である。",
+      "構文解析時の誤りではない。",
+      "CPUの周波数制御とは関係しない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-os-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-os-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア・OS",
+    "tags": [
+      "デッドロック"
+    ],
+    "prompt": "複数資源を獲得する際、全処理に同じ資源獲得順序を守らせる。主にどの条件を崩してデッドロックを防ぐか。",
+    "choices": [
+      "プログラムの停止条件",
+      "循環待ち",
+      "相互排除",
+      "資源の存在"
+    ],
+    "correctIndex": 1,
+    "explanation": "獲得順序を統一すると資源待ちの循環を作れないため、循環待ち条件を崩せる。",
+    "choiceExplanations": [
+      "計算処理の停止条件とは別の概念である。",
+      "獲得順序を統一すると資源待ちの循環を作れないため、循環待ち条件を崩せる。",
+      "同時使用できない資源の排他性は残したままでよい。",
+      "資源をなくす対策ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-os-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-os-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア・OS",
+    "tags": [
+      "LRU"
+    ],
+    "prompt": "3ページ枠が初めは空で、ページをA→B→C→A→Dの順に参照する。LRU方式でDを入れる際に追い出すページはどれか。",
+    "choices": [
+      "C",
+      "D",
+      "B",
+      "A"
+    ],
+    "correctIndex": 2,
+    "explanation": "最後に参照した時点はBが2番目、Cが3番目、Aが4番目なので、最も古いBを追い出す。",
+    "choiceExplanations": [
+      "CよりBの最終参照が古い。",
+      "Dは今から読み込む対象である。",
+      "最後に参照した時点はBが2番目、Cが3番目、Aが4番目なので、最も古いBを追い出す。",
+      "Aは直前に参照されている。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-os-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-sched.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-paging.pdf",
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-hardware-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ハードウェア・論理回路",
+    "tags": [
+      "排他的論理和"
+    ],
+    "prompt": "入力AとBに対して、入力値が異なるときだけ出力が1になる論理演算はどれか。",
+    "choices": [
+      "AND",
+      "OR",
+      "NAND",
+      "XOR"
+    ],
+    "correctIndex": 3,
+    "explanation": "XORは00→0、01→1、10→1、11→0となる。",
+    "choiceExplanations": [
+      "ANDは両方が1のときだけ1になる。",
+      "ORは両方が1のときも1になる。",
+      "NANDは両方が0のときも1になる。",
+      "XORは00→0、01→1、10→1、11→0となる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-hardware-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-hardware-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ハードウェア・論理回路",
+    "tags": [
+      "ド・モルガンの法則"
+    ],
+    "prompt": "NOT(A AND B)と等価な論理式はどれか。",
+    "choices": [
+      "(NOT A) OR (NOT B)",
+      "(NOT A) AND (NOT B)",
+      "A OR B",
+      "A AND B"
+    ],
+    "correctIndex": 0,
+    "explanation": "積の否定は否定した各項の和となる。4組の入力すべてで一致する。",
+    "choiceExplanations": [
+      "積の否定は否定した各項の和となる。4組の入力すべてで一致する。",
+      "これはNOT(A OR B)と等価である。",
+      "A=B=0のとき元の式は1だが、この式は0になる。",
+      "A=B=1のとき元の式は0だが、この式は1になる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-hardware-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-hardware-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ハードウェア・論理回路",
+    "tags": [
+      "半加算器"
+    ],
+    "prompt": "1ビットの半加算器へA=1、B=1を入力する。和Sと桁上がりCの組はどれか。",
+    "choices": [
+      "S=0、C=0",
+      "S=0、C=1",
+      "S=1、C=0",
+      "S=1、C=1"
+    ],
+    "correctIndex": 1,
+    "explanation": "1＋1は2進数の10。SはXORで0、CはANDで1になる。",
+    "choiceExplanations": [
+      "桁上がり1を失っている。",
+      "1＋1は2進数の10。SはXORで0、CはANDで1になる。",
+      "これは1＋0などの結果である。",
+      "3を表す出力であり1＋1の結果ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-hardware-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-hardware-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ハードウェア・論理回路",
+    "tags": [
+      "アドレス線"
+    ],
+    "prompt": "バイト単位でアドレスを指定するメモリで、アドレス線が20本ある。指定可能な容量はどれか。1MiB=2の20乗バイトとする。",
+    "choices": [
+      "20MiB",
+      "1GiB",
+      "1MiB",
+      "20バイト"
+    ],
+    "correctIndex": 2,
+    "explanation": "20ビットで2の20乗個の異なるアドレスを指定でき、各アドレスは1バイトを指す。",
+    "choiceExplanations": [
+      "20をバイト数にそのまま掛ける計算ではない。",
+      "1GiBを指定するには30ビットのバイトアドレスが必要。",
+      "20ビットで2の20乗個の異なるアドレスを指定でき、各アドレスは1バイトを指す。",
+      "アドレス線の本数と容量は比例関係ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-hardware-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-hardware-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ハードウェア・論理回路",
+    "tags": [
+      "AD変換"
+    ],
+    "prompt": "測定範囲0V以上5V未満を、理想的な10ビットAD変換器で等間隔に量子化する。1段階の幅はどれか。",
+    "choices": [
+      "5/10 V",
+      "10/5 V",
+      "1024/5 V",
+      "5/1024 V"
+    ],
+    "correctIndex": 3,
+    "explanation": "10ビットは1024段階を表せる。全幅5Vを1024で割る。",
+    "choiceExplanations": [
+      "段階数は10ではなく2の10乗である。",
+      "ビット数を測定範囲で割る計算ではない。",
+      "幅は測定範囲を段階数で割る。",
+      "10ビットは1024段階を表せる。全幅5Vを1024で割る。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-hardware-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-design-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "キーボード操作"
+    ],
+    "prompt": "マウスを使えない利用者にも入力フォームを操作できるようにする改善はどれか。",
+    "choices": [
+      "キーボードで各項目へ移動・入力でき、フォーカス位置を見えるようにする",
+      "クリック時だけ処理しキーボード入力をすべて無効にする",
+      "操作対象を画像に置き換え名前を付けない",
+      "一定時間で必ず入力を消去する"
+    ],
+    "correctIndex": 0,
+    "explanation": "キーボードで操作でき、現在の操作対象が分かることが利用を助ける。",
+    "choiceExplanations": [
+      "キーボードで操作でき、現在の操作対象が分かることが利用を助ける。",
+      "キーボードでの利用を妨げる。",
+      "入力の目的が支援技術へ伝わらなくなる。",
+      "利用者が入力を完了する時間を不必要に制限する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-design-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.w3.org/WAI/fundamentals/accessibility-principles/",
+        "https://www.w3.org/TR/WCAG22/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-design-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "色に依存しない表示"
+    ],
+    "prompt": "入力エラーを赤色だけで示している画面の改善として適切なものはどれか。",
+    "choices": [
+      "色の違いを小さくする",
+      "色に加えてエラー文と対象項目を明示する",
+      "赤色を緑色へ変更し文字は出さない",
+      "エラー項目の文字をすべて消す"
+    ],
+    "correctIndex": 1,
+    "explanation": "色の識別が難しい利用者にもエラー内容が伝わるよう、文字などを併用する。",
+    "choiceExplanations": [
+      "色以外の手掛かりが必要である。",
+      "色の識別が難しい利用者にもエラー内容が伝わるよう、文字などを併用する。",
+      "色だけに依存する問題は残る。",
+      "問題箇所や修正内容を理解できなくなる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-design-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.w3.org/WAI/fundamentals/accessibility-principles/",
+        "https://www.w3.org/TR/WCAG22/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-design-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "代替テキスト"
+    ],
+    "prompt": "検索を実行する虫眼鏡アイコンだけのボタンに付けるアクセシブルな名前として最も適切なものはどれか。",
+    "choices": [
+      "青色の画像",
+      "button1",
+      "検索",
+      "丸と斜線の絵"
+    ],
+    "correctIndex": 2,
+    "explanation": "見た目の形状ではなく、操作すると何が起きるかを伝える名前を付ける。",
+    "choiceExplanations": [
+      "色はボタンの機能を説明しない。",
+      "内部識別子だけでは利用者に目的が伝わらない。",
+      "見た目の形状ではなく、操作すると何が起きるかを伝える名前を付ける。",
+      "図形の説明だけでは操作目的が分からない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-design-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.w3.org/WAI/fundamentals/accessibility-principles/",
+        "https://www.w3.org/TR/WCAG22/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-design-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "フォームのラベル"
+    ],
+    "prompt": "入力欄の用途を支援技術にも伝えるための対応はどれか。",
+    "choices": [
+      "用途を画面の背景画像へ埋め込むだけにする",
+      "入力すると消えるプレースホルダーだけに常に依存する",
+      "すべての欄を同じ名前の「入力」にする",
+      "入力欄に可視ラベルを置き、プログラム上も関連付ける"
+    ],
+    "correctIndex": 3,
+    "explanation": "関連付けられたラベルは、入力欄の意味を視覚面と支援技術の両方へ伝える。",
+    "choiceExplanations": [
+      "背景画像の文字は入力欄との関係を伝えられない。",
+      "入力中に用途が見えなくなり、ラベルの代替として不十分。",
+      "各欄の目的を区別できない。",
+      "関連付けられたラベルは、入力欄の意味を視覚面と支援技術の両方へ伝える。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-design-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.w3.org/WAI/fundamentals/accessibility-principles/",
+        "https://www.w3.org/TR/WCAG22/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-design-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "エラーからの回復"
+    ],
+    "prompt": "申込フォームで日付の形式が誤っていた場合の表示として最も適切なものはどれか。",
+    "choices": [
+      "該当欄と必要な形式を示し、他の入力内容を保持する",
+      "理由を示さずすべての欄を空にする",
+      "成功と表示して破棄する",
+      "どの欄か示さずエラー番号だけを表示する"
+    ],
+    "correctIndex": 0,
+    "explanation": "修正する場所と方法が分かり、再入力の負担を減らせる。",
+    "choiceExplanations": [
+      "修正する場所と方法が分かり、再入力の負担を減らせる。",
+      "修正箇所が分からず、正常な入力まで失われる。",
+      "誤った成功表示は利用者を混乱させる。",
+      "エラー番号だけでは通常、修正方法を判断できない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-design-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.w3.org/WAI/fundamentals/accessibility-principles/",
+        "https://www.w3.org/TR/WCAG22/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-media-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報メディア",
+    "tags": [
+      "画像データ量"
+    ],
+    "prompt": "640×480画素、1画素24ビットの画像の非圧縮データ量は何バイトか。ヘッダや行末の付加領域は無視する。",
+    "choices": [
+      "1843200バイト",
+      "921600バイト",
+      "307200バイト",
+      "7372800バイト"
+    ],
+    "correctIndex": 1,
+    "explanation": "640×480×24/8＝921600バイト。ビットをバイトへ直すため8で割る。",
+    "choiceExplanations": [
+      "24ビットは6バイトではなく3バイト。",
+      "640×480×24/8＝921600バイト。ビットをバイトへ直すため8で割る。",
+      "1画素を1バイトとしており、24ビット分を反映していない。",
+      "これはビット数でありバイト数ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-media-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.w3.org/TR/png-3/",
+        "https://learn.microsoft.com/en-us/windows/win32/api/mmeapi/ns-mmeapi-waveformatex"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-media-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報メディア",
+    "tags": [
+      "PCMデータ量"
+    ],
+    "prompt": "48kHz、量子化16ビット、2チャンネルの非圧縮PCM音声10秒分は何バイトか。ヘッダは無視する。",
+    "choices": [
+      "15360000バイト",
+      "192000バイト",
+      "1920000バイト",
+      "960000バイト"
+    ],
+    "correctIndex": 2,
+    "explanation": "48000×16×2×10/8＝1920000バイト。チャンネル数と秒数を掛ける。",
+    "choiceExplanations": [
+      "ビット数をバイトへ変換するには8で割る。",
+      "これは1秒分のデータ量である。",
+      "48000×16×2×10/8＝1920000バイト。チャンネル数と秒数を掛ける。",
+      "2チャンネルの一方しか数えていない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-media-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.w3.org/TR/png-3/",
+        "https://learn.microsoft.com/en-us/windows/win32/api/mmeapi/ns-mmeapi-waveformatex"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-media-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報メディア",
+    "tags": [
+      "標本化"
+    ],
+    "prompt": "最高周波数3kHzの帯域制限された信号を理想条件で標本化する。選択肢のうち標本化定理の条件を満たす標本化周波数はどれか。",
+    "choices": [
+      "2kHz",
+      "3kHz",
+      "4kHz",
+      "8kHz"
+    ],
+    "correctIndex": 3,
+    "explanation": "最高周波数の2倍を超える周波数で標本化する。選択肢では8kHzだけが6kHzを超える。",
+    "choiceExplanations": [
+      "最高周波数自体より低く、折り返しが生じ得る。",
+      "最高周波数と同じでは不足する。",
+      "必要な6kHzより低い。",
+      "最高周波数の2倍を超える周波数で標本化する。選択肢では8kHzだけが6kHzを超える。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-media-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.w3.org/TR/png-3/",
+        "https://learn.microsoft.com/en-us/windows/win32/api/mmeapi/ns-mmeapi-waveformatex"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-media-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報メディア",
+    "tags": [
+      "可逆圧縮"
+    ],
+    "prompt": "PNG形式の画像圧縮の基本的な性質として適切なものはどれか。",
+    "choices": [
+      "復号すると元の画素データを復元できる可逆圧縮",
+      "保存するたびに画素値を必ず近似する非可逆圧縮",
+      "音声だけを扱う圧縮",
+      "圧縮後のサイズは常に元の100分の1以下になる"
+    ],
+    "correctIndex": 0,
+    "explanation": "PNGは可逆圧縮の画像形式。ファイルサイズの削減率は画像内容に依存する。",
+    "choiceExplanations": [
+      "PNGは可逆圧縮の画像形式。ファイルサイズの削減率は画像内容に依存する。",
+      "PNGの圧縮自体は画素値を近似して捨てない。",
+      "PNGはラスター画像の形式である。",
+      "すべての入力に対して一定以上の圧縮率は保証できない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-media-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.w3.org/TR/png-3/",
+        "https://learn.microsoft.com/en-us/windows/win32/api/mmeapi/ns-mmeapi-waveformatex"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-media-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報メディア",
+    "tags": [
+      "階調数"
+    ],
+    "prompt": "1画素8ビットのグレースケール画像で表せる階調の最大数はどれか。",
+    "choices": [
+      "65536",
+      "256",
+      "8",
+      "64"
+    ],
+    "correctIndex": 1,
+    "explanation": "8ビットの組合せ数は2の8乗＝256。",
+    "choiceExplanations": [
+      "65536階調には16ビットが必要である。",
+      "8ビットの組合せ数は2の8乗＝256。",
+      "ビット数と組合せ数を混同している。",
+      "64階調は6ビットで表せる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-media-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.w3.org/TR/png-3/",
+        "https://learn.microsoft.com/en-us/windows/win32/api/mmeapi/ns-mmeapi-waveformatex"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-db-design-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース設計",
+    "tags": [
+      "主キー"
+    ],
+    "prompt": "関係データベースの主キー制約が要求する性質はどれか。",
+    "choices": [
+      "必ず整数1列である",
+      "外部キーから参照されるたびに値が変わる",
+      "各行を一意に識別でき、主キー列の値はNULLでない",
+      "すべての行で同じ値を持つ"
+    ],
+    "correctIndex": 2,
+    "explanation": "主キーは一意性と非NULLを要求する。複数列からなる主キーも使える。",
+    "choiceExplanations": [
+      "文字列や複合キーも主キーにできる。",
+      "参照は主キー値の自動変更を意味しない。",
+      "主キーは一意性と非NULLを要求する。複数列からなる主キーも使える。",
+      "同じ値では行を一意に識別できない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-db-design-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.postgresql.org/docs/17/ddl-constraints.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-db-design-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース設計",
+    "tags": [
+      "外部キー"
+    ],
+    "prompt": "外部キー制約の主な目的はどれか。",
+    "choices": [
+      "参照元の全列を自動的に暗号化する",
+      "任意の重複行を必ず削除する",
+      "結合処理をすべて禁止する",
+      "参照先にないキーを参照する行の登録などを防いで参照整合性を保つ"
+    ],
+    "correctIndex": 3,
+    "explanation": "外部キーは参照元と参照先のキー間の整合性を制約する。NULLの扱いなどは定義に従う。",
+    "choiceExplanations": [
+      "暗号化の機能ではない。",
+      "外部キー自体は重複行を一律に排除しない。",
+      "表の間の結合は可能である。",
+      "外部キーは参照元と参照先のキー間の整合性を制約する。NULLの扱いなどは定義に従う。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-db-design-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.postgresql.org/docs/17/ddl-constraints.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-db-design-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース設計",
+    "tags": [
+      "第2正規形"
+    ],
+    "prompt": "第1正規形の受注明細(受注番号, 商品番号, 商品名, 数量)で主キーは(受注番号, 商品番号)、商品番号→商品名が成り立つ。第2正規形への分解として適切なものはどれか。",
+    "choices": [
+      "商品(商品番号, 商品名)と受注明細(受注番号, 商品番号, 数量)に分ける",
+      "商品名だけを削除し情報を失う",
+      "数量を主キーへ加えるだけにする",
+      "同じ表を2部複製する"
+    ],
+    "correctIndex": 0,
+    "explanation": "複合主キーの一部である商品番号への部分関数従属を別表へ分離する。",
+    "choiceExplanations": [
+      "複合主キーの一部である商品番号への部分関数従属を別表へ分離する。",
+      "正規化は必要な情報を失うための操作ではない。",
+      "部分関数従属を分離できていない。",
+      "複製しても関数従属の構造は変わらない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-db-design-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.postgresql.org/docs/17/ddl-constraints.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-db-design-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース設計",
+    "tags": [
+      "第3正規形"
+    ],
+    "prompt": "社員(社員番号, 部門番号, 部門名)で社員番号が主キー、社員番号→部門番号→部門名が成り立つ。更新不整合を減らす分解はどれか。",
+    "choices": [
+      "社員番号を削除し部門名だけを残す",
+      "社員(社員番号, 部門番号)と部門(部門番号, 部門名)",
+      "社員ごとに部門名を複数列へ増やす",
+      "部門番号をすべてNULLへ置き換える"
+    ],
+    "correctIndex": 1,
+    "explanation": "キーに対する非キー属性の推移的関数従属を分離する。部門名を部門表で管理できる。",
+    "choiceExplanations": [
+      "社員を識別する情報を失う。",
+      "キーに対する非キー属性の推移的関数従属を分離する。部門名を部門表で管理できる。",
+      "同じ部門名の重複保持が増える。",
+      "社員の所属情報を失ってしまう。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-db-design-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.postgresql.org/docs/17/ddl-constraints.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-db-design-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース設計",
+    "tags": [
+      "多対多の関連"
+    ],
+    "prompt": "学生は複数科目を履修し、科目には複数学生が属する。関係データベースで対応を表す設計として適切なものはどれか。",
+    "choices": [
+      "科目表を学生数だけ複製する",
+      "学生表と科目表の関連を削除する",
+      "履修(学生ID, 科目ID)という関連表を設ける",
+      "学生表の1列へ科目ID一覧をカンマ区切りで入れる"
+    ],
+    "correctIndex": 2,
+    "explanation": "多対多の関連を関連表で表し、各IDを外部キーとして管理できる。",
+    "choiceExplanations": [
+      "同じ科目情報の重複管理が生じる。",
+      "誰が何を履修したか表せなくなる。",
+      "多対多の関連を関連表で表し、各IDを外部キーとして管理できる。",
+      "個々の関連へ制約を付けにくくなり、第1正規形の設計として不適切。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-db-design-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.postgresql.org/docs/17/ddl-constraints.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-sql-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "SQL・トランザクション",
+    "tags": [
+      "NULLと集約"
+    ],
+    "prompt": "表Tの列vに10、NULL、20の3行がある。SELECT COUNT(*), COUNT(v) FROM T の結果はどれか。",
+    "choices": [
+      "3, 3",
+      "2, 2",
+      "2, 3",
+      "3, 2"
+    ],
+    "correctIndex": 3,
+    "explanation": "COUNT(*)は行数を数え、COUNT(v)はvがNULLでない行を数える。",
+    "choiceExplanations": [
+      "COUNT(v)はNULLの行を数えない。",
+      "COUNT(*)はNULLを含む行も数える。",
+      "両方のNULLの扱いが逆になっている。",
+      "COUNT(*)は行数を数え、COUNT(v)はvがNULLでない行を数える。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-sql-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.postgresql.org/docs/17/queries-table-expressions.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.postgresql.org/docs/17/queries-table-expressions.html",
+        "https://www.postgresql.org/docs/17/functions-aggregate.html",
+        "https://www.postgresql.org/docs/17/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/17/transaction-iso.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-sql-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "SQL・トランザクション",
+    "tags": [
+      "HAVING"
+    ],
+    "prompt": "部門ごとの売上合計が100万円を超える部門だけを得るため、GROUP BY後の集約結果へ条件を付ける句はどれか。",
+    "choices": [
+      "HAVING",
+      "WHEREだけでSUMを直接評価する",
+      "ORDER BY",
+      "SELECT DISTINCTだけ"
+    ],
+    "correctIndex": 0,
+    "explanation": "HAVINGはグループ化後の集約値に対する条件を指定する。",
+    "choiceExplanations": [
+      "HAVINGはグループ化後の集約値に対する条件を指定する。",
+      "WHEREはグループ化前の行を絞り込む。",
+      "ORDER BYは結果の並べ替えを行う。",
+      "DISTINCTは重複の排除であり合計の条件ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-sql-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.postgresql.org/docs/17/queries-table-expressions.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.postgresql.org/docs/17/queries-table-expressions.html",
+        "https://www.postgresql.org/docs/17/functions-aggregate.html",
+        "https://www.postgresql.org/docs/17/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/17/transaction-iso.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-sql-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "SQL・トランザクション",
+    "tags": [
+      "外部結合"
+    ],
+    "prompt": "社員表を左、部門表を右として部門番号でLEFT JOINする。右側に対応部門のない社員はどうなるか。",
+    "choices": [
+      "SQLが常に構文エラーになる",
+      "社員行が残り、右側の列はNULLになる",
+      "社員行は必ず除外される",
+      "右側の全行と必ず結合される"
+    ],
+    "correctIndex": 1,
+    "explanation": "左外部結合は左の行を保持し、対応がない右列をNULLで補う。",
+    "choiceExplanations": [
+      "対応がないことは構文エラーではない。",
+      "左外部結合は左の行を保持し、対応がない右列をNULLで補う。",
+      "対応のある行だけを残すのは内部結合の基本動作。",
+      "全組合せを作るCROSS JOINとは異なる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-sql-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.postgresql.org/docs/17/queries-table-expressions.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.postgresql.org/docs/17/queries-table-expressions.html",
+        "https://www.postgresql.org/docs/17/functions-aggregate.html",
+        "https://www.postgresql.org/docs/17/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/17/transaction-iso.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-sql-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "SQL・トランザクション",
+    "tags": [
+      "原子性"
+    ],
+    "prompt": "振込処理で出金後に入金が失敗した場合、処理全体を取り消して出金も戻す。対応するACID特性はどれか。",
+    "choices": [
+      "可用性",
+      "応答時間",
+      "原子性",
+      "永続性"
+    ],
+    "correctIndex": 2,
+    "explanation": "原子性はトランザクションをすべて実行するか、全体を取り消す性質。",
+    "choiceExplanations": [
+      "可用性はサービスを利用できる度合いを表す。",
+      "性能指標でありACIDの原子性とは異なる。",
+      "原子性はトランザクションをすべて実行するか、全体を取り消す性質。",
+      "永続性は確定した結果を失わない性質。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-sql-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.postgresql.org/docs/17/queries-table-expressions.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.postgresql.org/docs/17/queries-table-expressions.html",
+        "https://www.postgresql.org/docs/17/functions-aggregate.html",
+        "https://www.postgresql.org/docs/17/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/17/transaction-iso.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-sql-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "SQL・トランザクション",
+    "tags": [
+      "ダーティリード"
+    ],
+    "prompt": "他のトランザクションが書いた未コミットの値を読んでしまう現象はどれか。",
+    "choices": [
+      "ファントムリード",
+      "デッドロック",
+      "チェックポイント",
+      "ダーティリード"
+    ],
+    "correctIndex": 3,
+    "explanation": "未コミットの値は後でロールバックされ得る。これを読む現象がダーティリード。",
+    "choiceExplanations": [
+      "同じ検索を繰り返したときに該当行の集合が変化する現象。",
+      "複数処理が互いの資源を待って進まない状態。",
+      "回復処理のための記録点であり読取り異常ではない。",
+      "未コミットの値は後でロールバックされ得る。これを読む現象がダーティリード。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-sql-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.postgresql.org/docs/17/queries-table-expressions.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.postgresql.org/docs/17/queries-table-expressions.html",
+        "https://www.postgresql.org/docs/17/functions-aggregate.html",
+        "https://www.postgresql.org/docs/17/tutorial-transactions.html",
+        "https://www.postgresql.org/docs/17/transaction-iso.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-ip-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・アドレス",
+    "tags": [
+      "サブネットのホスト数"
+    ],
+    "prompt": "IPv4の/26サブネットで、ネットワークアドレスとブロードキャストアドレスを除く通常のホストアドレス数はどれか。",
+    "choices": [
+      "62",
+      "26",
+      "64",
+      "126"
+    ],
+    "correctIndex": 0,
+    "explanation": "ホスト部は32−26＝6ビット。2の6乗−2＝62個。",
+    "choiceExplanations": [
+      "ホスト部は32−26＝6ビット。2の6乗−2＝62個。",
+      "プレフィックス長とホスト数は異なる。",
+      "64個のうち予約された2個を除く。",
+      "126個は/25の通常のホスト数である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-ip-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc4632"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-ip-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・アドレス",
+    "tags": [
+      "ネットワークアドレス"
+    ],
+    "prompt": "IPv4アドレス192.0.2.141/27が属するネットワークアドレスはどれか。",
+    "choices": [
+      "192.0.2.160",
+      "192.0.2.128",
+      "192.0.2.0",
+      "192.0.2.140"
+    ],
+    "correctIndex": 1,
+    "explanation": "/27は32個ごとの区間。141は128～159の区間なのでネットワークアドレスは128。",
+    "choiceExplanations": [
+      "160は次のサブネットの先頭である。",
+      "/27は32個ごとの区間。141は128～159の区間なのでネットワークアドレスは128。",
+      "/24の場合の境界と混同している。",
+      "140は32の倍数の境界ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-ip-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc4632"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-ip-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・アドレス",
+    "tags": [
+      "最長一致"
+    ],
+    "prompt": "宛先10.1.2.9に対し、10.0.0.0/8→A、10.1.0.0/16→B、10.1.2.0/24→C、既定経路→Dがある。最長一致で選ぶ転送先はどれか。",
+    "choices": [
+      "B",
+      "D",
+      "C",
+      "A"
+    ],
+    "correctIndex": 2,
+    "explanation": "宛先と一致する経路のうち最も長いプレフィックス/24を優先する。",
+    "choiceExplanations": [
+      "/16より/24の方が一致するプレフィックスが長い。",
+      "既定経路はより具体的な一致経路がない場合に使う。",
+      "宛先と一致する経路のうち最も長いプレフィックス/24を優先する。",
+      "/8も一致するが、より具体的な/24が存在する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-ip-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc4632"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-ip-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・アドレス",
+    "tags": [
+      "経路集約"
+    ],
+    "prompt": "192.0.2.0/25と192.0.2.128/25を、余分な範囲を含めず1本に集約した経路はどれか。",
+    "choices": [
+      "192.0.2.0/23",
+      "192.0.2.0/26",
+      "192.0.0.0/16",
+      "192.0.2.0/24"
+    ],
+    "correctIndex": 3,
+    "explanation": "二つの/25は連続して/24の全256アドレスを覆い、/24境界にも整列している。",
+    "choiceExplanations": [
+      "/23では隣の/24も含んでしまう。",
+      "/26は元の/25より狭く、両方を覆えない。",
+      "/16では非常に広い余分な範囲を含む。",
+      "二つの/25は連続して/24の全256アドレスを覆い、/24境界にも整列している。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-ip-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc4632"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-ip-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・アドレス",
+    "tags": [
+      "IPv6ブロードキャスト"
+    ],
+    "prompt": "IPv6について正しい説明はどれか。",
+    "choices": [
+      "ブロードキャストアドレスを持たず、必要な機能をマルチキャストなどで実現する",
+      "アドレス長は32ビットである",
+      "IPv4のARPをそのまま必須として使う",
+      "すべてのアドレスが10進数4組で表記される"
+    ],
+    "correctIndex": 0,
+    "explanation": "IPv6にブロードキャストはない。アドレスは128ビットで、近隣探索などにマルチキャストを使う。",
+    "choiceExplanations": [
+      "IPv6にブロードキャストはない。アドレスは128ビットで、近隣探索などにマルチキャストを使う。",
+      "32ビットはIPv4。IPv6は128ビットである。",
+      "IPv6ではICMPv6による近隣探索を用いる。",
+      "通常は16進数をコロンで区切って表す。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-ip-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc8200",
+        "https://www.rfc-editor.org/rfc/rfc4861"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-protocol-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・プロトコル",
+    "tags": [
+      "TCPとUDP"
+    ],
+    "prompt": "TCPが基本機能として提供し、UDP単体は提供しないものはどれか。",
+    "choices": [
+      "必ずUDPより短い応答時間",
+      "順序付きの信頼できるバイトストリーム転送",
+      "送信先ポート番号の指定",
+      "IP上での転送"
+    ],
+    "correctIndex": 1,
+    "explanation": "TCPは順序管理や再送などによって信頼できるバイトストリームを提供する。",
+    "choiceExplanations": [
+      "応答時間は環境やアプリケーションによって異なる。",
+      "TCPは順序管理や再送などによって信頼できるバイトストリームを提供する。",
+      "UDPも送信元・宛先ポート番号を持つ。",
+      "TCPもUDPもIP上で使われる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-protocol-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc9293.html",
+        "https://www.rfc-editor.org/rfc/rfc768"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-protocol-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・プロトコル",
+    "tags": [
+      "DNSレコード"
+    ],
+    "prompt": "ホスト名に対応するIPv6アドレスを格納するDNSレコードはどれか。",
+    "choices": [
+      "MX",
+      "PTR",
+      "AAAA",
+      "A"
+    ],
+    "correctIndex": 2,
+    "explanation": "AAAAレコードはIPv6アドレスを保持する。",
+    "choiceExplanations": [
+      "MXレコードはメール配送先を示す。",
+      "PTRレコードは逆引きなどに使う名前への参照である。",
+      "AAAAレコードはIPv6アドレスを保持する。",
+      "AレコードはIPv4アドレスを保持する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-protocol-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.rfc-editor.org/rfc/rfc3596"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3596",
+        "https://www.rfc-editor.org/rfc/rfc1035"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-protocol-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・プロトコル",
+    "tags": [
+      "DNSキャッシュ"
+    ],
+    "prompt": "DNSレコードのTTLの主な役割はどれか。",
+    "choices": [
+      "IPパケットが通れるルータ数を示す",
+      "ドメイン名の文字数上限を示す",
+      "TCP接続の暗号鍵の長さを示す",
+      "応答をキャッシュとして保持できる時間の上限を示す"
+    ],
+    "correctIndex": 3,
+    "explanation": "DNSのTTLはキャッシュデータの有効期間に関わる秒単位の値。IPのTTLとは意味が異なる。",
+    "choiceExplanations": [
+      "これはIPv4ヘッダのTTLと混同している。",
+      "名前の長さ制約とは別の値である。",
+      "暗号鍵の長さはDNSのTTLで定まらない。",
+      "DNSのTTLはキャッシュデータの有効期間に関わる秒単位の値。IPのTTLとは意味が異なる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-protocol-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.rfc-editor.org/rfc/rfc1035"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc1035"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-protocol-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・プロトコル",
+    "tags": [
+      "DHCP"
+    ],
+    "prompt": "IPv4のDHCPでアドレス設定を取得する代表的な最初の4メッセージの順序はどれか。",
+    "choices": [
+      "DISCOVER→OFFER→REQUEST→ACK",
+      "OFFER→DISCOVER→ACK→REQUEST",
+      "REQUEST→ACK→DISCOVER→OFFER",
+      "ACK→REQUEST→OFFER→DISCOVER"
+    ],
+    "correctIndex": 0,
+    "explanation": "クライアントが探索し、サーバーが候補を提示し、クライアントが要求し、サーバーが確認する。",
+    "choiceExplanations": [
+      "クライアントが探索し、サーバーが候補を提示し、クライアントが要求し、サーバーが確認する。",
+      "通常の初回取得ではクライアントの探索が先に来る。",
+      "REQUESTの前にサーバーからOFFERを受ける。",
+      "ACKは通常、要求に対する確認として最後に来る。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-protocol-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.rfc-editor.org/rfc/rfc2131"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc2131"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-protocol-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク・プロトコル",
+    "tags": [
+      "伝送時間"
+    ],
+    "prompt": "100Mbit/sの回線で10MBを送る。1MB=10の6乗バイトとし、制御情報や待ち時間を無視する。伝送時間はどれか。",
+    "choices": [
+      "80秒",
+      "0.8秒",
+      "0.1秒",
+      "8秒"
+    ],
+    "correctIndex": 1,
+    "explanation": "10×10の6乗×8ビットを100×10の6乗ビット/秒で割ると0.8秒。",
+    "choiceExplanations": [
+      "データ量と速度の接頭辞は同じMとして相殺できる。",
+      "10×10の6乗×8ビットを100×10の6乗ビット/秒で割ると0.8秒。",
+      "バイトからビットへの変換が必要である。",
+      "100Mbit/sと10Mbit/sを混同している。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-protocol-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-crypto-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・暗号と認証",
+    "tags": [
+      "公開鍵暗号"
+    ],
+    "prompt": "受信者Bだけが復号できるよう、公開鍵暗号で送信者Aがメッセージを暗号化する。使う鍵はどれか。",
+    "choices": [
+      "Aの秘密鍵",
+      "全利用者で共有する固定文字列",
+      "Bの公開鍵",
+      "Aの公開鍵"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bの公開鍵で暗号化した内容を、対応するBの秘密鍵で復号する。",
+    "choiceExplanations": [
+      "署名と機密性確保のための暗号化を混同している。",
+      "固定文字列はBの鍵対による機密性を実現しない。",
+      "Bの公開鍵で暗号化した内容を、対応するBの秘密鍵で復号する。",
+      "Aの公開鍵に対応する秘密鍵の所有者はAである。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-crypto-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://csrc.nist.gov/glossary/term/private_key"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-crypto-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・暗号と認証",
+    "tags": [
+      "デジタル署名"
+    ],
+    "prompt": "Aのデジタル署名を受信者が検証するときに使う鍵はどれか。",
+    "choices": [
+      "Aの秘密鍵",
+      "受信者の秘密鍵",
+      "受信者の公開鍵",
+      "Aの公開鍵"
+    ],
+    "correctIndex": 3,
+    "explanation": "署名者Aの秘密鍵で生成した署名を、対応するAの公開鍵で検証する。",
+    "choiceExplanations": [
+      "Aの秘密鍵はAが保護し、検証者へ渡さない。",
+      "受信者の秘密鍵はAの署名を検証する鍵ではない。",
+      "必要なのは署名者の公開鍵である。",
+      "署名者Aの秘密鍵で生成した署名を、対応するAの公開鍵で検証する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-crypto-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://csrc.nist.gov/glossary/term/digital_signature"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://csrc.nist.gov/glossary/term/digital_signature",
+        "https://csrc.nist.gov/glossary/term/private_key"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-crypto-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・暗号と認証",
+    "tags": [
+      "多要素認証"
+    ],
+    "prompt": "異なる種類の認証要素を組み合わせたものはどれか。",
+    "choices": [
+      "パスワードと、所持する認証器で生成するワンタイムコード",
+      "パスワードと秘密の質問の答え",
+      "2種類のパスワード",
+      "暗証番号と記憶している合言葉"
+    ],
+    "correctIndex": 0,
+    "explanation": "知識要素のパスワードと、所持要素の認証器を組み合わせている。",
+    "choiceExplanations": [
+      "知識要素のパスワードと、所持要素の認証器を組み合わせている。",
+      "どちらも知識要素であり、多要素にはならない。",
+      "同じ知識要素を二つ使っている。",
+      "両方とも本人が記憶する知識要素である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-crypto-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://csrc.nist.gov/glossary/term/multi_factor_authentication"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://csrc.nist.gov/glossary/term/multi_factor_authentication"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-crypto-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・暗号と認証",
+    "tags": [
+      "パスワードのソルト"
+    ],
+    "prompt": "パスワードハッシュへ利用者ごとに異なるソルトを加える主な効果はどれか。",
+    "choices": [
+      "ソルトを知ると全員の平文が直ちに分かる",
+      "同じパスワードでも異なるハッシュになり、事前計算表の使い回しを妨げる",
+      "弱いパスワードへの総当たりを完全になくす",
+      "復号鍵をなくしても平文へ戻せる"
+    ],
+    "correctIndex": 1,
+    "explanation": "ソルトは利用者間でのハッシュの一致や事前計算の共有を妨げる。適切な低速ハッシュも必要。",
+    "choiceExplanations": [
+      "ソルトは秘密であることを前提とする復号鍵ではない。",
+      "ソルトは利用者間でのハッシュの一致や事前計算の共有を妨げる。適切な低速ハッシュも必要。",
+      "個別の推測攻撃は残り、完全に防止するわけではない。",
+      "ハッシュは復号して平文を取り出す仕組みではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-crypto-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-crypto-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・暗号と認証",
+    "tags": [
+      "署名と機密性"
+    ],
+    "prompt": "暗号化せず平文データにデジタル署名だけを付けて送った。この署名だけで保証しようとする性質に含まれないものはどれか。",
+    "choices": [
+      "署名者の真正性の確認",
+      "署名者の否認への対抗の根拠",
+      "データ内容の機密性",
+      "改ざんの検知"
+    ],
+    "correctIndex": 2,
+    "explanation": "署名だけでは本文を読めなくしない。機密性には別途適切な暗号化などが必要。",
+    "choiceExplanations": [
+      "適切に公開鍵を確認する前提で署名者の確認に使える。",
+      "適切な運用と鍵管理の下で否認防止の根拠に使う。",
+      "署名だけでは本文を読めなくしない。機密性には別途適切な暗号化などが必要。",
+      "署名はデータの改ざん検知に使う。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-crypto-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://csrc.nist.gov/glossary/term/digital_signature"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://csrc.nist.gov/glossary/term/digital_signature",
+        "https://csrc.nist.gov/glossary/term/private_key"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-security-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・攻撃と対策",
+    "tags": [
+      "SQLインジェクション"
+    ],
+    "prompt": "入力値をSQL文へ文字列連結する処理への対策として最も適切なものはどれか。",
+    "choices": [
+      "入力欄の表示幅を狭くする",
+      "データベースのポート番号だけを変える",
+      "入力内容をそのままSQLの末尾へ追加する",
+      "プレースホルダーとパラメーターを使い、データをSQL構造から分離する"
+    ],
+    "correctIndex": 3,
+    "explanation": "パラメーター化クエリは入力値をコードとして解釈させず、データとして渡す。",
+    "choiceExplanations": [
+      "表示幅はサーバーに渡せる値の安全性を保証しない。",
+      "SQLの組み立ての問題は解消しない。",
+      "入力がSQL構造を変える危険を残す。",
+      "パラメーター化クエリは入力値をコードとして解釈させず、データとして渡す。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-security-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-security-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・攻撃と対策",
+    "tags": [
+      "XSS"
+    ],
+    "prompt": "外部入力をHTML本文のテキストとして表示する。XSSへの基本対策はどれか。",
+    "choices": [
+      "HTML本文の文脈に合った出力エンコーディングを行う",
+      "HTMLとしてそのまま挿入する",
+      "データベースを毎回再起動する",
+      "入力をURLへ移せば無条件に安全とみなす"
+    ],
+    "correctIndex": 0,
+    "explanation": "出力先に合った処理で特殊文字をデータとして表示させ、スクリプトなどとして解釈させない。",
+    "choiceExplanations": [
+      "出力先に合った処理で特殊文字をデータとして表示させ、スクリプトなどとして解釈させない。",
+      "攻撃用のマークアップが実行される可能性がある。",
+      "ブラウザーでの解釈の問題は解消しない。",
+      "URLなど別の文脈でも適切な処理が必要。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-security-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-security-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・攻撃と対策",
+    "tags": [
+      "CSRF"
+    ],
+    "prompt": "Cookieによるログインを使うWebサイトで、状態変更要求のCSRF対策として適切なものはどれか。",
+    "choices": [
+      "成功した要求をすべて無認証にする",
+      "利用者セッションと対応する推測困難なトークンを検証する",
+      "要求がGETなら状態変更しても常に安全とみなす",
+      "ログインCookieを全サイトへ公開する"
+    ],
+    "correctIndex": 1,
+    "explanation": "攻撃者が正しいトークンを用意できないようにし、正規画面からの要求を確認する。",
+    "choiceExplanations": [
+      "認証を外すことは対策にならない。",
+      "攻撃者が正しいトークンを用意できないようにし、正規画面からの要求を確認する。",
+      "GETでの状態変更もCSRFの危険があり、避ける。",
+      "Cookieの公開はセッションの漏えいにつながる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-security-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-security-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・攻撃と対策",
+    "tags": [
+      "最小権限"
+    ],
+    "prompt": "帳票を参照するだけのサービス用アカウントに与える権限として適切なものはどれか。",
+    "choices": [
+      "DB管理者権限を常時与える",
+      "全利用者の認証情報を読み出せるようにする",
+      "必要な表の参照権限に限定する",
+      "全表の更新・削除権限を与える"
+    ],
+    "correctIndex": 2,
+    "explanation": "処理に必要な最小限の権限へ絞り、侵害や誤操作の影響を抑える。",
+    "choiceExplanations": [
+      "管理者権限は必要以上に広い。",
+      "他利用者の認証情報の読出しは業務に不要。",
+      "処理に必要な最小限の権限へ絞り、侵害や誤操作の影響を抑える。",
+      "参照業務に更新・削除権限は不要。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-security-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://csrc.nist.gov/glossary/term/least_privilege"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://csrc.nist.gov/glossary/term/least_privilege"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-security-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・攻撃と対策",
+    "tags": [
+      "リスク移転"
+    ],
+    "prompt": "自社で保有する情報システムの事故による金銭的損失の一部へ保険を掛ける。主にどのリスク対応か。",
+    "choices": [
+      "回避",
+      "リスクの完全な消滅",
+      "脆弱性の技術的修正",
+      "移転・共有"
+    ],
+    "correctIndex": 3,
+    "explanation": "保険で損失負担の一部を他者へ移転・共有する。事故発生自体の可能性は残る。",
+    "choiceExplanations": [
+      "回避はリスクを生む活動自体をやめるなどの対応。",
+      "保険加入だけで事故が起きなくなるわけではない。",
+      "ソフトウェアの欠陥そのものを直す対策ではない。",
+      "保険で損失負担の一部を他者へ移転・共有する。事故発生自体の可能性は残る。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-security-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-development-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム開発技術",
+    "tags": [
+      "機能要件と非機能要件"
+    ],
+    "prompt": "非機能要件の例はどれか。",
+    "choices": [
+      "通常負荷で検索応答の95%が2秒以内に完了する",
+      "利用者が住所を登録できる",
+      "商品をカートへ追加できる",
+      "月別売上をCSVで出力できる"
+    ],
+    "correctIndex": 0,
+    "explanation": "応答時間という性能品質の要求である。測定条件と達成基準も明確になっている。",
+    "choiceExplanations": [
+      "応答時間という性能品質の要求である。測定条件と達成基準も明確になっている。",
+      "提供する機能そのものを指定している。",
+      "提供する操作機能の要求である。",
+      "データ出力機能の要求である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-development-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.istqb.org/certifications/certified-tester-foundation-level"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-development-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム開発技術",
+    "tags": [
+      "同値分割"
+    ],
+    "prompt": "整数入力の有効範囲が1～100である。値が小さすぎる無効区分・有効区分・大きすぎる無効区分を各1件で代表する組はどれか。",
+    "choices": [
+      "101, 102, 103",
+      "0, 50, 101",
+      "1, 50, 100",
+      "0, −1, −2"
+    ],
+    "correctIndex": 1,
+    "explanation": "0は下側無効、50は有効、101は上側無効で、三つの同値区分を代表する。",
+    "choiceExplanations": [
+      "すべて上側の無効区分に属する。",
+      "0は下側無効、50は有効、101は上側無効で、三つの同値区分を代表する。",
+      "すべて有効区分に属する。",
+      "すべて下側の無効区分に属する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-development-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.istqb.org/certifications/certified-tester-foundation-level"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-development-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム開発技術",
+    "tags": [
+      "境界値分析"
+    ],
+    "prompt": "整数入力の有効範囲が10～20である。下限と上限それぞれについて境界そのものと直外側を確認する最小の組はどれか。",
+    "choices": [
+      "8, 12, 18, 22",
+      "11, 12, 18, 19",
+      "9, 10, 20, 21",
+      "10, 15, 20"
+    ],
+    "correctIndex": 2,
+    "explanation": "下限側は9と10、上限側は20と21で有効・無効の切替を確認する。",
+    "choiceExplanations": [
+      "境界そのもの10と20を確認できない。",
+      "すべて有効範囲の内側である。",
+      "下限側は9と10、上限側は20と21で有効・無効の切替を確認する。",
+      "境界の直外側9と21が不足する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-development-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.istqb.org/certifications/certified-tester-foundation-level"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-development-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム開発技術",
+    "tags": [
+      "ホワイトボックステスト"
+    ],
+    "prompt": "条件式が単一条件のif文一つで構成される処理について、判定の真と偽を各1回以上通す基準はどれか。",
+    "choices": [
+      "命令網羅だけ",
+      "入力データの全組合せ網羅",
+      "画面の色の網羅",
+      "判定条件網羅"
+    ],
+    "correctIndex": 3,
+    "explanation": "判定条件網羅は判定結果の真・偽を両方実行する。命令網羅より強い条件となる場合がある。",
+    "choiceExplanations": [
+      "命令をすべて通しても判定結果の両方を通すとは限らない。",
+      "全入力の列挙を要求する基準ではない。",
+      "コードの制御構造に関する基準ではない。",
+      "判定条件網羅は判定結果の真・偽を両方実行する。命令網羅より強い条件となる場合がある。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-development-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.istqb.org/certifications/certified-tester-foundation-level"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-development-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム開発技術",
+    "tags": [
+      "レビュー"
+    ],
+    "prompt": "動的テストと区別される、設計書やソースコードのレビューの特徴はどれか。",
+    "choices": [
+      "対象プログラムを実行せず成果物を調べて欠陥を探す",
+      "本番データを必ず破壊して検証する",
+      "コンパイルに成功すれば不要となる",
+      "実行時の結果だけから内部仕様を推定する"
+    ],
+    "correctIndex": 0,
+    "explanation": "レビューは静的な確認方法で、仕様の不整合など実行前の欠陥を検出できる。",
+    "choiceExplanations": [
+      "レビューは静的な確認方法で、仕様の不整合など実行前の欠陥を検出できる。",
+      "レビューに本番データの破壊は必要ない。",
+      "コンパイル成功は設計や仕様の正しさを保証しない。",
+      "実行結果を使う方法は静的レビューとは異なる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-development-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf",
+        "https://www.istqb.org/certifications/certified-tester-foundation-level"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-dev-management-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア開発管理",
+    "tags": [
+      "スクラムの優先順位"
+    ],
+    "prompt": "スクラムでプロダクトバックログの順序付けに責任を持つのは誰か。",
+    "choices": [
+      "参加者を毎日無作為に選ぶ",
+      "プロダクトオーナー",
+      "スクラムマスターだけ",
+      "外部の全利用者による毎回の全会一致"
+    ],
+    "correctIndex": 1,
+    "explanation": "プロダクトオーナーは価値の最大化と、効果的なプロダクトバックログ管理に責任を持つ。",
+    "choiceExplanations": [
+      "責任は無作為な日替わりではない。",
+      "プロダクトオーナーは価値の最大化と、効果的なプロダクトバックログ管理に責任を持つ。",
+      "スクラムマスターはスクラムの確立やチームの有効性を支援する。",
+      "利害関係者の意見は取り込むが、全会一致が責任主体ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-dev-management-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://scrumguides.org/scrum-guide.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://scrumguides.org/scrum-guide.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-dev-management-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア開発管理",
+    "tags": [
+      "レトロスペクティブ"
+    ],
+    "prompt": "スプリントレトロスペクティブの主な目的はどれか。",
+    "choices": [
+      "全要求を最初に固定し変更を永久に禁止する",
+      "個人を罰する順序を決める",
+      "品質と有効性を高めるためにチームの進め方を振り返り改善を計画する",
+      "完成物を顧客へ紹介することだけ"
+    ],
+    "correctIndex": 2,
+    "explanation": "人、相互作用、プロセス、ツールなどを振り返り、改善を次へつなげる。",
+    "choiceExplanations": [
+      "スクラムは学習と変化への適応を重視する。",
+      "責任追及や処罰を目的とするイベントではない。",
+      "人、相互作用、プロセス、ツールなどを振り返り、改善を次へつなげる。",
+      "成果を利害関係者と検査する中心的なイベントはスプリントレビュー。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-dev-management-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://scrumguides.org/scrum-guide.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://scrumguides.org/scrum-guide.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-dev-management-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア開発管理",
+    "tags": [
+      "継続的インテグレーション"
+    ],
+    "prompt": "CIの実践として適切なものはどれか。",
+    "choices": [
+      "各担当の変更を半年間統合しない",
+      "テストをすべて手動に限定する",
+      "成功・失敗の記録を残さない",
+      "変更を頻繁に統合し、自動ビルドやテストで問題を早く検知する"
+    ],
+    "correctIndex": 3,
+    "explanation": "小さな変更を頻繁に統合し検証することで、統合時の問題を早期に発見しやすくする。",
+    "choiceExplanations": [
+      "長期間の分離は統合のリスクを大きくする。",
+      "自動化で頻繁な検証を可能にする。",
+      "失敗を追跡して直すため結果の可視化が必要。",
+      "小さな変更を頻繁に統合し検証することで、統合時の問題を早期に発見しやすくする。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-dev-management-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://dora.dev/capabilities/continuous-integration/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://dora.dev/capabilities/continuous-integration/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-dev-management-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア開発管理",
+    "tags": [
+      "構成管理"
+    ],
+    "prompt": "バージョン管理システムを使う主な利点はどれか。",
+    "choices": [
+      "変更履歴を追跡し、以前の版や変更の差分を確認できる",
+      "論理的なバグが必ず発生しなくなる",
+      "すべてのテストを省略できる",
+      "要件定義が不要になる"
+    ],
+    "correctIndex": 0,
+    "explanation": "バージョン管理は変更の履歴・差分・版の識別と復元を助ける。",
+    "choiceExplanations": [
+      "バージョン管理は変更の履歴・差分・版の識別と復元を助ける。",
+      "変更履歴があってもバグは発生し得る。",
+      "変更の正しさを確かめるテストは別途必要。",
+      "何を作るかを定める活動を代替しない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-dev-management-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-dev-management-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア開発管理",
+    "tags": [
+      "凝集度と結合度"
+    ],
+    "prompt": "保守しやすいモジュール分割の一般的な方向として適切なものはどれか。",
+    "choices": [
+      "境界をなくして全処理を一つの関数にする",
+      "モジュール内の関連を強め、モジュール間の依存を弱める",
+      "無関係な責務を一つへ集め、すべての内部変数を公開する",
+      "変更が全モジュールへ必ず波及するようにする"
+    ],
+    "correctIndex": 1,
+    "explanation": "高い凝集度と低い結合度を目指し、責務を明確にして変更の影響を局所化する。",
+    "choiceExplanations": [
+      "責務の分離や独立した修正が難しくなる。",
+      "高い凝集度と低い結合度を目指し、責務を明確にして変更の影響を局所化する。",
+      "凝集度が下がり、他モジュールから内部状態への依存が増す。",
+      "変更の波及範囲を抑える方向が望ましい。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-dev-management-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-project-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "WBS"
+    ],
+    "prompt": "WBSを作成する主な目的はどれか。",
+    "choices": [
+      "発生した障害だけを時系列で記録する",
+      "完成後の利益だけを示す",
+      "必要な作業や成果物を管理可能な単位へ階層的に分解し、範囲を明確にする",
+      "ネットワークのIPアドレスを自動配布する"
+    ],
+    "correctIndex": 2,
+    "explanation": "WBSはプロジェクトスコープを分解・整理し、見積りや責任分担などの基礎にする。",
+    "choiceExplanations": [
+      "障害履歴の台帳とは異なる。",
+      "作業や成果物の分解が主な役割である。",
+      "WBSはプロジェクトスコープを分解・整理し、見積りや責任分担などの基礎にする。",
+      "これはDHCPなどの役割である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-project-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-project-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "クリティカルパス"
+    ],
+    "prompt": "作業A(3日)の後にB(4日)とC(6日)が並行して始まり、両方の完了後にD(2日)を行う。最短完了日数はどれか。資源制約はない。",
+    "choices": [
+      "9日",
+      "13日",
+      "15日",
+      "11日"
+    ],
+    "correctIndex": 3,
+    "explanation": "経路A-B-Dは9日、A-C-Dは11日。長い方がクリティカルパスとなり、全体は11日。",
+    "choiceExplanations": [
+      "短い方の経路だけではCの完了を待てない。",
+      "並行するBとCを一部重ねずに足している。",
+      "BとCは並行できるため全作業の単純合計ではない。",
+      "経路A-B-Dは9日、A-C-Dは11日。長い方がクリティカルパスとなり、全体は11日。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-project-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-project-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "三点見積り"
+    ],
+    "prompt": "PERTの期待所要時間を(楽観値＋4×最頻値＋悲観値)/6で求める。楽観2日、最頻5日、悲観8日のとき何日か。",
+    "choices": [
+      "5日",
+      "4日",
+      "6日",
+      "15日"
+    ],
+    "correctIndex": 0,
+    "explanation": "(2＋4×5＋8)/6＝30/6＝5日。",
+    "choiceExplanations": [
+      "(2＋4×5＋8)/6＝30/6＝5日。",
+      "指定された重み付き平均では5日になる。",
+      "分母6は係数の合計1＋4＋1である。",
+      "3値の合計を期待時間としてはいけない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-project-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-project-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "EVMの進捗"
+    ],
+    "prompt": "ある時点でPV=100万円、EV=80万円、AC=90万円である。スケジュール効率指数SPI=EV/PVと進捗評価の組はどれか。",
+    "choices": [
+      "SPI=1.125、計画より進んでいる",
+      "SPI=0.8、計画より遅れている",
+      "SPI=1.25、計画より進んでいる",
+      "SPI=0.89、計画より遅れている"
+    ],
+    "correctIndex": 1,
+    "explanation": "80/100＝0.8。計画した出来高より実際の出来高が小さく、SPI<1は進捗遅れを示す。",
+    "choiceExplanations": [
+      "AC/EVはSPIではない。",
+      "80/100＝0.8。計画した出来高より実際の出来高が小さく、SPI<1は進捗遅れを示す。",
+      "PV/EVと逆に計算している。",
+      "約0.89はEV/ACで、コスト効率指数CPIである。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-project-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.pmi.org/learning/library/earned-value-analysis-forecast-outcomes-7898"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.pmi.org/learning/library/earned-value-analysis-forecast-outcomes-7898"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-project-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "変更管理"
+    ],
+    "prompt": "承認済みの開発範囲に機能追加を求められた。管理上適切な対応はどれか。",
+    "choices": [
+      "追加を実施しても計画や関係者へ知らせない",
+      "すべての変更を理由に関係なく必ず拒否する",
+      "費用・納期・品質などへの影響を評価し、定めた手順で承認して計画へ反映する",
+      "影響を確認せず無条件に追加する"
+    ],
+    "correctIndex": 2,
+    "explanation": "変更の必要性と影響を評価し、合意したベースラインを管理する。",
+    "choiceExplanations": [
+      "実際の範囲と計画が一致しなくなる。",
+      "必要な変更を承認手順で判断することが重要。",
+      "変更の必要性と影響を評価し、合意したベースラインを管理する。",
+      "納期や費用などの影響を見落とす。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-project-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-service-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "サービスマネジメント・監査",
+    "tags": [
+      "SLAの可用性"
+    ],
+    "prompt": "30日間を24時間提供するサービスで、可用性を(総時間−停止時間)/総時間とし、99.5%以上を合意した。停止時間の上限は何時間か。除外時間はない。",
+    "choices": [
+      "0.5時間",
+      "36時間",
+      "7.2時間",
+      "3.6時間"
+    ],
+    "correctIndex": 3,
+    "explanation": "総時間は30×24＝720時間。停止できるのは0.5%なので720×0.005＝3.6時間。",
+    "choiceExplanations": [
+      "0.5は停止率のパーセント値であり時間ではない。",
+      "0.5%を5%として計算してはいけない。",
+      "7.2時間は停止率1%の場合である。",
+      "総時間は30×24＝720時間。停止できるのは0.5%なので720×0.005＝3.6時間。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-service-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-service-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "サービスマネジメント・監査",
+    "tags": [
+      "インシデント管理と問題管理"
+    ],
+    "prompt": "障害時のサービス回復を急ぐ活動と、再発を減らすため根本原因を分析する活動の組として適切なものはどれか。",
+    "choices": [
+      "インシデント管理、問題管理",
+      "問題管理、インシデント管理",
+      "構成管理、財務管理",
+      "調達管理、販売管理"
+    ],
+    "correctIndex": 0,
+    "explanation": "インシデント管理は正常なサービスへの早期回復、問題管理は原因や潜在的な原因への対応を重視する。",
+    "choiceExplanations": [
+      "インシデント管理は正常なサービスへの早期回復、問題管理は原因や潜在的な原因への対応を重視する。",
+      "二つの主な目的を逆にしている。",
+      "構成情報の管理と費用の管理は、この組合せではない。",
+      "契約や販売の活動と障害対応を混同している。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-service-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-service-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "サービスマネジメント・監査",
+    "tags": [
+      "RPOとRTO"
+    ],
+    "prompt": "災害後に2時間以内で業務を再開し、失ってよいデータは直前15分までと定めた。RTOとRPOの組はどれか。",
+    "choices": [
+      "RTO=15分、RPO=15分",
+      "RTO=2時間、RPO=15分",
+      "RTO=15分、RPO=2時間",
+      "RTO=2時間、RPO=2時間"
+    ],
+    "correctIndex": 1,
+    "explanation": "RTOは復旧までの目標時間、RPOはどの時点までデータを戻すかという目標。",
+    "choiceExplanations": [
+      "業務の復旧時間目標は2時間である。",
+      "RTOは復旧までの目標時間、RPOはどの時点までデータを戻すかという目標。",
+      "復旧時間とデータ損失の許容範囲が逆である。",
+      "失ってよいデータの時間は15分と指定されている。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-service-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-service-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "サービスマネジメント・監査",
+    "tags": [
+      "監査の独立性"
+    ],
+    "prompt": "システム監査で独立性と客観性を確保するために適切なものはどれか。",
+    "choices": [
+      "経営者に不都合な発見を記録から削除する",
+      "監査対象部門の説明だけで検証を終える",
+      "監査対象の運用責任から独立した立場で、証拠に基づき評価する",
+      "自分が担当した運用を証拠なしで無条件に合格とする"
+    ],
+    "correctIndex": 2,
+    "explanation": "自己評価への偏りなどを避け、監査証拠を得て客観的に判断する。",
+    "choiceExplanations": [
+      "重要な発見の隠蔽は適切な監査ではない。",
+      "説明を裏付ける証拠なども確認する必要がある。",
+      "自己評価への偏りなどを避け、監査証拠を得て客観的に判断する。",
+      "自己の担当業務を無検証で判断すると独立性・客観性が損なわれる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-service-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.meti.go.jp/policy/netsecurity/sys-kansa/sys-kansa-2023r.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.meti.go.jp/policy/netsecurity/sys-kansa/sys-kansa-2023r.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-service-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "サービスマネジメント・監査",
+    "tags": [
+      "差分バックアップ"
+    ],
+    "prompt": "日曜のフルバックアップ後、月曜から毎日差分バックアップを取る。水曜終了時点へ復元する際に最低限必要な組はどれか。途中のファイル破損はない。",
+    "choices": [
+      "日曜のフルだけ",
+      "月曜と火曜の差分だけ",
+      "水曜の差分だけ",
+      "日曜のフルと水曜の差分"
+    ],
+    "correctIndex": 3,
+    "explanation": "差分バックアップは直近フル以降の全変更を含むため、フルと目的時点の差分で復元できる。",
+    "choiceExplanations": [
+      "月曜以降の変更が復元されない。",
+      "元データの基礎となるフルと水曜の変更が不足する。",
+      "差分だけではフルにしかない未変更データを戻せない。",
+      "差分バックアップは直近フル以降の全変更を含むため、フルと目的時点の差分で復元できる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-service-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-planning-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略・企画",
+    "tags": [
+      "RFIとRFP"
+    ],
+    "prompt": "調達する機能や条件を示し、ベンダーへ具体的な提案書の提出を求める文書はどれか。",
+    "choices": [
+      "RFP",
+      "RFI",
+      "SLA",
+      "障害報告書"
+    ],
+    "correctIndex": 0,
+    "explanation": "RFPは提案依頼書。RFIは調達検討のための情報提供を求める文書である。",
+    "choiceExplanations": [
+      "RFPは提案依頼書。RFIは調達検討のための情報提供を求める文書である。",
+      "RFIは情報提供依頼書であり、具体的な提案依頼とは区別する。",
+      "SLAはサービス水準などを合意するもの。",
+      "発生した障害と対応を報告する文書である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-planning-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-planning-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略・企画",
+    "tags": [
+      "BPR"
+    ],
+    "prompt": "BPRの説明として適切なものはどれか。",
+    "choices": [
+      "機器の製造番号を管理する",
+      "業務の目的からプロセスを抜本的に見直し、大幅な改善を目指す",
+      "既存の不要な手順も必ず維持して電子化する",
+      "画面の色だけを変更する"
+    ],
+    "correctIndex": 1,
+    "explanation": "BPRは業務プロセスそのものを抜本的に再設計する考え方。",
+    "choiceExplanations": [
+      "資産台帳の管理とは目的が異なる。",
+      "BPRは業務プロセスそのものを抜本的に再設計する考え方。",
+      "現状の手順を固定した単なる電子化とは区別する。",
+      "表面的な画面変更だけでは業務の抜本改革にならない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-planning-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-planning-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略・企画",
+    "tags": [
+      "KGIとKPI"
+    ],
+    "prompt": "売上目標の達成へ向け、営業提案件数を継続して監視する。最終目標の達成指標と途中の活動指標の組はどれか。",
+    "choices": [
+      "両方ともSLA",
+      "両方ともIPアドレス",
+      "売上達成率がKGI、営業提案件数がKPI",
+      "売上達成率がKPI、営業提案件数が必ずKGI"
+    ],
+    "correctIndex": 2,
+    "explanation": "この文脈では最終成果の達成度がKGI、目標へつながる過程の指標がKPIになる。",
+    "choiceExplanations": [
+      "営業活動の指標をサービス水準合意とは呼ばない。",
+      "ネットワークアドレスとは無関係。",
+      "この文脈では最終成果の達成度がKGI、目標へつながる過程の指標がKPIになる。",
+      "最終成果と活動過程の役割が逆である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-planning-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-planning-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略・企画",
+    "tags": [
+      "TCO"
+    ],
+    "prompt": "システム導入案をTCOで比較する場合、費用の捉え方として適切なものはどれか。",
+    "choices": [
+      "購入時の機器代だけを比較する",
+      "売上高だけを比較する",
+      "減価償却した機器の運用費を常に0とする",
+      "導入費だけでなく運用・保守・教育・廃棄などの費用も含めて比較する"
+    ],
+    "correctIndex": 3,
+    "explanation": "TCOは保有・利用に伴う総費用を捉え、比較する期間と含める費用をそろえる。",
+    "choiceExplanations": [
+      "継続的な費用を含めないと総費用にならない。",
+      "売上高はシステムの保有費用ではない。",
+      "会計上の帳簿価額と実際の運用支出は別である。",
+      "TCOは保有・利用に伴う総費用を捉え、比較する期間と含める費用をそろえる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-planning-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-planning-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略・企画",
+    "tags": [
+      "EA"
+    ],
+    "prompt": "EAで、業務・データ・アプリケーション・技術の構造を関連付けて整理する主な狙いはどれか。",
+    "choices": [
+      "個別システムだけでなく組織全体の整合性と最適化を図る",
+      "各部門で重複データを際限なく増やす",
+      "全社の業務目的を考慮しない",
+      "1台のCPUの命令実行順序だけを決める"
+    ],
+    "correctIndex": 0,
+    "explanation": "エンタープライズアーキテクチャは、組織全体の構造と関連を捉えて現状と将来像を整理する。",
+    "choiceExplanations": [
+      "エンタープライズアーキテクチャは、組織全体の構造と関連を捉えて現状と将来像を整理する。",
+      "重複や不整合を見直すためにも全体像を把握する。",
+      "経営・業務とITの整合が重要である。",
+      "CPUのマイクロアーキテクチャとは異なる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-planning-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-strategy-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "SWOT分析"
+    ],
+    "prompt": "SWOT分析で外部環境の「機会」に分類する例はどれか。",
+    "choices": [
+      "新規競合の参入で価格競争が激しくなる",
+      "規制の変更によって自社製品の需要拡大が見込まれる",
+      "社内に専門技術者が多い",
+      "自社設備の老朽化が進んでいる"
+    ],
+    "correctIndex": 1,
+    "explanation": "自社に有利な外部環境の変化は機会。内部の強み・弱みと区別する。",
+    "choiceExplanations": [
+      "外部の不利な要因であり脅威。",
+      "自社に有利な外部環境の変化は機会。内部の強み・弱みと区別する。",
+      "内部の好ましい要因であり強み。",
+      "内部の不利な要因であり弱み。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-strategy-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://openstax.org/books/principles-management/pages/8-2-using-swot-for-strategic-analysis"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://openstax.org/books/principles-management/pages/8-2-using-swot-for-strategic-analysis"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-strategy-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "PPM"
+    ],
+    "prompt": "市場成長率と相対的市場占有率を軸とするPPMで、低成長・高占有率の事業は一般にどれか。",
+    "choices": [
+      "問題児",
+      "負け犬",
+      "金のなる木",
+      "花形"
+    ],
+    "correctIndex": 2,
+    "explanation": "低成長・高シェアは金のなる木。成長投資の必要性が比較的小さく資金創出が期待される。",
+    "choiceExplanations": [
+      "問題児は高成長・低シェア。",
+      "負け犬は低成長・低シェア。",
+      "低成長・高シェアは金のなる木。成長投資の必要性が比較的小さく資金創出が期待される。",
+      "花形は高成長・高シェア。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-strategy-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://openstax.org/books/principles-management/pages/9-4-strategic-objectives-and-levels-of-strategy"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://openstax.org/books/principles-management/pages/9-4-strategic-objectives-and-levels-of-strategy"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-strategy-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "差別化戦略"
+    ],
+    "prompt": "競争戦略における差別化の例はどれか。",
+    "choices": [
+      "価格以外の価値を一切なくす",
+      "競合と全く同じ価値で値下げだけを続ける",
+      "顧客の需要を調べず品質を落とす",
+      "顧客が価値を認める独自機能やサービスを提供する"
+    ],
+    "correctIndex": 3,
+    "explanation": "顧客が価値を認める独自性によって、価格だけによらない競争優位を目指す。",
+    "choiceExplanations": [
+      "差別化に役立つ価値を失う方向である。",
+      "主に価格競争であり独自価値の提供ではない。",
+      "需要や価値を無視した品質低下は差別化にならない。",
+      "顧客が価値を認める独自性によって、価格だけによらない競争優位を目指す。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-strategy-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-strategy-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "オープンイノベーション"
+    ],
+    "prompt": "オープンイノベーションの例はどれか。",
+    "choices": [
+      "社外の大学や企業の技術・知識も取り入れて新製品を開発する",
+      "自社内だけの知識で開発することを常に義務付ける",
+      "知的財産の契約を一切不要とする",
+      "すべての研究成果を必ず無条件で公開する"
+    ],
+    "correctIndex": 0,
+    "explanation": "組織の境界を越えて知識や技術を活用する。契約や知的財産の管理は引き続き必要。",
+    "choiceExplanations": [
+      "組織の境界を越えて知識や技術を活用する。契約や知的財産の管理は引き続き必要。",
+      "外部知識を一律に排除するのは閉じた開発の方向。",
+      "利用条件や成果の権利関係を合意する必要がある。",
+      "無条件の全面公開を意味する言葉ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-strategy-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-strategy-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "ネットワーク外部性"
+    ],
+    "prompt": "同じ通信サービスを使う人が増えるほど、各利用者が連絡できる相手も増えて価値が高まる。この効果はどれか。",
+    "choices": [
+      "損益分岐点の固定化",
+      "直接ネットワーク外部性",
+      "規模拡大による製造原価低減だけ",
+      "減価償却"
+    ],
+    "correctIndex": 1,
+    "explanation": "同じ側の利用者数が増えることが、そのサービスを使う価値を高める効果である。",
+    "choiceExplanations": [
+      "損益分岐点を固定する効果ではない。",
+      "同じ側の利用者数が増えることが、そのサービスを使う価値を高める効果である。",
+      "生産コストの低下とは異なり、利用者にとっての価値の増加を指す。",
+      "固定資産の取得原価を期間配分する処理とは異なる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-strategy-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-accounting-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動・会計",
+    "tags": [
+      "損益分岐点"
+    ],
+    "prompt": "固定費120万円、製品1個の売価3000円、1個の変動費1800円である。損益分岐点の販売数量はどれか。",
+    "choices": [
+      "667個",
+      "1200個",
+      "1000個",
+      "400個"
+    ],
+    "correctIndex": 2,
+    "explanation": "1個当たり限界利益は3000−1800＝1200円。1200000/1200＝1000個。",
+    "choiceExplanations": [
+      "変動費で固定費を割る式ではない。",
+      "1200円は1個当たり限界利益であり必要数量ではない。",
+      "1個当たり限界利益は3000−1800＝1200円。1200000/1200＝1000個。",
+      "売価で固定費を割るだけでは変動費を考慮できない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-accounting-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://openstax.org/books/principles-managerial-accounting/pages/3-2-calculate-a-break-even-point-in-units-and-dollars"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://openstax.org/books/principles-managerial-accounting/pages/3-2-calculate-a-break-even-point-in-units-and-dollars"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-accounting-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動・会計",
+    "tags": [
+      "限界利益率"
+    ],
+    "prompt": "売上高1000万円、変動費600万円、固定費250万円である。限界利益率はどれか。",
+    "choices": [
+      "15%",
+      "25%",
+      "60%",
+      "40%"
+    ],
+    "correctIndex": 3,
+    "explanation": "限界利益は1000−600＝400万円。売上高で割ると400/1000＝40%。",
+    "choiceExplanations": [
+      "15%はこの条件での営業利益率に相当する。",
+      "25%は固定費の売上高に対する比率。",
+      "60%は変動費率である。",
+      "限界利益は1000−600＝400万円。売上高で割ると400/1000＝40%。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-accounting-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://openstax.org/books/principles-managerial-accounting/pages/3-2-calculate-a-break-even-point-in-units-and-dollars"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://openstax.org/books/principles-managerial-accounting/pages/3-2-calculate-a-break-even-point-in-units-and-dollars"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-accounting-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動・会計",
+    "tags": [
+      "投資利益率"
+    ],
+    "prompt": "この問題ではROIを年間純利益÷投資額と定義する。投資額500万円、年間純利益75万円のROIはどれか。",
+    "choices": [
+      "15%",
+      "6.67%",
+      "75%",
+      "150%"
+    ],
+    "correctIndex": 0,
+    "explanation": "75/500＝0.15＝15%。指標は指定された利益と投資額を使う。",
+    "choiceExplanations": [
+      "75/500＝0.15＝15%。指標は指定された利益と投資額を使う。",
+      "投資額を利益で割る方向ではない。",
+      "利益の金額をそのまま百分率にはできない。",
+      "小数0.15を百分率へ直すと15%である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-accounting-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-accounting-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動・会計",
+    "tags": [
+      "現在価値"
+    ],
+    "prompt": "1年後に受け取る110万円を、年割引率10%で現在価値へ割り引く。現在価値はどれか。",
+    "choices": [
+      "121万円",
+      "100万円",
+      "99万円",
+      "110万円"
+    ],
+    "correctIndex": 1,
+    "explanation": "110/(1＋0.1)＝100万円。将来価値を利率込みの倍率で割る。",
+    "choiceExplanations": [
+      "これは将来額をさらに1年複利運用した額である。",
+      "110/(1＋0.1)＝100万円。将来価値を利率込みの倍率で割る。",
+      "将来額から単純に10%を引く計算ではない。",
+      "割引率0%の場合の値である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-accounting-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-accounting-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動・会計",
+    "tags": [
+      "在庫回転率"
+    ],
+    "prompt": "在庫回転率を年間売上原価÷平均在庫金額と定義する。年間売上原価2400万円、平均在庫400万円の回転率はどれか。",
+    "choices": [
+      "年4回",
+      "年24回",
+      "年6回",
+      "年0.167回"
+    ],
+    "correctIndex": 2,
+    "explanation": "2400/400＝6。定義に従い、同じ金額単位で比を求める。",
+    "choiceExplanations": [
+      "平均在庫400万円の数字だけから回数は求まらない。",
+      "万円の桁をそろえて計算する必要がある。",
+      "2400/400＝6。定義に従い、同じ金額単位で比を求める。",
+      "分子と分母を逆にしている。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-accounting-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-law-01",
+    "version": 1,
+    "section": "A-1",
+    "topic": "法務・標準化",
+    "tags": [
+      "著作権の発生"
+    ],
+    "prompt": "日本の著作権について、創作性のあるソースコードを書いたときの説明として適切なものはどれか。",
+    "choices": [
+      "特許出願が受理された場合だけ著作権が発生する",
+      "公開した時点ですべての著作権が消滅する",
+      "対価を受け取らない限り著作権は発生しない",
+      "著作権の発生に登録手続は必要ない"
+    ],
+    "correctIndex": 3,
+    "explanation": "著作権は著作物の創作により発生し、その発生に登録などの手続を要しない。",
+    "choiceExplanations": [
+      "特許権とは異なる権利であり特許出願は要件ではない。",
+      "公開だけで著作権を放棄したことにはならない。",
+      "販売の有無は権利発生の条件ではない。",
+      "著作権は著作物の創作により発生し、その発生に登録などの手続を要しない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-law-01",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.bunka.go.jp/seisaku/chosakuken/seidokaisetsu/pdf/94383901_01.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.bunka.go.jp/seisaku/chosakuken/seidokaisetsu/pdf/94383901_01.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-law-02",
+    "version": 1,
+    "section": "A-1",
+    "topic": "法務・標準化",
+    "tags": [
+      "著作権とアイデア"
+    ],
+    "prompt": "プログラムに関する著作権の保護対象の捉え方として適切なものはどれか。",
+    "choices": [
+      "創作的な表現を保護し、アルゴリズムという解法そのものは保護対象としない",
+      "あらゆる計算手順のアイデアを独占させる",
+      "プログラミング言語そのものをコード著作者が独占する",
+      "公開済みのソースコードは表現をそのまま無条件で複製できる"
+    ],
+    "correctIndex": 0,
+    "explanation": "著作権は表現を保護する。プログラム言語・規約・解法に保護が及ぶわけではない。",
+    "choiceExplanations": [
+      "著作権は表現を保護する。プログラム言語・規約・解法に保護が及ぶわけではない。",
+      "抽象的なアイデアそのものの独占権ではない。",
+      "プログラム言語自体はそのプログラムの著作権で独占できない。",
+      "公開されていても複製には許諾や法令上の根拠などが必要。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-law-02",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://laws.e-gov.go.jp/law/345AC0000000048?occasion_date=20260101"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://laws.e-gov.go.jp/law/345AC0000000048?occasion_date=20260101"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-law-03",
+    "version": 1,
+    "section": "A-1",
+    "topic": "法務・標準化",
+    "tags": [
+      "個人情報の利用目的"
+    ],
+    "prompt": "個人情報取扱事業者が利用目的を特定する際の説明として適切なものはどれか。",
+    "choices": [
+      "利用目的は第三者へ販売する場合だけ決める",
+      "本人がどの事業で何のために利用されるか合理的に予測できる程度に具体化する",
+      "あらゆる目的のためとだけ書けば常に十分である",
+      "取得後は目的に関係なく無制限に利用できる"
+    ],
+    "correctIndex": 1,
+    "explanation": "利用目的はできる限り特定する必要があり、本人が利用を合理的に予測できる程度の具体性が求められる。",
+    "choiceExplanations": [
+      "販売の有無にかかわらず利用目的の特定が必要。",
+      "利用目的はできる限り特定する必要があり、本人が利用を合理的に予測できる程度の具体性が求められる。",
+      "範囲が広すぎて本人が利用を予測できない。",
+      "特定した目的による利用の制約などがある。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-law-03",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.ppc.go.jp/all_faq_index/faq1-q2-1/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.ppc.go.jp/all_faq_index/faq1-q2-1/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-law-04",
+    "version": 1,
+    "section": "A-1",
+    "topic": "法務・標準化",
+    "tags": [
+      "MITライセンス"
+    ],
+    "prompt": "MITライセンスのソフトウェアのコピーや重要部分を配布する際、ライセンス本文が要求する対応はどれか。",
+    "choices": [
+      "変更したソースコードを必ず全世界へ公開する",
+      "著作権者の氏名をすべて削除する",
+      "著作権表示と許諾表示を含める",
+      "あらゆる商用利用を禁止する"
+    ],
+    "correctIndex": 2,
+    "explanation": "MITライセンスは広い利用を許すが、コピーや重要部分への著作権表示・許諾表示の包含を要求する。",
+    "choiceExplanations": [
+      "MITライセンス自体は変更コードの全面公開を要求しない。",
+      "著作権表示の削除は指定された条件に反する。",
+      "MITライセンスは広い利用を許すが、コピーや重要部分への著作権表示・許諾表示の包含を要求する。",
+      "MITライセンスは商用利用も許している。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-law-04",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://opensource.org/license/mit"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://opensource.org/license/mit"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-law-05",
+    "version": 1,
+    "section": "A-1",
+    "topic": "法務・標準化",
+    "tags": [
+      "ISMS規格"
+    ],
+    "prompt": "組織の情報セキュリティマネジメントシステムの要求事項を定める国際規格はどれか。",
+    "choices": [
+      "ISO 9001",
+      "ISO 14001",
+      "IEEE 802.3",
+      "ISO/IEC 27001"
+    ],
+    "correctIndex": 3,
+    "explanation": "ISO/IEC 27001はISMSの確立・実施・維持・継続的改善などの要求事項を定める。",
+    "choiceExplanations": [
+      "ISO 9001は品質マネジメントシステムの規格。",
+      "ISO 14001は環境マネジメントシステムの規格。",
+      "IEEE 802.3はイーサネット関連の規格。",
+      "ISO/IEC 27001はISMSの確立・実施・維持・継続的改善などの要求事項を定める。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-law-05",
+    "heldOut": false,
+    "source": {
+      "label": "A-1分野別補強・AI作成の独自問題（公式過去問ではありません）",
+      "url": "https://www.iso.org/standard/27001"
+    },
+    "review": {
+      "status": "verified",
+      "method": "Codexが正答の一意性、全選択肢の説明を確認。記載した一次資料との照合、数値問題は独立した計算で検算。人による監修ではありません。",
+      "reviewer": "Codex（AIによる資料照合・検算）",
+      "at": "2026-10-18T00:00:00Z",
+      "references": [
+        "https://www.iso.org/standard/27001",
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  }
+]

@@ -59,7 +59,7 @@ test('わからないは選択肢なしで確定でき、採点の通信失敗�
   await expect(page.getByRole('status')).toContainText('保存済み');
   await page.route('**/api/sessions/*/grade', route => route.abort('failed'));
   await page.getByRole('button', { name: 'この回答を確定する', exact: true }).click();
-  await expect(page.getByRole('alert')).toContainText('回答は保存済み');
+  await expect(page.getByRole('alert')).toContainText('確定を再試行');
   await expect(page.getByRole('region', { name: 'この問題の採点結果' })).toHaveCount(0);
   await page.unroute('**/api/sessions/*/grade');
   await page.getByRole('button', { name: 'この回答を確定する', exact: true }).click();

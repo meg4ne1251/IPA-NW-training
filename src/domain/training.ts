@@ -1,8 +1,13 @@
+import type { LearningProfile } from './rapid.ts';
 export type Section = 'A-1' | 'A-2';
+export const supplementCollection = 'a1-supplement';
+export const isSupplement = (q: TrainingQuestion) => q.id.startsWith('supplement-a1-') && q.origin === 'ai';
+export interface PracticeScope { collection?: string; topic?: string; tag?: string }
 export type Confidence = 'sure' | 'unsure' | 'guess' | 'unknown' | null;
 export type ReviewStatus = 'draft' | 'verified' | 'disputed' | 'retired';
 export interface TrainingQuestion {
   id: string; version: number; section: Section; topic: string; tags: string[];
+  learning?: LearningProfile;
   prompt: string; choices: [string, string, string, string]; correctIndex: number;
   explanation: string; choiceExplanations?: string[];
   origin: 'past' | 'ai' | 'original'; groupId: string; heldOut: boolean;
@@ -18,6 +23,7 @@ export interface Session {
   deadline: string | null; currentIndex: number; questions: TrainingQuestion[]; answers: Record<string, Answer>;
   selectionReasons: Record<string, string>;
   graded?: Record<string, string>; // Question ID -> time of answer confirmation; absent in older sessions.
+  practiceScope?: PracticeScope;
 }
 export type PublicSession = Omit<Session, 'questions'> & { questions: PublicQuestion[] };
 export interface Outcome { question: TrainingQuestion; answer: Answer; correct: boolean; at: string; sessionId: string }
@@ -33,6 +39,11 @@ export function validateQuestion(input: unknown): TrainingQuestion {
   assert(Number.isInteger(q.version) && q.version > 0, '問題版が不正です。');
   assert(q.section === 'A-1' || q.section === 'A-2', '科目が不正です。');
   assert(text(q.topic, 100) && Array.isArray(q.tags) && q.tags.length <= 20 && q.tags.every(t => text(t, 100)), '分野・タグが不正です。');
+  if (q.learning !== undefined) {
+    const areas = q.section === 'A-1' ? ['technology', 'management', 'strategy'] : ['network', 'security', 'other'];
+    assert(q.learning && typeof q.learning === 'object' && areas.includes(q.learning.area)
+      && text(q.learning.concept, 100) && Number.isInteger(q.learning.occurrences) && q.learning.occurrences > 0, '出題分析メタデータが不正です。');
+  }
   assert(text(q.prompt) && Array.isArray(q.choices) && q.choices.length === 4 && q.choices.every(c => text(c, 4000)) && new Set(q.choices.map(c => c.trim())).size === 4, '問題には異なる四つの選択肢が必要です。');
   assert(Number.isInteger(q.correctIndex) && q.correctIndex >= 0 && q.correctIndex < 4 && text(q.explanation), '正答・解説が不正です。');
   assert(q.choiceExplanations === undefined || (Array.isArray(q.choiceExplanations) && q.choiceExplanations.length === 4 && q.choiceExplanations.every(c => text(c))), '各選択肢の解説は4件必要です。');
@@ -77,7 +88,7 @@ export function topicStats(rows: Outcome[]): TopicStat[] {
   }
   return [...map.values()].sort((a, b) => a.section.localeCompare(b.section) || a.correct / a.attempts - b.correct / b.attempts);
 }
-export function selectPractice(bank: TrainingQuestion[], history: Outcome[], section: Section, count: number, now = Date.now()) {
+export function selectPractice(bank: TrainingQuestion[], history: Outcome[], section: Section, count: number, now = Date.now(), aiLimit = Math.floor(count / 5)) {
   const heldGroups = new Set(bank.filter(q => q.heldOut).map(q => q.groupId));
   const candidates = bank.filter(q => q.section === section && q.review.status === 'verified' && !q.heldOut && !heldGroups.has(q.groupId));
   const latest = new Map<string, Outcome>(); const concepts = new Map<string, number>();
@@ -97,18 +108,31 @@ export function selectPractice(bank: TrainingQuestion[], history: Outcome[], sec
     const r = latest.get(q.groupId); return r && now - Date.parse(r.at) >= (r.correct && r.answer.confidence === 'sure' ? 3 : 1) * 86400000;
   };
   const sorted = [...candidates].sort((a, b) => risk(b) - risk(a) || b.id.localeCompare(a.id));
+  // Spread new questions across topics rather than walking adjacent question IDs.
+  const topicAttempts = new Map<string, number>();
+  for (const row of latest.values()) topicAttempts.set(row.question.topic, (topicAttempts.get(row.question.topic) ?? 0) + 1);
+  const queues = new Map<string, TrainingQuestion[]>();
+  for (const q of sorted.filter(q => !latest.has(q.groupId))) {
+    const items = queues.get(q.topic) ?? []; items.push(q); queues.set(q.topic, items);
+  }
+  const topics = [...queues.keys()].sort((a, b) => (topicAttempts.get(a) ?? 0) - (topicAttempts.get(b) ?? 0) || a.localeCompare(b, 'ja'));
+  const unseen: TrainingQuestion[] = [];
+  const unseenCount = [...queues.values()].reduce((n, items) => n + items.length, 0);
+  for (let i = 0; unseen.length < unseenCount; i++) {
+    for (const topic of topics) { const q = queues.get(topic)![i]; if (q) unseen.push(q); }
+  }
   const selected: TrainingQuestion[] = []; const reasons: Record<string, string> = {}; const groups = new Set<string>();
   const take = (items: TrainingQuestion[], n: number, reason: string) => {
     let taken = 0;
-    for (const q of items) if (taken < n && selected.length < count && !groups.has(q.groupId) && (q.origin !== 'ai' || selected.filter(x => x.origin === 'ai').length < Math.floor(count / 5))) {
+    for (const q of items) if (taken < n && selected.length < count && !groups.has(q.groupId) && (q.origin !== 'ai' || selected.filter(x => x.origin === 'ai').length < aiLimit)) {
       selected.push(q); reasons[q.id] = reason; groups.add(q.groupId); taken++;
     }
   };
   take(sorted.filter(due), Math.round(count * 8 / 30), '復習期限');
   take(sorted.filter(q => risk(q) > 0), Math.round(count * 12 / 30), '苦手な概念の補強');
-  take(sorted.filter(q => !latest.has(q.groupId)), Math.round(count * 6 / 30), '未着手の確認');
+  take(unseen, Math.round(count * 6 / 30), '未着手の確認');
   take(sorted.filter(q => latest.get(q.groupId)?.correct), count - selected.length, '定着の確認');
-  take(sorted.filter(q => !latest.has(q.groupId)), count - selected.length, '未着手から補充');
+  take(unseen, count - selected.length, '未着手から補充');
   take(sorted, count - selected.length, '検証済み問題から補充');
   return { questions: selected, reasons, shortage: Math.max(0, count - selected.length) };
 }

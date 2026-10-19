@@ -1,9 +1,13 @@
+import { withLearningPriority } from './learning-priorities.ts';
+import { rapidCollection, rapidStatus, selectRapid } from '../src/domain/rapid.ts';
 import { DatabaseSync } from 'node:sqlite';
 import { randomUUID } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { assert, blankAnswer, outcomes, topicStats, selectPractice, validateAnswers, validateQuestion } from '../src/domain/training.ts';
 import type { Section, Session, TrainingQuestion, PublicSession } from '../src/domain/training.ts';
+import { isSupplement, supplementCollection } from '../src/domain/training.ts';
+import type { PracticeScope } from '../src/domain/training.ts';
 
 export class RevisionConflictError extends Error {}
 
@@ -37,7 +41,7 @@ export class TrainingStore {
   bank() {
     const latest = new Map<string, TrainingQuestion>();
     for (const q of this.records<TrainingQuestion>('questions')) if (!latest.has(q.id) || latest.get(q.id)!.version < q.version) latest.set(q.id, q);
-    return [...latest.values()];
+    return [...latest.values()].map(withLearningPriority);
   }
   sessions() { return this.records<Session>('sessions').sort((a, b) => b.startedAt.localeCompare(a.startedAt)); }
   session(id: string) {
@@ -49,7 +53,7 @@ export class TrainingStore {
     if (s.status === 'submitted') return s;
     return { ...s, questions: s.questions.map(q => {
       if (s.graded?.[q.id]) return q;
-      const { correctIndex: _correct, explanation: _explanation, choiceExplanations: _choices, ...safe } = q;
+      const { correctIndex: _correct, explanation: _explanation, choiceExplanations: _choices, learning: _learning, ...safe } = q;
       const { answerUrl: _answerURL, ...source } = safe.source;
       // Concept labels such as "PoE" can reveal an answer; only show them after answer confirmation.
       return { ...safe, tags: [], prompt: q.origin === 'past' ? `原本の問${q.source.number ?? ''}を解いてください` : safe.prompt,
@@ -61,14 +65,20 @@ export class TrainingStore {
     const versions = new Map(this.records<TrainingQuestion>('questions').map(q => [`${q.id}:${q.version}`, q]));
     return outcomes(this.sessions()).map(r => {
       const current = versions.get(`${r.question.id}:${r.question.version}`);
-      return current ? { ...r, question: { ...r.question, review: current.review } } : r;
+      return { ...r, question: withLearningPriority(current ? { ...r.question, review: current.review } : r.question) };
     });
   }
   dashboard() {
     this.expire();
     const bank = this.bank(); const history = this.history();
+    const supplements = bank.filter(q => isSupplement(q) && q.review.status === 'verified' && !q.heldOut && !bank.some(x => x.groupId === q.groupId && x.heldOut));
     return {
       stats: topicStats(history), revision: this.revision(),
+      rapid: (['A-1', 'A-2'] as const).map(section => rapidStatus(bank, history, section)),
+      supplements: [...new Set(supplements.map(q => q.topic))].sort((a, b) => a.localeCompare(b, 'ja')).map(topic => {
+        const items = supplements.filter(q => q.topic === topic);
+        return { topic, count: items.length, tags: [...new Set(items.flatMap(q => q.tags))].sort((a, b) => a.localeCompare(b, 'ja')).map(tag => ({ tag, count: items.filter(q => q.tags.includes(tag)).length })) };
+      }),
       collections: [...new Map(bank.filter(q => q.origin === 'past' && q.review.status === 'verified' && !q.heldOut).map(q => [q.source.url, {
         url: q.source.url, section: q.section, label: q.source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, ''),
         count: bank.filter(x => x.source.url === q.source.url).length,
@@ -85,13 +95,26 @@ export class TrainingStore {
       drafts: bank.filter(q => q.review.status === 'draft').map(q => ({ id: q.id, version: q.version, section: q.section, prompt: q.prompt })),
     };
   }
-  create(section: Section, mode: Session['mode'], count: number, collection?: string) {
+  create(section: Section, mode: Session['mode'], count: number, collection?: string, focus: Pick<PracticeScope, 'topic' | 'tag'> = {}) {
     assert(section === 'A-1' || section === 'A-2', '科目を指定してください。');
     assert(['diagnostic', 'practice', 'exam'].includes(mode), '演習モードが不正です。');
     assert(Number.isInteger(count) && count > 0 && count <= 30, '問題数は1～30問です。');
+    assert(collection === undefined || (typeof collection === 'string' && collection.length < 2000), '出題範囲が不正です。');
+    assert(focus && typeof focus === 'object' && !Array.isArray(focus), '分野・論点の指定が不正です。');
+    assert([focus.topic, focus.tag].every(v => v === undefined || (typeof v === 'string' && v.length <= 100)), '分野・論点の指定が不正です。');
+    const supplement = collection === supplementCollection;
+    const rapid = collection === rapidCollection;
+    assert(!rapid || mode === 'practice', '短期集中テストは練習で利用してください。');
+    assert(!supplement || (section === 'A-1' && mode === 'practice'), '補強問題はA-1の練習で利用してください。');
+    assert(supplement || (!focus.topic && !focus.tag), '分野・論点の指定は補強問題で利用してください。');
     assert(!this.sessions().some(s => s.status === 'active'), '途中の演習を再開して提出してください。');
-    const bank = this.bank().filter(q => !collection || q.source.url === collection);
-    const selected = selectPractice(bank, this.history(), section, count);
+    const all = this.bank();
+    const heldGroups = new Set(all.filter(q => q.heldOut).map(q => q.groupId));
+    const bank = all.filter(q => !heldGroups.has(q.groupId) && (supplement ? isSupplement(q) : rapid || !collection || q.source.url === collection)
+      && (!focus.topic || q.topic === focus.topic) && (!focus.tag || q.tags.includes(focus.tag)));
+    // The explicit supplement exercise is entirely AI-authored. Mixed practice keeps its 20% limit.
+    const selected = rapid ? selectRapid(bank, this.history(), section, count)
+      : selectPractice(bank, this.history(), section, count, Date.now(), supplement ? count : Math.floor(count / 5));
     if (mode !== 'practice') {
       const fullCount = section === 'A-1' ? 30 : 25;
       assert(count === fullCount, '診断・本番形式は本番と同じ問題数で実施します。');
@@ -101,45 +124,50 @@ export class TrainingStore {
     }
     assert(selected.questions.length > 0, '出題可能な問題がありません。教材の準備を確認してください。');
     return this.newSession(section, mode, selected.questions, selected.reasons,
-      mode === 'practice' ? `弱点と未着手の演習（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`);
+      mode === 'practice' ? `${rapid ? `${section} 短期集中テスト` : supplement ? `A-1補強 · ${focus.tag || focus.topic || '全分野'}` : '弱点と未着手の演習'}（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`,
+      mode === 'practice' ? { collection, ...focus } : undefined);
   }
-  newSession(section: Section, mode: Session['mode'], questions: TrainingQuestion[], reasons: Record<string, string>, title: string) {
+  newSession(section: Section, mode: Session['mode'], questions: TrainingQuestion[], reasons: Record<string, string>, title: string, practiceScope?: PracticeScope) {
     const timed = mode === 'exam' || mode === 'diagnostic'; const now = Date.now();
     const session: Session = { id: randomUUID(), section, mode, title, status: 'active', revision: 0,
       startedAt: new Date(now).toISOString(), submittedAt: null,
       deadline: timed ? new Date(now + (section === 'A-1' ? 50 : 40) * 60000).toISOString() : null,
-      currentIndex: 0, questions: structuredClone(questions), answers: {}, selectionReasons: reasons };
+      currentIndex: 0, questions: structuredClone(questions), answers: {}, selectionReasons: reasons, practiceScope };
     this.writeSession(session); return this.publicSession(session);
   }
-  save(id: string, input: unknown) {
+  private applyDraft(s: Session, input: unknown) {
     assert(input && typeof input === 'object', '保存データが不正です。');
     const body = input as { revision: number; answers: unknown; currentIndex: number };
+    if (s.revision !== body.revision) throw new RevisionConflictError('別の画面で更新されています。再読込して保存済みの回答を確認してください。');
+    assert(Number.isInteger(body.currentIndex) && body.currentIndex >= 0 && body.currentIndex < s.questions.length, '問題の位置が不正です。');
+    const answers = validateAnswers(body.answers, s.questions);
+    for (const questionId of Object.keys(s.graded ?? {})) {
+      const before = s.answers[questionId]; const after = answers[questionId];
+      assert(after.choice === before.choice && after.confidence === before.confidence && after.reason === before.reason,
+        '採点済みの回答・自信度は変更できません。');
+      // Reading explanations must not add to the original answering time.
+      answers[questionId] = { ...before, flagged: after.flagged };
+    }
+    return { ...s, answers, currentIndex: body.currentIndex, revision: s.revision + 1 };
+  }
+  save(id: string, input: unknown) {
     return this.transaction(() => {
       let s = this.session(id);
       if (s.status === 'submitted') return this.publicSession(s);
       // The last acknowledged answers remain authoritative when the exam has expired.
       if (s.deadline && Date.now() >= Date.parse(s.deadline)) return this.publicSession(this.finalize(s));
-      if (s.revision !== body.revision) throw new RevisionConflictError('別の画面で更新されています。再読込して保存済みの回答を確認してください。');
-      assert(Number.isInteger(body.currentIndex) && body.currentIndex >= 0 && body.currentIndex < s.questions.length, '問題の位置が不正です。');
-      const answers = validateAnswers(body.answers, s.questions);
-      for (const questionId of Object.keys(s.graded ?? {})) {
-        const before = s.answers[questionId]; const after = answers[questionId];
-        assert(after.choice === before.choice && after.confidence === before.confidence && after.reason === before.reason,
-          '採点済みの回答・自信度は変更できません。');
-        // Reading explanations must not add to the original answering time.
-        answers[questionId] = { ...before, flagged: after.flagged };
-      }
-      s = { ...s, answers, currentIndex: body.currentIndex, revision: s.revision + 1 };
+      s = this.applyDraft(s, input);
       this.writeSession(s); return this.publicSession(s);
     });
   }
-  grade(id: string, questionId: string, revision: number) {
+  grade(id: string, questionId: string, revision: number, draft?: unknown) {
     return this.transaction(() => {
-      const s = this.session(id);
+      let s = this.session(id);
       assert(typeof questionId === 'string' && s.questions.some(q => q.id === questionId), 'セットにない問題です。');
       if (s.status === 'submitted' || s.graded?.[questionId]) return this.publicSession(s);
       if (s.deadline && Date.now() >= Date.parse(s.deadline)) return this.publicSession(this.finalize(s));
       if (revision !== s.revision) throw new RevisionConflictError('回答が更新されています。保存済みの回答を再読込してください。');
+      if (draft !== undefined) s = this.applyDraft(s, draft);
       const answer = s.answers[questionId] ?? blankAnswer();
       assert(answer.choice !== null || answer.confidence === 'unknown', '解答を選ぶか、自信度の「わからない」を選んでください。');
       s.graded = { ...s.graded, [questionId]: new Date().toISOString() }; s.revision++;
@@ -152,10 +180,12 @@ export class TrainingStore {
     s.answers = validateAnswers(s.answers, s.questions); s.status = 'submitted';
     s.submittedAt = new Date().toISOString(); s.revision++; this.writeSession(s); return s;
   }
-  submit(id: string, revision: number) {
+  submit(id: string, revision: number, draft?: unknown) {
     return this.transaction(() => {
-      const s = this.session(id); if (s.status === 'submitted') return s;
+      let s = this.session(id); if (s.status === 'submitted') return s;
+      if (s.deadline && Date.now() >= Date.parse(s.deadline)) return this.finalize(s);
       if (revision !== s.revision) throw new RevisionConflictError('回答が更新されています。保存済みの回答を再読込してください。');
+      if (draft !== undefined) s = this.applyDraft(s, draft);
       return this.finalize(s);
     });
   }
@@ -266,7 +296,7 @@ interface ImportInput {
 }
 interface ImportRecord extends ImportInput { importedAt: string; sessionId: string | null }
 export function openStore() {
-  const seed = ['materials/2025-spring.json', 'materials/archive.json'].flatMap(name => {
+  const seed = ['materials/2025-spring.json', 'materials/archive.json', 'materials/a1-supplement.json'].flatMap(name => {
     const path = resolve(name); return existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) as TrainingQuestion[] : [];
   });
   const directory = process.env.TRAINING_DATA_DIR || resolve('data');

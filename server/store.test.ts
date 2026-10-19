@@ -13,6 +13,40 @@ afterEach(() => { for (const store of stores.splice(0)) { try { store.close(); }
 function completed(store: TrainingStore) { const s = store.create('A-1', 'practice', 3); const saved = store.save(s.id, { revision: 0, currentIndex: 1, answers: { [s.questions[0].id]: { ...blankAnswer(), choice: 1, confidence: 'unsure' } } }); return store.submit(s.id, saved.revision); }
 
 describe('SQLiteでの学習とAI受け渡し', () => {
+  it('最新回答の保存と採点を同じトランザクションで確定し、再送で変更しない', () => {
+    const store = make(); const s = store.create('A-1', 'practice', 2); const id = s.questions[0].id;
+    const draft = { revision: 0, currentIndex: 0, answers: { [id]: { ...blankAnswer(), choice: 1, confidence: 'unsure', seconds: 12 } } };
+    const result = store.grade(s.id, id, 0, draft);
+    expect(result.answers[id]).toMatchObject({ choice: 1, confidence: 'unsure', seconds: 12 });
+    expect(result.questions[0].correctIndex).toBe(1);
+    expect(result.questions[1].correctIndex).toBeUndefined();
+    expect(store.history()).toHaveLength(1);
+    expect(store.grade(s.id, id, 0, { ...draft, answers: {} })).toEqual(result);
+  });
+  it('保存を伴う採点の検証失敗・版番号競合では途中回答も書き換えない', () => {
+    const store = make(); const s = store.create('A-1', 'practice', 2); const id = s.questions[0].id;
+    expect(() => store.grade(s.id, id, 0, { revision: 0, currentIndex: 1, answers: {} })).toThrow('解答を選ぶか');
+    expect(store.session(s.id).currentIndex).toBe(0); expect(store.session(s.id).revision).toBe(0);
+    const saved = store.save(s.id, { revision: 0, currentIndex: 0, answers: { [id]: { ...blankAnswer(), choice: 1 } } });
+    expect(() => store.grade(s.id, id, 0, { revision: 0, currentIndex: 1, answers: {} })).toThrow('回答が更新');
+    expect(() => store.grade(s.id, id, saved.revision, { revision: 0, currentIndex: 1, answers: {} })).toThrow('別の画面');
+    expect(store.session(s.id).answers[id].choice).toBe(1); expect(store.session(s.id).graded).toBeUndefined();
+  });
+  it('最新回答を含む一括提出を1回で保存し、二重提出でも結果を保持する', () => {
+    const store = make(); const s = store.create('A-1', 'practice', 2); const id = s.questions[0].id;
+    const draft = { revision: 0, currentIndex: 1, answers: { [id]: { ...blankAnswer(), choice: 1 } } };
+    const result = store.submit(s.id, 0, draft);
+    expect(result.status).toBe('submitted'); expect(result.answers[id].choice).toBe(1);
+    expect(store.submit(s.id, 0, { ...draft, answers: {} })).toEqual(result);
+    expect(store.history()).toHaveLength(2);
+  });
+  it.each(['grade', 'submit'] as const)('期限切れの%sでは同梱した未保存回答を取り込まない', command => {
+    const store = make(); const s = store.create('A-1', 'practice', 2); const id = s.questions[0].id;
+    const internal = store.session(s.id); internal.deadline = new Date(Date.now() - 1000).toISOString(); store.writeSession(internal);
+    const draft = { revision: 0, currentIndex: 0, answers: { [id]: { ...blankAnswer(), choice: 1 } } };
+    const result = command === 'grade' ? store.grade(s.id, id, 0, draft) : store.submit(s.id, 0, draft);
+    expect(result.status).toBe('submitted'); expect(result.answers[id].choice).toBeNull();
+  });
   it('1問ずつ正答を公開し、再開・履歴・AI出力で途中の採点を保持する', () => {
     const store = make(); const s = store.create('A-1', 'practice', 2); const id = s.questions[0].id;
     expect(() => store.grade(s.id, id, 0)).toThrow('解答を選ぶか');
