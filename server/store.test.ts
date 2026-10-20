@@ -201,10 +201,10 @@ describe('選抜と入力検証', () => {
     const result = selectPractice(bank, [], 'A-1', 30);
     expect(result.questions).toHaveLength(1); expect(result.shortage).toBe(29);
   });
-  it('分類が未追加でも自信のある誤答を再出題し、未着手も残す', () => {
+  it('分類が未追加の既出問題も再出題せず、未着手を選ぶ', () => {
     const weak = q('weak', { tags: [] }); const row: Outcome = { question: weak, answer: { ...blankAnswer(), choice: 0, confidence: 'sure' }, correct: false, at: '2026-10-16T00:00:00Z', sessionId: 'test' };
     const result = selectPractice([weak, ...Array.from({ length: 30 }, (_, i) => q(`new-${i}`, { tags: [] }))], [row], 'A-1', 10);
-    expect(result.questions.some(q => q.id === 'weak')).toBe(true); expect(result.questions.filter(q => q.id.startsWith('new'))).toHaveLength(9);
+    expect(result.questions.some(q => q.id === 'weak')).toBe(false); expect(result.questions.filter(q => q.id.startsWith('new'))).toHaveLength(10);
   });
   it('未回答・正答・選択肢・根拠の不正を拒否する', () => {
     expect(() => validateQuestion(q('x', { correctIndex: 4 }))).toThrow();
@@ -216,6 +216,6 @@ describe('選抜と入力検証', () => {
     const failed: Outcome = { question, answer: { ...blankAnswer(), choice: 0, confidence: 'sure' }, correct: false, at: '2026-10-15T00:00:00Z', sessionId: 'first' };
     const passed: Outcome = { question, answer: { ...blankAnswer(), choice: 1, confidence: 'sure' }, correct: true, at: '2026-10-16T00:00:00Z', sessionId: 'second' };
     const next = selectPractice([question, q('new')], [failed, passed], 'A-1', 2, Date.parse(passed.at));
-    expect(Object.values(next.reasons)).not.toContain('苦手な概念の補強');
+    expect(Object.values(next.reasons)).not.toContain('苦手な概念を類題・関連問題で補強');
   });
 });

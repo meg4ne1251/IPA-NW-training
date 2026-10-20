@@ -1,3 +1,4 @@
+import { isFresh, latestGroups, relatedProgress, reviewIndex } from './review.ts';
 import type { Outcome, Section, TrainingQuestion } from './training.ts';
 
 export const rapidCollection = 'rapid-knowledge';
@@ -11,34 +12,25 @@ export function learningArea(q: TrainingQuestion): LearningArea {
   if (/プロジェクト|サービス|監査/.test(q.topic)) return 'management';
   return /戦略|企業|会計|法務|調達|ビジネス/.test(q.topic) ? 'strategy' : 'technology';
 }
-function latestOutcomes(history: Outcome[], section: Section) {
-  const latest = new Map<string, Outcome>();
-  for (const row of history) if (row.question.section === section && row.question.review.status === 'verified') {
-    const previous = latest.get(row.question.groupId);
-    if (!previous || row.at >= previous.at) latest.set(row.question.groupId, row);
-  }
-  return latest;
-}
 const eligibleBank = (bank: TrainingQuestion[], section: Section) => {
   const held = new Set(bank.filter(q => q.heldOut).map(q => q.groupId));
   return bank.filter(q => q.section === section && q.review.status === 'verified' && !q.heldOut && !held.has(q.groupId));
 };
-const reviewDue = (r: Outcome, now: number) => now - Date.parse(r.at) >= (r.correct && r.answer.confidence === 'sure' ? 72 : 6) * hour;
-
 export function rapidStatus(bank: TrainingQuestion[], history: Outcome[], section: Section, now = Date.now()) {
-  const latest = latestOutcomes(history, section);
-  const groups = new Set(eligibleBank(bank, section).map(q => q.groupId));
-  return { section, available: groups.size, unseen: [...groups].filter(g => !latest.has(g)).length,
-    reviewDue: [...groups].filter(g => latest.has(g) && reviewDue(latest.get(g)!, now)).length };
+  const candidates = eligibleBank(bank, section); const index = reviewIndex(history, section);
+  const fresh = candidates.filter(q => isFresh(q, history));
+  const due = [...index.values()].filter(s => Date.parse(s.dueAt) <= now);
+  return { section, available: new Set(candidates.map(q => q.groupId)).size,
+    unseen: new Set(fresh.map(q => q.groupId)).size, reviewDue: due.length,
+    reviewReady: due.filter(s => fresh.some(q => relatedProgress(q, index).some(p => p.concept === s.concept))).length };
 }
 
 /** A learning exercise: mostly new material, spaced review, weighted breadth and family deduplication. */
 export function selectRapid(bank: TrainingQuestion[], history: Outcome[], section: Section, count: number, now = Date.now()) {
-  const latest = latestOutcomes(history, section);
-  const candidates = eligibleBank(bank, section);
-  const hasUnseen = candidates.some(q => !latest.has(q.groupId));
-  // While new material remains, do not fill a set with questions answered just minutes ago.
-  const pool = candidates.filter(q => !hasUnseen || !latest.has(q.groupId) || reviewDue(latest.get(q.groupId)!, now));
+  const latest = latestGroups(history, section); const index = reviewIndex(history, section);
+  const pool = eligibleBank(bank, section).filter(q => isFresh(q, history));
+  const related = (q: TrainingQuestion) => relatedProgress(q, index);
+  const due = (q: TrainingQuestion) => related(q).some(s => Date.parse(s.dueAt) <= now);
   const weights: Partial<Record<LearningArea, number>> = section === 'A-1'
     ? { technology: 17, management: 5, strategy: 8 } : { network: 15, security: 6, other: 4 };
   const total = section === 'A-1' ? 30 : 25;
@@ -55,9 +47,9 @@ export function selectRapid(bank: TrainingQuestion[], history: Outcome[], sectio
   const aiLimit = Math.floor(count / 5);
   const concept = (q: TrainingQuestion) => q.learning?.concept ?? q.tags[0] ?? q.groupId;
   const score = (q: TrainingQuestion) => {
-    const r = latest.get(q.groupId); const area = learningArea(q);
+    const previous = related(q); const r = previous[0]?.last; const area = learningArea(q);
     const gap = (quotas[area] ?? 0) - (areaCounts.get(area) ?? 0);
-    const risk = r ? !r.correct ? r.answer.confidence === 'sure' ? 5 : 3 : r.answer.confidence !== 'sure' ? 1 : 0 : 0;
+    const risk = Math.max(0, ...previous.map(s => s.risk));
     const explained = !q.explanation.includes('詳しい解説・分野分類は未追加');
     // A-1 security is the largest individual field in the analysis; retain it in short sets too.
     const focus = (item: TrainingQuestion) => /セキュリティ/.test(item.topic) ? 'security' : /ネットワーク/.test(item.topic) ? 'network' : '';
@@ -78,10 +70,10 @@ export function selectRapid(bank: TrainingQuestion[], history: Outcome[], sectio
       topicCounts.set(q.topic, (topicCounts.get(q.topic) ?? 0) + 1); reasons[q.id] = reason;
     }
   };
-  const reviews = pool.filter(q => { const r = latest.get(q.groupId); return r && reviewDue(r, now); });
-  take(reviews.filter(q => { const r = latest.get(q.groupId)!; return !r.correct || r.answer.confidence !== 'sure'; }), Math.floor(count / 5), '間隔を空けた誤答・迷いの復習');
-  take(pool.filter(q => !latest.has(q.groupId)), count - selected.length, '未着手の知識を優先・頻出分野を広く確認');
-  take(reviews, count - selected.length, '間隔を空けて定着を確認');
-  if (!hasUnseen) take(pool, count - selected.length, '未着手一巡後の再確認');
+  const reviews = pool.filter(due);
+  take(reviews.filter(q => related(q).some(s => s.risk > 0)), Math.floor(count / 5), '間隔を空けた誤答・迷いを別問題で復習');
+  take(pool.filter(q => related(q).length === 0), count - selected.length, '未着手の知識を優先・頻出分野を広く確認');
+  take(reviews, count - selected.length, '間隔を空けて別問題で定着を確認');
+  take(pool, count - selected.length, '学習済み概念を新しい関連問題で確認');
   return { questions: selected, reasons, shortage: Math.max(0, count - selected.length) };
 }

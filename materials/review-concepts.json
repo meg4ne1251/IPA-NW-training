@@ -1,0 +1,250 @@
+[
+  {
+    "concept": "CPU性能と実行時間",
+    "pattern": "CPU性能|CPI|MIPS|クロック|平均命令実行"
+  },
+  {
+    "concept": "並列処理と高速化",
+    "pattern": "アムダール|並列化"
+  },
+  {
+    "concept": "稼働率と信頼性",
+    "pattern": "稼働率|MTBF|MTTR|直列.*システム|並列.*システム"
+  },
+  {
+    "concept": "クラウドサービス",
+    "pattern": "クラウドサービス|IaaS|PaaS|SaaS"
+  },
+  {
+    "concept": "LRUとページ置換",
+    "pattern": "LRU|置換えアルゴリズム|ページ置換"
+  },
+  {
+    "concept": "省電力と平均電流",
+    "pattern": "消費電流|センサーノードの省電力|平均電流"
+  },
+  {
+    "concept": "論理演算と回路",
+    "pattern": "論理式|論理回路|ド・モルガン|半加算|全加算|XOR|NAND"
+  },
+  {
+    "concept": "損益分岐点と変動費",
+    "pattern": "損益分岐|変動費|限界利益"
+  },
+  {
+    "concept": "PPMと事業ポートフォリオ",
+    "pattern": "PPM|プロダクトポートフォリオ"
+  },
+  {
+    "concept": "BSCと戦略マップ",
+    "pattern": "戦略マップ|バランススコアカード|BSC"
+  },
+  {
+    "concept": "SOAとサービス連携",
+    "pattern": "SOA|サービス指向"
+  },
+  {
+    "concept": "プロビジョニング",
+    "pattern": "プロビジョニング"
+  },
+  {
+    "concept": "DB正規化",
+    "pattern": "正規化|第[123一二三]正規形|関数従属"
+  },
+  {
+    "concept": "参照整合性と外部キー",
+    "pattern": "参照整合|外部キー|参照制約"
+  },
+  {
+    "concept": "SQLと分離レベル",
+    "pattern": "ダーティリード|分離レベル|トランザクション分離"
+  },
+  {
+    "concept": "スクラム",
+    "pattern": "スクラム|Scrum|プロダクトバックログ"
+  },
+  {
+    "concept": "スコープ管理",
+    "pattern": "スコープ|WBS|作業分解"
+  },
+  {
+    "concept": "EVM",
+    "pattern": "EVM|アーンドバリュー|SPI|CPI.*コスト"
+  },
+  {
+    "concept": "工程短縮の方法",
+    "pattern": "クラッシング|ファストトラッキング"
+  },
+  {
+    "concept": "SLAとサービス水準",
+    "pattern": "SLA|サービスレベル合意"
+  },
+  {
+    "concept": "問題管理とインシデント管理",
+    "pattern": "問題管理|インシデント管理"
+  },
+  {
+    "concept": "事業継続と復旧目標",
+    "pattern": "RTO|RLO|RPO|事業継続|事業の継続"
+  },
+  {
+    "concept": "バックアップ",
+    "pattern": "差分バックアップ|増分バックアップ|フルバックアップ"
+  },
+  {
+    "concept": "システム監査の手続",
+    "pattern": "監査手続|ウォークスルー|監査証拠"
+  },
+  {
+    "concept": "開発レビュー",
+    "pattern": "デザインレビュー|^レビュー$"
+  },
+  {
+    "concept": "CRYPTREC",
+    "pattern": "CRYPTREC"
+  },
+  {
+    "concept": "SBOM",
+    "pattern": "SBOM|ソフトウェア部品表"
+  },
+  {
+    "concept": "公開鍵暗号と署名",
+    "pattern": "公開鍵|秘密鍵|ディジタル署名|デジタル署名"
+  },
+  {
+    "concept": "SQLインジェクション",
+    "pattern": "SQLインジェクション"
+  },
+  {
+    "concept": "OSコマンドインジェクション",
+    "pattern": "OSコマンドインジェクション"
+  },
+  {
+    "concept": "過学習と汎化",
+    "pattern": "過学習|汎化|正則化"
+  },
+  {
+    "concept": "機械学習の学習と推論",
+    "pattern": "機械学習の推論|学習.*推論"
+  },
+  {
+    "concept": "スタックと後置記法",
+    "pattern": "スタック|逆ポーランド"
+  },
+  {
+    "concept": "ハッシュと衝突",
+    "pattern": "シノニム|ハッシュ|衝突"
+  },
+  {
+    "concept": "探索と比較回数",
+    "pattern": "探索の平均比較|二分探索|線形探索"
+  },
+  {
+    "concept": "再帰と木の探索",
+    "pattern": "再帰|木構造"
+  },
+  {
+    "concept": "二分法",
+    "pattern": "二分法|二分探索法.*方程式"
+  },
+  {
+    "concept": "動的計画法",
+    "pattern": "動的計画法"
+  },
+  {
+    "concept": "線形計画法",
+    "pattern": "線形計画法"
+  },
+  {
+    "concept": "コード設計と符号数",
+    "pattern": "顧客コード|コードの桁数|コード設計"
+  },
+  {
+    "concept": "マシンビジョン",
+    "pattern": "マシンビジョン"
+  },
+  {
+    "concept": "MESと生産管理",
+    "pattern": "MES|Manufacturing Execution"
+  },
+  {
+    "concept": "エッジコンピューティング",
+    "pattern": "エッジコンピューティング"
+  },
+  {
+    "concept": "オープンイノベーション",
+    "pattern": "オープンイノベーション"
+  },
+  {
+    "concept": "技術の事業化",
+    "pattern": "事業化から産業化|死の谷|ダーウィンの海|魔の川"
+  },
+  {
+    "concept": "アクティビティ図",
+    "pattern": "アクティビティ図"
+  },
+  {
+    "concept": "プログラムマネジメント",
+    "pattern": "プログラムマネジメント"
+  },
+  {
+    "concept": "投資回収期間",
+    "pattern": "PBP|投資回収期間"
+  },
+  {
+    "concept": "EA",
+    "pattern": "^EA$|エンタープライズアーキテクチャ"
+  },
+  {
+    "concept": "DX",
+    "pattern": "^DX$|デジタルトランスフォーメーション"
+  },
+  {
+    "concept": "アクセシビリティ",
+    "pattern": "アクセシビリティ"
+  },
+  {
+    "concept": "使用性の評価",
+    "pattern": "使用性|ユーザビリティ"
+  },
+  {
+    "concept": "画像表現",
+    "pattern": "SVG|ベクタ|ラスタ"
+  },
+  {
+    "concept": "通信帯域と転送量",
+    "pattern": "最小限必要な帯域幅|転送時間|通信帯域"
+  },
+  {
+    "concept": "IPアドレスとサブネット",
+    "pattern": "サブネット|ネットワークアドレス|CIDR"
+  },
+  {
+    "concept": "TCPとUDP",
+    "pattern": "TCPとUDP|TCP.*特徴|UDP.*特徴"
+  },
+  {
+    "concept": "VPNの階層",
+    "pattern": "VPNの階層|IPsec|L2TP|PPTP"
+  },
+  {
+    "concept": "PoE",
+    "pattern": "PoE|Power over Ethernet"
+  },
+  {
+    "concept": "リバースプロキシ",
+    "pattern": "リバースプロキシ"
+  },
+  {
+    "concept": "著作権",
+    "pattern": "生成AIと著作権|著作者人格権|著作権法"
+  },
+  {
+    "concept": "意匠法",
+    "pattern": "意匠法"
+  },
+  {
+    "concept": "契約と調達",
+    "pattern": "契約形態|請負|準委任|派遣"
+  }
+]

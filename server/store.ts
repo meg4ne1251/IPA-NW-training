@@ -1,3 +1,5 @@
+import { withReviewConcepts } from './review-concepts.ts';
+import { conceptKeys, isFresh, relatedProgress, reviewIndex, reviewAnalysis, reviewCollection } from '../src/domain/review.ts';
 import { withOfficialExplanation } from './official-explanations.ts';
 import { withLearningPriority } from './learning-priorities.ts';
 import { rapidCollection, rapidStatus, selectRapid } from '../src/domain/rapid.ts';
@@ -42,7 +44,7 @@ export class TrainingStore {
   bank() {
     const latest = new Map<string, TrainingQuestion>();
     for (const q of this.records<TrainingQuestion>('questions')) if (!latest.has(q.id) || latest.get(q.id)!.version < q.version) latest.set(q.id, q);
-    return [...latest.values()].map(withOfficialExplanation).map(withLearningPriority);
+    return [...latest.values()].map(withOfficialExplanation).map(withLearningPriority).map(withReviewConcepts);
   }
   sessions() { return this.records<Session>('sessions').sort((a, b) => b.startedAt.localeCompare(a.startedAt)); }
   session(id: string) {
@@ -54,7 +56,7 @@ export class TrainingStore {
     return { ...s, questions: s.questions.map(original => {
       const q = withOfficialExplanation(original);
       if (s.status === 'submitted' || s.graded?.[q.id]) return q;
-      const { correctIndex: _correct, explanation: _explanation, choiceExplanations: _choices, learning: _learning, ...safe } = q;
+      const { correctIndex: _correct, explanation: _explanation, choiceExplanations: _choices, learning: _learning, reviewConcepts: _reviewConcepts, ...safe } = q;
       const { answerUrl: _answerURL, ...source } = safe.source;
       // Concept labels such as "PoE" can reveal an answer; only show them after answer confirmation.
       return { ...safe, tags: [], prompt: q.origin === 'past' ? `原本の問${q.source.number ?? ''}を解いてください` : safe.prompt,
@@ -66,7 +68,7 @@ export class TrainingStore {
     const versions = new Map(this.records<TrainingQuestion>('questions').map(q => [`${q.id}:${q.version}`, q]));
     return outcomes(this.sessions()).map(r => {
       const current = versions.get(`${r.question.id}:${r.question.version}`);
-      return { ...r, question: withLearningPriority(withOfficialExplanation(current ? { ...r.question, review: current.review } : r.question)) };
+      return { ...r, question: withReviewConcepts(withLearningPriority(withOfficialExplanation(current ? { ...r.question, review: current.review } : r.question))) };
     });
   }
   dashboard() {
@@ -74,6 +76,7 @@ export class TrainingStore {
     const bank = this.bank(); const history = this.history();
     const supplements = bank.filter(q => isSupplement(q) && q.review.status === 'verified' && !q.heldOut && !bank.some(x => x.groupId === q.groupId && x.heldOut));
     return {
+      analysis: (['A-1', 'A-2'] as const).map(section => reviewAnalysis(bank, history, section)),
       stats: topicStats(history), revision: this.revision(),
       rapid: (['A-1', 'A-2'] as const).map(section => rapidStatus(bank, history, section)),
       supplements: [...new Set(supplements.map(q => q.topic))].sort((a, b) => a.localeCompare(b, 'ja')).map(topic => {
@@ -105,17 +108,21 @@ export class TrainingStore {
     assert([focus.topic, focus.tag].every(v => v === undefined || (typeof v === 'string' && v.length <= 100)), '分野・論点の指定が不正です。');
     const supplement = collection === supplementCollection;
     const rapid = collection === rapidCollection;
+    const review = collection === reviewCollection;
+    assert(!review || mode === 'practice', '類題による復習は練習で利用してください。');
     assert(!rapid || mode === 'practice', '短期集中テストは練習で利用してください。');
     assert(!supplement || (section === 'A-1' && mode === 'practice'), '補強問題はA-1の練習で利用してください。');
     assert(supplement || (!focus.topic && !focus.tag), '分野・論点の指定は補強問題で利用してください。');
     assert(!this.sessions().some(s => s.status === 'active'), '途中の演習を再開して提出してください。');
     const all = this.bank();
     const heldGroups = new Set(all.filter(q => q.heldOut).map(q => q.groupId));
-    const bank = all.filter(q => !heldGroups.has(q.groupId) && (supplement ? isSupplement(q) : rapid || !collection || q.source.url === collection)
+    const bank = all.filter(q => !heldGroups.has(q.groupId) && (supplement ? isSupplement(q) : rapid || review || !collection || q.source.url === collection)
       && (!focus.topic || q.topic === focus.topic) && (!focus.tag || q.tags.includes(focus.tag)));
+    const history = this.history(); const index = reviewIndex(history, section);
+    const reviewBank = review ? bank.filter(q => relatedProgress(q, index).some(s => s.risk > 0 || Date.parse(s.dueAt) <= Date.now())) : bank;
     // The explicit supplement exercise is entirely AI-authored. Mixed practice keeps its 20% limit.
     const selected = rapid ? selectRapid(bank, this.history(), section, count)
-      : selectPractice(bank, this.history(), section, count, Date.now(), supplement ? count : Math.floor(count / 5));
+      : selectPractice(reviewBank, history, section, count, Date.now(), supplement ? count : Math.floor(count / 5));
     if (mode !== 'practice') {
       const fullCount = section === 'A-1' ? 30 : 25;
       assert(count === fullCount, '診断・本番形式は本番と同じ問題数で実施します。');
@@ -123,9 +130,9 @@ export class TrainingStore {
       assert(selected.questions.length === count, '本番形式に必要な過去問が不足しています。');
       selected.reasons = Object.fromEntries(selected.questions.map(q => [q.id, '過去問の診断・本番形式（既出を含む場合があります）']));
     }
-    assert(selected.questions.length > 0, '出題可能な問題がありません。教材の準備を確認してください。');
+    assert(selected.questions.length > 0, 'この範囲で出題可能な別問題がありません。出題範囲を広げるか、AIに新しい類題の追加を依頼してください。');
     return this.newSession(section, mode, selected.questions, selected.reasons,
-      mode === 'practice' ? `${rapid ? `${section} 短期集中テスト` : supplement ? `A-1補強 · ${focus.tag || focus.topic || '全分野'}` : '弱点と未着手の演習'}（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`,
+      mode === 'practice' ? `${rapid ? `${section} 短期集中テスト` : review ? `${section} 苦手・復習の類題` : supplement ? `A-1補強 · ${focus.tag || focus.topic || '全分野'}` : '弱点と未着手の演習'}（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`,
       mode === 'practice' ? { collection, ...focus } : undefined);
   }
   newSession(section: Section, mode: Session['mode'], questions: TrainingQuestion[], reasons: Record<string, string>, title: string, practiceScope?: PracticeScope) {
@@ -203,7 +210,9 @@ export class TrainingStore {
     const bank = this.bank().filter(q => q.section === section && !q.heldOut);
     const selected = selectPractice(bank, history, section, Math.min(30, bank.length));
     const context = { schemaVersion: 1, requestId, section, historyRevision: revision, exportedAt: new Date().toISOString(),
-      instruction: 'confidenceのunknownは「わからない」を明示した回答です。未入力(null)や推測(guess)と区別し、正誤にかかわらず基礎から学習すべき分野・概念を特定してください。履歴と画像を読み、誤解・不安定な正解・未着手を分析してください。既存問題の選抜と新規類題を最大6問作成し、nextSetTemplateの形式で返してください。新規問題はdraftとし、正答の一意性、各選択肢の説明、根拠URLを記載してください。画像の問題はlocalImagePathを開いて確認してください。ファイル出力先はこの依頼のimportsディレクトリです。',
+      instruction: 'confidenceのunknownは「わからない」を明示した回答です。未入力(null)や推測(guess)と区別し、正誤にかかわらず基礎から学習すべき分野・概念を特定してください。履歴と画像を読み、誤解・不安定な正解・未着手を分析してください。既出ID・excludedGroupsに属する再録は選ばず、reviewConceptsで結び付く別の問題を選んでください。新規類題は数値・条件・場面・問う方向を変え、選択肢の並べ替えや単なる言い換えで済ませないでください。利用できる別問題がない概念は不足として報告してください。既存問題の選抜と新規類題を最大6問作成し、nextSetTemplateの形式で返してください。新規問題はdraftとし、正答の一意性、各選択肢の説明、根拠URLを記載してください。画像の問題はlocalImagePathを開いて確認してください。ファイル出力先はこの依頼のimportsディレクトリです。',
+      analysis: reviewAnalysis(bank, history, section),
+      excludedGroups: [...new Set(history.map(r => r.question.groupId))],
       stats: topicStats(history),
       history: history.slice(-200).map(r => ({ ...r, localImagePath: r.question.source.image ? join(this.directory, r.question.source.image.slice(1)) : null })),
       availableQuestions: bank.filter(q => q.review.status === 'verified'),
@@ -255,10 +264,24 @@ export class TrainingStore {
     const dir = join(this.directory, 'imports', body.requestId); mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, 'next-set.json'), JSON.stringify(record, null, 2)); return record;
   }
+  resolveImport(record: ImportRecord) {
+    const bank = this.bank(); const history = this.history();
+    const held = new Set(bank.filter(q => q.heldOut).map(q => q.groupId));
+    const safe = bank.filter(q => q.section === record.section && q.review.status === 'verified' && !q.heldOut && !held.has(q.groupId));
+    const used = new Set<string>(); const questions: TrainingQuestion[] = []; const reasons: Record<string, string> = {};
+    const reserved = new Set(record.selected.flatMap(i => { const q = safe.find(q => q.id === i.id && q.version === i.version); return q && isFresh(q, history) ? [q.groupId] : []; }));
+    for (const item of record.selected) {
+      const original = safe.find(q => q.id === item.id && q.version === item.version); if (!original) continue;
+      const keys = conceptKeys(original);
+      const q = isFresh(original, history) ? original : safe.find(q => !used.has(q.groupId) && !reserved.has(q.groupId) && isFresh(q, history) && conceptKeys(q).some(k => keys.includes(k)));
+      if (!q || used.has(q.groupId)) continue;
+      used.add(q.groupId); questions.push(q); reasons[q.id] = q.id === original.id ? item.reason : '既出問題を同じ概念の別問題に置換';
+    }
+    return { questions, reasons };
+  }
   readyItems(record: ImportRecord) {
-    const bank = this.bank();
-    const ready = record.selected.filter(i => bank.some(q => q.id === i.id && q.version === i.version && q.review.status === 'verified' && !q.heldOut));
-    return { readyCount: ready.length, pendingCount: record.selected.length - ready.length };
+    const readyCount = record.sessionId ? this.session(record.sessionId).questions.length : this.resolveImport(record).questions.length;
+    return { readyCount, pendingCount: record.selected.length - readyCount };
   }
   startImport(requestId: string) {
     return this.transaction(() => {
@@ -266,13 +289,9 @@ export class TrainingStore {
       const record = JSON.parse(row.payload as string) as ImportRecord;
       if (record.sessionId) return this.publicSession(this.session(record.sessionId));
       assert(!this.sessions().some(s => s.status === 'active'), '途中の演習を提出してください。');
-      const bank = this.bank();
-      const selected = record.selected.flatMap(item => {
-        const q = bank.find(q => q.id === item.id && q.version === item.version && q.review.status === 'verified' && !q.heldOut);
-        return q && !bank.some(x => x.groupId === q.groupId && x.heldOut) ? [q] : [];
-      });
-      assert(selected.length > 0, '検証済みの問題がありません。内容の確認が必要です。');
-      const session = this.newSession(record.section, 'imported', selected, Object.fromEntries(record.selected.map(i => [i.id, i.reason])), `${record.title}（検証済み${selected.length}問）`);
+      const selected = this.resolveImport(record);
+      assert(selected.questions.length > 0, '出題可能な別問題がありません。検証済みの新しい類題を追加してください。');
+      const session = this.newSession(record.section, 'imported', selected.questions, selected.reasons, `${record.title}（検証済み${selected.questions.length}問）`);
       record.sessionId = session.id; this.db.prepare('UPDATE imports SET payload=? WHERE id=?').run(JSON.stringify(record), requestId); return session;
     });
   }
@@ -297,7 +316,7 @@ interface ImportInput {
 }
 interface ImportRecord extends ImportInput { importedAt: string; sessionId: string | null }
 export function openStore() {
-  const seed = ['materials/2025-spring.json', 'materials/archive.json', 'materials/a1-supplement.json'].flatMap(name => {
+  const seed = ['materials/2025-spring.json', 'materials/archive.json', 'materials/a1-supplement.json', 'materials/review-variants.json'].flatMap(name => {
     const path = resolve(name); return existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) as TrainingQuestion[] : [];
   });
   const directory = process.env.TRAINING_DATA_DIR || resolve('data');

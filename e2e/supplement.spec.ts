@@ -9,7 +9,7 @@ test.afterEach(async ({ request }) => {
   }
 });
 
-test('実教材の分野・論点を選び、解説を読み、同じ範囲で続けられる', async ({ page }) => {
+test('実教材の分野・論点を選び、解説を読み、別問題がない範囲では再出題しない', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByText('24分野・120問。', { exact: false })).toBeVisible();
   await page.getByRole('combobox', { name: '補強する分野' }).selectOption('ネットワーク・アドレス');
@@ -26,9 +26,8 @@ test('実教材の分野・論点を選び、解説を読み、同じ範囲で�
   await expect(page.locator('.explanation li')).toHaveCount(4);
   await expect(page.getByRole('link', { name: '根拠資料1', exact: true })).toBeVisible();
   await page.getByRole('button', { name: '同じ範囲で続ける →', exact: true }).click();
-  await page.reload();
-  await expect(page.getByText('1 / 1問', { exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'A-1補強 · ネットワークアドレス（1問）', exact: true })).toBeVisible();
+  await expect(page.getByRole('alert')).toContainText('別問題がありません');
+  await expect(page.getByRole('heading', { name: '1 / 1問正解', exact: true })).toBeVisible();
 });
 
 test('スマートフォンでも分野を選べ、A-2へ切り替えるとA-1補強を表示しない', async ({ page }, testInfo) => {

@@ -33,10 +33,11 @@ describe('短期集中の出題', () => {
   it('未着手8問と時間を空けた復習2問を選び、直後の同内容を避ける', () => {
     const fresh = Array.from({ length: 20 }, (_, i) => q(`new-${i}`));
     const reviews = Array.from({ length: 6 }, (_, i) => q(`review-${i}`));
+    const alternatives = reviews.map((r, i) => q(`review-alternative-${i}`, 'technology', { reviewConcepts: [r.id] }));
     const recent = q('recent');
-    const selected = selectRapid([...fresh, ...reviews, recent], [...reviews.map(q => outcome(q, 8)), outcome(recent, 0)], 'A-1', 10, now);
+    const selected = selectRapid([...fresh, ...reviews, ...alternatives, recent], [...reviews.map(q => outcome(q, 8)), outcome(recent, 0)], 'A-1', 10, now);
     expect(selected.questions.filter(q => q.id.startsWith('new'))).toHaveLength(8);
-    expect(selected.questions.filter(q => q.id.startsWith('review'))).toHaveLength(2);
+    expect(selected.questions.filter(q => q.id.startsWith('review-alternative'))).toHaveLength(2);
     expect(selected.questions).not.toContain(recent);
     expect(selectRapid([recent, q('new-only')], [outcome(recent, 0)], 'A-1', 10, now).questions.map(q => q.id)).toEqual(['new-only']);
   });

@@ -136,11 +136,13 @@ describe('補強演習の選抜・保存・登録', () => {
     expect(() => store.create('A-1', 'practice', 10, supplementCollection, { tag: [] as unknown as string })).toThrow('不正');
     expect(store.sessions()).toHaveLength(0);
   });
-  it('新しい補強問題より先に同じ概念の自信のある誤答を復習する', () => {
+  it('自信のある誤答は同じ概念の別問題で復習する', () => {
     const weak = bank[10];
     const history: Outcome[] = [{ question: weak, answer: { ...blankAnswer(), choice: (weak.correctIndex + 1) % 4, confidence: 'sure' }, correct: false, at: new Date().toISOString(), sessionId: 'before' }];
-    const selected = selectPractice(bank, history, 'A-1', 10, Date.now(), 10);
-    expect(selected.questions[0].id).toBe(weak.id); expect(selected.reasons[weak.id]).toBe('苦手な概念の補強');
+    const alternative = { ...weak, id: 'different-task', groupId: 'different-task', prompt: '条件を変えた別の課題' };
+    const selected = selectPractice([...bank, alternative], history, 'A-1', 10, Date.now(), 10);
+    expect(selected.questions[0].id).toBe(alternative.id); expect(selected.reasons[alternative.id]).toBe('苦手な概念を類題・関連問題で補強');
+    expect(selected.questions.some(q => q.id === weak.id)).toBe(false);
   });
   it('既存DBへ起動時に教材を追加し、再起動で重複せず、履歴と補強範囲を保持する', () => {
     const first = make(bank.slice(0, 1));
@@ -149,9 +151,9 @@ describe('補強演習の選抜・保存・登録', () => {
     const previous = process.env.TRAINING_DATA_DIR; process.env.TRAINING_DATA_DIR = first.directory;
     try {
       const updated = openStore(); stores.push(updated);
-      expect(updated.bank()).toHaveLength(120); expect(updated.session(s.id).practiceScope?.topic).toBe(bank[0].topic);
+      expect(updated.bank()).toHaveLength(156); expect(updated.session(s.id).practiceScope?.topic).toBe(bank[0].topic);
       const again = openStore(); stores.push(again);
-      expect(again.bank()).toHaveLength(120); expect(again.revision()).toBe(1);
+      expect(again.bank()).toHaveLength(156); expect(again.revision()).toBe(1);
       expect(again.session(s.id).questions).toHaveLength(1);
     } finally { if (previous === undefined) delete process.env.TRAINING_DATA_DIR; else process.env.TRAINING_DATA_DIR = previous; }
   });

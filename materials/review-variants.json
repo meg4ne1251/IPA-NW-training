@@ -1,0 +1,1550 @@
+[
+  {
+    "id": "review-a1-power",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ハードウェア・論理回路",
+    "tags": [
+      "省電力と平均電流"
+    ],
+    "reviewConcepts": [
+      "省電力と平均電流"
+    ],
+    "prompt": "センサーは100秒周期で動き、2秒間は10mA、残り98秒間は0.02mAを消費する。電池の利用可能容量が219.6mAhで、電流と容量は一定、その他の損失は無視できるとする。連続使用できる時間は何時間か。",
+    "choices": [
+      "1,000時間",
+      "10,980時間",
+      "21.96時間",
+      "100時間"
+    ],
+    "correctIndex": 0,
+    "explanation": "1周期の電荷に相当する値は10×2＋0.02×98＝21.96mA秒。平均電流は21.96÷100＝0.2196mA。219.6mAh÷0.2196mA＝1,000時間。時間による重み付けとmAh÷mAの単位を確認する。",
+    "choiceExplanations": [
+      "平均電流0.2196mAで割ると1,000時間になる。",
+      "待機電流0.02mAだけで割っており、動作時の消費を無視している。",
+      "容量を動作時の電流だけで割っている。待機時間を無視している。",
+      "平均電流を2.196mAとした場合で、周期の扱いが10倍ずれている。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-power",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-logic",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ハードウェア・論理回路",
+    "tags": [
+      "論理演算と回路"
+    ],
+    "reviewConcepts": [
+      "論理演算と回路"
+    ],
+    "prompt": "センサー入力P、Qは異常時に1となる。どちらか一方だけが異常のときに1、両方とも異常又は両方とも正常のときに0を出す式はどれか。NOTは否定、ANDは論理積、ORは論理和とする。",
+    "choices": [
+      "(NOT P) OR (NOT Q)",
+      "(P AND (NOT Q)) OR ((NOT P) AND Q)",
+      "P OR Q",
+      "P AND Q"
+    ],
+    "correctIndex": 1,
+    "explanation": "必要な真理値は(P,Q)が(0,0),(0,1),(1,0),(1,1)の順で0,1,1,0。排他的論理和に相当し、Pだけが1又はQだけが1という二つの積項をORで結ぶ。",
+    "choiceExplanations": [
+      "NANDに相当し、両方が0でも1になる。",
+      "(1,0)と(0,1)の場合だけ1になる。",
+      "ORは両方が1のときも1になる。",
+      "ANDは両方が1のときだけ1になり、条件と逆になる。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-logic",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-mttr",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成・信頼性",
+    "tags": [
+      "稼働率と信頼性"
+    ],
+    "reviewConcepts": [
+      "稼働率と信頼性"
+    ],
+    "prompt": "修理可能な装置の稼働率をMTBF÷(MTBF＋MTTR)とする。MTBFが198時間の装置で、稼働率99%を達成するためのMTTRの上限は何時間か。",
+    "choices": [
+      "0.02時間",
+      "1.98時間",
+      "2時間",
+      "200時間"
+    ],
+    "correctIndex": 2,
+    "explanation": "198÷(198＋MTTR)≧0.99を解くと198≧196.02＋0.99×MTTR、MTTR≦2。198時間稼働し2時間修理する200時間の周期なら稼働率は198÷200＝0.99になる。",
+    "choiceExplanations": [
+      "単位や百分率の扱いが合わない。0.02時間は上限ではない。",
+      "MTBFに不稼働率を掛けるだけでは分母の修理時間が抜ける。",
+      "198÷200＝99%なので上限は2時間。",
+      "分母全体の200時間を修理時間と取り違えている。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-mttr",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-parallel",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成・信頼性",
+    "tags": [
+      "稼働率と信頼性"
+    ],
+    "reviewConcepts": [
+      "稼働率と信頼性"
+    ],
+    "prompt": "装置Aの稼働率は0.9、装置Bは0.8で、故障は互いに独立とする。少なくとも一方が稼働すればサービスを提供できる構成の稼働率はどれか。切替えの失敗はないものとする。",
+    "choices": [
+      "0.72",
+      "0.85",
+      "0.90",
+      "0.98"
+    ],
+    "correctIndex": 3,
+    "explanation": "停止するのはAとBが両方停止する場合だけ。不稼働率は(1−0.9)×(1−0.8)＝0.02なので、稼働率は1−0.02＝0.98。",
+    "choiceExplanations": [
+      "両方が稼働しなければ使えない直列構成の値。",
+      "単純平均では少なくとも一方が動く確率を計算できない。",
+      "Aだけの値で、Bによる救済を含んでいない。",
+      "同時停止確率0.02の補数で0.98。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-parallel",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-fixed-cost",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動・会計",
+    "tags": [
+      "損益分岐点と変動費"
+    ],
+    "reviewConcepts": [
+      "損益分岐点と変動費"
+    ],
+    "prompt": "固定費と変動費だけからなる事業で、変動費率は一定とする。売上高1,000万円で利益100万円、売上高1,500万円で利益300万円だった。固定費は何万円か。",
+    "choices": [
+      "300万円",
+      "400万円",
+      "600万円",
+      "200万円"
+    ],
+    "correctIndex": 0,
+    "explanation": "売上差500万円に対して利益差200万円なので限界利益率は0.4、変動費率は0.6。売上1,000万円の限界利益400万円から利益100万円を引くと固定費は300万円。別の売上でも1,500×0.4−300＝300万円と一致する。",
+    "choiceExplanations": [
+      "限界利益400万円−利益100万円＝300万円。",
+      "売上1,000万円に対する限界利益で、利益分を引いていない。",
+      "売上1,000万円の変動費であり、固定費とは異なる。",
+      "利益の増分200万円であり、固定費ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-fixed-cost",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://openstax.org/books/principles-managerial-accounting/pages/3-2-calculate-a-break-even-point-in-units-and-dollars"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://openstax.org/books/principles-managerial-accounting/pages/3-2-calculate-a-break-even-point-in-units-and-dollars"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-target-sales",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動・会計",
+    "tags": [
+      "損益分岐点と変動費"
+    ],
+    "reviewConcepts": [
+      "損益分岐点と変動費"
+    ],
+    "prompt": "あるサービスの変動費率は60%、固定費は250万円で一定である。利益230万円を得るために必要な売上高は何万円か。",
+    "choices": [
+      "1,000万円",
+      "1,200万円",
+      "1,500万円",
+      "800万円"
+    ],
+    "correctIndex": 1,
+    "explanation": "利益＝売上高×(1−0.6)−250。したがって必要売上高＝(250＋230)÷0.4＝1,200万円。変動費720万円と固定費250万円を引くと利益230万円になる。",
+    "choiceExplanations": [
+      "利益は1,000×0.4−250＝150万円となり不足する。",
+      "1,200−720−250＝230万円となる。",
+      "利益350万円となる。目標に必要な最小売上高を上回る。",
+      "固定費と目標利益の合計を変動費率0.6で割ってしまっている。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-target-sales",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://openstax.org/books/principles-managerial-accounting/pages/3-2-calculate-a-break-even-point-in-units-and-dollars"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://openstax.org/books/principles-managerial-accounting/pages/3-2-calculate-a-break-even-point-in-units-and-dollars"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-cpu-mix",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成要素",
+    "tags": [
+      "CPU性能と実行時間"
+    ],
+    "reviewConcepts": [
+      "CPU性能と実行時間"
+    ],
+    "prompt": "2億命令を実行する。命令数の50%はCPIが1、残り50%はCPIが3である。クロック周波数が1GHzで、待ち時間などは平均CPIに含まれる場合、実行時間は何秒か。",
+    "choices": [
+      "0.1秒",
+      "0.2秒",
+      "0.4秒",
+      "4秒"
+    ],
+    "correctIndex": 2,
+    "explanation": "平均CPIは1×0.5＋3×0.5＝2。必要サイクル数は2億×2＝4億。1GHzは毎秒10億サイクルなので4億÷10億＝0.4秒。各命令群の1億＋3億サイクルを足しても一致する。",
+    "choiceExplanations": [
+      "全命令をCPI1とした0.2秒よりも短く、条件を満たさない。",
+      "全命令をCPI1としている。",
+      "平均CPI2を使った0.4秒。",
+      "GHzの換算が10倍ずれている。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-cpu-mix",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/pipelining.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/pipelining.html"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-lru-trace",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア・OS",
+    "tags": [
+      "LRUとページ置換"
+    ],
+    "reviewConcepts": [
+      "LRUとページ置換"
+    ],
+    "prompt": "ページ枠は3個で最初は空とする。ページを1,2,3,1,4,2,5の順に参照し、ページがない場合は読み込む。枠が満杯なら最も長く参照されていないページを追い出す。ページフォールトは合計何回か。",
+    "choices": [
+      "3回",
+      "4回",
+      "5回",
+      "6回"
+    ],
+    "correctIndex": 3,
+    "explanation": "最初の1,2,3で3回。次の1はヒット。4では2を、2では3を、5では1を追い出し、それぞれフォールトする。合計6回。最後の枠は4,2,5になる。",
+    "choiceExplanations": [
+      "初回の読み込みだけを数えている。",
+      "初回3回に1回だけ追加した値で、後半の再読込みが抜けている。",
+      "後半の4,2,5のどれか1回を見落としている。",
+      "ヒットは4番目の参照1だけなので7−1＝6回。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-lru-trace",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://pages.cs.wisc.edu/~remzi/OSTEP/vm-beyondphys-policy.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-foreign-key",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース設計",
+    "tags": [
+      "参照整合性と外部キー"
+    ],
+    "reviewConcepts": [
+      "参照整合性と外部キー"
+    ],
+    "prompt": "部署(部署ID PRIMARY KEY)と社員(社員ID PRIMARY KEY, 部署ID NOT NULL REFERENCES 部署(部署ID) ON DELETE RESTRICT)がある。部署10に属する社員が残る状態で部署10を削除するとどうなるか。別の制約やトリガーはない。",
+    "choices": [
+      "部署の削除が拒否される",
+      "部署と所属社員がまとめて削除される",
+      "部署だけ削除され、社員の部署IDは10のまま残る",
+      "社員の部署IDが自動でNULLになる"
+    ],
+    "correctIndex": 0,
+    "explanation": "RESTRICTは参照する行が存在する親行の削除を拒否する。NULLへの変更や子行の削除を自動では行わない。先に社員を別の存在する部署へ移すなど、参照関係を解消する必要がある。",
+    "choiceExplanations": [
+      "子行が参照しているので親行の削除は拒否される。",
+      "CASCADEの場合の動作で、RESTRICTではない。",
+      "外部キーが要求する参照整合性を破るため許されない。",
+      "SET NULLの動作であり、指定されたRESTRICTではない。NOT NULLにも反する。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-foreign-key",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.postgresql.org/docs/17/ddl-constraints.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.postgresql.org/docs/17/ddl-constraints.html"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-normalization",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース設計",
+    "tags": [
+      "DB正規化"
+    ],
+    "reviewConcepts": [
+      "DB正規化"
+    ],
+    "prompt": "受注明細(受注番号, 商品番号, 受注日, 商品名, 数量)の主キーは(受注番号,商品番号)。受注番号→受注日、商品番号→商品名、(受注番号,商品番号)→数量が成立し、ほかの非自明な関数従属はない。この表の部分関数従属を除く分解はどれか。",
+    "choices": [
+      "明細(受注番号,商品番号,数量)だけ残し、受注日と商品名は捨てる",
+      "受注(受注番号,受注日)、商品(商品番号,商品名)、明細(受注番号,商品番号,数量)",
+      "明細(受注番号,商品番号,受注日,商品名,数量)のままとする",
+      "受注(受注番号,商品名)、商品(商品番号,受注日)、明細(受注番号,商品番号,数量)"
+    ],
+    "correctIndex": 1,
+    "explanation": "複合主キーの一部にだけ従属する受注日と商品名を、それぞれ受注と商品へ分離する。数量はキー全体に従属するので明細へ残す。分解後も受注番号・商品番号で結合して元の情報を復元できる。",
+    "choiceExplanations": [
+      "必要な情報を失うので、正規化のための分解にはならない。",
+      "各従属先を正しく分け、キー全体に従属する数量を明細に残している。",
+      "部分関数従属が残り、目的を満たさない。",
+      "与えられた関数従属と属性の組合せが逆である。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-normalization",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-hash",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "ハッシュと衝突"
+    ],
+    "reviewConcepts": [
+      "ハッシュと衝突"
+    ],
+    "prompt": "ハッシュ値h(k)をkを11で割った余りとする。既にキー20が登録されているとき、同じハッシュ値を持つキーの組はどれか。",
+    "choices": [
+      "21と32",
+      "22と44",
+      "31と42",
+      "30と41"
+    ],
+    "correctIndex": 2,
+    "explanation": "20＝11×1＋9なのでh(20)＝9。31＝11×2＋9、42＝11×3＋9で、どちらも余り9となる。異なるキーでもハッシュ値が同じになることが衝突である。",
+    "choiceExplanations": [
+      "余りはともに10。組の中では一致するが20の余り9とは異なる。",
+      "余りはともに0で、20とは衝突しない。",
+      "両方とも余り9で、20と衝突する。",
+      "余りはともに8で、20とは衝突しない。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-hash",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-ppm",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "PPMと事業ポートフォリオ"
+    ],
+    "reviewConcepts": [
+      "PPMと事業ポートフォリオ"
+    ],
+    "prompt": "PPMで、市場成長率が低く相対的市場占有率が高い既存事業から得た余剰資金を、市場成長率は高いが相対的市場占有率の低い新規事業へ配分した。資金の供給元と配分先の組合せはどれか。",
+    "choices": [
+      "花形 → 負け犬",
+      "問題児 → 金のなる木",
+      "負け犬 → 花形",
+      "金のなる木 → 問題児"
+    ],
+    "correctIndex": 3,
+    "explanation": "成長率が低く占有率が高い事業は金のなる木。成長率が高く占有率が低い事業は問題児。市場の成長と自社の相対的地位という二つの軸をそれぞれ確認する。",
+    "choiceExplanations": [
+      "花形は高成長・高占有率、負け犬は低成長・低占有率なので一致しない。",
+      "供給元と配分先が逆になっている。",
+      "供給元は高占有率、配分先は低占有率なので、この組合せとは逆になる。",
+      "二つの事業の成長率と相対的占有率に一致する。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-ppm",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.bcg.com/about/overview/our-history/growth-share-matrix"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.bcg.com/about/overview/our-history/growth-share-matrix"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-bsc",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "BSCと戦略マップ"
+    ],
+    "reviewConcepts": [
+      "BSCと戦略マップ"
+    ],
+    "prompt": "企業が「担当者の教育を充実させる→処理ミスを減らす→顧客の継続率を上げる→利益を増やす」という仮説を戦略マップにまとめた。BSCの視点の順序として適切なものはどれか。",
+    "choices": [
+      "学習と成長→内部プロセス→顧客→財務",
+      "顧客→学習と成長→財務→内部プロセス",
+      "内部プロセス→財務→学習と成長→顧客",
+      "財務→顧客→内部プロセス→学習と成長"
+    ],
+    "correctIndex": 0,
+    "explanation": "教育は学習と成長、処理ミス低減は内部プロセス、継続率は顧客、利益は財務の視点に対応する。戦略マップではこうした目標間の因果関係を仮説として表す。",
+    "choiceExplanations": [
+      "教育、業務改善、顧客成果、財務成果の対応が一致する。",
+      "教育を顧客の視点へ割り当てており対応しない。",
+      "教育は内部プロセスではなく学習と成長に対応する。",
+      "視点の並びが問題の活動と逆になっている。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-bsc",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.library.hbs.edu/working-knowledge/mapping-your-corporate-strategy"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.library.hbs.edu/working-knowledge/mapping-your-corporate-strategy"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-soa",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略・企画",
+    "tags": [
+      "SOAとサービス連携"
+    ],
+    "reviewConcepts": [
+      "SOAとサービス連携"
+    ],
+    "prompt": "受注、請求、在庫の各機能を、明示したインタフェースを通じて利用できる独立したサービスにし、既存サービスを組み合わせて新しい業務を作る。実装言語の統一は求めない。この設計方針に最も合うものはどれか。",
+    "choices": [
+      "各サービスの内部データ構造をすべての利用側へ公開する",
+      "サービス指向アーキテクチャ",
+      "全サービスの実装言語を統一することを必須要件にする",
+      "全機能を一つの巨大な手続に統合する"
+    ],
+    "correctIndex": 1,
+    "explanation": "SOAは、サービスのインタフェースを介して機能を利用・連携する考え方。内部実装の一体化や言語統一そのものを目的とせず、業務機能を組み合わせやすくする。",
+    "choiceExplanations": [
+      "内部構造への依存は結合を強め、明示したインタフェースによる分離を損なう。",
+      "サービスを公開されたインタフェースから組み合わせる方針に合う。",
+      "言語統一は必須条件ではなく、問題の条件とも合わない。",
+      "一体化した手続は独立したサービスの組合せという条件に合わない。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-soa",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://docs.oasis-open.org/soa-rm/v1.0/soa-rm.html"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-provisioning",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略・企画",
+    "tags": [
+      "プロビジョニング"
+    ],
+    "reviewConcepts": [
+      "プロビジョニング"
+    ],
+    "prompt": "利用申請が承認されると、必要な仮想サーバー、ストレージ、ネットワーク設定を自動で用意し、利用者へ引き渡す。資源を利用できる状態にするこの処理を指すものはどれか。",
+    "choices": [
+      "データマイニング",
+      "ロールバック",
+      "プロビジョニング",
+      "デフラグメンテーション"
+    ],
+    "correctIndex": 2,
+    "explanation": "プロビジョニングは必要な資源を割り当て、設定し、利用可能な状態に整えること。既存処理の取消しやデータ分析とは区別する。",
+    "choiceExplanations": [
+      "データから傾向や規則を見いだす分析である。",
+      "変更を以前の状態へ戻す処理である。",
+      "申請に応じて資源を準備・設定して使えるようにする処理に合う。",
+      "ストレージ上の断片化の整理であり、資源を割り当てる処理ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-provisioning",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-scrum",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ソフトウェア開発管理",
+    "tags": [
+      "スクラム"
+    ],
+    "reviewConcepts": [
+      "スクラム"
+    ],
+    "prompt": "スクラムチームがスプリントでプロダクトを開発している。開発者が具体的な実装方法を自分たちで決める一方、プロダクトバックログの項目の順序付けに責任を持つのは誰か。",
+    "choices": [
+      "利用者全員の多数決",
+      "組織の監査人",
+      "スクラムマスター",
+      "プロダクトオーナー"
+    ],
+    "correctIndex": 3,
+    "explanation": "プロダクトオーナーはプロダクトの価値を最大化し、プロダクトバックログを効果的に管理する責任を持つ。その管理に項目の順序付けが含まれる。実装方法を決める開発者や、スクラムの実践を支援するスクラムマスターと役割を分ける。",
+    "choiceExplanations": [
+      "意見は参考にできるが、責任を多数決へ移すものではない。",
+      "監査人はスクラムで規定されたその責任者ではない。",
+      "スクラムの確立やチームの有効性に責任を持つが、バックログの順序付けの責任者ではない。",
+      "バックログの順序付けに責任を持つ。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-scrum",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://scrumguides.org/scrum-guide.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://scrumguides.org/scrum-guide.html"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-scope",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "スコープ管理"
+    ],
+    "reviewConcepts": [
+      "スコープ管理"
+    ],
+    "prompt": "顧客が追加機能を要求した。承認済みの対象作業を明確に保ち、要求の影響を評価してから正式に変更を承認する運用として適切なものはどれか。",
+    "choices": [
+      "要求の影響を評価し、変更管理の手続で承認を得て対象作業を更新する",
+      "追加要求を受けた時点で、評価せずに納期だけ変更する",
+      "追加要求を記録せず、作業者の判断で直ちに作る",
+      "追加要求を全て無条件に拒否する"
+    ],
+    "correctIndex": 0,
+    "explanation": "作業範囲を明確にした上で、追加要求による成果物・工数・費用・納期への影響を評価し、所定の変更手続で承認する。承認なく範囲が増える状態を避け、必要な変更を管理して反映する。",
+    "choiceExplanations": [
+      "影響評価と正式承認を経て範囲を更新するので適切。",
+      "評価せず納期だけを動かしても、範囲やコストへの影響は管理できない。",
+      "承認なしに作業範囲が拡大し、範囲を管理できない。",
+      "変更管理は全要求の拒否ではなく、評価と承認による管理を行う。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-scope",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-recovery",
+    "version": 1,
+    "section": "A-1",
+    "topic": "サービスマネジメント・監査",
+    "tags": [
+      "事業継続と復旧目標"
+    ],
+    "reviewConcepts": [
+      "事業継続と復旧目標"
+    ],
+    "prompt": "災害対策で「停止後4時間以内に、通常時の60%の処理能力で重要業務を再開する」と定めた。4時間と60%がそれぞれ表す目標の組合せはどれか。",
+    "choices": [
+      "4時間はMTBF、60%はMTTR",
+      "4時間はRTO、60%はRLO",
+      "4時間はRPO、60%はRTO",
+      "4時間はRLO、60%はRPO"
+    ],
+    "correctIndex": 1,
+    "explanation": "RTOは業務やシステムの復旧までに許容する目標時間、RLOは復旧時に確保する業務やサービスの水準。データをどの時点まで戻せるようにするかを定めるRPOとは区別する。",
+    "choiceExplanations": [
+      "MTBFは平均故障間隔、MTTRは平均修復時間であり、この目標の組合せではない。",
+      "再開まで4時間がRTO、処理能力60%がRLOに対応する。",
+      "RPOはデータの復旧時点で、サービス停止から再開までの時間はRTO。",
+      "時間と復旧水準の対応が誤っている。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-recovery",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/archive/files/000004636.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/archive/files/000004636.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-cryptrec",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・暗号と認証",
+    "tags": [
+      "CRYPTREC"
+    ],
+    "reviewConcepts": [
+      "CRYPTREC"
+    ],
+    "prompt": "情報システムの調達担当が、電子政府において利用する暗号技術の選定で参照するため、安全性・実装性能などの評価に基づく暗号リストを探している。最も直接対応するものはどれか。",
+    "choices": [
+      "共通脆弱性識別子（CVE）の一覧",
+      "ネットワークのルーティングテーブル",
+      "CRYPTREC暗号リスト",
+      "ソフトウェア部品表（SBOM）"
+    ],
+    "correctIndex": 2,
+    "explanation": "CRYPTREC暗号リストは電子政府推奨暗号リストなどからなる暗号技術選定のための資料。製品の部品構成、個別脆弱性の識別、通信経路の情報とは目的が異なる。リスト掲載だけでシステム全体の安全性が保証されるわけではない。",
+    "choiceExplanations": [
+      "CVEは公開された個別の脆弱性を識別するための一覧である。",
+      "ルーティングテーブルはパケット転送先などの経路情報である。",
+      "暗号技術の評価・選定に関する資料として条件に合う。",
+      "SBOMはソフトウェアの構成部品を記録するもので、推奨暗号の一覧ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-cryptrec",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.cryptrec.go.jp/list.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.cryptrec.go.jp/list.html"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-evm",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "EVM"
+    ],
+    "reviewConcepts": [
+      "EVM"
+    ],
+    "prompt": "ある時点のPV（計画価値）は120万円、EV（出来高）は90万円、AC（実コスト）は100万円である。SPI=EV/PV、CPI=EV/ACとしたとき、進捗とコスト効率の評価はどれか。",
+    "choices": [
+      "SPI=0.75で進んでおり、CPI=0.9でコスト効率は良い",
+      "SPI=1.33で進んでおり、CPI=1.11でコスト効率は良い",
+      "SPI=0.9で遅れており、CPI=0.75でコスト効率は良い",
+      "SPI=0.75で遅れており、CPI=0.9でコスト効率も悪い"
+    ],
+    "correctIndex": 3,
+    "explanation": "SPI=90/120=0.75。計画した出来高を下回るため進捗は遅れている。CPI=90/100=0.9。100万円使って90万円相当の出来高なのでコスト効率も悪い。両方とも1を基準に判断する。",
+    "choiceExplanations": [
+      "計算は正しいが1未満の評価が逆である。",
+      "分子と分母が逆になっている。",
+      "SPIとCPIの値を取り違え、コスト効率の評価も誤っている。",
+      "式の値と1未満の解釈がどちらも正しい。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-evm",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-innovation",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "技術の事業化"
+    ],
+    "reviewConcepts": [
+      "技術の事業化"
+    ],
+    "prompt": "研究開発で製品化に成功し、小規模ながら顧客への販売事業も始められた。しかし量産と販売の体制を拡大し、競合の中で継続的に収益を上げる段階へ進めない。この段階の障壁として最も適切なものはどれか。",
+    "choices": [
+      "事業化から産業化へ移る際のダーウィンの海",
+      "開発作業を順次に進めるウォーターフォール",
+      "基礎研究から開発へ移る際の魔の川",
+      "開発から事業化へ移る際の死の谷"
+    ],
+    "correctIndex": 0,
+    "explanation": "問題は研究や製品開発の成功後、市場で事業を拡大し競争を生き残る段階を問う。事業化から産業化への障壁はダーウィンの海と呼ばれる。どの段階間の課題かを整理する。",
+    "choiceExplanations": [
+      "市場競争の中で事業を発展させる段階に合う。",
+      "開発工程の進め方であり、技術の事業化の障壁名ではない。",
+      "基礎研究段階は既に通過している。",
+      "開発成果を事業化する段階の障壁であり、この設問では顧客への販売事業を開始している。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-innovation",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-mes",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "MESと生産管理"
+    ],
+    "reviewConcepts": [
+      "MESと生産管理"
+    ],
+    "prompt": "工場で、製造指示を作業者へ提示し、ロットごとの作業実績・仕掛品・品質の情報を収集して製造現場を管理したい。この目的に最も直接対応するシステムはどれか。",
+    "choices": [
+      "顧客との商談履歴を管理するCRM",
+      "製造実行システムであるMES",
+      "インターネットの名前解決を行うDNS",
+      "企業全体の財務諸表だけを作る会計システム"
+    ],
+    "correctIndex": 1,
+    "explanation": "MESは製造現場の作業指示、進捗、実績などの管理を支援する。企業の経営資源を広く計画する仕組みや、顧客関係を管理する仕組みと区別する。",
+    "choiceExplanations": [
+      "CRMの中心は顧客関係・営業などの情報である。",
+      "製造現場での実行・実績管理に対応する。",
+      "DNSはドメイン名とアドレスなどの対応を扱う。",
+      "会計情報だけでは製造現場の実行管理という目的に直接対応しない。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-mes",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-schedule",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクトマネジメント",
+    "tags": [
+      "工程短縮の方法"
+    ],
+    "reviewConcepts": [
+      "工程短縮の方法"
+    ],
+    "prompt": "本来は設計を全て終えてから実装を始める計画だった。工期短縮のため、確定済みの設計部分から実装を開始し、残りの設計と一部並行させた。要員追加はしていない。この方法はどれか。",
+    "choices": [
+      "スコープの全面凍結",
+      "資源平準化だけを目的とする作業日程調整",
+      "ファストトラッキング",
+      "クラッシング"
+    ],
+    "correctIndex": 2,
+    "explanation": "順番に行う工程を重ねて並行に進めるのがファストトラッキング。設計変更による手戻りなどのリスクがある。クラッシングは資源追加などによる期間短縮で、問題の方法と異なる。",
+    "choiceExplanations": [
+      "対象範囲を固定することと、工程を並行にすることは別。",
+      "資源の負荷を平らにすることが、ここで説明された短縮方法ではない。",
+      "設計と実装の一部を重ねるという条件に合う。",
+      "追加資源などによる短縮であり、工程を重ねる方法そのものではない。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-schedule",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-design-review",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム開発技術",
+    "tags": [
+      "開発レビュー"
+    ],
+    "reviewConcepts": [
+      "開発レビュー"
+    ],
+    "prompt": "実装前の設計書に誤りがないか、作成者以外の技術者が設計内容を確認し、発見事項を記録して修正を追跡する活動はどれか。",
+    "choices": [
+      "本番データのバックアップ",
+      "稼働後の障害復旧訓練",
+      "実行プログラムへ負荷を掛ける性能試験",
+      "設計成果物のレビュー"
+    ],
+    "correctIndex": 3,
+    "explanation": "設計成果物を人が確認して問題を見つける静的な活動が設計レビュー。プログラムを実行する試験と違い、実装前から要求との整合や設計の欠陥を見つけられる。",
+    "choiceExplanations": [
+      "データを退避する処理で、設計の欠陥を見つける活動ではない。",
+      "運用時の復旧手順を確認する訓練である。",
+      "プログラムの実行を伴う動的な試験であり、設計書の確認ではない。",
+      "設計書を複数の観点から確認し、修正を追跡する活動に合う。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-design-review",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-code-design",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "コード設計と符号数"
+    ],
+    "reviewConcepts": [
+      "コード設計と符号数"
+    ],
+    "prompt": "識別子は英大文字26種類と数字10種類から選ぶ文字だけで作り、各桁で同じ文字を何度使ってもよい。20万件を重複なく識別するために必要な固定長の最小桁数はどれか。",
+    "choices": [
+      "4桁",
+      "5桁",
+      "2桁",
+      "3桁"
+    ],
+    "correctIndex": 0,
+    "explanation": "1桁に36通りあるので、n桁では36のn乗通り。36³＝46,656は20万未満、36⁴＝1,679,616は20万以上。したがって最小は4桁。",
+    "choiceExplanations": [
+      "36⁴＝1,679,616通りで条件を満たす最小桁数。",
+      "識別できるが、4桁で足りるので最小ではない。",
+      "36²＝1,296通りで不足する。",
+      "36³＝46,656通りで不足する。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-code-design",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-sbom",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・攻撃と対策",
+    "tags": [
+      "SBOM"
+    ],
+    "reviewConcepts": [
+      "SBOM"
+    ],
+    "prompt": "利用中のアプリケーションに、脆弱性が公表されたライブラリXの版1.2が含まれるかを調べたい。構成部品名・版・依存関係を確認するため、最初に参照すべきものはどれか。",
+    "choices": [
+      "従業員の認証ログ",
+      "ソフトウェア部品表（SBOM）",
+      "暗号の公開鍵証明書",
+      "ネットワークのIP経路表"
+    ],
+    "correctIndex": 1,
+    "explanation": "SBOMはソフトウェアに含まれる部品などを示す一覧。部品名と版を脆弱性情報と突き合わせ、影響がありそうな製品を調べるために使える。記載内容の更新状況や、実際に脆弱性が成立する条件の確認も必要。",
+    "choiceExplanations": [
+      "認証ログはログインなどの履歴で、構成部品の一覧ではない。",
+      "部品名・版・依存関係の確認に直接対応する。",
+      "証明書は公開鍵と主体などを結び付けるものである。",
+      "IP経路表はパケットの転送先を扱う。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-sbom",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ntia.gov/page/software-bill-materials"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ntia.gov/page/software-bill-materials"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-edge",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "エッジコンピューティング"
+    ],
+    "reviewConcepts": [
+      "エッジコンピューティング"
+    ],
+    "prompt": "工場カメラの全映像を遠隔クラウドへ送ると、通信量が多く判定の往復時間も長い。カメラ近くの装置で画像を判定し、結果だけをクラウドへ送る構成にする。採用した考え方はどれか。",
+    "choices": [
+      "全映像の定期的な印刷",
+      "DNSの再帰問合せ",
+      "エッジコンピューティング",
+      "全ての計算処理の遠隔集中"
+    ],
+    "correctIndex": 2,
+    "explanation": "データが発生する場所に近い装置で処理するエッジコンピューティング。必要な結果だけ送れば、条件に応じて通信量や遠隔クラウドまでの往復遅延を減らせる。全処理を遠隔へ移す構成とは異なる。",
+    "choiceExplanations": [
+      "データ処理の配置方式の説明ではない。",
+      "名前解決の仕組みで、画像処理の配置とは関係しない。",
+      "発生源に近い場所で計算する条件に合う。",
+      "全てを遠隔へ集中するという説明は条件に反する。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-edge",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=934390"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=934390"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-program-management",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略・企画",
+    "tags": [
+      "プログラムマネジメント"
+    ],
+    "reviewConcepts": [
+      "プログラムマネジメント"
+    ],
+    "prompt": "販売改革のため、EC構築、物流改善、顧客データ整備の各プロジェクトを関連付け、依存関係と全体の便益をまとめて管理する。この考え方はどれか。",
+    "choices": [
+      "プログラムのソースコードの構文検査",
+      "各プロジェクト間の依存関係を一切扱わない運用",
+      "各プロジェクトの利益を無視して全作業を一つのタスクにする",
+      "プログラムマネジメント"
+    ],
+    "correctIndex": 3,
+    "explanation": "相互に関連する複数のプロジェクトを調整し、個別管理だけでは得にくい便益を実現するのがプログラムマネジメント。ここでのプログラムはソースコードではなく、組織目標に向けた活動群を指す。",
+    "choiceExplanations": [
+      "ソフトウェアのコード検査とは意味が異なる。",
+      "依存関係も含めた全体管理という条件に反する。",
+      "作業を一つにまとめるだけでは全体の便益や依存関係を管理できない。",
+      "関連するプロジェクトを全体として調整し便益を目指す。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-program-management",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-isolation",
+    "version": 1,
+    "section": "A-1",
+    "topic": "SQL・トランザクション",
+    "tags": [
+      "SQLと分離レベル"
+    ],
+    "reviewConcepts": [
+      "SQLと分離レベル"
+    ],
+    "prompt": "トランザクションT1が残高を100から0へ変更したが、まだコミットしていない。T2がその0を読み、後でT1がロールバックしたため残高は100に戻った。T2が経験した現象はどれか。",
+    "choices": [
+      "未コミットの変更を読むダーティリード",
+      "条件に合う行数が変わるファントムリード",
+      "一意制約による重複挿入の拒否",
+      "コミット後の値を再読込みするノンリピータブルリード"
+    ],
+    "correctIndex": 0,
+    "explanation": "他のトランザクションが確定していない値を読んでいるのでダーティリード。ロールバックされた値に基づいて判断すると、実際には確定しなかったデータを使うことになる。PostgreSQLではこの現象を許さないが、設問は一般的な現象名を問う。",
+    "choiceExplanations": [
+      "T1が未確定の値をT2が読む条件に合う。",
+      "行集合の増減ではなく未確定の値を読んでいる。",
+      "挿入も一意制約違反も起きていない。",
+      "確定済みデータを読み直して値が変わる現象とは違う。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-isolation",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.postgresql.org/docs/17/transaction-iso.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.postgresql.org/docs/17/transaction-iso.html"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-dynamic-programming",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "動的計画法"
+    ],
+    "reviewConcepts": [
+      "動的計画法"
+    ],
+    "prompt": "使える硬貨は1円、3円、4円で、各硬貨は何枚でも使える。金額6円を作る最少枚数を、f(0)=0、f(n)=1+min{f(n−c): cは使える硬貨額でc≦n}として小さいnから表に保存して求める。この方法とf(6)の組合せはどれか。",
+    "choices": [
+      "二分探索、2枚",
+      "動的計画法、2枚",
+      "単純な大きい順の選択、3枚",
+      "貪欲法、3枚"
+    ],
+    "correctIndex": 1,
+    "explanation": "部分問題の最適値を保存して組み合わせる動的計画法。6円は3円2枚で作れる。大きい硬貨から選ぶだけなら4＋1＋1で3枚となり、この硬貨集合では最適とは限らない。",
+    "choiceExplanations": [
+      "値を大小で半分に絞る探索ではない。",
+      "部分問題の最少枚数を保存する方法で、3＋3の2枚が最適。",
+      "大きい硬貨から選ぶ手順ではない。",
+      "4円を先に選ぶ貪欲な方法とは、示された漸化式の手順が異なる。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-dynamic-programming",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-machine-vision",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営・技術戦略",
+    "tags": [
+      "マシンビジョン"
+    ],
+    "reviewConcepts": [
+      "マシンビジョン"
+    ],
+    "prompt": "製造ラインでカメラ画像から部品の傷や寸法ずれを検出し、不良品を自動で分別する。ここで中心的に利用している技術はどれか。",
+    "choices": [
+      "DNSの名前解決",
+      "磁気ディスクのRAID構成",
+      "マシンビジョン",
+      "仮想記憶のページ置換"
+    ],
+    "correctIndex": 2,
+    "explanation": "マシンビジョンは画像から対象物の状態や特徴を認識・検査する技術。製造現場では外観検査や寸法確認、位置決めなどに利用できる。",
+    "choiceExplanations": [
+      "ドメイン名などに対応する情報を調べる仕組み。",
+      "記憶装置を組み合わせた信頼性や性能に関する構成。",
+      "画像に基づく対象物の認識・検査に対応する。",
+      "主記憶と補助記憶の利用を管理するOSの仕組み。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-machine-vision",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-bisection",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズム",
+    "tags": [
+      "二分法"
+    ],
+    "reviewConcepts": [
+      "二分法"
+    ],
+    "prompt": "連続関数f(x)=x²−2の根を区間[1,2]で二分法により求める。中点を評価して符号が異なる端点の区間を残す操作を2回行った後、残る区間はどれか。",
+    "choices": [
+      "[1.5,1.75]",
+      "[1.75,2]",
+      "[1,1.25]",
+      "[1.25,1.5]"
+    ],
+    "correctIndex": 3,
+    "explanation": "最初の中点1.5ではf=0.25>0、f(1)<0なので[1,1.5]を残す。次の中点1.25ではf=−0.4375<0なので[1.25,1.5]を残す。各回で幅が半分になり、2回後の幅は0.25。",
+    "choiceExplanations": [
+      "両端でfが正なので根を挟まない。",
+      "両端でfが正なので根を挟まない。",
+      "1.25と1の両方でfが負になり、根を挟まない。",
+      "f(1.25)<0、f(1.5)>0で根を挟み、2回の結果と一致。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-bisection",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-payback",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動・会計",
+    "tags": [
+      "投資回収期間"
+    ],
+    "reviewConcepts": [
+      "投資回収期間"
+    ],
+    "prompt": "設備投資額は900万円。導入後の年間キャッシュフローは毎年300万円で一定とする。割引を行わない単純な投資回収期間は何年か。",
+    "choices": [
+      "3年",
+      "9年",
+      "0.33年",
+      "1年"
+    ],
+    "correctIndex": 0,
+    "explanation": "累積キャッシュフローが投資額に達するまでの期間を求める。900÷300＝3年。1年後300万円、2年後600万円、3年後900万円で回収する。",
+    "choiceExplanations": [
+      "3年分で900万円となり投資額を回収する。",
+      "1年当たり100万円の場合の値で、条件とは異なる。",
+      "年間キャッシュフロー÷投資額という逆の割り算になっている。",
+      "1年では300万円で、900万円の回収には不足する。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-payback",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-accessibility",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "アクセシビリティ"
+    ],
+    "reviewConcepts": [
+      "アクセシビリティ"
+    ],
+    "prompt": "Webの入力フォームにエラーがある場合、背景を赤色に変えるだけでは見分けにくい利用者がいる。改善として適切なものはどれか。",
+    "choices": [
+      "赤を緑へ変えるだけにする",
+      "色だけでなく、エラーの内容を文字でも示し入力項目と関連付ける",
+      "全ての文字を画像に置き換える",
+      "キーボードでの入力を禁止する"
+    ],
+    "correctIndex": 1,
+    "explanation": "色だけに意味を持たせず、エラーを文字などでも伝える。エラーメッセージを入力項目と関連付ければ、支援技術の利用時にも問題箇所と内容を理解しやすくなる。",
+    "choiceExplanations": [
+      "色だけで伝えるという問題が残る。",
+      "色以外の手掛かりと入力項目との対応を提供する。",
+      "文字の画像化だけでは内容の機械的な取得などを難しくする。",
+      "操作方法を制限し、利用しやすさを損なう。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-accessibility",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-sql-injection",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ・攻撃と対策",
+    "tags": [
+      "SQLインジェクション"
+    ],
+    "reviewConcepts": [
+      "SQLインジェクション"
+    ],
+    "prompt": "商品検索で、利用者の入力をSQL文字列へ連結してWHERE条件を作っている。入力中の記号をSQLの構文として扱わせないための対策として、最も適切なものはどれか。",
+    "choices": [
+      "エラーメッセージを非表示にするだけにする",
+      "入力が短ければ全て安全とみなす",
+      "SQL構造を固定し、値をプレースホルダーへバインドする",
+      "DBの通信ポート番号だけを変更する"
+    ],
+    "correctIndex": 2,
+    "explanation": "パラメーター化クエリーを利用し、SQLの命令構造と入力値を分離する。値をSQL文字列へ連結しない。動的な列名など値としてバインドできない箇所には、別途許可リストなどの設計が必要。",
+    "choiceExplanations": [
+      "情報漏えいは抑えられても、不正なSQL実行そのものを防ぐ対策にはならない。",
+      "短い文字列でもSQL構文に影響する入力がある。",
+      "SQL構造とデータを分けるため、入力値を構文として解釈させない。",
+      "接続先ポートを変えてもSQLの組立ての問題は残る。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-sql-injection",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html"
+      ]
+    }
+  },
+  {
+    "id": "review-a1-bandwidth",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報メディア",
+    "tags": [
+      "通信帯域と転送量"
+    ],
+    "reviewConcepts": [
+      "通信帯域と転送量"
+    ],
+    "prompt": "非圧縮の映像を、横640画素×縦480画素、1画素24ビット、毎秒30フレームで伝送する。制御情報などは無視する。必要なビットレートに最も近いものはどれか。Mは10の6乗とする。",
+    "choices": [
+      "1,769.472Mbit/s",
+      "27.648Mbit/s",
+      "73.728Mbit/s",
+      "221.184Mbit/s"
+    ],
+    "correctIndex": 3,
+    "explanation": "1フレームは640×480×24＝7,372,800ビット。毎秒30枚なので221,184,000bit/s、すなわち221.184Mbit/s。バイト単位で求めるなら27.648MB/sであり、ビット単位へ戻すと8倍になる。",
+    "choiceExplanations": [
+      "既にビットで計算した結果を、さらに8倍している。",
+      "バイト毎秒の数値をそのままビット毎秒と誤っている。",
+      "24bitを8bitとして計算した場合の値。",
+      "画素数×ビット数×フレーム数が正しく反映されている。"
+    ],
+    "origin": "ai",
+    "groupId": "review-a1-bandwidth",
+    "heldOut": false,
+    "source": {
+      "label": "解答履歴から作成した独自の関連問題（AI作成）",
+      "url": "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "2026-10-20に根拠資料の定義と正答の一意性、全選択肢をAIが照合。計算・操作問題は別手順のコードでも検算。条件・場面・問う方向を変更した関連問題。人による監修ではありません。",
+      "reviewer": "Codex AI",
+      "at": "2026-10-20T08:00:00Z",
+      "references": [
+        "https://www.ipa.go.jp/shiken/syllabus/omgdg50000005kq5-att/syllabus_ap_ver7_2.pdf"
+      ]
+    }
+  }
+]

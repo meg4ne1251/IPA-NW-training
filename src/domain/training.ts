@@ -1,13 +1,15 @@
+import { isFresh, latestGroups, relatedProgress, reviewIndex } from './review.ts';
 import type { LearningProfile } from './rapid.ts';
 export type Section = 'A-1' | 'A-2';
 export const supplementCollection = 'a1-supplement';
-export const isSupplement = (q: TrainingQuestion) => q.id.startsWith('supplement-a1-') && q.origin === 'ai';
+export const isSupplement = (q: TrainingQuestion) => (q.id.startsWith('supplement-a1-') || q.id.startsWith('review-a1-')) && q.origin === 'ai';
 export interface PracticeScope { collection?: string; topic?: string; tag?: string }
 export type Confidence = 'sure' | 'unsure' | 'guess' | 'unknown' | null;
 export type ReviewStatus = 'draft' | 'verified' | 'disputed' | 'retired';
 export interface TrainingQuestion {
   id: string; version: number; section: Section; topic: string; tags: string[];
   learning?: LearningProfile;
+  reviewConcepts?: string[];
   prompt: string; choices: [string, string, string, string]; correctIndex: number;
   explanation: string; choiceExplanations?: string[];
   origin: 'past' | 'ai' | 'original'; groupId: string; heldOut: boolean;
@@ -39,6 +41,7 @@ export function validateQuestion(input: unknown): TrainingQuestion {
   assert(Number.isInteger(q.version) && q.version > 0, '問題版が不正です。');
   assert(q.section === 'A-1' || q.section === 'A-2', '科目が不正です。');
   assert(text(q.topic, 100) && Array.isArray(q.tags) && q.tags.length <= 20 && q.tags.every(t => text(t, 100)), '分野・タグが不正です。');
+  assert(q.reviewConcepts === undefined || (Array.isArray(q.reviewConcepts) && q.reviewConcepts.length > 0 && q.reviewConcepts.length <= 20 && q.reviewConcepts.every(c => text(c, 100))), '復習概念の指定が不正です。');
   if (q.learning !== undefined) {
     const areas = q.section === 'A-1' ? ['technology', 'management', 'strategy'] : ['network', 'security', 'other'];
     assert(q.learning && typeof q.learning === 'object' && areas.includes(q.learning.area)
@@ -90,23 +93,11 @@ export function topicStats(rows: Outcome[]): TopicStat[] {
 }
 export function selectPractice(bank: TrainingQuestion[], history: Outcome[], section: Section, count: number, now = Date.now(), aiLimit = Math.floor(count / 5)) {
   const heldGroups = new Set(bank.filter(q => q.heldOut).map(q => q.groupId));
-  const candidates = bank.filter(q => q.section === section && q.review.status === 'verified' && !q.heldOut && !heldGroups.has(q.groupId));
-  const latest = new Map<string, Outcome>(); const concepts = new Map<string, number>();
-  for (const row of history.filter(r => r.question.section === section && r.question.review.status === 'verified')) {
-    latest.set(row.question.groupId, row);
-  }
-  for (const row of latest.values()) {
-    const weight = !row.correct ? (row.answer.confidence === 'sure' ? 5 : 3) : row.answer.confidence !== 'sure' ? 1 : 0;
-    for (const tag of row.question.tags) concepts.set(tag, Math.max(concepts.get(tag) ?? 0, weight));
-  }
-  const risk = (q: TrainingQuestion) => {
-    const r = latest.get(q.groupId);
-    const direct = r ? (!r.correct ? (r.answer.confidence === 'sure' ? 5 : 3) : r.answer.confidence !== 'sure' ? 1 : 0) : 0;
-    return Math.max(direct, ...q.tags.map(t => concepts.get(t) ?? 0));
-  };
-  const due = (q: TrainingQuestion) => {
-    const r = latest.get(q.groupId); return r && now - Date.parse(r.at) >= (r.correct && r.answer.confidence === 'sure' ? 3 : 1) * 86400000;
-  };
+  const candidates = bank.filter(q => q.section === section && q.review.status === 'verified' && !q.heldOut && !heldGroups.has(q.groupId) && isFresh(q, history));
+  const latest = latestGroups(history, section); const index = reviewIndex(history, section);
+  const related = (q: TrainingQuestion) => relatedProgress(q, index);
+  const risk = (q: TrainingQuestion) => Math.max(0, ...related(q).map(s => s.risk));
+  const due = (q: TrainingQuestion) => related(q).some(s => Date.parse(s.dueAt) <= now);
   const sorted = [...candidates].sort((a, b) => risk(b) - risk(a) || b.id.localeCompare(a.id));
   // Spread new questions across topics rather than walking adjacent question IDs.
   const topicAttempts = new Map<string, number>();
@@ -128,10 +119,10 @@ export function selectPractice(bank: TrainingQuestion[], history: Outcome[], sec
       selected.push(q); reasons[q.id] = reason; groups.add(q.groupId); taken++;
     }
   };
-  take(sorted.filter(due), Math.round(count * 8 / 30), '復習期限');
-  take(sorted.filter(q => risk(q) > 0), Math.round(count * 12 / 30), '苦手な概念の補強');
+  take(sorted.filter(due), Math.round(count * 8 / 30), '復習期限・別問題で確認');
+  take(sorted.filter(q => risk(q) > 0), Math.round(count * 12 / 30), '苦手な概念を類題・関連問題で補強');
   take(unseen, Math.round(count * 6 / 30), '未着手の確認');
-  take(sorted.filter(q => latest.get(q.groupId)?.correct), count - selected.length, '定着の確認');
+  take(sorted.filter(q => related(q).some(s => s.last.correct) && due(q)), count - selected.length, '間隔を空けて別問題で定着を確認');
   take(unseen, count - selected.length, '未着手から補充');
   take(sorted, count - selected.length, '検証済み問題から補充');
   return { questions: selected, reasons, shortage: Math.max(0, count - selected.length) };
