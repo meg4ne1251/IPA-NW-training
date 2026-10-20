@@ -33,7 +33,7 @@ export function createApp(store: TrainingStore, staticRoot = resolve('dist')) {
           if (req.method === 'GET' && !match[2]) { store.expire(); return json(200, store.publicSession(store.session(match[1]))); }
           if (req.method === 'PUT' && match[2] === 'draft') return json(200, store.save(match[1], body));
           if (req.method === 'POST' && match[2] === 'grade') return json(200, store.grade(match[1], body.questionId, body.revision, body.draft));
-          if (req.method === 'POST' && match[2] === 'submit') return json(200, store.submit(match[1], body.revision, body.draft));
+          if (req.method === 'POST' && match[2] === 'submit') return json(200, store.publicSession(store.submit(match[1], body.revision, body.draft)));
         }
         if (req.method === 'POST' && path === '/api/export') return json(200, store.exportContext(body.section as Section));
         if (req.method === 'POST' && path === '/api/import') return json(200, store.importSet(body));

@@ -1,3 +1,4 @@
+import { withOfficialExplanation } from './official-explanations.ts';
 import { withLearningPriority } from './learning-priorities.ts';
 import { rapidCollection, rapidStatus, selectRapid } from '../src/domain/rapid.ts';
 import { DatabaseSync } from 'node:sqlite';
@@ -41,7 +42,7 @@ export class TrainingStore {
   bank() {
     const latest = new Map<string, TrainingQuestion>();
     for (const q of this.records<TrainingQuestion>('questions')) if (!latest.has(q.id) || latest.get(q.id)!.version < q.version) latest.set(q.id, q);
-    return [...latest.values()].map(withLearningPriority);
+    return [...latest.values()].map(withOfficialExplanation).map(withLearningPriority);
   }
   sessions() { return this.records<Session>('sessions').sort((a, b) => b.startedAt.localeCompare(a.startedAt)); }
   session(id: string) {
@@ -50,9 +51,9 @@ export class TrainingStore {
   }
   writeSession(s: Session) { this.db.prepare('INSERT OR REPLACE INTO sessions VALUES (?, ?)').run(s.id, JSON.stringify(s)); }
   publicSession(s: Session): PublicSession {
-    if (s.status === 'submitted') return s;
-    return { ...s, questions: s.questions.map(q => {
-      if (s.graded?.[q.id]) return q;
+    return { ...s, questions: s.questions.map(original => {
+      const q = withOfficialExplanation(original);
+      if (s.status === 'submitted' || s.graded?.[q.id]) return q;
       const { correctIndex: _correct, explanation: _explanation, choiceExplanations: _choices, learning: _learning, ...safe } = q;
       const { answerUrl: _answerURL, ...source } = safe.source;
       // Concept labels such as "PoE" can reveal an answer; only show them after answer confirmation.
@@ -65,7 +66,7 @@ export class TrainingStore {
     const versions = new Map(this.records<TrainingQuestion>('questions').map(q => [`${q.id}:${q.version}`, q]));
     return outcomes(this.sessions()).map(r => {
       const current = versions.get(`${r.question.id}:${r.question.version}`);
-      return { ...r, question: withLearningPriority(current ? { ...r.question, review: current.review } : r.question) };
+      return { ...r, question: withLearningPriority(withOfficialExplanation(current ? { ...r.question, review: current.review } : r.question)) };
     });
   }
   dashboard() {

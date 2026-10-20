@@ -10,3 +10,5 @@ main,article,.question-layout>*,fieldset{min-width:0}main{overflow-wrap:anywhere
 .answer-confirm{padding:16px;border:1px solid #b0c7a3;border-radius:8px;background:#edf4e7;margin:16px 0}.answer-confirm p{font-size:13px;margin-bottom:10px}.answer-confirm small{margin-top:8px}.answer-confirm button{width:100%}.explanation{scroll-margin-top:16px}
 
 .rapid-section article{background:#eef5e9;border-color:#aec69d}.rapid-section small{margin-top:14px}.rapid-progress{font-size:14px}.rapid-progress strong{color:var(--green);font-size:20px}
+
+.explanation-body{white-space:pre-line;overflow-wrap:anywhere}
