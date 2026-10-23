@@ -19,6 +19,7 @@
     "collect:materials": "node scripts/setup-materials.mjs scripts/collect-archive.py"
   },
   "dependencies": {
+    "html-to-image": "^1.11.13",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

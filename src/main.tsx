@@ -8,6 +8,7 @@ import type { TrainingStore } from '../server/store';
 import './style.css';
 import { KeyboardShortcuts } from './shortcuts';
 import { SessionSync, sessionDraft } from './session-sync';
+import { copyQuestionScreenshot } from './screenshot';
 
 type Dashboard = ReturnType<TrainingStore['dashboard']>;
 type Draft = Pick<PublicSession, 'answers' | 'currentIndex' | 'revision'>;
@@ -128,6 +129,20 @@ function ConceptTable({ concepts }: { concepts: Dashboard['analysis'][number]['c
 
 function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSession; onHome: () => void; onChange: (s: PublicSession) => void; onNext: () => void }) {
   const [session, setSession] = useState(initial);
+  const captureRef = useRef<HTMLDivElement>(null);
+  const [capturing, setCapturing] = useState(false);
+  const [captureMessage, setCaptureMessage] = useState('');
+  const [captureError, setCaptureError] = useState('');
+  async function screenshot() {
+    if (!captureRef.current || capturing) return;
+    setCapturing(true); setCaptureMessage(''); setCaptureError('');
+    try {
+      await copyQuestionScreenshot(captureRef.current);
+      setCaptureMessage('問題と解答欄の画像をクリップボードにコピーしました。');
+    } catch (error) {
+      setCaptureError(error instanceof Error && error.message.includes('HTTPS') ? error.message : '画像をコピーできませんでした。問題画像の読み込みとブラウザーのクリップボード権限を確認して、再試行してください。');
+    } finally { setCapturing(false); }
+  }
   const [action, setAction] = useState<'grade' | 'submit' | 'home' | null>(null);
   const busy = action !== null;
   const [saving, setSaving] = useState(false);
@@ -304,10 +319,18 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
     {submitted && <section className="result"><p className="eyebrow">RESULT</p><h1 className="compact-title">{score}<span> / {session.questions.length}問正解</span></h1><p>迷った・推測・わからない・自信度未入力の正解：{uncertain}問 · 未回答：{unanswered}問</p>{session.practiceScope?.collection === rapidCollection && <p>今回確認した分野：{[...new Set(session.questions.map(q => q.topic))].join(' / ')}。次のセットも未着手の知識と別問題での復習を組み合わせます。</p>}<div className="actions"><button onClick={onNext}>{session.practiceScope?.collection === rapidCollection ? '短期集中テストを続ける →' : session.practiceScope?.collection === reviewCollection ? '苦手・復習の類題を続ける →' : session.practiceScope?.collection === supplementCollection ? '同じ範囲で続ける →' : '続けて問題を解く →'}</button><button className="secondary" onClick={onHome}>履歴・AI連携へ</button></div></section>}
     <section className="exercise-heading"><div><p className="eyebrow">{session.section} / {submitted ? 'REVIEW' : 'PRACTICE'}</p><h2>{session.title}</h2></div>{remaining !== null && !submitted && <p className={`timer ${remaining < 300 ? 'urgent' : ''}`} aria-label="残り時間">残り {Math.floor(remaining / 60)}:{String(remaining % 60).padStart(2, '0')}</p>}</section>
     <div className="question-layout"><aside><p>{session.currentIndex + 1} / {session.questions.length}問</p><div className="question-map">{session.questions.map((x, i) => <button key={x.id} disabled={busy || expired || paused} aria-label={`問${i + 1}${session.answers[x.id]?.choice != null ? ' 回答済み' : ' 未回答'}${session.answers[x.id]?.flagged ? ' 見直し' : ''}`} aria-current={i === session.currentIndex ? 'step' : undefined} className={`${session.answers[x.id]?.choice != null ? 'answered' : ''} ${session.answers[x.id]?.flagged ? 'flagged' : ''}`} onClick={() => void move(i)}>{i + 1}</button>)}</div><p className="muted">色付き：回答済み<br />●：見直し</p>{!session.deadline && !submitted && <button className="secondary" onClick={() => { started.current = Date.now(); setPaused(!paused); }}>{paused ? '学習を再開' : '一時停止'}</button>}</aside>
-      <article className="question-card"><div className="section-heading"><p className="topic">{q.topic}{q.tags.length > 0 ? ` · ${q.tags.join(' / ')}` : ''}</p><span className="pill">{q.origin === 'past' ? '公式過去問' : q.origin === 'ai' ? 'AI類題・内容確認済み' : '独自問題'}</span></div><h2>{q.prompt}</h2>{session.selectionReasons[q.id] && <small>出題理由：{session.selectionReasons[q.id]}</small>}
-        {paused ? <div className="empty">一時停止中です。再開すると問題が表示されます。</div> : <>
+      <article className="question-card">
+        <div className="screenshot-actions"><button className="secondary" disabled={capturing || paused} onClick={() => void screenshot()}>{capturing ? '画像をコピーしています…' : 'スクリーンショットをコピー'}</button></div>
+        {captureMessage && <p role="status" className="message">{captureMessage}</p>}
+        {captureError && <p role="alert" className="message error">{captureError}</p>}
+        {paused && <div className="empty">一時停止中です。再開すると問題が表示されます。</div>}
+        <div ref={captureRef}><div className="section-heading"><p className="topic">{q.topic}{q.tags.length > 0 ? ` · ${q.tags.join(' / ')}` : ''}</p><span className="pill">{q.origin === 'past' ? '公式過去問' : q.origin === 'ai' ? 'AI類題・内容確認済み' : '独自問題'}</span></div><h2>{q.prompt}</h2>{session.selectionReasons[q.id] && <small>出題理由：{session.selectionReasons[q.id]}</small>}
+        {!paused && <>
           {q.source.image && <><a className="question-image-link" href={q.source.image} target="_blank" rel="noreferrer"><img className="question-image" src={q.source.image} alt={`${q.source.label}の問題文・図表・選択肢。クリックで拡大できます。`} onError={() => setError('問題画像を読み込めません。原本PDFで該当ページを確認してください。')} /></a><small>問題部分を切り抜いて表示しています。問題文の変更はありません。画像を押すと拡大します。</small></>}
           <fieldset disabled={revealed || busy || expired}><legend>解答を選んでください</legend><div className={q.source.image ? 'answer-grid' : 'answer-list'}>{q.choices.map((choice, i) => <label key={i} className={`${revealed && i === q.correctIndex ? 'correct-choice' : ''}`}><input type="radio" name="choice" checked={a.choice === i} onChange={() => void update({ choice: i })} />{choice === labels[i] ? choice : `${labels[i]}　${choice}`}</label>)}</div><div className="actions"><button className="text-button" type="button" disabled={revealed || busy || expired || a.choice === null} onClick={() => void update({ choice: null })}>回答を取り消す</button></div></fieldset>
+        </>}
+        </div>
+        {!paused && <>
           <fieldset disabled={revealed || busy || expired}><legend>自信度</legend><div className="confidence">{([['sure', '確信あり'], ['unsure', '迷った'], ['guess', '推測'], ['unknown', 'わからない']] as const).map(([value, label]) => <label key={value}><input type="radio" name="confidence" checked={a.confidence === value} onChange={() => void update({ confidence: value })} />{label}</label>)}</div></fieldset>
           {!submitted && <label><input type="checkbox" checked={a.flagged} disabled={busy || expired} onChange={e => void update({ flagged: e.target.checked })} />後で見直す</label>}
           {!revealed && <div className="answer-confirm"><p>解答と自信度を選び、1問ずつ正誤・解説を確認します。「わからない」は解答なしでも確定できます。</p><button data-answer-confirm disabled={busy || expired || paused || (a.choice === null && a.confidence !== 'unknown')} onClick={() => void commit('grade')}>この回答を確定する</button><small>キーボード：e で確定 · l で次の問題</small></div>}

@@ -12,3 +12,5 @@ main,article,.question-layout>*,fieldset{min-width:0}main{overflow-wrap:anywhere
 .rapid-section article{background:#eef5e9;border-color:#aec69d}.rapid-section small{margin-top:14px}.rapid-progress{font-size:14px}.rapid-progress strong{color:var(--green);font-size:20px}
 
 .explanation-body{white-space:pre-line;overflow-wrap:anywhere}
+
+.screenshot-actions{display:flex;justify-content:flex-end;margin-bottom:16px}
