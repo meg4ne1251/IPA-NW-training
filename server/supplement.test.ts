@@ -151,9 +151,9 @@ describe('補強演習の選抜・保存・登録', () => {
     const previous = process.env.TRAINING_DATA_DIR; process.env.TRAINING_DATA_DIR = first.directory;
     try {
       const updated = openStore(); stores.push(updated);
-      expect(updated.bank()).toHaveLength(156); expect(updated.session(s.id).practiceScope?.topic).toBe(bank[0].topic);
+      expect(updated.bank()).toHaveLength(198); expect(updated.session(s.id).practiceScope?.topic).toBe(bank[0].topic);
       const again = openStore(); stores.push(again);
-      expect(again.bank()).toHaveLength(156); expect(again.revision()).toBe(1);
+      expect(again.bank()).toHaveLength(198); expect(again.revision()).toBe(1);
       expect(again.session(s.id).questions).toHaveLength(1);
     } finally { if (previous === undefined) delete process.env.TRAINING_DATA_DIR; else process.env.TRAINING_DATA_DIR = previous; }
   });

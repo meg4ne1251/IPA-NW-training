@@ -21,6 +21,7 @@ DBの変更はアプリと共通の保存・検証処理を通す。
 ## 処理の分離
 
 - `src/domain/training.ts`：問題型、入力検証、習熟の状態に応じた選抜、履歴の集計。
+- `src/domain/focused.ts`：復習専用・新規分野専用の候補作成、同題・同内容の除外、出題可能件数。`practiceScope.collection`で区別して保存し、10問・30問の不足は保存前に拒否する。
 - `src/main.tsx`：診断・演習・模試、回答と自信度、見直し、結果、履歴、JSON入出力。
 - `server/store.ts`：SQLite、問題版と出題時スナップショット、途中回答、提出、AI依頼・取り込み、バックアップ。
 - `server/index.ts`：HTTP API、同一オリジン検証、教材とビルド成果物の配信。

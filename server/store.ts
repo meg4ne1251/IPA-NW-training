@@ -3,6 +3,7 @@ import { conceptKeys, isFresh, relatedProgress, reviewIndex, reviewAnalysis, rev
 import { withOfficialExplanation } from './official-explanations.ts';
 import { withLearningPriority } from './learning-priorities.ts';
 import { rapidCollection, rapidStatus, selectRapid } from '../src/domain/rapid.ts';
+import { focusedStatus, newOnlyCollection, reviewOnlyCollection, selectFocused } from '../src/domain/focused.ts';
 import { DatabaseSync } from 'node:sqlite';
 import { randomUUID } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
@@ -79,6 +80,7 @@ export class TrainingStore {
       analysis: (['A-1', 'A-2'] as const).map(section => reviewAnalysis(bank, history, section)),
       stats: topicStats(history), revision: this.revision(),
       rapid: (['A-1', 'A-2'] as const).map(section => rapidStatus(bank, history, section)),
+      focused: (['A-1', 'A-2'] as const).map(section => focusedStatus(bank, history, section)),
       supplements: [...new Set(supplements.map(q => q.topic))].sort((a, b) => a.localeCompare(b, 'ja')).map(topic => {
         const items = supplements.filter(q => q.topic === topic);
         return { topic, count: items.length, tags: [...new Set(items.flatMap(q => q.tags))].sort((a, b) => a.localeCompare(b, 'ja')).map(tag => ({ tag, count: items.filter(q => q.tags.includes(tag)).length })) };
@@ -109,6 +111,9 @@ export class TrainingStore {
     const supplement = collection === supplementCollection;
     const rapid = collection === rapidCollection;
     const review = collection === reviewCollection;
+    const focused = collection === reviewOnlyCollection || collection === newOnlyCollection;
+    assert(!focused || mode === 'practice', '復習専用・新規分野専用は練習で利用してください。');
+    assert(!focused || count === 10 || count === 30, '復習専用・新規分野専用の問題数は10問または30問です。');
     assert(!review || mode === 'practice', '類題による復習は練習で利用してください。');
     assert(!rapid || mode === 'practice', '短期集中テストは練習で利用してください。');
     assert(!supplement || (section === 'A-1' && mode === 'practice'), '補強問題はA-1の練習で利用してください。');
@@ -116,13 +121,15 @@ export class TrainingStore {
     assert(!this.sessions().some(s => s.status === 'active'), '途中の演習を再開して提出してください。');
     const all = this.bank();
     const heldGroups = new Set(all.filter(q => q.heldOut).map(q => q.groupId));
-    const bank = all.filter(q => !heldGroups.has(q.groupId) && (supplement ? isSupplement(q) : rapid || review || !collection || q.source.url === collection)
+    const bank = all.filter(q => !heldGroups.has(q.groupId) && (supplement ? isSupplement(q) : focused || rapid || review || !collection || q.source.url === collection)
       && (!focus.topic || q.topic === focus.topic) && (!focus.tag || q.tags.includes(focus.tag)));
     const history = this.history(); const index = reviewIndex(history, section);
     const reviewBank = review ? bank.filter(q => relatedProgress(q, index).some(s => s.risk > 0 || Date.parse(s.dueAt) <= Date.now())) : bank;
     // The explicit supplement exercise is entirely AI-authored. Mixed practice keeps its 20% limit.
-    const selected = rapid ? selectRapid(bank, this.history(), section, count)
+    const selected = focused ? selectFocused(bank, history, section, collection, count)
+      : rapid ? selectRapid(bank, history, section, count)
       : selectPractice(reviewBank, history, section, count, Date.now(), supplement ? count : Math.floor(count / 5));
+    assert(!focused || selected.shortage === 0, `${collection === reviewOnlyCollection ? '復習専用' : '新規分野専用'}で出題できる問題は${selected.questions.length}問です。${count}問に不足するため開始できません。対象外の問題による補充は行いません。`);
     if (mode !== 'practice') {
       const fullCount = section === 'A-1' ? 30 : 25;
       assert(count === fullCount, '診断・本番形式は本番と同じ問題数で実施します。');
@@ -132,7 +139,7 @@ export class TrainingStore {
     }
     assert(selected.questions.length > 0, 'この範囲で出題可能な別問題がありません。出題範囲を広げるか、AIに新しい類題の追加を依頼してください。');
     return this.newSession(section, mode, selected.questions, selected.reasons,
-      mode === 'practice' ? `${rapid ? `${section} 短期集中テスト` : review ? `${section} 苦手・復習の類題` : supplement ? `A-1補強 · ${focus.tag || focus.topic || '全分野'}` : '弱点と未着手の演習'}（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`,
+      mode === 'practice' ? `${collection === reviewOnlyCollection ? `${section} 復習専用` : collection === newOnlyCollection ? `${section} 新規分野専用` : rapid ? `${section} 短期集中テスト` : review ? `${section} 苦手・復習の類題` : supplement ? `A-1補強 · ${focus.tag || focus.topic || '全分野'}` : '弱点と未着手の演習'}（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`,
       mode === 'practice' ? { collection, ...focus } : undefined);
   }
   newSession(section: Section, mode: Session['mode'], questions: TrainingQuestion[], reasons: Record<string, string>, title: string, practiceScope?: PracticeScope) {
@@ -316,7 +323,7 @@ interface ImportInput {
 }
 interface ImportRecord extends ImportInput { importedAt: string; sessionId: string | null }
 export function openStore() {
-  const seed = ['materials/2025-spring.json', 'materials/archive.json', 'materials/a1-supplement.json', 'materials/review-variants.json'].flatMap(name => {
+  const seed = ['materials/2025-spring.json', 'materials/archive.json', 'materials/a1-supplement.json', 'materials/review-variants.json', 'materials/focused-supplement.json'].flatMap(name => {
     const path = resolve(name); return existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) as TrainingQuestion[] : [];
   });
   const directory = process.env.TRAINING_DATA_DIR || resolve('data');

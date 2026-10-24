@@ -1,5 +1,6 @@
 import { reviewCollection } from './domain/review';
 import { rapidCollection } from './domain/rapid';
+import { newOnlyCollection, reviewOnlyCollection } from './domain/focused';
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { blankAnswer, labels, supplementCollection } from './domain/training';
@@ -47,6 +48,7 @@ function App() {
     await task(async () => { const s = await api<PublicSession>('/sessions', 'POST', { section: targetSection, mode, count, ...scope }); setSession(s); location.hash = `session/${s.id}`; await refresh(); window.scrollTo(0, 0); });
   }
   const rapid = dashboard?.rapid.find(r => r.section === section);
+  const focused = dashboard?.focused.find(r => r.section === section);
   const analysis = dashboard?.analysis.find(a => a.section === section);
   const active = dashboard?.sessions.find(s => s.status === 'active');
   const completed = dashboard?.sessions.filter(s => s.status === 'submitted') ?? [];
@@ -58,9 +60,9 @@ function App() {
     <header><a className="brand" href="#" onClick={e => { e.preventDefault(); if (!session || session.status === 'submitted') void task(async () => { setSession(null); location.hash = ''; await refresh(); }); }}>NW <span>/ TRAINING</span></a><span className="pill">A-1を中心に、1日2時間</span></header>
     {error && <div className="message error" role="alert">{error}<button className="text-button" onClick={() => setError('')}>閉じる</button></div>}
     {notice && <div className="message" role="status">{notice}</div>}
-    {!dashboard && !error && <p role="status">学習データを読み込んでいます…</p>}
-    {!dashboard && error && <button onClick={() => void task(refresh)}>再接続する</button>}
-    {session ? <Exercise key={session.id} initial={session} onHome={() => void task(async () => { setSession(null); location.hash = ''; await refresh(); })} onChange={setSession} onNext={() => void start('practice', [rapidCollection, reviewCollection].includes(session.practiceScope?.collection ?? '') ? session.questions.length : 30, session.section, session.practiceScope ?? {})} /> : dashboard && <>
+    {!dashboard && !session && !error && <p role="status">学習データを読み込んでいます…</p>}
+    {!dashboard && !session && error && <button onClick={() => void task(refresh)}>再接続する</button>}
+    {session ? <Exercise key={session.id} initial={session} onHome={() => void task(async () => { setSession(null); location.hash = ''; await refresh(); })} onChange={setSession} onNext={() => void start('practice', [rapidCollection, reviewCollection, reviewOnlyCollection, newOnlyCollection].includes(session.practiceScope?.collection ?? '') ? session.questions.length : 30, session.section, session.practiceScope ?? {})} /> : dashboard && <>
       <nav className="tabs" aria-label="メインメニュー">{([['learn', '今日の学習'], ['history', '履歴と苦手分野'], ['ai', 'AIとの受け渡し']] as const).map(([id, label]) => <button key={id} aria-current={tab === id ? 'page' : undefined} onClick={() => setTab(id)}>{label}</button>)}</nav>
       {tab === 'learn' && <>
         <section className="hero"><p className="eyebrow">PAST QUESTIONS → UNDERSTANDING</p><h1>一問ずつ解いて、<br />苦手を減らしていく。</h1><p>過去問で確かめ、迷った理由を記録。<br />あなたの結果から、次に取り組む問題へ。</p><p className="muted">受験日：2026年10月26日 · 学習配分の目安 A-1 80% / A-2 20%</p></section>
@@ -78,6 +80,26 @@ function App() {
           <div className="actions"><button disabled={busy || !!active || !rapid?.available} onClick={() => void start('practice', 10, section, { collection: rapidCollection })}>短期集中テストを10問</button><button className="secondary" disabled={busy || !!active || !rapid?.available} onClick={() => void start('practice', 30, section, { collection: rapidCollection })}>短期集中テストを30問</button></div>
           <small>1問ずつ解説を確認する学習用テストです。年度指定に関係なく全教材から選び、出題できる問題が少ないときはその件数で始めます。</small>
         </article></section>
+        <section aria-labelledby="focused-heading">
+          <h2 id="focused-heading">目的を絞って10問・30問</h2>
+          <div className="focused-grid">
+            <article aria-labelledby="review-only-heading">
+              <p className="eyebrow">{section} · REVIEW ONLY</p><h3 id="review-only-heading">復習専用</h3>
+              <p>直近の誤答・迷った正解・わからないと、確信正解から72時間以上たった問題を再確認。苦手な既習概念の関連問題も対象です。</p>
+              <p>出題可能：<strong>{focused?.reviewAvailable ?? 0}問</strong></p>
+              <div className="actions">{([10, 30] as const).map(count => <button key={count} className={count === 30 ? 'secondary' : undefined} disabled={busy || !!active || (focused?.reviewAvailable ?? 0) < count} onClick={() => void start('practice', count, section, { collection: reviewOnlyCollection })}>復習専用を{count}問</button>)}</div>
+              <small>このモードでは既出問題も出題します。履歴がない場合や対象が10問未満の場合は開始できません。</small>
+            </article>
+            <article aria-labelledby="new-only-heading">
+              <p className="eyebrow">{section} · NEW FIELDS ONLY</p><h3 id="new-only-heading">新規分野専用</h3>
+              <p>過去に取り組んだ分野・復習概念を除外し、未回答分野だけを出題。同じ問題、版違い、同題や類題も除外します。</p>
+              <p>出題可能：<strong>{focused?.newAvailable ?? 0}問</strong></p>
+              <div className="actions">{([10, 30] as const).map(count => <button key={count} className={count === 30 ? 'secondary' : undefined} disabled={busy || !!active || (focused?.newAvailable ?? 0) < count} onClick={() => void start('practice', count, section, { collection: newOnlyCollection })}>新規分野専用を{count}問</button>)}</div>
+              <small>1問でも取り組んだ分野は、分野全体を対象外にします。未回答の問題でも、既習分野・概念に重なれば出題しません。</small>
+            </article>
+          </div>
+          <p className="muted">どちらも年度指定に関係なく、検証済みの全教材から選びます。指定数に足りない場合は開始できません。10問・30問を完了した後も、同じモード・問題数で続けられます。</p>
+        </section>
         {section === 'A-1' && supplementTopics.length > 0 && <section aria-labelledby="supplement-heading"><article>
           <p className="eyebrow">A-1 · TOPIC PRACTICE</p><h2 id="supplement-heading">分野別の細かな補強</h2>
           <p>{supplementTopics.length}分野・{supplementTopics.reduce((sum, t) => sum + t.count, 0)}問。用語の区別、計算、具体的な場面での判断を練習します。全問に正答の理由・各選択肢の説明・根拠資料があります。</p>
@@ -316,7 +338,7 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
     {error && <div className="message error" role="alert">{error}{unsaved && <button disabled={busy} onClick={() => void save()}>保存を再試行</button>}<button className="secondary" onClick={() => download(`unsaved-${session.id}.json`, session)}>回答の控えを保存</button></div>}
     {conflicts.length > 0 && <div className="message" role="alert">別の画面との競合などで未保存になった回答の控えを保持しています。現在の回答とは別にダウンロードできます。<button className="secondary" onClick={() => download(`conflicting-answers-${session.id}.json`, { sessionId: session.id, drafts: conflicts })}>競合した回答の控えを保存</button></div>}
     {timeoutError && !submitted && <div className="message error" role="alert">{timeoutError}</div>}
-    {submitted && <section className="result"><p className="eyebrow">RESULT</p><h1 className="compact-title">{score}<span> / {session.questions.length}問正解</span></h1><p>迷った・推測・わからない・自信度未入力の正解：{uncertain}問 · 未回答：{unanswered}問</p>{session.practiceScope?.collection === rapidCollection && <p>今回確認した分野：{[...new Set(session.questions.map(q => q.topic))].join(' / ')}。次のセットも未着手の知識と別問題での復習を組み合わせます。</p>}<div className="actions"><button onClick={onNext}>{session.practiceScope?.collection === rapidCollection ? '短期集中テストを続ける →' : session.practiceScope?.collection === reviewCollection ? '苦手・復習の類題を続ける →' : session.practiceScope?.collection === supplementCollection ? '同じ範囲で続ける →' : '続けて問題を解く →'}</button><button className="secondary" onClick={onHome}>履歴・AI連携へ</button></div></section>}
+    {submitted && <section className="result"><p className="eyebrow">RESULT</p><h1 className="compact-title">{score}<span> / {session.questions.length}問正解</span></h1><p>迷った・推測・わからない・自信度未入力の正解：{uncertain}問 · 未回答：{unanswered}問</p>{session.practiceScope?.collection === rapidCollection && <p>今回確認した分野：{[...new Set(session.questions.map(q => q.topic))].join(' / ')}。次のセットも未着手の知識と別問題での復習を組み合わせます。</p>}<div className="actions"><button onClick={onNext}>{session.practiceScope?.collection === reviewOnlyCollection ? '復習専用を続ける →' : session.practiceScope?.collection === newOnlyCollection ? '新規分野専用を続ける →' : session.practiceScope?.collection === rapidCollection ? '短期集中テストを続ける →' : session.practiceScope?.collection === reviewCollection ? '苦手・復習の類題を続ける →' : session.practiceScope?.collection === supplementCollection ? '同じ範囲で続ける →' : '続けて問題を解く →'}</button><button className="secondary" onClick={onHome}>履歴・AI連携へ</button></div></section>}
     <section className="exercise-heading"><div><p className="eyebrow">{session.section} / {submitted ? 'REVIEW' : 'PRACTICE'}</p><h2>{session.title}</h2></div>{remaining !== null && !submitted && <p className={`timer ${remaining < 300 ? 'urgent' : ''}`} aria-label="残り時間">残り {Math.floor(remaining / 60)}:{String(remaining % 60).padStart(2, '0')}</p>}</section>
     <div className="question-layout"><aside><p>{session.currentIndex + 1} / {session.questions.length}問</p><div className="question-map">{session.questions.map((x, i) => <button key={x.id} disabled={busy || expired || paused} aria-label={`問${i + 1}${session.answers[x.id]?.choice != null ? ' 回答済み' : ' 未回答'}${session.answers[x.id]?.flagged ? ' 見直し' : ''}`} aria-current={i === session.currentIndex ? 'step' : undefined} className={`${session.answers[x.id]?.choice != null ? 'answered' : ''} ${session.answers[x.id]?.flagged ? 'flagged' : ''}`} onClick={() => void move(i)}>{i + 1}</button>)}</div><p className="muted">色付き：回答済み<br />●：見直し</p>{!session.deadline && !submitted && <button className="secondary" onClick={() => { started.current = Date.now(); setPaused(!paused); }}>{paused ? '学習を再開' : '一時停止'}</button>}</aside>
       <article className="question-card">

@@ -1,4 +1,15 @@
 import { test, expect } from '@playwright/test';
+import type { APIRequestContext } from '@playwright/test';
+
+async function finishActive(request: APIRequestContext) {
+  const dashboard = await (await request.get('/api/dashboard', { maxRetries: 2 })).json();
+  for (const active of dashboard.sessions.filter((s: { status: string }) => s.status === 'active')) {
+    const session = await (await request.get(`/api/sessions/${active.id}`)).json();
+    expect((await request.post(`/api/sessions/${active.id}/submit`, { data: { revision: session.revision } })).ok()).toBe(true);
+  }
+}
+test.beforeEach(async ({ request }) => finishActive(request));
+test.afterEach(async ({ request }) => finishActive(request));
 
 test('演習→保存・再読込→提出→AIファイル出力・取り込み→再演習', async ({ page }) => {
   await page.goto('/');
@@ -52,12 +63,7 @@ test('スマートフォン幅で画面がはみ出さず、キーボードで�
 });
 
 
-test('わからないの永続化・vim移動・全ボタンのヒント操作', async ({ page, request }) => {
-  const dashboard = await (await request.get('/api/dashboard')).json();
-  for (const active of dashboard.sessions.filter((s: { status: string }) => s.status === 'active')) {
-    const session = await (await request.get(`/api/sessions/${active.id}`)).json();
-    expect((await request.post(`/api/sessions/${active.id}/submit`, { data: { revision: session.revision } })).ok()).toBe(true);
-  }
+test('わからないの永続化・vim移動・全ボタンのヒント操作', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 780 });
   await page.goto('/');
   await page.getByRole('button', { name: '10問を解く', exact: true }).click();

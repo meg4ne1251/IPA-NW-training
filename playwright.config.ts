@@ -3,4 +3,5 @@ export default defineConfig({ testDir: './e2e', workers: 1, use: { baseURL: 'htt
   { command: 'node scripts/e2e-server.ts', url: 'http://127.0.0.1:3199/api/dashboard', reuseExistingServer: false },
   { command: 'node scripts/e2e-server.ts --supplement', url: 'http://127.0.0.1:3200/api/dashboard', reuseExistingServer: false },
   { command: 'node scripts/e2e-server.ts --rapid', url: 'http://127.0.0.1:3201/api/dashboard', reuseExistingServer: false },
+  { command: 'node scripts/e2e-server.ts --focused', url: 'http://127.0.0.1:3202/api/dashboard', reuseExistingServer: false },
 ], reporter: 'list' });

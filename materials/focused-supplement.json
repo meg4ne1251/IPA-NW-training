@@ -1,0 +1,1808 @@
+[
+  {
+    "id": "focused-a-1-unsigned-range",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・数値表現",
+    "tags": [
+      "符号なし整数の表現範囲"
+    ],
+    "reviewConcepts": [
+      "符号なし整数の表現範囲"
+    ],
+    "prompt": "符号なし12ビット整数で表せる最大値はどれか。全ビットを数値に使う。",
+    "choices": [
+      "4095",
+      "2047",
+      "4096",
+      "8191"
+    ],
+    "correctIndex": 0,
+    "explanation": "12個のビットが表す値は0から2^12−1までなので、最大値は4095。",
+    "choiceExplanations": [
+      "12個のビットが表す値は0から2^12−1までなので、最大値は4095。",
+      "2047は符号なし11ビットの最大値。符号ビットを確保する必要はない。",
+      "4096は値の種類の数であり、0も含むため最大値は1小さい。",
+      "8191は符号なし13ビットの最大値。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-unsigned-range",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-signed-overflow",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・数値表現",
+    "tags": [
+      "符号付き整数のオーバーフロー"
+    ],
+    "reviewConcepts": [
+      "符号付き整数のオーバーフロー"
+    ],
+    "prompt": "8ビットの2の補数で120と15を加算し、下位8ビットだけを残す。そのビット列を同じ8ビットの符号付き整数として解釈した値はどれか。",
+    "choices": [
+      "127",
+      "−121",
+      "135",
+      "−7"
+    ],
+    "correctIndex": 1,
+    "explanation": "120＋15＝135＝10000111₂。8ビットの2の補数としては135−256＝−121になる。\n同符号の正数同士の加算で負数になり、符号付きオーバーフローが発生する。",
+    "choiceExplanations": [
+      "127への飽和処理は指定されていない。下位8ビットを残す条件と異なる。",
+      "120＋15＝135＝10000111₂。8ビットの2の補数としては135−256＝−121になる。",
+      "数学上の和だが、8ビット符号付き整数の範囲−128〜127を超える。",
+      "和の下位7ビットだけを符号と分けて扱う方法は2の補数の解釈ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-signed-overflow",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-mask",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・数値表現",
+    "tags": [
+      "ビットマスク"
+    ],
+    "reviewConcepts": [
+      "ビットマスク"
+    ],
+    "prompt": "16ビットの値0x3A85とマスク0x00F0のビットごとのANDを取り、結果を論理的に右へ4ビット移動する。結果を16進数で示したものはどれか。",
+    "choices": [
+      "0x0005",
+      "0x003A",
+      "0x0008",
+      "0x0080"
+    ],
+    "correctIndex": 2,
+    "explanation": "0x3A85 AND 0x00F0＝0x0080。4ビット右シフトで0x0008となる。",
+    "choiceExplanations": [
+      "末尾の4ビットだけを抽出すると5だが、マスクはその上の4ビットを指定している。",
+      "0x3Aは上位8ビット。マスク0x00F0で抽出する部分ではない。",
+      "0x3A85 AND 0x00F0＝0x0080。4ビット右シフトで0x0008となる。",
+      "AND直後の値であり、右シフトを適用していない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-mask",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-quantization",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・数値表現",
+    "tags": [
+      "固定小数点の量子化刻み"
+    ],
+    "reviewConcepts": [
+      "固定小数点の量子化刻み"
+    ],
+    "prompt": "符号なし固定小数点で、下位3ビットを小数部、残りを整数部として使う。隣り合う表現可能な値の差はいくつか。",
+    "choices": [
+      "0.003",
+      "0.25",
+      "8",
+      "0.125"
+    ],
+    "correctIndex": 3,
+    "explanation": "最下位ビットの重みは2^−3＝1/8＝0.125。これが隣り合う値の刻みになる。",
+    "choiceExplanations": [
+      "小数部3ビットを10進3桁と解釈している。基数は2である。",
+      "0.25＝2^−2は小数部2ビットの場合の刻み。",
+      "8＝2^3は逆数。小数部の最下位ビットの重みではない。",
+      "最下位ビットの重みは2^−3＝1/8＝0.125。これが隣り合う値の刻みになる。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-quantization",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-binomial",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・確率と情報",
+    "tags": [
+      "二項分布"
+    ],
+    "reviewConcepts": [
+      "二項分布"
+    ],
+    "prompt": "1回の成功確率が1/4で、各回が独立な試行を3回行う。ちょうど1回成功する確率はどれか。",
+    "choices": [
+      "27/64",
+      "1/64",
+      "9/64",
+      "37/64"
+    ],
+    "correctIndex": 0,
+    "explanation": "成功位置は3通り。それぞれの確率は(1/4)×(3/4)^2＝9/64なので、合計27/64。",
+    "choiceExplanations": [
+      "成功位置は3通り。それぞれの確率は(1/4)×(3/4)^2＝9/64なので、合計27/64。",
+      "1/64は3回すべて成功する確率。",
+      "9/64は成功位置を一つに固定した場合の確率で、3通りを合計していない。",
+      "37/64は少なくとも1回成功する確率1−(3/4)^3で、2回・3回成功も含む。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-binomial",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://docs.python.org/3/library/itertools.html#itertools.product"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://docs.python.org/3/library/itertools.html#itertools.product"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-without-replacement",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・確率と情報",
+    "tags": [
+      "非復元抽出の確率"
+    ],
+    "reviewConcepts": [
+      "非復元抽出の確率"
+    ],
+    "prompt": "赤球3個と青球2個の袋から、取り出した球を戻さずに続けて2個取り出す。どちらも赤球である確率はどれか。各球は同じ確率で選ばれる。",
+    "choices": [
+      "1/5",
+      "3/10",
+      "9/25",
+      "3/5"
+    ],
+    "correctIndex": 1,
+    "explanation": "1個目が赤の確率3/5に、赤を1個取り出した後の2/4を掛けて3/10。",
+    "choiceExplanations": [
+      "1/5では赤球の組合せ3通りを正しく数えていない。全10通り中3通りが赤同士。",
+      "1個目が赤の確率3/5に、赤を1個取り出した後の2/4を掛けて3/10。",
+      "9/25＝(3/5)^2は、球を戻して毎回同じ比率にする場合の値。",
+      "3/5は1個目だけが赤である確率で、2個目の条件を含まない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-without-replacement",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://docs.python.org/3/library/itertools.html#itertools.product"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://docs.python.org/3/library/itertools.html#itertools.product"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-complement",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・確率と情報",
+    "tags": [
+      "余事象"
+    ],
+    "reviewConcepts": [
+      "余事象"
+    ],
+    "prompt": "公平な6面サイコロを独立に2回投げる。少なくとも1回は6が出る確率はどれか。",
+    "choices": [
+      "1/36",
+      "25/36",
+      "11/36",
+      "1/3"
+    ],
+    "correctIndex": 2,
+    "explanation": "一度も6が出ない確率は(5/6)^2＝25/36。その余事象は1−25/36＝11/36。",
+    "choiceExplanations": [
+      "1/36は2回とも6である確率。少なくとも1回より狭い。",
+      "25/36は2回とも6以外が出る確率で、求める事象の余事象。",
+      "一度も6が出ない確率は(5/6)^2＝25/36。その余事象は1−25/36＝11/36。",
+      "1/6＋1/6では両方6の事象を二重に数える。重なり1/36を引く必要がある。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-complement",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://docs.python.org/3/library/itertools.html#itertools.product"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://docs.python.org/3/library/itertools.html#itertools.product"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-expectation",
+    "version": 1,
+    "section": "A-1",
+    "topic": "基礎理論・確率と情報",
+    "tags": [
+      "確率変数の期待値"
+    ],
+    "reviewConcepts": [
+      "確率変数の期待値"
+    ],
+    "prompt": "1回の処理時間が、確率1/2で2ms、確率1/3で5ms、確率1/6で8msになる。平均処理時間はどれか。",
+    "choices": [
+      "5ms",
+      "3ms",
+      "15ms",
+      "4ms"
+    ],
+    "correctIndex": 3,
+    "explanation": "期待値は2×1/2＋5×1/3＋8×1/6＝1＋5/3＋4/3＝4ms。",
+    "choiceExplanations": [
+      "5msは三つの時間を等確率として平均した値だが、発生確率は異なる。",
+      "3msでは5ms・8msの場合の寄与を正しく加算できていない。",
+      "15msは時間を単純に合計した値で、確率による重み付けをしていない。",
+      "期待値は2×1/2＋5×1/3＋8×1/6＝1＋5/3＋4/3＝4ms。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-expectation",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://docs.python.org/3/library/itertools.html#itertools.product"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://docs.python.org/3/library/itertools.html#itertools.product"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-skip-link",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "反復領域のスキップ"
+    ],
+    "reviewConcepts": [
+      "反復領域のスキップ"
+    ],
+    "prompt": "各ページの先頭に同じ60個のメニューリンクがある。キーボード利用者が本文へ早く移動できるようにする改善として適切なものはどれか。",
+    "choices": [
+      "本文へ直接移動するスキップリンクを用意する",
+      "Tabキーでの移動を禁止する",
+      "メニューの文字をすべて画像に置き換える",
+      "本文をメニューの色と同じ色にする"
+    ],
+    "correctIndex": 0,
+    "explanation": "反復するメニューを毎回たどらずに本文へ移れる手段があると、順番に操作する利用者の負担を減らせる。",
+    "choiceExplanations": [
+      "反復するメニューを毎回たどらずに本文へ移れる手段があると、順番に操作する利用者の負担を減らせる。",
+      "キーボード操作自体を禁止すると利用できなくなる。",
+      "画像化しても移動回数は減らず、代替テキストなど別の対応も必要になる。",
+      "色をそろえることは本文へ移動する操作数を減らす手段ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-skip-link",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-heading-structure",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "見出し構造"
+    ],
+    "reviewConcepts": [
+      "見出し構造"
+    ],
+    "prompt": "スクリーンリーダーで節の一覧をたどれる文書にするため、HTMLの見出しをどのように実装するのが適切か。",
+    "choices": [
+      "見出し要素の順番を無作為に入れ替える",
+      "内容の親子関係に合わせてh1〜h6を使う",
+      "全ての見出しを大きなフォントのdivだけで表示する",
+      "見出しらしい行はすべて画像にする"
+    ],
+    "correctIndex": 1,
+    "explanation": "見出し要素と論理的な階層を使うと、支援技術が文書構造を認識して節ごとに移動できる。",
+    "choiceExplanations": [
+      "階層と内容の対応を崩すと文書構造を理解しにくくする。",
+      "見出し要素と論理的な階層を使うと、支援技術が文書構造を認識して節ごとに移動できる。",
+      "見た目を大きくするだけでは見出しの意味が伝わらない。",
+      "画像だけでは見出しの構造が伝わらず、別の意味付けが必要になる。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-heading-structure",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://www.w3.org/WAI/tutorials/page-structure/headings/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://www.w3.org/WAI/tutorials/page-structure/headings/"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-focus-indicator",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "フォーカスの可視化"
+    ],
+    "reviewConcepts": [
+      "フォーカスの可視化"
+    ],
+    "prompt": "Tabキーでボタン間を移動できるが、選択中のボタンの外観が全く変わらない。操作位置を把握できるようにする改善はどれか。",
+    "choices": [
+      "すべてのボタンの文字を同じ語に変更する",
+      "ボタンのTab移動を無効にする",
+      "キーボードフォーカスがあるボタンに見える輪郭線などを表示する",
+      "マウスポインターを大きくするだけにする"
+    ],
+    "correctIndex": 2,
+    "explanation": "操作位置を視覚的に表示することで、キーボード利用者が次の操作対象を確認できる。",
+    "choiceExplanations": [
+      "ラベルを同じにすると対象の区別がさらに難しくなる。",
+      "移動を無効にするとキーボード利用が困難になり、位置表示の改善にはならない。",
+      "操作位置を視覚的に表示することで、キーボード利用者が次の操作対象を確認できる。",
+      "マウスポインターとキーボードフォーカスは別の位置になり得る。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-focus-indicator",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-1-contrast",
+    "version": 1,
+    "section": "A-1",
+    "topic": "情報デザイン",
+    "tags": [
+      "文字のコントラスト"
+    ],
+    "reviewConcepts": [
+      "文字のコントラスト"
+    ],
+    "prompt": "WCAG 2.2の達成基準1.4.3（レベルAA）で、例外に当たらない通常サイズの本文文字と背景に求められる最小コントラスト比はどれか。",
+    "choices": [
+      "1:1",
+      "3:1",
+      "7:1",
+      "4.5:1"
+    ],
+    "correctIndex": 3,
+    "explanation": "通常サイズの文字では少なくとも4.5:1が必要。大きな文字などの例外とは区別する。",
+    "choiceExplanations": [
+      "1:1では明るさの差がなく、本文を識別できない。",
+      "3:1は大きな文字についての最低基準であり、通常サイズの本文には不足する。",
+      "7:1は通常サイズの文字に対する強化されたコントラストの基準（レベルAAA）で、AAの最小値ではない。",
+      "通常サイズの文字では少なくとも4.5:1が必要。大きな文字などの例外とは区別する。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-1-contrast",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-boundary",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "境界値分析"
+    ],
+    "reviewConcepts": [
+      "境界値分析"
+    ],
+    "prompt": "整数入力が10以上50以下のとき有効で、それ以外を拒否する。二つの境界の有効側の値と、その直外の無効側の値を確認する最小のテスト値の組はどれか。",
+    "choices": [
+      "9、10、50、51",
+      "10、20、30、50",
+      "0、25、100",
+      "9、11、49、51"
+    ],
+    "correctIndex": 0,
+    "explanation": "下限の直外9と下限10、上限50と直外51を使うと両端の判定のずれを確認できる。",
+    "choiceExplanations": [
+      "下限の直外9と下限10、上限50と直外51を使うと両端の判定のずれを確認できる。",
+      "有効値ばかりで、境界の外側を拒否するか確認できない。",
+      "有効・無効の代表値はあるが、境界そのものとその直外の組ではない。",
+      "直外はあるが、境界そのものの10と50が欠けている。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-boundary",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-partition",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "同値分割"
+    ],
+    "reviewConcepts": [
+      "同値分割"
+    ],
+    "prompt": "年齢を整数で受け付け、0未満をエラー、0〜17を区分A、18以上を区分Bとする。三つの同値クラスを1回ずつ確認するテスト値の組はどれか。",
+    "choices": [
+      "−5、−1、10",
+      "−1、10、25",
+      "0、10、17",
+      "18、25、80"
+    ],
+    "correctIndex": 1,
+    "explanation": "−1は無効クラス、10は区分A、25は区分Bを代表し、三クラスを網羅する。",
+    "choiceExplanations": [
+      "無効クラスを2回確認しているが、区分Bを含まない。",
+      "−1は無効クラス、10は区分A、25は区分Bを代表し、三クラスを網羅する。",
+      "いずれも区分Aで、無効クラスと区分Bがない。",
+      "いずれも区分Bで、無効クラスと区分Aがない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-partition",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-decision-table",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "デシジョンテーブル"
+    ],
+    "reviewConcepts": [
+      "デシジョンテーブル"
+    ],
+    "prompt": "会員か否か、購入額が1万円以上か否かの二つの真偽条件で割引を決める。条件間に制約はなく、条件の全組合せを省略せず確認する場合、何通り必要か。",
+    "choices": [
+      "3通り",
+      "8通り",
+      "4通り",
+      "2通り"
+    ],
+    "correctIndex": 2,
+    "explanation": "2個の条件がそれぞれ真偽を取るので2×2＝4通り。会員・非会員のそれぞれで金額条件の真偽を確認する。",
+    "choiceExplanations": [
+      "実現不可能な組合せは指定されていないため、1通りを省略できない。",
+      "8通りは独立した真偽条件が3個ある場合の数。",
+      "2個の条件がそれぞれ真偽を取るので2×2＝4通り。会員・非会員のそれぞれで金額条件の真偽を確認する。",
+      "条件の個数を数えただけで、それらの組合せを網羅していない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-decision-table",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-state",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "状態遷移テスト"
+    ],
+    "reviewConcepts": [
+      "状態遷移テスト"
+    ],
+    "prompt": "注文は「未確定→確定→発送済み」の順にだけ進み、発送済みから未確定へ戻す操作は禁止されている。禁止操作が拒否されるかのテストとして適切なものはどれか。",
+    "choices": [
+      "未確定の注文を確定にして成功を確認する",
+      "確定の注文を発送済みにして成功を確認する",
+      "どの状態からも変更操作を行わない",
+      "発送済みの注文を未確定へ戻そうとして拒否を確認する"
+    ],
+    "correctIndex": 3,
+    "explanation": "禁止されている遷移を実際に要求し、拒否されて状態が変わらないことを確かめる。",
+    "choiceExplanations": [
+      "これは許可された遷移であり、禁止遷移の拒否を直接確認しない。",
+      "これは許可された遷移であり、発送後に戻せないことの確認ではない。",
+      "要求を実行しなければ、拒否処理が働くか確認できない。",
+      "禁止されている遷移を実際に要求し、拒否されて状態が変わらないことを確かめる。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-state",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-branch",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "判定条件網羅"
+    ],
+    "reviewConcepts": [
+      "判定条件網羅"
+    ],
+    "prompt": "関数に「if x > 0 then A else B」が一つある。判定の真と偽を少なくとも1回ずつ実行する最小の入力値の組はどれか。",
+    "choices": [
+      "x=1 と x=0",
+      "x=1 と x=2",
+      "x=−1 と x=0",
+      "x=2 だけ"
+    ],
+    "correctIndex": 0,
+    "explanation": "1では真側A、0では偽側Bを実行するので両方の判定結果を網羅する。",
+    "choiceExplanations": [
+      "1では真側A、0では偽側Bを実行するので両方の判定結果を網羅する。",
+      "どちらも真側Aだけを実行し、偽側Bが未実行になる。",
+      "どちらも偽側Bだけを実行し、真側Aが未実行になる。",
+      "真側Aしか実行できず、偽側Bを確認できない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-branch",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-statement",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "命令網羅と判定条件網羅"
+    ],
+    "reviewConcepts": [
+      "命令網羅と判定条件網羅"
+    ],
+    "prompt": "「y=0; if x>0 then y=1; return y」という処理にx=1だけを入力した。命令網羅率と、ifの真偽の判定結果の網羅率の組はどれか。",
+    "choices": [
+      "命令50%、判定結果50%",
+      "命令100%、判定結果50%",
+      "命令50%、判定結果100%",
+      "命令100%、判定結果100%"
+    ],
+    "correctIndex": 1,
+    "explanation": "実行可能な代入2個とreturnはすべて実行する。一方、ifの真側だけを通り偽側は通らないので、判定結果は1/2で50%。",
+    "choiceExplanations": [
+      "判定結果は50%だが、実行可能な命令に未実行のものはない。",
+      "実行可能な代入2個とreturnはすべて実行する。一方、ifの真側だけを通り偽側は通らないので、判定結果は1/2で50%。",
+      "命令はすべて実行され、判定の偽側は未実行なので両方が逆。",
+      "命令網羅100%でも、判定結果の真偽の両方を網羅したことにはならない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-statement",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-regression",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "回帰テスト"
+    ],
+    "reviewConcepts": [
+      "回帰テスト"
+    ],
+    "prompt": "料金計算の不具合を修正した。元の不具合の解消確認に加え、今まで動いていた請求書出力などに悪影響がないか確認するテストはどれか。",
+    "choices": [
+      "ソースコードを実行しない静的解析だけ",
+      "利用者への操作研修",
+      "回帰テスト",
+      "元の不具合だけの確認テスト"
+    ],
+    "correctIndex": 2,
+    "explanation": "修正に伴う悪影響が既存機能などに生じていないかを確認するのが回帰テスト。",
+    "choiceExplanations": [
+      "静的解析は有用だが、指定された既存機能の動作を実行して確認するテストそのものではない。",
+      "操作研修はテストではなく、修正による副作用を検出する手段にはならない。",
+      "修正に伴う悪影響が既存機能などに生じていないかを確認するのが回帰テスト。",
+      "元の不具合が直ったかの確認と、修正の悪影響の確認は目的を区別する。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-regression",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://astqb.org/assets/documents/ISTQB_CTFL_Syllabus_v4.0.1.pdf"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-stub",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "テストスタブ"
+    ],
+    "reviewConcepts": [
+      "テストスタブ"
+    ],
+    "prompt": "注文処理から呼ばれる在庫APIが未完成である。注文処理を単独で試すため、在庫数をあらかじめ決めた値で返す代用品を用意した。この役割に最も合うものはどれか。",
+    "choices": [
+      "テスト対象を呼び出すドライバー",
+      "実際の在庫APIが完成した証明",
+      "本番の負荷分散装置",
+      "スタブ"
+    ],
+    "correctIndex": 3,
+    "explanation": "呼出し先の依存先を置き換え、テスト向けに決めた応答を返すものはスタブ。",
+    "choiceExplanations": [
+      "ドライバーはテスト対象を呼び出す側で、ここでは呼ばれる在庫APIを置き換えている。",
+      "代用品で注文処理を試しても、実際の在庫APIが完成・正常動作した証明にはならない。",
+      "負荷分散は複数の実処理先への振分けで、決めた応答を返すテスト用代用品とは異なる。",
+      "呼出し先の依存先を置き換え、テスト向けに決めた応答を返すものはスタブ。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-stub",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/bliki/TestDouble.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/bliki/TestDouble.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-mock",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "モックによる相互作用の検証"
+    ],
+    "reviewConcepts": [
+      "モックによる相互作用の検証"
+    ],
+    "prompt": "支払い処理のテストで、決済APIが「指定した金額でちょうど1回呼ばれた」ことを検証したい。期待する呼出し条件を登録し、実際の呼出しと照合する代用品はどれか。",
+    "choices": [
+      "モック",
+      "応答値を返すだけで呼出しを検証しないスタブ",
+      "本番環境の手動操作手順書",
+      "画面表示の色だけを確認する画像比較"
+    ],
+    "correctIndex": 0,
+    "explanation": "期待するメソッド・引数・回数などを定義し、相互作用が期待どおりか検証する代用品がモック。",
+    "choiceExplanations": [
+      "期待するメソッド・引数・回数などを定義し、相互作用が期待どおりか検証する代用品がモック。",
+      "応答だけを返し呼出しを検証しない条件では、金額と回数の期待を確認できない。",
+      "手順書はテスト用代用品でも自動照合する仕組みでもない。",
+      "画像比較だけでは内部の決済APIの呼出し金額・回数を直接検証できない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-mock",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/bliki/TestDouble.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/bliki/TestDouble.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-flaky",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "非決定的なテスト"
+    ],
+    "reviewConcepts": [
+      "非決定的なテスト"
+    ],
+    "prompt": "同じコードと入力で、テストが実行順によって成功したり失敗したりする。前のテストが共有する一時データを消し忘れていた。適切な改善はどれか。",
+    "choices": [
+      "共有データへの依存をさらに増やす",
+      "テストごとにデータを分離し、初期状態と後片付けを一定にする",
+      "失敗するテストを成功するまで繰り返すだけにする",
+      "テストの期待値を常に成功へ変える"
+    ],
+    "correctIndex": 1,
+    "explanation": "共有状態をテスト間で持ち越さないようにし、順序による結果の変動を防ぐ。",
+    "choiceExplanations": [
+      "共有状態が増えるとテスト同士の干渉箇所も増える。",
+      "共有状態をテスト間で持ち越さないようにし、順序による結果の変動を防ぐ。",
+      "再実行だけでは共有状態への依存を直せず、失敗原因を隠すおそれがある。",
+      "常に成功する期待値では対象の不具合を検出できない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-flaky",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/articles/nonDeterminism.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/articles/nonDeterminism.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-revert",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "Gitの変更取消し"
+    ],
+    "reviewConcepts": [
+      "Gitの変更取消し"
+    ],
+    "prompt": "共有済みの通常コミットCによる変更を取り消したい。Cを過去の履歴に残し、逆の変更を新しいコミットとして記録するGitコマンドはどれか。",
+    "choices": [
+      "git log C",
+      "git tag C",
+      "git revert C",
+      "git reset --hard C^ を実行して強制pushする"
+    ],
+    "correctIndex": 2,
+    "explanation": "revertは対象コミットの変更を打ち消す新しいコミットを作り、元のコミットを履歴に残す。",
+    "choiceExplanations": [
+      "logは履歴を表示する操作で、取消しコミットを作らない。",
+      "tagはコミットに名前を付ける操作で、変更を打ち消さない。",
+      "revertは対象コミットの変更を打ち消す新しいコミットを作り、元のコミットを履歴に残す。",
+      "resetと強制pushによる履歴の書換えは、元の履歴を保持して新しい取消しコミットを作る条件に合わない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-revert",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://git-scm.com/docs/user-manual"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://git-scm.com/docs/user-manual"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-cherry-pick",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "Gitの特定変更の適用"
+    ],
+    "reviewConcepts": [
+      "Gitの特定変更の適用"
+    ],
+    "prompt": "別ブランチの通常コミットCにある修正だけを、現在のブランチに新しいコミットとして適用したい。他のコミットをまとめて取り込まない操作はどれか。",
+    "choices": [
+      "git merge 別ブランチ",
+      "git log C",
+      "git branch 新ブランチ",
+      "git cherry-pick C"
+    ],
+    "correctIndex": 3,
+    "explanation": "cherry-pickは指定コミットが導入した変更を現在のブランチへ適用し、通常は新しいコミットを作る。",
+    "choiceExplanations": [
+      "mergeはブランチの履歴を統合するため、その枝の他の変更も取り込む場合がある。",
+      "logは指定コミットの履歴を表示する操作で、変更を適用しない。",
+      "branchで名前を作るだけでは、現在のブランチへ修正は適用されない。",
+      "cherry-pickは指定コミットが導入した変更を現在のブランチへ適用し、通常は新しいコミットを作る。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-cherry-pick",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://git-scm.com/docs/user-manual"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://git-scm.com/docs/user-manual"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-merge-conflict",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "マージ競合の解消"
+    ],
+    "reviewConcepts": [
+      "マージ競合の解消"
+    ],
+    "prompt": "Gitで同じ行への異なる変更をマージしたところ競合した。内容を両方確認して正しい状態へ編集した後の、通常の解消手順はどれか。",
+    "choices": [
+      "解消したファイルをgit addし、マージコミットを作る",
+      "競合マーカーを残したまま変更内容を確認せずに完了とする",
+      "リポジトリ全体を削除する必要がある",
+      "どちらの変更も必ず失われるので操作できない"
+    ],
+    "correctIndex": 0,
+    "explanation": "意図する内容へ編集した後、git addで解消済みと記録し、通常はgit commitでマージを完了する。",
+    "choiceExplanations": [
+      "意図する内容へ編集した後、git addで解消済みと記録し、通常はgit commitでマージを完了する。",
+      "競合マーカーが残る内容を無確認で登録すると、正しい解消を確認したことにならない。",
+      "競合解消にリポジトリ全体の削除は不要。ファイル単位で判断できる。",
+      "Gitは競合内容を示すので、人が意図を判断して両方の必要な変更を組み合わせることもできる。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-merge-conflict",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://git-scm.com/docs/user-manual"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://git-scm.com/docs/user-manual"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-bisect",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "二分探索による障害原因特定"
+    ],
+    "reviewConcepts": [
+      "二分探索による障害原因特定"
+    ],
+    "prompt": "線形に並ぶコミットのうち、正常な版と不具合が出る版が分かっている。途中の版を試験して正常・異常を指定し、最初に不具合を入れたコミットを二分探索で絞る機能はどれか。",
+    "choices": [
+      "git diffだけを繰り返さず1回表示する",
+      "git bisect",
+      "git tag",
+      "git stash"
+    ],
+    "correctIndex": 1,
+    "explanation": "bisectは正常・異常の情報から試す版を選び、判定を繰り返して不具合を導入したコミットを絞る。",
+    "choiceExplanations": [
+      "diffは差分を表示するが、それだけで試験結果に基づく二分探索を管理しない。",
+      "bisectは正常・異常の情報から試す版を選び、判定を繰り返して不具合を導入したコミットを絞る。",
+      "tagは版に名前を付ける機能で、正常・異常に基づく二分探索を行わない。",
+      "stashは作業中の変更の一時退避で、原因コミットの探索機能ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-bisect",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://git-scm.com/docs/user-manual"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://git-scm.com/docs/user-manual"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-three-way-merge",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "3方向マージ"
+    ],
+    "reviewConcepts": [
+      "3方向マージ"
+    ],
+    "prompt": "二つのブランチが共通の祖先から別々に変更された。3方向マージで比較に使う三つの版の組はどれか。",
+    "choices": [
+      "両ブランチの先端と任意の無関係な版",
+      "共通祖先とその直前の2コミットだけ",
+      "両ブランチの先端と共通祖先",
+      "現在のブランチの直近3コミットだけ"
+    ],
+    "correctIndex": 2,
+    "explanation": "共通祖先を基準に両先端がどこを変えたか比較し、それぞれの変更を統合する。",
+    "choiceExplanations": [
+      "無関係な版では分岐後の変更を判断する基準にならない。",
+      "両先端を含まないと分岐後に加えられた変更を比較できない。",
+      "共通祖先を基準に両先端がどこを変えたか比較し、それぞれの変更を統合する。",
+      "一方の直近3コミットだけでは、他方の変更との差を適切に判断できない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-three-way-merge",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://git-scm.com/docs/user-manual"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://git-scm.com/docs/user-manual"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-release-tag",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "構成管理のリリース識別"
+    ],
+    "reviewConcepts": [
+      "構成管理のリリース識別"
+    ],
+    "prompt": "Gitでリリース時点のソースを後から特定したい。ブランチがその後進んでも対象コミットを指す名前を残す通常の方法はどれか。タグを付け直す操作はしない。",
+    "choices": [
+      "更新され続けるブランチ名だけを記録する",
+      "作業者の記憶だけに頼る",
+      "各ファイルの表示順だけを記録する",
+      "対象コミットにリリース用タグを付ける"
+    ],
+    "correctIndex": 3,
+    "explanation": "タグで対象コミットを名付けると、以後ブランチの先端が進んでもリリースの版を識別できる。",
+    "choiceExplanations": [
+      "ブランチの先端は新しいコミットで移動するので、リリース時点の識別には不十分。",
+      "記憶では他の作業者が再現可能な形で版を特定できない。",
+      "表示順は内容の版を識別する情報ではない。",
+      "タグで対象コミットを名付けると、以後ブランチの先端が進んでもリリースの版を識別できる。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-release-tag",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://git-scm.com/docs/user-manual"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://git-scm.com/docs/user-manual"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-ci",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "継続的インテグレーション"
+    ],
+    "reviewConcepts": [
+      "継続的インテグレーション"
+    ],
+    "prompt": "複数の開発者の変更を頻繁に共通の主流ブランチへ統合し、そのたびに自動ビルドと自動テストで統合上の問題を早く発見する活動はどれか。",
+    "choices": [
+      "継続的インテグレーション（CI）",
+      "リリース直前に初めて全員の変更を統合する活動",
+      "ソースを統合せず各自の端末だけで保存する活動",
+      "テストを省略して本番にだけ直接変更する活動"
+    ],
+    "correctIndex": 0,
+    "explanation": "CIでは変更を頻繁に統合し、自動化したビルドやテストから早くフィードバックを得る。",
+    "choiceExplanations": [
+      "CIでは変更を頻繁に統合し、自動化したビルドやテストから早くフィードバックを得る。",
+      "統合を最後まで遅らせると、差異が積み上がり原因の切り分けも難しくなる。",
+      "各端末に閉じた変更だけでは統合時の不整合を確認できない。",
+      "テストを省略した直接変更は、統合時の問題を早期検出するCIの説明ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-ci",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/articles/continuousIntegration.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/articles/continuousIntegration.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-delivery",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "継続的デリバリー"
+    ],
+    "reviewConcepts": [
+      "継続的デリバリー"
+    ],
+    "prompt": "自動化したパイプラインで変更を検証し、いつでも本番へリリースできる状態を維持する。一方、本番への実行時点は業務判断で人が承認する。この説明に合うものはどれか。",
+    "choices": [
+      "ソースコードの履歴を残さない方式",
+      "継続的デリバリー",
+      "すべての変更の無条件な本番自動公開が必須の方式",
+      "結合試験をすべて廃止する方式"
+    ],
+    "correctIndex": 1,
+    "explanation": "継続的デリバリーはリリース可能な状態を保つ。検証後の本番への反映を業務判断で行うことができる。",
+    "choiceExplanations": [
+      "変更や成果物の追跡を可能にする版管理は重要で、履歴をなくす方式ではない。",
+      "継続的デリバリーはリリース可能な状態を保つ。検証後の本番への反映を業務判断で行うことができる。",
+      "本番自動反映を必須とする継続的デプロイメントと、リリース可能な状態の維持を区別する。",
+      "リリース可能と判断するための検証を廃止する方式ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-delivery",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/bliki/ContinuousDelivery.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/bliki/ContinuousDelivery.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-deployment",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "継続的デプロイメント"
+    ],
+    "reviewConcepts": [
+      "継続的デプロイメント"
+    ],
+    "prompt": "検証パイプラインを通過した全変更を、その都度の人の承認なしで自動的に本番へ配置する。この条件を特に表すものはどれか。",
+    "choices": [
+      "変更の静的な設計レビューだけ",
+      "月末の一括手作業リリースだけ",
+      "継続的デプロイメント",
+      "本番に出せる状態だけを保ち配置は常に手動承認する方式"
+    ],
+    "correctIndex": 2,
+    "explanation": "検証に合格した変更を自動的に本番へ配置する点が、継続的デプロイメントの特徴。",
+    "choiceExplanations": [
+      "設計レビューだけでは、変更の自動検証と本番配置の工程を表さない。",
+      "月末の手作業だけでは、変更ごとの自動配置という条件と異なる。",
+      "検証に合格した変更を自動的に本番へ配置する点が、継続的デプロイメントの特徴。",
+      "リリース可能な状態と本番自動配置は区別する。常に手動承認では指定条件を満たさない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-deployment",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/bliki/ContinuousDelivery.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/bliki/ContinuousDelivery.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-canary",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "カナリアリリース"
+    ],
+    "reviewConcepts": [
+      "カナリアリリース"
+    ],
+    "prompt": "新バージョンを最初に利用者の5%だけへ提供し、エラー率などを監視して問題がなければ対象を広げる。この方法はどれか。",
+    "choices": [
+      "全利用者へ監視せず一斉に切り替える方法",
+      "ソースコードを非公開にするだけの方法",
+      "本番へは配置せず設計書だけを更新する方法",
+      "カナリアリリース"
+    ],
+    "correctIndex": 3,
+    "explanation": "一部の利用者で実際の動作を観測してから対象を広げ、影響範囲を抑える方法がカナリアリリース。",
+    "choiceExplanations": [
+      "一斉切替では、最初の影響を利用者の一部に限定する条件に合わない。",
+      "公開範囲の変更だけでは、利用者への段階的な提供を行わない。",
+      "設計書更新だけでは新バージョンを一部の利用者へ提供していない。",
+      "一部の利用者で実際の動作を観測してから対象を広げ、影響範囲を抑える方法がカナリアリリース。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-canary",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/articles/continuousIntegration.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/articles/continuousIntegration.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-blue-green",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "ブルーグリーンデプロイメント"
+    ],
+    "reviewConcepts": [
+      "ブルーグリーンデプロイメント"
+    ],
+    "prompt": "旧版の環境と新版の環境を二つ用意する。新版の準備・確認後に利用者の接続先を切り替え、異常時には旧版へ戻す方式はどれか。データ互換性は別途確保している。",
+    "choices": [
+      "ブルーグリーンデプロイメント",
+      "旧版を削除してから新版を手作業で構築する方式",
+      "一つの環境を停止したまま使わない方式",
+      "ソースのコメントだけを切り替える方式"
+    ],
+    "correctIndex": 0,
+    "explanation": "二つの環境を使い、接続先の切替で新版へ移行・旧版へ切戻しする。データ変更の互換性は別に検討が必要。",
+    "choiceExplanations": [
+      "二つの環境を使い、接続先の切替で新版へ移行・旧版へ切戻しする。データ変更の互換性は別に検討が必要。",
+      "旧版を先に消すと、接続先を戻して速やかに切り戻す条件を満たせない。",
+      "二つの動作環境と接続先の切替を用意する方式とは異なる。",
+      "コメントの変更だけでは環境への配置や利用者の接続先切替にならない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-blue-green",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/bliki/BlueGreenDeployment.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/bliki/BlueGreenDeployment.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-feature-flag",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "フィーチャーフラグ"
+    ],
+    "reviewConcepts": [
+      "フィーチャーフラグ"
+    ],
+    "prompt": "同じ実行コードを配置したまま、設定により新機能を特定の利用者だけ有効にしたい。機能公開とコード配置を分離する仕組みはどれか。",
+    "choices": [
+      "機能を分けず常に全員へ有効にする処理",
+      "フィーチャーフラグ",
+      "変更のたびに全履歴を削除する処理",
+      "利用者の端末の時計を無作為に変える処理"
+    ],
+    "correctIndex": 1,
+    "explanation": "設定に応じて機能の有効・無効や対象利用者を切り替えることで、配置と機能公開を分離できる。",
+    "choiceExplanations": [
+      "常に全員へ有効にする方式は、一部だけへ有効にする条件に合わない。",
+      "設定に応じて機能の有効・無効や対象利用者を切り替えることで、配置と機能公開を分離できる。",
+      "履歴削除は対象利用者を制御する手段ではなく、追跡可能性を失う。",
+      "端末時刻の無作為変更では、指定した利用者への機能公開を適切に制御できない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-feature-flag",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/articles/feature-toggles.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/articles/feature-toggles.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-build-id",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "ビルドの追跡可能性"
+    ],
+    "reviewConcepts": [
+      "ビルドの追跡可能性"
+    ],
+    "prompt": "本番で不具合が起きた際、稼働中のプログラムを元のソース変更に対応付けたい。最も直接役立つ管理はどれか。",
+    "choices": [
+      "開発者の人数だけを記録する",
+      "画面の配色だけを版の判断根拠にする",
+      "ビルドIDに対応するコミットと成果物を記録し、実行中の版も確認できるようにする",
+      "ビルドのたびに同じファイル名で履歴なしに上書きするだけにする"
+    ],
+    "correctIndex": 2,
+    "explanation": "実行中のビルドIDからコミットと成果物を追跡できると、不具合がどの変更を含む版で発生したか確認できる。",
+    "choiceExplanations": [
+      "人数の記録から、稼働している成果物に含まれるソース変更は特定できない。",
+      "配色が同じでも内部コードが異なる場合があり、版を一意に識別できない。",
+      "実行中のビルドIDからコミットと成果物を追跡できると、不具合がどの変更を含む版で発生したか確認できる。",
+      "名前が同じで記録がなければ、どの内容の成果物か特定しにくい。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-build-id",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/articles/continuousIntegration.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/articles/continuousIntegration.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-broken-build",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ソフトウェア開発管理技術",
+    "tags": [
+      "CI失敗時の対応"
+    ],
+    "reviewConcepts": [
+      "CI失敗時の対応"
+    ],
+    "prompt": "主流ブランチへ統合した直後に、自動ビルドが失敗した。CIのフィードバックを機能させる対応として最も適切なものはどれか。",
+    "choices": [
+      "失敗通知を削除して正常と表示するだけにする",
+      "数週間は失敗状態のまま放置して変更を積み重ねる",
+      "すべての自動テストを無条件に永久停止する",
+      "原因を調べ、修正または変更の取消しで主流ブランチを正常な状態へ早く戻す"
+    ],
+    "correctIndex": 3,
+    "explanation": "統合の基準となる主流ブランチを正常に保ち、後続変更の検証ができる状態へ戻すことを優先する。",
+    "choiceExplanations": [
+      "表示だけを変更しても実際のビルド失敗は解消しない。",
+      "原因の異なる変更を積み重ねると切り分けが難しくなり、CIの短いフィードバックを失う。",
+      "無条件に自動テストを止めると統合時の問題を検出する手段を失う。",
+      "統合の基準となる主流ブランチを正常に保ち、後続変更の検証ができる状態へ戻すことを優先する。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-broken-build",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://martinfowler.com/articles/continuousIntegration.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://martinfowler.com/articles/continuousIntegration.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-subnet-allocation",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "IPアドレスとサブネット"
+    ],
+    "reviewConcepts": [
+      "IPアドレスとサブネット"
+    ],
+    "prompt": "IPv4の192.0.2.0/24を等しい大きさに分割する。各サブネットで通常のホスト用アドレスを50個以上確保しつつ、サブネット数を最大にするプレフィックス長はどれか。ネットワーク・ブロードキャスト用を除く。",
+    "choices": [
+      "/26",
+      "/25",
+      "/27",
+      "/28"
+    ],
+    "correctIndex": 0,
+    "explanation": "/26ならホスト部6ビットで2^6−2＝62個。/27の30個では不足するので、条件を満たす最長のプレフィックスは/26。/24からは4分割できる。",
+    "choiceExplanations": [
+      "/26ならホスト部6ビットで2^6−2＝62個。/27の30個では不足するので、条件を満たす最長のプレフィックスは/26。/24からは4分割できる。",
+      "/25でも126個を確保できるが2分割しかできず、サブネット数が最大にならない。",
+      "/27ではホスト用30個で、50個という条件を満たさない。",
+      "/28ではホスト用14個で、50個という条件を満たさない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-subnet-allocation",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc4632.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-subnet-broadcast",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "IPアドレスとサブネット"
+    ],
+    "reviewConcepts": [
+      "IPアドレスとサブネット"
+    ],
+    "prompt": "IPv4ホスト198.51.100.77/26が属するサブネットのブロードキャストアドレスはどれか。",
+    "choices": [
+      "198.51.100.255",
+      "198.51.100.127",
+      "198.51.100.63",
+      "198.51.100.64"
+    ],
+    "correctIndex": 1,
+    "explanation": "/26は64個刻み。77は64〜127の範囲に属し、ホスト部をすべて1にした末尾127がブロードキャストになる。",
+    "choiceExplanations": [
+      "255は同じ/24全体の末尾だが、指定された/26の範囲の末尾ではない。",
+      "/26は64個刻み。77は64〜127の範囲に属し、ホスト部をすべて1にした末尾127がブロードキャストになる。",
+      "63は直前の0〜63のサブネットのブロードキャスト。",
+      "64は対象サブネットのネットワークアドレスであり、ブロードキャストではない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-subnet-broadcast",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc4632.html"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-availability",
+    "version": 1,
+    "section": "A-2",
+    "topic": "システム構成要素",
+    "tags": [
+      "稼働率と信頼性"
+    ],
+    "reviewConcepts": [
+      "稼働率と信頼性"
+    ],
+    "prompt": "故障と修復を繰り返す装置の平均故障間隔MTBFが297時間、平均修復時間MTTRが3時間である。稼働率をMTBF/(MTBF+MTTR)と定義すると、稼働率はどれか。",
+    "choices": [
+      "97%",
+      "100%",
+      "99%",
+      "1%"
+    ],
+    "correctIndex": 2,
+    "explanation": "297/(297+3)＝297/300＝0.99なので99%。",
+    "choiceExplanations": [
+      "297−3を時間に対する百分率として解釈することはできない。指定式による値は99%。",
+      "修復に3時間を要し、不稼働時間があるため100%ではない。",
+      "297/(297+3)＝297/300＝0.99なので99%。",
+      "1%は修復時間が全体に占める割合3/300で、不稼働側の比率。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-availability",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://sre.google/sre-book/availability-table/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://sre.google/sre-book/availability-table/"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-redundant-availability",
+    "version": 1,
+    "section": "A-2",
+    "topic": "システム構成要素",
+    "tags": [
+      "稼働率と信頼性"
+    ],
+    "reviewConcepts": [
+      "稼働率と信頼性"
+    ],
+    "prompt": "独立に故障する装置AとBの稼働率は0.95と0.90である。少なくとも一方が動いていればサービスを提供でき、切替失敗や共通故障はない。このサービスの稼働率はどれか。",
+    "choices": [
+      "0.855",
+      "0.925",
+      "1.85",
+      "0.995"
+    ],
+    "correctIndex": 3,
+    "explanation": "両方停止する確率は(1−0.95)×(1−0.90)＝0.005。少なくとも一方が稼働する確率は1−0.005＝0.995。\n独立故障と完全な切替を仮定した計算例であり、実システムの可用性を保証する値ではない。",
+    "choiceExplanations": [
+      "0.855＝0.95×0.90は両方とも稼働している確率で、一方だけの稼働を含まない。",
+      "0.925は二つの稼働率の平均で、少なくとも一方が稼働する確率ではない。",
+      "1.85は重なりを差し引かずに足した値で、確率の上限1も超える。",
+      "両方停止する確率は(1−0.95)×(1−0.90)＝0.005。少なくとも一方が稼働する確率は1−0.005＝0.995。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-redundant-availability",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://sre.google/sre-book/availability-table/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://sre.google/sre-book/availability-table/"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-http-conditional",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "HTTP"
+    ],
+    "reviewConcepts": [
+      "HTTP"
+    ],
+    "prompt": "保存済み表現のETagをIf-None-Matchに指定してHTTPの条件付きGETを送った。サーバーの現在の表現のETagと一致し、更新はない。通常の応答として適切なものはどれか。",
+    "choices": [
+      "304 Not Modifiedで、表現の本文を再送しない",
+      "200 OKで、変更の有無に関係なく本文を必ず再送する",
+      "404 Not Foundで、保存済みの本文を削除させる",
+      "301 Moved Permanentlyで、必ず別のURLへ移動させる"
+    ],
+    "correctIndex": 0,
+    "explanation": "条件付きGETで表現が変更されていないとき、304は保存済み表現を再利用できることを示し、表現の本文を再送しない。",
+    "choiceExplanations": [
+      "条件付きGETで表現が変更されていないとき、304は保存済み表現を再利用できることを示し、表現の本文を再送しない。",
+      "200で本文を送る通常の取得とは異なり、指定条件では未変更を知らせる304が適切。",
+      "未変更であることはリソースが見つからないという意味ではない。",
+      "ETagの一致は恒久的なURL変更を意味しない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-http-conditional",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#name-304-not-modified"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc9110.html#name-304-not-modified"
+      ]
+    }
+  },
+  {
+    "id": "focused-a-2-http-method",
+    "version": 1,
+    "section": "A-2",
+    "topic": "ネットワーク",
+    "tags": [
+      "HTTP"
+    ],
+    "reviewConcepts": [
+      "HTTP"
+    ],
+    "prompt": "HTTPサーバーがDELETEメソッド自体を実装しているが、対象リソースではDELETEを許可していない。対象が存在し、認証の問題もない場合に、この理由を示す応答コードはどれか。",
+    "choices": [
+      "401 Unauthorized",
+      "405 Method Not Allowed",
+      "501 Not Implemented",
+      "404 Not Found"
+    ],
+    "correctIndex": 1,
+    "explanation": "405は、メソッドは認識されているが対象リソースで許可されない場合の応答。サーバーはAllowヘッダーで現在許可するメソッドも示す。",
+    "choiceExplanations": [
+      "認証不足が原因ではないため、401を選ぶ条件ではない。",
+      "405は、メソッドは認識されているが対象リソースで許可されない場合の応答。サーバーはAllowヘッダーで現在許可するメソッドも示す。",
+      "501は要求された機能やメソッド自体をサーバーが実装していない場合などで、指定条件とは異なる。",
+      "対象が存在するという条件なので、リソースが見つからないことは理由ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "focused-a-2-http-method",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合済みの独自補強問題（2026-10-24）",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#name-405-method-not-allowed"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の該当する定義と照合し、明示条件の下で正答の一意性と全選択肢の対応を確認。数値・網羅率は独立した列挙・計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-24T09:59:29Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc9110.html#name-405-method-not-allowed"
+      ]
+    }
+  }
+]

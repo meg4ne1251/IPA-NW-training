@@ -47,9 +47,12 @@ export function relatedProgress(q: TrainingQuestion, index: ReturnType<typeof re
 const normalize = (s: string) => s.normalize('NFKC').replace(/\s+/g, '').toLowerCase();
 const contentKey = (q: TrainingQuestion) => q.source.image ? `image:${q.source.image}`
   : JSON.stringify([normalize(q.prompt), q.choices.map(normalize).sort()]);
+export const questionIdentityKeys = (q: TrainingQuestion) => [`${q.section}:id:${q.id}`, `${q.section}:group:${q.groupId}`, `${q.section}:content:${contentKey(q)}`];
+export const sameQuestion = (a: TrainingQuestion, b: TrainingQuestion) => a.section === b.section
+  && (a.id === b.id || a.groupId === b.groupId || contentKey(a) === contentKey(b));
 export function isFresh(q: TrainingQuestion, history: Outcome[]) {
   // Exclude other versions and family reprints, including historical unverified content already seen.
-  return !history.some(r => r.question.section === q.section && (r.question.id === q.id || r.question.groupId === q.groupId || contentKey(r.question) === contentKey(q)));
+  return !history.some(r => sameQuestion(r.question, q));
 }
 export function reviewAnalysis(bank: TrainingQuestion[], history: Outcome[], section: Section, now = Date.now()) {
   const rows = history.filter(r => r.question.section === section && r.question.review.status === 'verified' && !r.question.heldOut);
