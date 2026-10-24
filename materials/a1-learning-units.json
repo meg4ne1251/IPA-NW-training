@@ -1,0 +1,2987 @@
+{
+  "version": 1,
+  "description": "A-1収録教材の主論点。問題IDで公式過去問と補強問題を同じ論点に対応付ける。試験範囲全体の網羅率ではない。",
+  "units": [
+    {
+      "id": "numeric-base",
+      "field": "基礎理論",
+      "label": "基数変換と整数表現",
+      "questionIds": [
+        "ipa-2021r03a-koudo-am1-04",
+        "ipa-2016h28h-koudo-am1-01",
+        "supplement-a1-numeric-01",
+        "supplement-a1-numeric-02",
+        "focused-a-1-unsigned-range",
+        "focused-a-1-signed-overflow"
+      ],
+      "aliases": [
+        "26進数で表したものはどれか",
+        "2の補数",
+        "加算結果がオーバーフローしないもの",
+        "基数変換",
+        "符号なし整数の表現範囲",
+        "符号付き整数のオーバーフロー"
+      ]
+    },
+    {
+      "id": "numeric-fixed",
+      "field": "基礎理論",
+      "label": "固定小数点と量子化",
+      "questionIds": [
+        "supplement-a1-numeric-03",
+        "focused-a-1-quantization"
+      ],
+      "aliases": [
+        "固定小数点",
+        "固定小数点の量子化刻み"
+      ]
+    },
+    {
+      "id": "numeric-shift",
+      "field": "基礎理論",
+      "label": "ビット演算とシフト",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-01",
+        "ipa-2021r03h-koudo-am1-01",
+        "ipa-2019h31h-koudo-am1-01",
+        "ipa-2018h30a-koudo-am1-01",
+        "supplement-a1-numeric-04",
+        "focused-a-1-mask"
+      ],
+      "aliases": [
+        "ビットマスク",
+        "ビット演算の応用",
+        "相補演算",
+        "論理シフト"
+      ]
+    },
+    {
+      "id": "numeric-error",
+      "field": "基礎理論",
+      "label": "数値計算の誤差",
+      "questionIds": [
+        "ipa-2017h29h-koudo-am1-01",
+        "supplement-a1-numeric-05"
+      ],
+      "aliases": [
+        "丸め誤差",
+        "近似計算式"
+      ]
+    },
+    {
+      "id": "probability",
+      "field": "基礎理論",
+      "label": "確率と期待値",
+      "questionIds": [
+        "supplement-a1-probability-01",
+        "supplement-a1-probability-02",
+        "supplement-a1-probability-03",
+        "focused-a-1-binomial",
+        "focused-a-1-without-replacement",
+        "focused-a-1-complement",
+        "focused-a-1-expectation"
+      ],
+      "aliases": [
+        "二項分布",
+        "余事象",
+        "期待値",
+        "条件付き確率",
+        "独立事象",
+        "確率変数の期待値",
+        "非復元抽出の確率"
+      ]
+    },
+    {
+      "id": "statistics",
+      "field": "基礎理論",
+      "label": "分布と相関",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-02",
+        "ipa-2023r05h-koudo-am1-02",
+        "ipa-2018h30a-koudo-am1-03",
+        "ipa-2017h29a-koudo-am1-01"
+      ],
+      "aliases": [
+        "偽陽性率の説明はどれか",
+        "正規分布",
+        "正規分布のグラフ",
+        "相関係数に関する記述"
+      ]
+    },
+    {
+      "id": "information",
+      "field": "基礎理論",
+      "label": "情報量と圧縮符号",
+      "questionIds": [
+        "ipa-2020r02o-koudo-am1-02",
+        "ipa-2017h29a-koudo-am1-02",
+        "ipa-2016h28h-koudo-am1-02",
+        "supplement-a1-probability-04",
+        "supplement-a1-media-04"
+      ],
+      "aliases": [
+        "ハフマン符号化",
+        "可逆圧縮",
+        "情報量",
+        "符号化後のビット列の長さの比"
+      ]
+    },
+    {
+      "id": "error-code",
+      "field": "基礎理論",
+      "label": "誤り検出と訂正符号",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-02",
+        "ipa-2023r05a-koudo-am1-02",
+        "ipa-2022r04h-koudo-am1-01",
+        "ipa-2021r03a-koudo-am1-02",
+        "ipa-2018h30h-koudo-am1-01",
+        "ipa-2018h30a-koudo-am1-05"
+      ],
+      "aliases": [
+        "ハミング符号",
+        "メモリの誤り制御方式",
+        "垂直水平パリティチェック"
+      ]
+    },
+    {
+      "id": "queueing",
+      "field": "基礎理論",
+      "label": "待ち行列",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-01",
+        "ipa-2024r06h-koudo-am1-01",
+        "ipa-2019r01a-koudo-am1-02",
+        "ipa-2018h30a-koudo-am1-02",
+        "supplement-a1-probability-05"
+      ],
+      "aliases": [
+        "M/M/1の待ち行列モデル"
+      ]
+    },
+    {
+      "id": "formal-language",
+      "field": "基礎理論",
+      "label": "形式言語とオートマトン",
+      "questionIds": [
+        "ipa-2017h29h-koudo-am1-02",
+        "ipa-2016h28a-koudo-am1-02"
+      ],
+      "aliases": [
+        "BNF",
+        "有限オートマトンの状態遷移表"
+      ]
+    },
+    {
+      "id": "sets",
+      "field": "基礎理論",
+      "label": "集合と論理",
+      "questionIds": [
+        "ipa-2019r01a-koudo-am1-01"
+      ],
+      "aliases": [
+        "等しい集合はどれか"
+      ]
+    },
+    {
+      "id": "ml-generalization",
+      "field": "基礎理論",
+      "label": "機械学習の過学習と検証",
+      "questionIds": [
+        "ipa-2025-spring-a1-02",
+        "ipa-2024r06a-koudo-am1-01",
+        "ipa-2022r04a-koudo-am1-02"
+      ],
+      "aliases": [
+        "AIにおける過学習の説明はどれか",
+        "教師あり学習での交差検証",
+        "過学習",
+        "過学習と疑われたときの解消方法"
+      ]
+    },
+    {
+      "id": "ml-learning",
+      "field": "基礎理論",
+      "label": "機械学習の学習と推論",
+      "questionIds": [
+        "ipa-2025-spring-a1-27",
+        "ipa-2019r01a-koudo-am1-03",
+        "ipa-2019h31h-koudo-am1-02",
+        "ipa-2018h30a-koudo-am1-26"
+      ],
+      "aliases": [
+        "エッジAI",
+        "クラスタ分析法",
+        "ディープラーニングに関する記述",
+        "教師なし学習で用いられる手法",
+        "機械学習の推論"
+      ]
+    },
+    {
+      "id": "bisection",
+      "field": "アルゴリズムとデータ構造",
+      "label": "方程式の二分法",
+      "questionIds": [
+        "ipa-2025-spring-a1-01",
+        "ipa-2021r03a-koudo-am1-01",
+        "ipa-2016h28a-koudo-am1-01",
+        "review-a1-bisection"
+      ],
+      "aliases": [
+        "二分法",
+        "処理の実行回数は何回か",
+        "非線形方程式の近似解法"
+      ]
+    },
+    {
+      "id": "search",
+      "field": "アルゴリズムとデータ構造",
+      "label": "線形探索と二分探索",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-03",
+        "supplement-a1-algorithm-01"
+      ],
+      "aliases": [
+        "二分探索",
+        "探索の平均比較回数"
+      ]
+    },
+    {
+      "id": "sort",
+      "field": "アルゴリズムとデータ構造",
+      "label": "整列アルゴリズム",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-03",
+        "ipa-2023r05a-koudo-am1-03",
+        "ipa-2021r03a-koudo-am1-03",
+        "ipa-2019h31h-koudo-am1-03",
+        "ipa-2016h28a-koudo-am1-03",
+        "supplement-a1-algorithm-02"
+      ],
+      "aliases": [
+        "クイックソート",
+        "シェルソート",
+        "バブルソートの説明はどれか",
+        "ヒープソート",
+        "挿入ソート"
+      ]
+    },
+    {
+      "id": "stack",
+      "field": "アルゴリズムとデータ構造",
+      "label": "スタックと後置記法",
+      "questionIds": [
+        "ipa-2025-spring-a1-03",
+        "ipa-2024r06a-koudo-am1-02",
+        "ipa-2023r05a-koudo-am1-01",
+        "ipa-2021r03h-koudo-am1-02",
+        "ipa-2020r02o-koudo-am1-01",
+        "ipa-2018h30h-koudo-am1-03",
+        "supplement-a1-structure-01"
+      ],
+      "aliases": [
+        "スタック",
+        "データの出力順序は何通りあるか",
+        "再帰処理のための記憶管理方式",
+        "逆ポーランド表記法"
+      ]
+    },
+    {
+      "id": "queue",
+      "field": "アルゴリズムとデータ構造",
+      "label": "キュー",
+      "questionIds": [
+        "supplement-a1-structure-02"
+      ],
+      "aliases": []
+    },
+    {
+      "id": "list-array",
+      "field": "アルゴリズムとデータ構造",
+      "label": "配列と連結リスト",
+      "questionIds": [
+        "ipa-2022r04h-koudo-am1-02",
+        "ipa-2019r01a-koudo-am1-04",
+        "ipa-2018h30a-koudo-am1-04",
+        "supplement-a1-structure-03"
+      ],
+      "aliases": [
+        "2次元配列の要素数は幾つか",
+        "リストを配列で実現した場合の特徴",
+        "単方向の線形リストの処理",
+        "連結リスト"
+      ]
+    },
+    {
+      "id": "hash",
+      "field": "アルゴリズムとデータ構造",
+      "label": "ハッシュ表と衝突",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-03",
+        "ipa-2023r05h-koudo-am1-06",
+        "ipa-2022r04a-koudo-am1-03",
+        "ipa-2018h30a-koudo-am1-09",
+        "supplement-a1-structure-04",
+        "review-a1-hash"
+      ],
+      "aliases": [
+        "シノニムが起こる条件",
+        "ハッシュ値の衝突",
+        "ハッシュ衝突",
+        "ハッシュ表の探索時間"
+      ]
+    },
+    {
+      "id": "recursion-tree",
+      "field": "アルゴリズムとデータ構造",
+      "label": "再帰と木の探索",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-03",
+        "ipa-2018h30h-koudo-am1-02",
+        "ipa-2017h29a-koudo-am1-03",
+        "supplement-a1-algorithm-03",
+        "supplement-a1-algorithm-04",
+        "supplement-a1-structure-05"
+      ],
+      "aliases": [
+        "二分探索木",
+        "再帰",
+        "再帰関数の結果",
+        "幅優先探索",
+        "木構造を探索する再帰処理",
+        "階乗を求める再帰関数"
+      ]
+    },
+    {
+      "id": "algorithm-design",
+      "field": "アルゴリズムとデータ構造",
+      "label": "アルゴリズムの設計と追跡",
+      "questionIds": [
+        "ipa-2021r03h-koudo-am1-03",
+        "ipa-2017h29h-koudo-am1-03"
+      ],
+      "aliases": [
+        "アルゴリズム設計としての分割統治法",
+        "流れ図の処理で終了時のxの値"
+      ]
+    },
+    {
+      "id": "algorithm-dp",
+      "field": "アルゴリズムとデータ構造",
+      "label": "動的計画法",
+      "questionIds": [
+        "supplement-a1-algorithm-05",
+        "review-a1-dynamic-programming"
+      ],
+      "aliases": []
+    },
+    {
+      "id": "programming",
+      "field": "アルゴリズムとデータ構造",
+      "label": "プログラム言語とコンパイル",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-07",
+        "ipa-2022r04h-koudo-am1-03",
+        "ipa-2020r02o-koudo-am1-03"
+      ],
+      "aliases": [
+        "Python",
+        "コンパイラが最後に行う処理",
+        "プログラム言語"
+      ]
+    },
+    {
+      "id": "cpu-performance",
+      "field": "コンピュータ構成",
+      "label": "CPU性能と実行時間",
+      "questionIds": [
+        "ipa-2025-spring-a1-04",
+        "ipa-2023r05h-koudo-am1-04",
+        "supplement-a1-architecture-01",
+        "review-a1-cpu-mix"
+      ],
+      "aliases": [
+        "CPI(Cycles Per Instruction)",
+        "CPU性能",
+        "クロック周期とCPI"
+      ]
+    },
+    {
+      "id": "cpu-parallel",
+      "field": "コンピュータ構成",
+      "label": "並列処理と高速化",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-04",
+        "ipa-2023r05a-koudo-am1-04",
+        "ipa-2022r04h-koudo-am1-05",
+        "ipa-2019h31h-koudo-am1-04",
+        "ipa-2016h28h-koudo-am1-04",
+        "supplement-a1-architecture-04",
+        "supplement-a1-architecture-05"
+      ],
+      "aliases": [
+        "SIMDの説明として適切なもの",
+        "アムダールの法則",
+        "スーパースカラの説明はどれか",
+        "パイプライン",
+        "プロセッサの高速化技法"
+      ]
+    },
+    {
+      "id": "memory-cache",
+      "field": "コンピュータ構成",
+      "label": "キャッシュとアクセス時間",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-04",
+        "ipa-2022r04h-koudo-am1-04",
+        "ipa-2022r04a-koudo-am1-04",
+        "ipa-2021r03h-koudo-am1-04",
+        "ipa-2019r01a-koudo-am1-05",
+        "ipa-2017h29a-koudo-am1-04",
+        "supplement-a1-architecture-02",
+        "supplement-a1-architecture-03"
+      ],
+      "aliases": [
+        "キャッシュ",
+        "キャッシュメモリのヒット率",
+        "キャッシュメモリ制御方式",
+        "メモリの実効アクセス時間",
+        "主記憶の実効アクセス時間",
+        "局所性"
+      ]
+    },
+    {
+      "id": "memory-hardware",
+      "field": "コンピュータ構成",
+      "label": "主記憶とメモリ構成",
+      "questionIds": [
+        "ipa-2020r02o-koudo-am1-04",
+        "ipa-2020r02o-koudo-am1-07",
+        "ipa-2018h30h-koudo-am1-04",
+        "ipa-2017h29h-koudo-am1-04",
+        "ipa-2016h28h-koudo-am1-07",
+        "ipa-2016h28a-koudo-am1-04",
+        "supplement-a1-hardware-04"
+      ],
+      "aliases": [
+        "DRAMの特徴はどれか",
+        "DRAMの説明として適切なものはどれか",
+        "アドレス線",
+        "メモリインターリーブ",
+        "メモリインターリーブの目的",
+        "主記憶に展開されるまでの時間"
+      ]
+    },
+    {
+      "id": "quantum",
+      "field": "コンピュータ構成",
+      "label": "量子コンピュータ",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-04"
+      ],
+      "aliases": [
+        "量子ゲート方式の量子コンピュータ"
+      ]
+    },
+    {
+      "id": "logic",
+      "field": "コンピュータ構成",
+      "label": "論理演算と回路",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-07",
+        "ipa-2024r06h-koudo-am1-07",
+        "ipa-2023r05h-koudo-am1-07",
+        "ipa-2023r05a-koudo-am1-07",
+        "ipa-2022r04a-koudo-am1-01",
+        "ipa-2022r04a-koudo-am1-07",
+        "ipa-2021r03a-koudo-am1-07",
+        "ipa-2019h31h-koudo-am1-07",
+        "ipa-2018h30a-koudo-am1-07",
+        "ipa-2017h29h-koudo-am1-07",
+        "ipa-2017h29a-koudo-am1-07",
+        "ipa-2016h28a-koudo-am1-07",
+        "supplement-a1-hardware-01",
+        "supplement-a1-hardware-02",
+        "supplement-a1-hardware-03",
+        "review-a1-logic"
+      ],
+      "aliases": [
+        "3入力多数決回路",
+        "NAND回路",
+        "カルノー図と等価な論理式",
+        "スイッチ押下を検出する論理式",
+        "ド・モルガンの法則",
+        "半加算器",
+        "半加算器の論理回路図",
+        "図の回路が実現する論理式",
+        "排他的論理和",
+        "条件を満足する論理回路",
+        "論理回路とタイムチャートの関係",
+        "論理回路図",
+        "論理回路図と出力"
+      ]
+    },
+    {
+      "id": "conversion",
+      "field": "コンピュータ構成",
+      "label": "標本化とAD・DA変換",
+      "questionIds": [
+        "ipa-2020r02o-koudo-am1-08",
+        "supplement-a1-hardware-05",
+        "supplement-a1-media-03"
+      ],
+      "aliases": [
+        "AD変換",
+        "D/A変換器",
+        "標本化"
+      ]
+    },
+    {
+      "id": "power",
+      "field": "コンピュータ構成",
+      "label": "省電力と平均電流",
+      "questionIds": [
+        "ipa-2025-spring-a1-07",
+        "review-a1-power"
+      ],
+      "aliases": [
+        "センサーノードの省電力化",
+        "消費電流"
+      ]
+    },
+    {
+      "id": "embedded",
+      "field": "コンピュータ構成",
+      "label": "センサ・アクチュエータと組込み機器",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-08",
+        "ipa-2023r05h-koudo-am1-27",
+        "ipa-2022r04h-koudo-am1-07",
+        "ipa-2021r03h-koudo-am1-07",
+        "ipa-2019r01a-koudo-am1-08",
+        "ipa-2018h30h-koudo-am1-07"
+      ],
+      "aliases": [
+        "RFIDの活用事例",
+        "アクチュエーターの説明はどれか",
+        "エネルギーハーベスティング",
+        "エネルギーハーベスティングの適用例",
+        "内部クロック発生器のブロック図"
+      ]
+    },
+    {
+      "id": "availability",
+      "field": "システム構成",
+      "label": "稼働率と信頼性",
+      "questionIds": [
+        "ipa-2025-spring-a1-05",
+        "ipa-2024r06h-koudo-am1-05",
+        "ipa-2024r06a-koudo-am1-05",
+        "ipa-2022r04h-koudo-am1-20",
+        "ipa-2021r03h-koudo-am1-05",
+        "ipa-2018h30h-koudo-am1-05",
+        "ipa-2017h29h-koudo-am1-05",
+        "ipa-2017h29a-koudo-am1-05",
+        "ipa-2016h28a-koudo-am1-05",
+        "ipa-2016h28a-koudo-am1-29",
+        "supplement-a1-reliability-01",
+        "supplement-a1-reliability-02",
+        "supplement-a1-reliability-03",
+        "review-a1-mttr",
+        "review-a1-parallel"
+      ],
+      "aliases": [
+        "MTBFとMTTR",
+        "MTBFとMTTRと稼働率の関係",
+        "MTTRを短くするのに役立つもの",
+        "Webアプリケーションサーバの信頼性",
+        "システムの稼働率は幾らか",
+        "システム信頼性設計",
+        "並列システムの稼働率は幾らか",
+        "並列稼働率",
+        "保守性を表す指標",
+        "故障率曲線",
+        "直列稼働率",
+        "稼働率",
+        "稼働率、MTBF、MTTRの関係"
+      ]
+    },
+    {
+      "id": "raid",
+      "field": "システム構成",
+      "label": "RAID",
+      "questionIds": [
+        "supplement-a1-reliability-04"
+      ],
+      "aliases": [
+        "RAID 5"
+      ]
+    },
+    {
+      "id": "cloud",
+      "field": "システム構成",
+      "label": "クラウドサービスと責任分界",
+      "questionIds": [
+        "ipa-2020r02o-koudo-am1-25",
+        "ipa-2016h28h-koudo-am1-15",
+        "supplement-a1-reliability-05"
+      ],
+      "aliases": [
+        "IaaSでは実施できるものはどれか",
+        "クラウドサービスの利用手順"
+      ]
+    },
+    {
+      "id": "virtualization",
+      "field": "システム構成",
+      "label": "仮想化とコンテナ",
+      "questionIds": [
+        "ipa-2022r04h-koudo-am1-14",
+        "ipa-2022r04a-koudo-am1-05",
+        "ipa-2020r02o-koudo-am1-05",
+        "ipa-2018h30h-koudo-am1-13",
+        "ipa-2016h28h-koudo-am1-05"
+      ],
+      "aliases": [
+        "VDIシステムの導入",
+        "コンテナ型仮想化の説明はどれか",
+        "サーバコンソリデーション",
+        "ライブマイグレーションの概念"
+      ]
+    },
+    {
+      "id": "capacity",
+      "field": "システム構成",
+      "label": "性能とキャパシティ管理",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-05",
+        "ipa-2023r05h-koudo-am1-05",
+        "ipa-2021r03a-koudo-am1-05",
+        "ipa-2019r01a-koudo-am1-07",
+        "ipa-2019h31h-koudo-am1-05"
+      ],
+      "aliases": [
+        "キャパシティプランニングの目的",
+        "スケールインの説明はどれか",
+        "トランザクション処理能力"
+      ]
+    },
+    {
+      "id": "provisioning",
+      "field": "システム構成",
+      "label": "プロビジョニングと構成の自動化",
+      "questionIds": [
+        "ipa-2025-spring-a1-24",
+        "ipa-2023r05h-koudo-am1-17",
+        "ipa-2023r05a-koudo-am1-05",
+        "review-a1-provisioning"
+      ],
+      "aliases": [
+        "Infrastructure as Code",
+        "サーバプロビジョニングツール",
+        "プロビジョニング",
+        "プロビジョニングの説明はどれか"
+      ]
+    },
+    {
+      "id": "os-scheduling",
+      "field": "OS",
+      "label": "タスクの状態とスケジューリング",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-06",
+        "ipa-2019r01a-koudo-am1-06",
+        "ipa-2017h29a-koudo-am1-06",
+        "supplement-a1-os-01"
+      ],
+      "aliases": [
+        "ジョブ管理で必要となるデータ量",
+        "タスクスケジューリング",
+        "プリエンプションで遷移する状態",
+        "ラウンドロビン"
+      ]
+    },
+    {
+      "id": "os-lru",
+      "field": "OS",
+      "label": "LRUとページ置換",
+      "questionIds": [
+        "ipa-2025-spring-a1-06",
+        "ipa-2025r07a-koudo-am1-06",
+        "ipa-2017h29h-koudo-am1-06",
+        "supplement-a1-os-05",
+        "review-a1-lru-trace"
+      ],
+      "aliases": [
+        "LRU",
+        "LRU方式",
+        "置換えアルゴリズムはどれか"
+      ]
+    },
+    {
+      "id": "os-paging",
+      "field": "OS",
+      "label": "仮想記憶とページング",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-06",
+        "ipa-2021r03h-koudo-am1-06",
+        "ipa-2021r03a-koudo-am1-06",
+        "ipa-2020r02o-koudo-am1-06",
+        "ipa-2018h30h-koudo-am1-06",
+        "ipa-2018h30a-koudo-am1-06",
+        "ipa-2016h28h-koudo-am1-06",
+        "ipa-2016h28a-koudo-am1-06",
+        "supplement-a1-os-02",
+        "supplement-a1-os-03"
+      ],
+      "aliases": [
+        "プリページングの特徴はどれか",
+        "ページインだけの処理の割合",
+        "ページフォールト",
+        "ページング",
+        "ページング方式",
+        "ページング方式で処理能力が低下する現象",
+        "ページング方式における主記憶の割当て",
+        "ページング方式の長所はどれか",
+        "主記憶管理に関する記述",
+        "仮想記憶方式に関する記述"
+      ]
+    },
+    {
+      "id": "os-lock",
+      "field": "OS",
+      "label": "排他制御とデッドロック",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-06",
+        "ipa-2022r04h-koudo-am1-06",
+        "ipa-2022r04a-koudo-am1-06",
+        "ipa-2019h31h-koudo-am1-06",
+        "ipa-2017h29h-koudo-am1-08",
+        "ipa-2016h28h-koudo-am1-03",
+        "supplement-a1-os-04"
+      ],
+      "aliases": [
+        "デッドロック",
+        "デッドロックとなる時点",
+        "デッドロックの可能性",
+        "デッドロックの発生を防ぐ方法",
+        "同期制御",
+        "排他的制御に利用するOSの機能"
+      ]
+    },
+    {
+      "id": "media-data",
+      "field": "情報メディアとUI",
+      "label": "画像・音声のデータ量",
+      "questionIds": [
+        "supplement-a1-media-01",
+        "supplement-a1-media-02",
+        "supplement-a1-media-05"
+      ],
+      "aliases": [
+        "PCMデータ量",
+        "画像データ量",
+        "階調数"
+      ]
+    },
+    {
+      "id": "media-format",
+      "field": "情報メディアとUI",
+      "label": "画像・文書の表現形式",
+      "questionIds": [
+        "ipa-2025-spring-a1-08",
+        "ipa-2024r06h-koudo-am1-08",
+        "ipa-2021r03h-koudo-am1-08",
+        "ipa-2016h28a-koudo-am1-08"
+      ],
+      "aliases": [
+        "SVG",
+        "XML形式で記述する画像フォーマット",
+        "ビットマップフォントとアウトラインフォント",
+        "マルチメディア用のXMLフォーマット"
+      ]
+    },
+    {
+      "id": "media-cg",
+      "field": "情報メディアとUI",
+      "label": "コンピュータグラフィックス",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-08",
+        "ipa-2023r05a-koudo-am1-08",
+        "ipa-2019h31h-koudo-am1-08",
+        "ipa-2018h30a-koudo-am1-08"
+      ],
+      "aliases": [
+        "コンピュータグラフィックス技法",
+        "レンダリングに関する記述はどれか",
+        "レンダリングの説明はどれか"
+      ]
+    },
+    {
+      "id": "ui-accessibility",
+      "field": "情報メディアとUI",
+      "label": "アクセシビリティ",
+      "questionIds": [
+        "ipa-2017h29a-koudo-am1-08",
+        "supplement-a1-design-01",
+        "supplement-a1-design-02",
+        "supplement-a1-design-03",
+        "supplement-a1-design-04",
+        "review-a1-accessibility",
+        "focused-a-1-skip-link",
+        "focused-a-1-heading-structure",
+        "focused-a-1-focus-indicator",
+        "focused-a-1-contrast"
+      ],
+      "aliases": [
+        "アクセシビリティ設計",
+        "キーボード操作",
+        "フォーカスの可視化",
+        "フォームのラベル",
+        "代替テキスト",
+        "反復領域のスキップ",
+        "文字のコントラスト",
+        "色に依存しない表示",
+        "見出し構造"
+      ]
+    },
+    {
+      "id": "ui-usability",
+      "field": "情報メディアとUI",
+      "label": "使用性と回復の設計",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-17",
+        "ipa-2016h28h-koudo-am1-08",
+        "supplement-a1-design-05"
+      ],
+      "aliases": [
+        "エラーからの回復",
+        "ユーザビリティの評価",
+        "使用性の評価",
+        "使用性を評価する指標"
+      ]
+    },
+    {
+      "id": "code-design",
+      "field": "情報メディアとUI",
+      "label": "コード設計と符号数",
+      "questionIds": [
+        "ipa-2022r04a-koudo-am1-08",
+        "review-a1-code-design"
+      ],
+      "aliases": [
+        "顧客コードは少なくとも何桁必要か"
+      ]
+    },
+    {
+      "id": "db-normalization",
+      "field": "データベース",
+      "label": "DB正規化",
+      "questionIds": [
+        "ipa-2025-spring-a1-09",
+        "ipa-2022r04h-koudo-am1-08",
+        "supplement-a1-db-design-03",
+        "supplement-a1-db-design-04",
+        "review-a1-normalization"
+      ],
+      "aliases": [
+        "正規化",
+        "正規形と特徴の組合せ",
+        "第2正規形",
+        "第3正規形",
+        "第3正規形に変換する手順はどれか"
+      ]
+    },
+    {
+      "id": "db-key",
+      "field": "データベース",
+      "label": "キーと参照整合性",
+      "questionIds": [
+        "ipa-2025-spring-a1-10",
+        "ipa-2016h28h-koudo-am1-09",
+        "supplement-a1-db-design-01",
+        "supplement-a1-db-design-02",
+        "review-a1-foreign-key"
+      ],
+      "aliases": [
+        "SQL文の参照制約の削除規則",
+        "主キー",
+        "参照制約",
+        "参照整合性",
+        "参照整合性と外部キー",
+        "外部キー"
+      ]
+    },
+    {
+      "id": "db-model",
+      "field": "データベース",
+      "label": "データモデルと関連",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-10",
+        "ipa-2023r05h-koudo-am1-09",
+        "ipa-2020r02o-koudo-am1-09",
+        "supplement-a1-db-design-05"
+      ],
+      "aliases": [
+        "クラス図の解釈",
+        "データモデルに入れる多重度はどれか",
+        "多対多の関連",
+        "表から得ることができない情報"
+      ]
+    },
+    {
+      "id": "db-index",
+      "field": "データベース",
+      "label": "索引とB+木",
+      "questionIds": [
+        "ipa-2018h30h-koudo-am1-08",
+        "ipa-2016h28a-koudo-am1-09"
+      ],
+      "aliases": [
+        "B+木インデックスのオーダーを表す式",
+        "B+木インデックスの再構成"
+      ]
+    },
+    {
+      "id": "db-sql-aggregate",
+      "field": "データベース",
+      "label": "SQLの集約とNULL",
+      "questionIds": [
+        "supplement-a1-sql-01",
+        "supplement-a1-sql-02"
+      ],
+      "aliases": [
+        "HAVING",
+        "NULLと集約"
+      ]
+    },
+    {
+      "id": "db-sql-join",
+      "field": "データベース",
+      "label": "SQLの結合",
+      "questionIds": [
+        "supplement-a1-sql-03"
+      ],
+      "aliases": [
+        "外部結合"
+      ]
+    },
+    {
+      "id": "db-relation",
+      "field": "データベース",
+      "label": "関係演算とビュー",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-09",
+        "ipa-2021r03a-koudo-am1-08",
+        "ipa-2017h29a-koudo-am1-09"
+      ],
+      "aliases": [
+        "ビューに関する記述",
+        "射影の結果と同じになるSQL文",
+        "関係Xを求める関係演算はどれか"
+      ]
+    },
+    {
+      "id": "db-acid",
+      "field": "データベース",
+      "label": "トランザクションとACID",
+      "questionIds": [
+        "ipa-2022r04a-koudo-am1-10",
+        "ipa-2019h31h-koudo-am1-09",
+        "supplement-a1-sql-04"
+      ],
+      "aliases": [
+        "ACID特性に含まれないものはどれか",
+        "トランザクションのACID特性",
+        "原子性"
+      ]
+    },
+    {
+      "id": "db-isolation",
+      "field": "データベース",
+      "label": "並行制御と分離レベル",
+      "questionIds": [
+        "ipa-2018h30a-koudo-am1-10",
+        "supplement-a1-sql-05",
+        "review-a1-isolation"
+      ],
+      "aliases": [
+        "SQLと分離レベル",
+        "ダーティリード",
+        "並行実行の可否の組合せ"
+      ]
+    },
+    {
+      "id": "db-recovery",
+      "field": "データベース",
+      "label": "DBの障害回復",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-09",
+        "ipa-2022r04a-koudo-am1-09",
+        "ipa-2021r03a-koudo-am1-09",
+        "ipa-2019r01a-koudo-am1-09",
+        "ipa-2016h28h-koudo-am1-10",
+        "ipa-2016h28a-koudo-am1-10"
+      ],
+      "aliases": [
+        "DBMSの障害回復",
+        "データベースの障害回復処理",
+        "リストア後にログを用いて行う操作",
+        "前進復帰可能なトランザクション",
+        "媒体障害からの回復法"
+      ]
+    },
+    {
+      "id": "db-procedure",
+      "field": "データベース",
+      "label": "ストアドプロシージャ",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-09"
+      ],
+      "aliases": [
+        "ストアドプロシージャの利点"
+      ]
+    },
+    {
+      "id": "db-nosql",
+      "field": "データベース",
+      "label": "NoSQLとデータレイク",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-08",
+        "ipa-2021r03h-koudo-am1-09",
+        "ipa-2018h30h-koudo-am1-09"
+      ],
+      "aliases": [
+        "NoSQLに分類されるデータベース",
+        "NoSQLデータベースシステム",
+        "データレイクの特徴はどれか"
+      ]
+    },
+    {
+      "id": "db-mining",
+      "field": "データベース",
+      "label": "データマイニング",
+      "questionIds": [
+        "ipa-2022r04h-koudo-am1-09",
+        "ipa-2017h29h-koudo-am1-09",
+        "ipa-2017h29a-koudo-am1-10"
+      ],
+      "aliases": [
+        "データマイニングの説明はどれか",
+        "データマイニングを説明したもの"
+      ]
+    },
+    {
+      "id": "net-subnet",
+      "field": "ネットワーク",
+      "label": "IPv4アドレスとサブネット",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-10",
+        "ipa-2021r03h-koudo-am1-10",
+        "ipa-2021r03a-koudo-am1-11",
+        "supplement-a1-ip-01",
+        "supplement-a1-ip-02"
+      ],
+      "aliases": [
+        "IPアドレスとサブネット",
+        "サブネットのホスト数",
+        "サブネットワークのアドレス",
+        "ネットワークアドレス",
+        "ブロードキャストアドレスを得る演算",
+        "ホストアドレスを求める式はどれか"
+      ]
+    },
+    {
+      "id": "net-routing",
+      "field": "ネットワーク",
+      "label": "経路選択と集約",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-10",
+        "supplement-a1-ip-03",
+        "supplement-a1-ip-04"
+      ],
+      "aliases": [
+        "宛先情報の送出順序はどれか",
+        "最長一致",
+        "経路集約"
+      ]
+    },
+    {
+      "id": "net-ipv6",
+      "field": "ネットワーク",
+      "label": "IPv6とマルチキャスト",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-11",
+        "supplement-a1-ip-05"
+      ],
+      "aliases": [
+        "IPv6ブロードキャスト",
+        "マルチキャストの使用例"
+      ]
+    },
+    {
+      "id": "net-nat",
+      "field": "ネットワーク",
+      "label": "NATとNAPT",
+      "questionIds": [
+        "ipa-2020r02o-koudo-am1-11",
+        "ipa-2019r01a-koudo-am1-12",
+        "ipa-2019h31h-koudo-am1-10"
+      ],
+      "aliases": [
+        "NAPT",
+        "NAPTで書き換えられるヘッダー情報",
+        "NAPT機能のセキュリティ効果"
+      ]
+    },
+    {
+      "id": "net-arp",
+      "field": "ネットワーク",
+      "label": "ARPとMACアドレス",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-12",
+        "ipa-2021r03a-koudo-am1-10",
+        "ipa-2016h28a-koudo-am1-11"
+      ],
+      "aliases": [
+        "ARPの説明",
+        "ARPの説明はどれか",
+        "MACアドレスを調べるコマンド"
+      ]
+    },
+    {
+      "id": "net-ethernet",
+      "field": "ネットワーク",
+      "label": "Ethernetとスイッチ",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-10",
+        "ipa-2019r01a-koudo-am1-10",
+        "ipa-2019h31h-koudo-am1-11",
+        "ipa-2018h30a-koudo-am1-11",
+        "ipa-2017h29h-koudo-am1-10",
+        "ipa-2017h29a-koudo-am1-11",
+        "ipa-2016h28h-koudo-am1-11"
+      ],
+      "aliases": [
+        "CSMA/CDに関する記述",
+        "CSMA/CD方式",
+        "CSMA/CD方式に関する記述",
+        "MACフレームとIPパケット",
+        "レイヤー2スイッチ"
+      ]
+    },
+    {
+      "id": "net-tcp-udp",
+      "field": "ネットワーク",
+      "label": "TCPとUDP",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-10",
+        "ipa-2022r04h-koudo-am1-10",
+        "supplement-a1-protocol-01"
+      ],
+      "aliases": [
+        "UDPを使用しているもの",
+        "送信したパケットの数は幾つか"
+      ]
+    },
+    {
+      "id": "net-dns",
+      "field": "ネットワーク",
+      "label": "DNSの名前解決",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-11",
+        "supplement-a1-protocol-02",
+        "supplement-a1-protocol-03"
+      ],
+      "aliases": [
+        "DNSに関する記述",
+        "DNSキャッシュ",
+        "DNSレコード"
+      ]
+    },
+    {
+      "id": "net-dhcp",
+      "field": "ネットワーク",
+      "label": "DHCP",
+      "questionIds": [
+        "ipa-2022r04a-koudo-am1-11",
+        "supplement-a1-protocol-04"
+      ],
+      "aliases": [
+        "DHCPサーバが設置されたLAN環境"
+      ]
+    },
+    {
+      "id": "net-performance",
+      "field": "ネットワーク",
+      "label": "伝送時間と帯域・誤り率",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-11",
+        "ipa-2024r06a-koudo-am1-09",
+        "ipa-2020r02o-koudo-am1-10",
+        "ipa-2018h30h-koudo-am1-11",
+        "supplement-a1-protocol-05",
+        "review-a1-bandwidth"
+      ],
+      "aliases": [
+        "ビット誤り率",
+        "伝送時間",
+        "回線のビット誤り率",
+        "最小限必要な帯域幅はおよそ幾らか",
+        "片道の伝送時間は何ミリ秒か",
+        "通信帯域と転送量"
+      ]
+    },
+    {
+      "id": "net-vpn",
+      "field": "ネットワーク",
+      "label": "VPNとIPsec",
+      "questionIds": [
+        "ipa-2025-spring-a1-15",
+        "ipa-2024r06h-koudo-am1-15",
+        "ipa-2021r03a-koudo-am1-15",
+        "ipa-2020r02o-koudo-am1-12",
+        "ipa-2016h28a-koudo-am1-12"
+      ],
+      "aliases": [
+        "AHとESPを含むプロトコル",
+        "IPsec，L2TP，TLSの位置関係",
+        "IPv6で実現できるセキュリティ機能",
+        "VPNの階層",
+        "ネットワーク層で暗号化を行うもの"
+      ]
+    },
+    {
+      "id": "net-poe",
+      "field": "ネットワーク",
+      "label": "PoE",
+      "questionIds": [
+        "ipa-2025-spring-a1-11"
+      ],
+      "aliases": [
+        "LANケーブルを利用して給電も行う仕組み"
+      ]
+    },
+    {
+      "id": "net-proxy",
+      "field": "ネットワーク",
+      "label": "プロキシとリバースプロキシ",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-11",
+        "ipa-2019r01a-koudo-am1-11"
+      ],
+      "aliases": [
+        "フォワードプロキシはどれか",
+        "リバースプロキシ",
+        "リバースプロキシの説明はどれか"
+      ]
+    },
+    {
+      "id": "net-sdn",
+      "field": "ネットワーク",
+      "label": "SDNとNFV",
+      "questionIds": [
+        "ipa-2022r04h-koudo-am1-11",
+        "ipa-2021r03h-koudo-am1-11",
+        "ipa-2018h30h-koudo-am1-10",
+        "ipa-2017h29h-koudo-am1-11"
+      ],
+      "aliases": [
+        "NFVに関する記述",
+        "OpenFlowを使ったSDNに関する記述",
+        "SDN(Software-Defined Networking)",
+        "SDNの説明はどれか"
+      ]
+    },
+    {
+      "id": "net-mobile",
+      "field": "ネットワーク",
+      "label": "モバイル通信",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-11"
+      ],
+      "aliases": [
+        "モバイル通信サービス"
+      ]
+    },
+    {
+      "id": "sec-signature",
+      "field": "セキュリティ",
+      "label": "公開鍵暗号と署名",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-15",
+        "ipa-2024r06h-koudo-am1-13",
+        "ipa-2022r04h-koudo-am1-12",
+        "ipa-2021r03a-koudo-am1-13",
+        "ipa-2020r02o-koudo-am1-13",
+        "supplement-a1-crypto-01",
+        "supplement-a1-crypto-02",
+        "supplement-a1-crypto-05"
+      ],
+      "aliases": [
+        "デジタル署名",
+        "デジタル署名で確認できること",
+        "デジタル署名を使った電子メール保護技術",
+        "メッセージの送受信における署名鍵の使用",
+        "公開鍵暗号",
+        "公開鍵暗号方式で必要な鍵の数",
+        "否認防止の特性に関する記述",
+        "署名と機密性"
+      ]
+    },
+    {
+      "id": "sec-certificate",
+      "field": "セキュリティ",
+      "label": "電子証明書とPKI",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-13",
+        "ipa-2022r04a-koudo-am1-12",
+        "ipa-2017h29h-koudo-am1-12"
+      ],
+      "aliases": [
+        "ソフトウェアの発行元を確認する証明書",
+        "証明書の失効を確認するプロトコル",
+        "認証局の公開鍵の使途"
+      ]
+    },
+    {
+      "id": "sec-crypto",
+      "field": "セキュリティ",
+      "label": "暗号方式と安全性",
+      "questionIds": [
+        "ipa-2025-spring-a1-12",
+        "ipa-2020r02o-koudo-am1-14",
+        "ipa-2017h29h-koudo-am1-13",
+        "ipa-2017h29a-koudo-am1-13",
+        "ipa-2016h28h-koudo-am1-12",
+        "ipa-2016h28a-koudo-am1-15",
+        "review-a1-cryptrec"
+      ],
+      "aliases": [
+        "CRYPTREC",
+        "CRYPTREC暗号リスト",
+        "ハイブリッド暗号方式の特徴",
+        "共通鍵暗号方式はどれか",
+        "暗号方式に関する記述",
+        "暗号方式に関する説明"
+      ]
+    },
+    {
+      "id": "sec-hash",
+      "field": "セキュリティ",
+      "label": "暗号学的ハッシュ",
+      "questionIds": [
+        "ipa-2021r03h-koudo-am1-12"
+      ],
+      "aliases": [
+        "ハッシュ関数の原像計算困難性"
+      ]
+    },
+    {
+      "id": "sec-authentication",
+      "field": "セキュリティ",
+      "label": "認証方式と多要素認証",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-12",
+        "ipa-2021r03a-koudo-am1-14",
+        "ipa-2019r01a-koudo-am1-13",
+        "ipa-2019r01a-koudo-am1-15",
+        "ipa-2019h31h-koudo-am1-12",
+        "ipa-2016h28a-koudo-am1-13",
+        "ipa-2016h28a-koudo-am1-14",
+        "supplement-a1-crypto-03"
+      ],
+      "aliases": [
+        "3Dセキュア2.0",
+        "クレジットカードの不正利用を防ぐ仕組み",
+        "チャレンジレスポンス方式",
+        "リスクベース認証の特徴はどれか",
+        "多要素認証",
+        "虹彩認証に関する記述",
+        "認証デバイスの特徴"
+      ]
+    },
+    {
+      "id": "sec-sso",
+      "field": "セキュリティ",
+      "label": "シングルサインオン",
+      "questionIds": [
+        "ipa-2022r04h-koudo-am1-13"
+      ],
+      "aliases": [
+        "シングルサインオンシステム"
+      ]
+    },
+    {
+      "id": "sec-password",
+      "field": "セキュリティ",
+      "label": "パスワード攻撃とソルト",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-12",
+        "ipa-2018h30a-koudo-am1-14",
+        "supplement-a1-crypto-04"
+      ],
+      "aliases": [
+        "パスワードのソルト",
+        "ブルートフォース攻撃",
+        "レインボー攻撃はどれか"
+      ]
+    },
+    {
+      "id": "sec-sql-injection",
+      "field": "セキュリティ",
+      "label": "SQLインジェクション",
+      "questionIds": [
+        "supplement-a1-security-01",
+        "review-a1-sql-injection"
+      ],
+      "aliases": []
+    },
+    {
+      "id": "sec-command-injection",
+      "field": "セキュリティ",
+      "label": "OSコマンドインジェクション",
+      "questionIds": [
+        "ipa-2025-spring-a1-14"
+      ],
+      "aliases": [
+        "OSコマンドインジェクション対策はどれか"
+      ]
+    },
+    {
+      "id": "sec-xss",
+      "field": "セキュリティ",
+      "label": "クロスサイトスクリプティング",
+      "questionIds": [
+        "ipa-2018h30h-koudo-am1-12",
+        "ipa-2018h30a-koudo-am1-13",
+        "ipa-2016h28h-koudo-am1-14",
+        "supplement-a1-security-02"
+      ],
+      "aliases": [
+        "XSS",
+        "クロスサイトスクリプティング対策",
+        "ブラウザに送信する直前に行う対策"
+      ]
+    },
+    {
+      "id": "sec-csrf",
+      "field": "セキュリティ",
+      "label": "CSRF",
+      "questionIds": [
+        "supplement-a1-security-03"
+      ],
+      "aliases": []
+    },
+    {
+      "id": "sec-session",
+      "field": "セキュリティ",
+      "label": "セッションの保護",
+      "questionIds": [
+        "ipa-2021r03h-koudo-am1-15",
+        "ipa-2018h30h-koudo-am1-15"
+      ],
+      "aliases": [
+        "セッションハイジャック対策"
+      ]
+    },
+    {
+      "id": "sec-waf",
+      "field": "セキュリティ",
+      "label": "WAF",
+      "questionIds": [
+        "ipa-2022r04a-koudo-am1-14",
+        "ipa-2019h31h-koudo-am1-15",
+        "ipa-2017h29a-koudo-am1-15",
+        "ipa-2016h28h-koudo-am1-13"
+      ],
+      "aliases": [
+        "WAFによる防御が有効な攻撃",
+        "WAFの説明として適切なもの",
+        "WAFの説明はどれか"
+      ]
+    },
+    {
+      "id": "sec-dns-attack",
+      "field": "セキュリティ",
+      "label": "DNSキャッシュポイズニング",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-15"
+      ],
+      "aliases": [
+        "DNSキャッシュポイズニング対策"
+      ]
+    },
+    {
+      "id": "sec-malware",
+      "field": "セキュリティ",
+      "label": "マルウェアと攻撃の流れ",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-12",
+        "ipa-2024r06a-koudo-am1-13",
+        "ipa-2024r06a-koudo-am1-16",
+        "ipa-2023r05h-koudo-am1-12",
+        "ipa-2019h31h-koudo-am1-14",
+        "ipa-2017h29a-koudo-am1-12"
+      ],
+      "aliases": [
+        "C&Cサーバが果たす役割はどれか",
+        "エクスプロイトコードの説明はどれか",
+        "サイバーキルチェーン",
+        "サンドボックスの説明はどれか",
+        "ディープフェイクを悪用した攻撃",
+        "ドライブバイダウンロード攻撃"
+      ]
+    },
+    {
+      "id": "sec-incident",
+      "field": "セキュリティ",
+      "label": "脆弱性対応とインシデント対応組織",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-14",
+        "ipa-2024r06a-koudo-am1-14",
+        "ipa-2023r05a-koudo-am1-14",
+        "ipa-2021r03h-koudo-am1-14",
+        "ipa-2017h29a-koudo-am1-14"
+      ],
+      "aliases": [
+        "CCの活動とサービス対象の組合せ",
+        "CVE識別子の説明はどれか",
+        "J-CRATの役割はどれか",
+        "JPCERT/CCの説明はどれか",
+        "自社製品の脆弱性に対応するための社内機能"
+      ]
+    },
+    {
+      "id": "sec-sbom",
+      "field": "セキュリティ",
+      "label": "SBOMとソフトウェア部品管理",
+      "questionIds": [
+        "ipa-2025-spring-a1-13",
+        "review-a1-sbom"
+      ],
+      "aliases": [
+        "SBOM",
+        "SBOM管理ツールを用いることができるもの"
+      ]
+    },
+    {
+      "id": "sec-forensics",
+      "field": "セキュリティ",
+      "label": "デジタルフォレンジックス",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-13",
+        "ipa-2019h31h-koudo-am1-13"
+      ],
+      "aliases": [
+        "デジタルフォレンジックスの手順"
+      ]
+    },
+    {
+      "id": "sec-fuzzing",
+      "field": "セキュリティ",
+      "label": "ファジング",
+      "questionIds": [
+        "ipa-2022r04h-koudo-am1-15",
+        "ipa-2019r01a-koudo-am1-14",
+        "ipa-2018h30h-koudo-am1-14",
+        "ipa-2018h30a-koudo-am1-15"
+      ],
+      "aliases": [
+        "ファジングに該当するものはどれか",
+        "ファジングはどれか"
+      ]
+    },
+    {
+      "id": "sec-tls",
+      "field": "セキュリティ",
+      "label": "TLSと通信の保護",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-15",
+        "ipa-2020r02o-koudo-am1-15",
+        "ipa-2018h30a-koudo-am1-12"
+      ],
+      "aliases": [
+        "TLS通信で期待できるセキュリティ効果",
+        "メール受信の暗号化プロトコル",
+        "利用するセキュリティ技術"
+      ]
+    },
+    {
+      "id": "sec-mail",
+      "field": "セキュリティ",
+      "label": "メールの認証と中継対策",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-14",
+        "ipa-2023r05a-koudo-am1-13",
+        "ipa-2023r05a-koudo-am1-15"
+      ],
+      "aliases": [
+        "DKIMの説明はどれか",
+        "サブミッションポートの導入目的",
+        "第三者中継と判断できるログはどれか"
+      ]
+    },
+    {
+      "id": "sec-wlan",
+      "field": "セキュリティ",
+      "label": "無線LANセキュリティ",
+      "questionIds": [
+        "ipa-2022r04a-koudo-am1-15",
+        "ipa-2017h29h-koudo-am1-15"
+      ],
+      "aliases": [
+        "WPA2-PSKの機能はどれか"
+      ]
+    },
+    {
+      "id": "sec-risk",
+      "field": "セキュリティ",
+      "label": "情報セキュリティのリスク管理",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-14",
+        "ipa-2022r04a-koudo-am1-13",
+        "ipa-2021r03h-koudo-am1-13",
+        "ipa-2021r03a-koudo-am1-12",
+        "ipa-2017h29h-koudo-am1-14",
+        "supplement-a1-security-04",
+        "supplement-a1-security-05"
+      ],
+      "aliases": [
+        "IoTセキュリティガイドライン",
+        "サイバーセキュリティ経営ガイドライン",
+        "リスクアセスメントの構成プロセス",
+        "リスク移転",
+        "最小権限",
+        "真正性及び信頼性に対する定義"
+      ]
+    },
+    {
+      "id": "dev-activity",
+      "field": "開発",
+      "label": "UMLアクティビティ図",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-25",
+        "ipa-2022r04h-koudo-am1-25",
+        "ipa-2021r03a-koudo-am1-16",
+        "ipa-2020r02o-koudo-am1-16",
+        "ipa-2017h29h-koudo-am1-25"
+      ],
+      "aliases": [
+        "アクティビティ図",
+        "アクティビティ図のものはどれか",
+        "アクティビティ図の特徴はどれか"
+      ]
+    },
+    {
+      "id": "dev-usecase",
+      "field": "開発",
+      "label": "UMLユースケース図",
+      "questionIds": [
+        "ipa-2019h31h-koudo-am1-25",
+        "ipa-2016h28a-koudo-am1-16"
+      ],
+      "aliases": [
+        "ユースケース図",
+        "ユースケース図の説明はどれか"
+      ]
+    },
+    {
+      "id": "dev-object",
+      "field": "開発",
+      "label": "オブジェクト指向とモデリング",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-16",
+        "ipa-2024r06h-koudo-am1-16",
+        "ipa-2018h30a-koudo-am1-23",
+        "ipa-2017h29h-koudo-am1-16",
+        "ipa-2016h28h-koudo-am1-25"
+      ],
+      "aliases": [
+        "UMLの図法はどれか",
+        "UMLを採用した場合の活用シーン",
+        "インスタンス間の関係を表現する図",
+        "オブジェクト指向",
+        "汎化の適切な例はどれか"
+      ]
+    },
+    {
+      "id": "dev-review",
+      "field": "開発",
+      "label": "開発レビュー",
+      "questionIds": [
+        "ipa-2025-spring-a1-16",
+        "ipa-2022r04a-koudo-am1-16",
+        "ipa-2019r01a-koudo-am1-16",
+        "supplement-a1-development-05",
+        "review-a1-design-review"
+      ],
+      "aliases": [
+        "デザインレビュー",
+        "デザインレビューの目的はどれか",
+        "レビュー",
+        "レビュー技法はどれか"
+      ]
+    },
+    {
+      "id": "dev-module",
+      "field": "開発",
+      "label": "モジュールの凝集度と結合度",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-16",
+        "ipa-2017h29a-koudo-am1-16",
+        "ipa-2016h28h-koudo-am1-17",
+        "supplement-a1-dev-management-05"
+      ],
+      "aliases": [
+        "モジュール強度",
+        "モジュール結合度",
+        "モジュール結合度が最も弱いもの",
+        "凝集度と結合度"
+      ]
+    },
+    {
+      "id": "dev-whitebox",
+      "field": "開発",
+      "label": "ホワイトボックステストと網羅性",
+      "questionIds": [
+        "ipa-2022r04h-koudo-am1-16",
+        "ipa-2021r03h-koudo-am1-16",
+        "supplement-a1-development-04"
+      ],
+      "aliases": [
+        "ホワイトボックステスト",
+        "判定条件網羅のテストケース",
+        "命令網羅"
+      ]
+    },
+    {
+      "id": "dev-blackbox",
+      "field": "開発",
+      "label": "同値分割と境界値分析",
+      "questionIds": [
+        "supplement-a1-development-02",
+        "supplement-a1-development-03"
+      ],
+      "aliases": [
+        "同値分割",
+        "境界値分析"
+      ]
+    },
+    {
+      "id": "dev-requirement",
+      "field": "開発",
+      "label": "要件定義と追跡可能性",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-24",
+        "supplement-a1-development-01"
+      ],
+      "aliases": [
+        "トレーサビリティ",
+        "機能要件と非機能要件"
+      ]
+    },
+    {
+      "id": "dev-safety",
+      "field": "開発",
+      "label": "安全性の設計",
+      "questionIds": [
+        "ipa-2019h31h-koudo-am1-16",
+        "ipa-2018h30a-koudo-am1-16"
+      ],
+      "aliases": [
+        "フェールセーフの設計",
+        "フールプルーフ"
+      ]
+    },
+    {
+      "id": "dev-maintenance",
+      "field": "開発",
+      "label": "保守性とソフトウェア品質",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-17",
+        "ipa-2022r04h-koudo-am1-17",
+        "ipa-2017h29a-koudo-am1-19",
+        "ipa-2016h28h-koudo-am1-16"
+      ],
+      "aliases": [
+        "ゴンペルツ曲線はどれか",
+        "ソフトウェア保守のどの分類に該当するか",
+        "保守性に影響するものはどれか",
+        "保守性の評価指標になるもの"
+      ]
+    },
+    {
+      "id": "dev-scrum",
+      "field": "開発",
+      "label": "スクラム",
+      "questionIds": [
+        "ipa-2025-spring-a1-17",
+        "ipa-2022r04a-koudo-am1-17",
+        "ipa-2021r03h-koudo-am1-17",
+        "ipa-2021r03a-koudo-am1-17",
+        "ipa-2020r02o-koudo-am1-17",
+        "ipa-2019h31h-koudo-am1-17",
+        "supplement-a1-dev-management-01",
+        "supplement-a1-dev-management-02",
+        "review-a1-scrum"
+      ],
+      "aliases": [
+        "スクラムのものはどれか",
+        "スクラムの優先順位",
+        "スクラム開発のKPT手法",
+        "スクラム開発のイベント",
+        "バーンダウンチャートはどれか",
+        "プロダクトオーナーの役割はどれか",
+        "レトロスペクティブ"
+      ]
+    },
+    {
+      "id": "dev-agile",
+      "field": "開発",
+      "label": "反復開発とXP",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-16",
+        "ipa-2018h30h-koudo-am1-17",
+        "ipa-2018h30a-koudo-am1-17",
+        "ipa-2017h29h-koudo-am1-17"
+      ],
+      "aliases": [
+        "イテレーションを行う目的はどれか",
+        "ソフトウェア開発手法",
+        "ペアプログラミングの説明はどれか"
+      ]
+    },
+    {
+      "id": "dev-process",
+      "field": "開発",
+      "label": "開発プロセスと成熟度",
+      "questionIds": [
+        "ipa-2018h30h-koudo-am1-16",
+        "ipa-2017h29a-koudo-am1-17"
+      ],
+      "aliases": [
+        "CMMIの説明はどれか",
+        "ソフトウェア実装プロセス"
+      ]
+    },
+    {
+      "id": "dev-tools",
+      "field": "開発",
+      "label": "開発環境と継続的インテグレーション",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-17",
+        "supplement-a1-dev-management-03"
+      ],
+      "aliases": [
+        "IDEの説明はどれか",
+        "継続的インテグレーション"
+      ]
+    },
+    {
+      "id": "dev-configuration",
+      "field": "開発",
+      "label": "構成管理",
+      "questionIds": [
+        "ipa-2018h30h-koudo-am1-20",
+        "ipa-2016h28h-koudo-am1-20",
+        "supplement-a1-dev-management-04"
+      ],
+      "aliases": [
+        "構成管理の導入メリット",
+        "構成管理プロセスの活動はどれか"
+      ]
+    },
+    {
+      "id": "pm-evm",
+      "field": "プロジェクト管理",
+      "label": "EVM",
+      "questionIds": [
+        "ipa-2025-spring-a1-18",
+        "ipa-2024r06h-koudo-am1-18",
+        "ipa-2022r04h-koudo-am1-18",
+        "ipa-2020r02o-koudo-am1-18",
+        "ipa-2019h31h-koudo-am1-18",
+        "ipa-2017h29a-koudo-am1-18",
+        "supplement-a1-project-04",
+        "review-a1-evm"
+      ],
+      "aliases": [
+        "EVMの管理対象の組みはどれか",
+        "EVMの進捗",
+        "アーンドバリューマネジメント"
+      ]
+    },
+    {
+      "id": "pm-scope",
+      "field": "プロジェクト管理",
+      "label": "スコープとWBS",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-18",
+        "ipa-2023r05a-koudo-am1-18",
+        "ipa-2018h30h-koudo-am1-18",
+        "supplement-a1-project-01",
+        "review-a1-scope"
+      ],
+      "aliases": [
+        "WBS",
+        "スコープの管理の活動はどれか",
+        "スコープコントロールの活動はどれか",
+        "スコープ管理",
+        "プロジェクト・スコープ記述書"
+      ]
+    },
+    {
+      "id": "pm-schedule",
+      "field": "プロジェクト管理",
+      "label": "工程とクリティカルパス",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-19",
+        "ipa-2022r04h-koudo-am1-19",
+        "ipa-2022r04a-koudo-am1-18",
+        "ipa-2021r03h-koudo-am1-19",
+        "ipa-2021r03a-koudo-am1-18",
+        "ipa-2019r01a-koudo-am1-19",
+        "ipa-2019h31h-koudo-am1-19",
+        "ipa-2017h29h-koudo-am1-18",
+        "ipa-2016h28a-koudo-am1-19",
+        "supplement-a1-project-02"
+      ],
+      "aliases": [
+        "アローダイアグラム",
+        "クリティカルパス",
+        "プレシデンスダイアグラム",
+        "プレシデンスダイアグラム法",
+        "完了のために必要な期間は最短で何日間か"
+      ]
+    },
+    {
+      "id": "pm-crashing",
+      "field": "プロジェクト管理",
+      "label": "工程短縮",
+      "questionIds": [
+        "ipa-2025-spring-a1-19",
+        "ipa-2024r06a-koudo-am1-19",
+        "review-a1-schedule"
+      ],
+      "aliases": [
+        "クラッシング",
+        "クラッシングに該当するものはどれか",
+        "ファストトラッキングの例はどれか",
+        "工程短縮の方法"
+      ]
+    },
+    {
+      "id": "pm-estimate",
+      "field": "プロジェクト管理",
+      "label": "工数とコストの見積り",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-19",
+        "ipa-2018h30a-koudo-am1-19",
+        "ipa-2016h28h-koudo-am1-18",
+        "supplement-a1-project-03"
+      ],
+      "aliases": [
+        "ファンクションポイント法",
+        "三点見積り",
+        "人件費は何万円増加するか",
+        "工数の見積りに関する記述"
+      ]
+    },
+    {
+      "id": "pm-risk",
+      "field": "プロジェクト管理",
+      "label": "プロジェクトのリスク管理",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-19",
+        "ipa-2021r03a-koudo-am1-19",
+        "ipa-2020r02o-koudo-am1-19",
+        "ipa-2017h29h-koudo-am1-19"
+      ],
+      "aliases": [
+        "どちらのリスクに対しても採用される戦略",
+        "リスクの定量的分析で実施すること",
+        "定量的リスク分析で実施すること",
+        "採用すべき案と期待金額価値"
+      ]
+    },
+    {
+      "id": "pm-team",
+      "field": "プロジェクト管理",
+      "label": "チーム形成とコミュニケーション",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-18",
+        "ipa-2021r03h-koudo-am1-20"
+      ],
+      "aliases": [
+        "タックマンモデル",
+        "延べ何時間の顔合わせ会が必要か"
+      ]
+    },
+    {
+      "id": "pm-integration",
+      "field": "プロジェクト管理",
+      "label": "プロジェクトの統合と変更管理",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-18",
+        "ipa-2021r03h-koudo-am1-18",
+        "ipa-2019r01a-koudo-am1-18",
+        "ipa-2016h28a-koudo-am1-18",
+        "supplement-a1-project-05"
+      ],
+      "aliases": [
+        "PMBOKの統合変更管理プロセス",
+        "PMOの役割はどれか",
+        "プロジェクト憲章",
+        "変更管理",
+        "計画のプロセス群に属するプロセス"
+      ]
+    },
+    {
+      "id": "pm-monitoring",
+      "field": "プロジェクト管理",
+      "label": "進捗監視と調達評価",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-19",
+        "ipa-2022r04a-koudo-am1-19",
+        "ipa-2018h30a-koudo-am1-18",
+        "ipa-2016h28a-koudo-am1-20"
+      ],
+      "aliases": [
+        "トレンドチャートの説明はどれか",
+        "プロジェクトの進捗管理",
+        "総合評価が最も高い製品はどれか"
+      ]
+    },
+    {
+      "id": "service-sla",
+      "field": "サービス管理と監査",
+      "label": "SLAとサービス水準",
+      "questionIds": [
+        "ipa-2025-spring-a1-20",
+        "ipa-2024r06h-koudo-am1-20",
+        "ipa-2023r05a-koudo-am1-20",
+        "ipa-2020r02o-koudo-am1-21",
+        "ipa-2017h29h-koudo-am1-20",
+        "ipa-2017h29a-koudo-am1-20",
+        "ipa-2016h28h-koudo-am1-19",
+        "supplement-a1-service-01"
+      ],
+      "aliases": [
+        "ITサービスの可用性は何%か",
+        "SLA",
+        "SLAの可用性",
+        "サービスの可用性評価",
+        "サービスレベル管理の説明はどれか",
+        "サービスレベル管理プロセスの活動",
+        "可用性管理のKPIとして用いるもの",
+        "月の可用性は何%か",
+        "許容されるサービスの停止時間"
+      ]
+    },
+    {
+      "id": "service-incident",
+      "field": "サービス管理と監査",
+      "label": "インシデント管理と問題管理",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-20",
+        "ipa-2022r04a-koudo-am1-20",
+        "ipa-2021r03a-koudo-am1-20",
+        "ipa-2019r01a-koudo-am1-20",
+        "ipa-2019h31h-koudo-am1-20",
+        "ipa-2017h29h-koudo-am1-21",
+        "supplement-a1-service-02"
+      ],
+      "aliases": [
+        "インシデント管理として行うもの",
+        "問題管理とインシデント管理",
+        "問題管理の活動はどれか",
+        "問題管理プロセスで実施すること",
+        "問題管理プロセスの活動はどれか",
+        "問題管理プロセスの目的はどれか"
+      ]
+    },
+    {
+      "id": "service-continuity",
+      "field": "サービス管理と監査",
+      "label": "事業継続と復旧目標",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-25",
+        "ipa-2024r06a-koudo-am1-20",
+        "ipa-2022r04a-koudo-am1-23",
+        "ipa-2022r04a-koudo-am1-25",
+        "ipa-2019r01a-koudo-am1-23",
+        "supplement-a1-service-03",
+        "review-a1-recovery"
+      ],
+      "aliases": [
+        "BCPの説明はどれか",
+        "RPOとRTO",
+        "RTOとRLOとを定めた例はどれか",
+        "コンティンジェンシープラン"
+      ]
+    },
+    {
+      "id": "service-backup",
+      "field": "サービス管理と監査",
+      "label": "バックアップ",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-21",
+        "ipa-2021r03a-koudo-am1-21",
+        "ipa-2019h31h-koudo-am1-21",
+        "ipa-2016h28a-koudo-am1-21",
+        "supplement-a1-service-05"
+      ],
+      "aliases": [
+        "バックアップに必要な媒体数",
+        "差分バックアップ",
+        "差分バックアップ方式"
+      ]
+    },
+    {
+      "id": "service-management",
+      "field": "サービス管理と監査",
+      "label": "サービスマネジメントの運用",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-20",
+        "ipa-2022r04h-koudo-am1-21",
+        "ipa-2020r02o-koudo-am1-20",
+        "ipa-2018h30h-koudo-am1-19",
+        "ipa-2018h30a-koudo-am1-20"
+      ],
+      "aliases": [
+        "ITILのサービスライフサイクル",
+        "SMSの実行の説明はどれか",
+        "データ管理者の役割",
+        "パフォーマンスレビューのタイミング",
+        "逓減課金方式を示すグラフ"
+      ]
+    },
+    {
+      "id": "service-audit-procedure",
+      "field": "サービス管理と監査",
+      "label": "システム監査の手続と証拠",
+      "questionIds": [
+        "ipa-2025-spring-a1-21",
+        "ipa-2025-spring-a1-22",
+        "ipa-2024r06a-koudo-am1-21",
+        "ipa-2023r05h-koudo-am1-21",
+        "ipa-2023r05h-koudo-am1-22",
+        "ipa-2023r05a-koudo-am1-22",
+        "ipa-2022r04h-koudo-am1-22",
+        "ipa-2022r04a-koudo-am1-22",
+        "ipa-2021r03a-koudo-am1-22",
+        "ipa-2020r02o-koudo-am1-22",
+        "ipa-2019r01a-koudo-am1-22",
+        "ipa-2018h30a-koudo-am1-21",
+        "ipa-2016h28h-koudo-am1-22"
+      ],
+      "aliases": [
+        "ウォークスルー法の説明はどれか",
+        "システム監査におけるサンプリング",
+        "システム監査手続きの技法",
+        "予備調査で実施する監査手続",
+        "予備調査について適切な記述はどれか",
+        "伝票入力作業の監査手続",
+        "監査手続",
+        "監査手続の実施に際して利用する技法",
+        "監査手続の技法",
+        "監査手続はどれか",
+        "監査証拠の入手と評価"
+      ]
+    },
+    {
+      "id": "service-audit-report",
+      "field": "サービス管理と監査",
+      "label": "監査報告とフォローアップ",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-22",
+        "ipa-2022r04a-koudo-am1-21",
+        "ipa-2021r03h-koudo-am1-22",
+        "ipa-2017h29h-koudo-am1-22"
+      ],
+      "aliases": [
+        "フォローアップとして適切なものはどれか",
+        "フォローアップの説明はどれか",
+        "監査報告書に記載すべきものはどれか",
+        "監査報告書に記載する改善勧告"
+      ]
+    },
+    {
+      "id": "service-audit-independence",
+      "field": "サービス管理と監査",
+      "label": "監査の独立性と責任",
+      "questionIds": [
+        "ipa-2018h30h-koudo-am1-21",
+        "ipa-2017h29a-koudo-am1-21",
+        "supplement-a1-service-04"
+      ],
+      "aliases": [
+        "システム監査人が採るべき行動",
+        "システム監査規程の承認者",
+        "監査の独立性"
+      ]
+    },
+    {
+      "id": "service-control",
+      "field": "サービス管理と監査",
+      "label": "内部統制と監査の観点",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-21",
+        "ipa-2025r07a-koudo-am1-22",
+        "ipa-2024r06h-koudo-am1-21",
+        "ipa-2024r06h-koudo-am1-22",
+        "ipa-2021r03h-koudo-am1-21",
+        "ipa-2019r01a-koudo-am1-21",
+        "ipa-2019h31h-koudo-am1-22",
+        "ipa-2018h30h-koudo-am1-22",
+        "ipa-2018h30a-koudo-am1-22",
+        "ipa-2017h29a-koudo-am1-22",
+        "ipa-2016h28h-koudo-am1-21",
+        "ipa-2016h28a-koudo-am1-22"
+      ],
+      "aliases": [
+        "ITに係る業務処理統制に該当するものはどれか",
+        "クラウドサービス導入に対する監査",
+        "コントロールの視点から行う検証・評価",
+        "システム監査で使用される用語",
+        "マスタファイル管理に関する監査",
+        "内部統制のITへの対応",
+        "情報システムの可監査性",
+        "情報セキュリティ監査",
+        "監査人が総合的に点検評価を行う対象",
+        "網羅性のチェックポイント"
+      ]
+    },
+    {
+      "id": "strategy-dx",
+      "field": "システム戦略と企画",
+      "label": "DX",
+      "questionIds": [
+        "ipa-2025-spring-a1-23",
+        "ipa-2024r06a-koudo-am1-23"
+      ],
+      "aliases": [
+        "DX推進指標",
+        "DX認定制度の認定基準"
+      ]
+    },
+    {
+      "id": "strategy-soa",
+      "field": "システム戦略と企画",
+      "label": "SOAとサービス連携",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-24",
+        "ipa-2024r06h-koudo-am1-23",
+        "ipa-2023r05a-koudo-am1-24",
+        "ipa-2020r02o-koudo-am1-24",
+        "ipa-2016h28h-koudo-am1-24",
+        "review-a1-soa"
+      ],
+      "aliases": [
+        "SOAの説明はどれか",
+        "SOAを説明したものはどれか"
+      ]
+    },
+    {
+      "id": "strategy-ea",
+      "field": "システム戦略と企画",
+      "label": "EAと全体最適",
+      "questionIds": [
+        "ipa-2021r03h-koudo-am1-23",
+        "supplement-a1-planning-05"
+      ],
+      "aliases": [
+        "EA",
+        "エンタープライズアーキテクチャ"
+      ]
+    },
+    {
+      "id": "strategy-program",
+      "field": "システム戦略と企画",
+      "label": "プログラムマネジメント",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-23",
+        "ipa-2019h31h-koudo-am1-23",
+        "ipa-2017h29h-koudo-am1-23",
+        "review-a1-program-management"
+      ],
+      "aliases": [
+        "プログラムマネジメントの考え方"
+      ]
+    },
+    {
+      "id": "strategy-roi",
+      "field": "システム戦略と企画",
+      "label": "IT投資効果とROI",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-24",
+        "ipa-2023r05h-koudo-am1-23",
+        "ipa-2022r04h-koudo-am1-24",
+        "ipa-2022r04a-koudo-am1-24",
+        "ipa-2021r03a-koudo-am1-24",
+        "ipa-2020r02o-koudo-am1-23",
+        "ipa-2016h28h-koudo-am1-23",
+        "supplement-a1-accounting-03"
+      ],
+      "aliases": [
+        "IT投資効果の評価方法",
+        "ROIを説明したものはどれか",
+        "テレワーク導入後5年間の効果",
+        "事前評価について説明したもの",
+        "年間当たりの金額面の効果が最も高いもの",
+        "投資利益率",
+        "投資効果が大きいシナリオはどれか",
+        "投資額を分母にして算出する指標"
+      ]
+    },
+    {
+      "id": "strategy-payback",
+      "field": "システム戦略と企画",
+      "label": "投資回収期間",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-25",
+        "review-a1-payback"
+      ],
+      "aliases": [
+        "PBP法に関する記述はどれか"
+      ]
+    },
+    {
+      "id": "strategy-rfi",
+      "field": "システム戦略と企画",
+      "label": "RFIとRFP",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-25",
+        "ipa-2021r03h-koudo-am1-24",
+        "ipa-2021r03a-koudo-am1-25",
+        "ipa-2018h30h-koudo-am1-25",
+        "supplement-a1-planning-01"
+      ],
+      "aliases": [
+        "RFIの説明はどれか",
+        "RFIを説明したものはどれか"
+      ]
+    },
+    {
+      "id": "strategy-bpr",
+      "field": "システム戦略と企画",
+      "label": "業務改革とBPR",
+      "questionIds": [
+        "ipa-2021r03a-koudo-am1-23",
+        "supplement-a1-planning-02"
+      ],
+      "aliases": [
+        "BPR",
+        "業務プロセスの改善活動"
+      ]
+    },
+    {
+      "id": "strategy-kpi",
+      "field": "システム戦略と企画",
+      "label": "KGI・KPIとBSC",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-26",
+        "ipa-2023r05h-koudo-am1-26",
+        "ipa-2021r03h-koudo-am1-29",
+        "ipa-2019r01a-koudo-am1-24",
+        "ipa-2018h30a-koudo-am1-24",
+        "ipa-2017h29h-koudo-am1-24",
+        "ipa-2016h28a-koudo-am1-23",
+        "supplement-a1-planning-03",
+        "review-a1-bsc"
+      ],
+      "aliases": [
+        "BSCと戦略マップ",
+        "KGIとKPI",
+        "システム全体の目標達成度",
+        "バランススコアカード",
+        "内部ビジネスプロセスのKPIはどれか",
+        "学習と成長のKPIの目標例はどれか",
+        "戦略マップの説明はどれか"
+      ]
+    },
+    {
+      "id": "strategy-planning",
+      "field": "システム戦略と企画",
+      "label": "システム化構想と将来像",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-23",
+        "ipa-2018h30h-koudo-am1-23",
+        "ipa-2018h30a-koudo-am1-25",
+        "ipa-2017h29a-koudo-am1-23"
+      ],
+      "aliases": [
+        "To-Beモデル",
+        "システム化構想の立案プロセス",
+        "バックキャスティング",
+        "情報戦略策定段階の成果物はどれか"
+      ]
+    },
+    {
+      "id": "strategy-bi",
+      "field": "システム戦略と企画",
+      "label": "BIと情報活用",
+      "questionIds": [
+        "ipa-2016h28a-koudo-am1-24"
+      ],
+      "aliases": [
+        "BIの活用事例"
+      ]
+    },
+    {
+      "id": "strategy-outsourcing",
+      "field": "システム戦略と企画",
+      "label": "外部委託と事業モデル",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-24",
+        "ipa-2023r05a-koudo-am1-25",
+        "ipa-2022r04h-koudo-am1-23",
+        "ipa-2022r04h-koudo-am1-27",
+        "ipa-2021r03h-koudo-am1-25",
+        "ipa-2019r01a-koudo-am1-25",
+        "ipa-2019h31h-koudo-am1-24",
+        "ipa-2018h30h-koudo-am1-24",
+        "ipa-2017h29a-koudo-am1-25"
+      ],
+      "aliases": [
+        "BPOの説明はどれか",
+        "EMSの説明はどれか",
+        "ファウンドリーサービスはどれか",
+        "ファウンドリ企業のビジネスモデル",
+        "レベニューシェア契約の特徴",
+        "半導体ファブレス企業はどれか",
+        "適切なソリューションはどれか"
+      ]
+    },
+    {
+      "id": "strategy-soe",
+      "field": "システム戦略と企画",
+      "label": "SoE",
+      "questionIds": [
+        "ipa-2020r02o-koudo-am1-28"
+      ],
+      "aliases": [
+        "SoEの説明はどれか"
+      ]
+    },
+    {
+      "id": "strategy-tco",
+      "field": "システム戦略と企画",
+      "label": "TCO",
+      "questionIds": [
+        "supplement-a1-planning-04"
+      ],
+      "aliases": []
+    },
+    {
+      "id": "business-ppm",
+      "field": "経営と技術戦略",
+      "label": "PPM",
+      "questionIds": [
+        "ipa-2025-spring-a1-26",
+        "ipa-2022r04h-koudo-am1-26",
+        "ipa-2021r03h-koudo-am1-26",
+        "ipa-2019r01a-koudo-am1-26",
+        "ipa-2018h30h-koudo-am1-26",
+        "supplement-a1-strategy-02",
+        "review-a1-ppm"
+      ],
+      "aliases": [
+        "PPMと事業ポートフォリオ",
+        "PPMの軸の組合せ",
+        "PPM分析",
+        "プロダクトポートフォリオマネジメント",
+        "市場成長率と市場シェアで分析する手法"
+      ]
+    },
+    {
+      "id": "business-swot",
+      "field": "経営と技術戦略",
+      "label": "経営環境の分析",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-26",
+        "supplement-a1-strategy-01"
+      ],
+      "aliases": [
+        "SWOT分析",
+        "分析フレームワーク"
+      ]
+    },
+    {
+      "id": "business-growth",
+      "field": "経営と技術戦略",
+      "label": "成長・競争戦略",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-27",
+        "ipa-2024r06a-koudo-am1-29",
+        "ipa-2019h31h-koudo-am1-26",
+        "ipa-2017h29h-koudo-am1-26",
+        "ipa-2016h28h-koudo-am1-26",
+        "ipa-2016h28a-koudo-am1-27",
+        "supplement-a1-strategy-03"
+      ],
+      "aliases": [
+        "アンゾフの成長マトリクス",
+        "コアコンピタンスに該当するもの",
+        "チャレンジャー戦略",
+        "差別化戦略",
+        "浸透価格戦略に該当するもの",
+        "経営理念，経営戦略，事業戦略の関係性"
+      ]
+    },
+    {
+      "id": "business-marketing",
+      "field": "経営と技術戦略",
+      "label": "マーケティングと顧客管理",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-26",
+        "ipa-2023r05a-koudo-am1-26",
+        "ipa-2022r04a-koudo-am1-26",
+        "ipa-2019r01a-koudo-am1-27",
+        "ipa-2017h29a-koudo-am1-26",
+        "ipa-2016h28h-koudo-am1-27"
+      ],
+      "aliases": [
+        "4Pと4Cの対応関係",
+        "CRMを説明したものはどれか",
+        "コンジョイント分析の説明はどれか",
+        "コ・クリエーション戦略の特徴はどれか",
+        "人口統計的変数に分類されるもの"
+      ]
+    },
+    {
+      "id": "business-valuechain",
+      "field": "経営と技術戦略",
+      "label": "バリューチェーン",
+      "questionIds": [
+        "ipa-2021r03a-koudo-am1-26",
+        "ipa-2020r02o-koudo-am1-26"
+      ],
+      "aliases": [
+        "バリューチェーンの説明はどれか",
+        "バリューチェーン分析"
+      ]
+    },
+    {
+      "id": "business-benchmark",
+      "field": "経営と技術戦略",
+      "label": "ベンチマーキング",
+      "questionIds": [
+        "ipa-2016h28a-koudo-am1-26"
+      ],
+      "aliases": [
+        "ベンチマーキングを説明したもの"
+      ]
+    },
+    {
+      "id": "business-feasibility",
+      "field": "経営と技術戦略",
+      "label": "事業の実現可能性評価",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-27"
+      ],
+      "aliases": [
+        "フィージビリティスタディはどれか"
+      ]
+    },
+    {
+      "id": "business-innovation",
+      "field": "経営と技術戦略",
+      "label": "オープンイノベーション",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-27",
+        "ipa-2019h31h-koudo-am1-27",
+        "supplement-a1-strategy-04"
+      ],
+      "aliases": [
+        "オープンイノベーションに関する事例",
+        "オープンイノベーションの説明はどれか"
+      ]
+    },
+    {
+      "id": "business-commercialization",
+      "field": "経営と技術戦略",
+      "label": "技術の事業化",
+      "questionIds": [
+        "ipa-2024r06a-koudo-am1-27",
+        "review-a1-innovation"
+      ],
+      "aliases": [
+        "事業化から産業化に移行するときの障壁"
+      ]
+    },
+    {
+      "id": "business-startup",
+      "field": "経営と技術戦略",
+      "label": "リーンスタートアップ",
+      "questionIds": [
+        "ipa-2021r03a-koudo-am1-27"
+      ],
+      "aliases": [
+        "リーンスタートアップの説明はどれか"
+      ]
+    },
+    {
+      "id": "business-api",
+      "field": "経営と技術戦略",
+      "label": "APIエコノミーとネットワーク効果",
+      "questionIds": [
+        "ipa-2022r04a-koudo-am1-27",
+        "supplement-a1-strategy-05"
+      ],
+      "aliases": [
+        "APIエコノミーの事例はどれか",
+        "ネットワーク外部性"
+      ]
+    },
+    {
+      "id": "business-rpa",
+      "field": "経営と技術戦略",
+      "label": "RPA",
+      "questionIds": [
+        "ipa-2019r01a-koudo-am1-28"
+      ],
+      "aliases": [
+        "RPAの説明はどれか"
+      ]
+    },
+    {
+      "id": "business-vision",
+      "field": "経営と技術戦略",
+      "label": "マシンビジョン",
+      "questionIds": [
+        "ipa-2025-spring-a1-28",
+        "ipa-2023r05a-koudo-am1-28",
+        "review-a1-machine-vision"
+      ],
+      "aliases": []
+    },
+    {
+      "id": "business-mes",
+      "field": "経営と技術戦略",
+      "label": "生産管理とMRP",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-28",
+        "ipa-2024r06a-koudo-am1-28",
+        "ipa-2018h30h-koudo-am1-28",
+        "ipa-2018h30a-koudo-am1-28",
+        "ipa-2017h29h-koudo-am1-28",
+        "ipa-2016h28a-koudo-am1-28",
+        "review-a1-mes"
+      ],
+      "aliases": [
+        "MES(Manufacturing Execution System)",
+        "MESと生産管理",
+        "セル生産方式の特徴はどれか",
+        "所要部品数の計算",
+        "部品の正味所要量",
+        "部品の正味所要量の計算"
+      ]
+    },
+    {
+      "id": "business-edge",
+      "field": "経営と技術戦略",
+      "label": "エッジコンピューティング",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-28",
+        "ipa-2021r03a-koudo-am1-28",
+        "ipa-2017h29a-koudo-am1-28",
+        "review-a1-edge"
+      ],
+      "aliases": [
+        "エッジコンピューティングの説明はどれか"
+      ]
+    },
+    {
+      "id": "business-iot",
+      "field": "経営と技術戦略",
+      "label": "IoTとCPS・デジタルツイン",
+      "questionIds": [
+        "ipa-2022r04a-koudo-am1-28",
+        "ipa-2021r03h-koudo-am1-27",
+        "ipa-2020r02o-koudo-am1-27",
+        "ipa-2019h31h-koudo-am1-28",
+        "ipa-2018h30a-koudo-am1-27"
+      ],
+      "aliases": [
+        "\"超スマート社会\"実現への取組み",
+        "IoTがもたらす4段階の効果",
+        "サイバーフィジカルシステム",
+        "サイバーフィジカルシステム(CPS)の説明",
+        "デジタルツインの説明はどれか"
+      ]
+    },
+    {
+      "id": "business-aggregation",
+      "field": "経営と技術戦略",
+      "label": "アグリゲーションサービス",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-28",
+        "ipa-2021r03h-koudo-am1-28"
+      ],
+      "aliases": []
+    },
+    {
+      "id": "business-xbrl",
+      "field": "経営と技術戦略",
+      "label": "XBRL",
+      "questionIds": [
+        "ipa-2022r04h-koudo-am1-28"
+      ],
+      "aliases": []
+    },
+    {
+      "id": "business-concurrent",
+      "field": "経営と技術戦略",
+      "label": "コンカレントエンジニアリング",
+      "questionIds": [
+        "ipa-2016h28h-koudo-am1-28"
+      ],
+      "aliases": [
+        "製品開発のスピードアップ手法"
+      ]
+    },
+    {
+      "id": "accounting-break-even",
+      "field": "企業活動と会計",
+      "label": "損益分岐点と限界利益",
+      "questionIds": [
+        "ipa-2025-spring-a1-29",
+        "ipa-2024r06h-koudo-am1-29",
+        "ipa-2019r01a-koudo-am1-29",
+        "ipa-2018h30a-koudo-am1-29",
+        "ipa-2017h29h-koudo-am1-29",
+        "supplement-a1-accounting-01",
+        "supplement-a1-accounting-02",
+        "review-a1-fixed-cost",
+        "review-a1-target-sales"
+      ],
+      "aliases": [
+        "変動費は何万円か",
+        "損益分岐点",
+        "損益分岐点と変動費",
+        "損益分岐点の特性を説明したもの",
+        "損益分岐点分析",
+        "損益分岐点売上高",
+        "限界利益率"
+      ]
+    },
+    {
+      "id": "accounting-finance",
+      "field": "企業活動と会計",
+      "label": "財務諸表と原価・資産",
+      "questionIds": [
+        "ipa-2023r05h-koudo-am1-29",
+        "ipa-2020r02o-koudo-am1-29",
+        "ipa-2018h30h-koudo-am1-29",
+        "supplement-a1-accounting-04",
+        "supplement-a1-accounting-05"
+      ],
+      "aliases": [
+        "固定資産の除却損",
+        "在庫回転率",
+        "損益計算書",
+        "現在価値",
+        "製造原価に算入する費用はどれか"
+      ]
+    },
+    {
+      "id": "accounting-lp",
+      "field": "企業活動と会計",
+      "label": "線形計画法",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-29"
+      ],
+      "aliases": []
+    },
+    {
+      "id": "accounting-decision",
+      "field": "企業活動と会計",
+      "label": "意思決定と発想の手法",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-29",
+        "ipa-2022r04a-koudo-am1-29",
+        "ipa-2021r03a-koudo-am1-29",
+        "ipa-2019h31h-koudo-am1-29",
+        "ipa-2018h30h-koudo-am1-27",
+        "ipa-2017h29h-koudo-am1-27",
+        "ipa-2017h29a-koudo-am1-29"
+      ],
+      "aliases": [
+        "アイディアをグルーピングする技法",
+        "デルファイ法",
+        "デルファイ法の説明はどれか",
+        "マクシミン原理",
+        "主な要因を明確にするのに適した図法"
+      ]
+    },
+    {
+      "id": "accounting-leadership",
+      "field": "企業活動と会計",
+      "label": "リーダーシップ",
+      "questionIds": [
+        "ipa-2022r04h-koudo-am1-29"
+      ],
+      "aliases": [
+        "PM理論の特徴はどれか"
+      ]
+    },
+    {
+      "id": "accounting-sustainability",
+      "field": "企業活動と会計",
+      "label": "持続可能な社会の指標",
+      "questionIds": [
+        "ipa-2016h28h-koudo-am1-29"
+      ],
+      "aliases": [
+        "目指すべき社会の実現に向けた指標"
+      ]
+    },
+    {
+      "id": "law-copyright",
+      "field": "法務と標準化",
+      "label": "著作権",
+      "questionIds": [
+        "ipa-2025-spring-a1-30",
+        "ipa-2025r07a-koudo-am1-17",
+        "ipa-2022r04h-koudo-am1-30",
+        "ipa-2022r04a-koudo-am1-30",
+        "ipa-2019r01a-koudo-am1-30",
+        "ipa-2017h29h-koudo-am1-30",
+        "ipa-2017h29a-koudo-am1-30",
+        "supplement-a1-law-01",
+        "supplement-a1-law-02"
+      ],
+      "aliases": [
+        "Webページの著作権",
+        "プログラムの著作権の帰属",
+        "生成AIと著作権",
+        "生成AIと著作権法",
+        "著作権とアイデア",
+        "著作権の帰属先",
+        "著作権の発生",
+        "著作権法の適法行為",
+        "著作物の帰属先",
+        "著作者人格権の不行使条項"
+      ]
+    },
+    {
+      "id": "law-contract",
+      "field": "法務と標準化",
+      "label": "契約と労働者派遣",
+      "questionIds": [
+        "ipa-2025-spring-a1-25",
+        "ipa-2024r06a-koudo-am1-30",
+        "ipa-2023r05h-koudo-am1-30",
+        "ipa-2017h29a-koudo-am1-24",
+        "ipa-2016h28a-koudo-am1-25"
+      ],
+      "aliases": [
+        "ベンダーと締結する契約の形態",
+        "労働者派遣法における適法行為",
+        "多段階契約の考え方を採用する目的",
+        "契約と調達",
+        "契約形態",
+        "情報システム・モデル取引・契約書",
+        "派遣元事業主の講ずべき措置"
+      ]
+    },
+    {
+      "id": "law-labor",
+      "field": "法務と標準化",
+      "label": "労働法",
+      "questionIds": [
+        "ipa-2021r03a-koudo-am1-30"
+      ],
+      "aliases": [
+        "労働基準法で定める36協定"
+      ]
+    },
+    {
+      "id": "law-privacy",
+      "field": "法務と標準化",
+      "label": "個人情報保護",
+      "questionIds": [
+        "ipa-2023r05a-koudo-am1-30",
+        "ipa-2019h31h-koudo-am1-30",
+        "ipa-2016h28h-koudo-am1-30",
+        "supplement-a1-law-03"
+      ],
+      "aliases": [
+        "個人情報の利用目的",
+        "個人情報の条件はどれか",
+        "匿名加工情報を第三者提供する際の義務",
+        "要配慮個人情報に該当するもの"
+      ]
+    },
+    {
+      "id": "law-industrial",
+      "field": "法務と標準化",
+      "label": "産業財産権",
+      "questionIds": [
+        "ipa-2025r07a-koudo-am1-30",
+        "ipa-2016h28a-koudo-am1-30"
+      ],
+      "aliases": [
+        "意匠法",
+        "意匠法の保護対象",
+        "産業財産権の四つの権利"
+      ]
+    },
+    {
+      "id": "law-competition",
+      "field": "法務と標準化",
+      "label": "取引と競争に関する法律",
+      "questionIds": [
+        "ipa-2024r06h-koudo-am1-30",
+        "ipa-2020r02o-koudo-am1-30",
+        "ipa-2018h30h-koudo-am1-30",
+        "ipa-2018h30a-koudo-am1-30"
+      ],
+      "aliases": [
+        "不正競争行為に該当するもの",
+        "中小受託取引適正化法の禁止行為",
+        "処罰の対象とする法律",
+        "情報流通プラットフォーム対処法"
+      ]
+    },
+    {
+      "id": "law-signature",
+      "field": "法務と標準化",
+      "label": "電子署名法",
+      "questionIds": [
+        "ipa-2021r03h-koudo-am1-30"
+      ],
+      "aliases": [
+        "電子署名法に関する記述"
+      ]
+    },
+    {
+      "id": "law-license",
+      "field": "法務と標準化",
+      "label": "ソフトウェアライセンス",
+      "questionIds": [
+        "ipa-2019r01a-koudo-am1-17",
+        "ipa-2016h28a-koudo-am1-17",
+        "supplement-a1-law-04"
+      ],
+      "aliases": [
+        "MITライセンス",
+        "自社開発したソフトウェアの使用許諾"
+      ]
+    },
+    {
+      "id": "law-standard",
+      "field": "法務と標準化",
+      "label": "標準化とマネジメント規格",
+      "questionIds": [
+        "ipa-2017h29a-koudo-am1-27",
+        "supplement-a1-law-05"
+      ],
+      "aliases": [
+        "ISMS規格",
+        "国際標準に適合した製品の利点"
+      ]
+    }
+  ]
+}

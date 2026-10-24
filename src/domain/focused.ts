@@ -1,3 +1,4 @@
+import { a1Attempted, a1Coverage, a1SeenUnits, a1Unit } from './a1-coverage.ts';
 import { conceptKeys, latestGroups, questionIdentityKeys, relatedProgress, reviewIndex, riskOf } from './review.ts';
 import type { Outcome, Section, TrainingQuestion } from './training.ts';
 
@@ -12,22 +13,34 @@ const knowledgeKeys = (q: TrainingQuestion) => [...conceptKeys(q), ...(q.learnin
 export function focusedPool(bank: TrainingQuestion[], history: Outcome[], section: Section, collection: FocusedCollection, now = Date.now()) {
   const held = new Set(bank.filter(q => q.heldOut).map(q => q.groupId));
   const eligible = bank.filter(q => q.section === section && q.review.status === 'verified' && !q.heldOut && !held.has(q.groupId));
-  const seenIdentities = new Set(history.flatMap(r => questionIdentityKeys(r.question)));
+  const exposure = section === 'A-1' && collection === newOnlyCollection ? history.filter(a1Attempted) : history;
+  const seenIdentities = new Set(exposure.flatMap(r => questionIdentityKeys(r.question)));
   const freshQuestion = (q: TrainingQuestion) => !questionIdentityKeys(q).some(key => seenIdentities.has(key));
   let ordered: { question: TrainingQuestion; reason: string }[];
   if (collection === newOnlyCollection) {
     // Even retired/unverified historical questions count as prior exposure for new-only practice.
-    const seen = history.filter(r => r.question.section === section);
+    const seen = exposure.filter(r => r.question.section === section);
+    const seenUnits = section === 'A-1' ? a1SeenUnits(bank, seen) : new Set<string>();
     const topics = new Set(seen.map(r => normalize(r.question.topic)));
     const concepts = new Set(seen.flatMap(r => knowledgeKeys(r.question)));
-    const fresh = eligible.filter(q => !topics.has(normalize(q.topic)) && !knowledgeKeys(q).some(k => concepts.has(k)) && freshQuestion(q));
+    const fresh = eligible.filter(q => freshQuestion(q) && (section === 'A-1'
+      ? !!a1Unit(q) && !seenUnits.has(a1Unit(q)!.id)
+      : !topics.has(normalize(q.topic)) && !knowledgeKeys(q).some(k => concepts.has(k))));
     const queues = new Map<string, TrainingQuestion[]>();
     for (const q of fresh.sort((a, b) => a.id.localeCompare(b.id))) {
-      const items = queues.get(q.topic) ?? []; items.push(q); queues.set(q.topic, items);
+      const field = section === 'A-1' ? a1Unit(q)!.field : q.topic;
+      const items = queues.get(field) ?? []; items.push(q); queues.set(field, items);
     }
     const breadth: TrainingQuestion[] = [];
     for (let i = 0; breadth.length < fresh.length; i++) for (const items of queues.values()) if (items[i]) breadth.push(items[i]);
-    ordered = breadth.map(question => ({ question, reason: '既習分野・概念・同題や類題を除外した未回答分野' }));
+    // Prefer one question per new unit before filling with other questions from those units.
+    const first: TrainingQuestion[] = []; const rest: TrainingQuestion[] = []; const usedUnits = new Set<string>();
+    for (const q of breadth) {
+      const unit = section === 'A-1' ? a1Unit(q)!.id : q.id;
+      (usedUnits.has(unit) ? rest : first).push(q); usedUnits.add(unit);
+    }
+    ordered = [...first, ...rest].map(question => ({ question, reason: section === 'A-1'
+      ? '未着手の論点を確認（既習分野内の未着手論点も対象）' : '既習分野・概念・同題や類題を除外した未回答分野' }));
   } else {
     const latest = latestGroups(history, section); const index = reviewIndex(history, section);
     const candidates = eligible.flatMap(question => {
@@ -66,5 +79,6 @@ export function selectFocused(bank: TrainingQuestion[], history: Outcome[], sect
 
 export function focusedStatus(bank: TrainingQuestion[], history: Outcome[], section: Section, now = Date.now()) {
   return { section, reviewAvailable: focusedPool(bank, history, section, reviewOnlyCollection, now).length,
-    newAvailable: focusedPool(bank, history, section, newOnlyCollection, now).length };
+    newAvailable: focusedPool(bank, history, section, newOnlyCollection, now).length,
+    coverage: section === 'A-1' ? a1Coverage(bank, history) : undefined };
 }

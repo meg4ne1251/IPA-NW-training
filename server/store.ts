@@ -129,7 +129,7 @@ export class TrainingStore {
     const selected = focused ? selectFocused(bank, history, section, collection, count)
       : rapid ? selectRapid(bank, history, section, count)
       : selectPractice(reviewBank, history, section, count, Date.now(), supplement ? count : Math.floor(count / 5));
-    assert(!focused || selected.shortage === 0, `${collection === reviewOnlyCollection ? '復習専用' : '新規分野専用'}で出題できる問題は${selected.questions.length}問です。${count}問に不足するため開始できません。対象外の問題による補充は行いません。`);
+    assert(!focused || selected.shortage === 0, `${collection === reviewOnlyCollection ? '復習専用' : section === 'A-1' ? '未着手の論点' : '新規分野専用'}で出題できる問題は${selected.questions.length}問です。${count}問に不足するため開始できません。対象外の問題による補充は行いません。`);
     if (mode !== 'practice') {
       const fullCount = section === 'A-1' ? 30 : 25;
       assert(count === fullCount, '診断・本番形式は本番と同じ問題数で実施します。');
@@ -139,7 +139,7 @@ export class TrainingStore {
     }
     assert(selected.questions.length > 0, 'この範囲で出題可能な別問題がありません。出題範囲を広げるか、AIに新しい類題の追加を依頼してください。');
     return this.newSession(section, mode, selected.questions, selected.reasons,
-      mode === 'practice' ? `${collection === reviewOnlyCollection ? `${section} 復習専用` : collection === newOnlyCollection ? `${section} 新規分野専用` : rapid ? `${section} 短期集中テスト` : review ? `${section} 苦手・復習の類題` : supplement ? `A-1補強 · ${focus.tag || focus.topic || '全分野'}` : '弱点と未着手の演習'}（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`,
+      mode === 'practice' ? `${collection === reviewOnlyCollection ? `${section} 復習専用` : collection === newOnlyCollection ? `${section} ${section === 'A-1' ? '未着手の論点' : '新規分野専用'}` : rapid ? `${section} 短期集中テスト` : review ? `${section} 苦手・復習の類題` : supplement ? `A-1補強 · ${focus.tag || focus.topic || '全分野'}` : '弱点と未着手の演習'}（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`,
       mode === 'practice' ? { collection, ...focus } : undefined);
   }
   newSession(section: Section, mode: Session['mode'], questions: TrainingQuestion[], reasons: Record<string, string>, title: string, practiceScope?: PracticeScope) {

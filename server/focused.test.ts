@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import { blankAnswer, validateQuestion } from '../src/domain/training';
 import type { Outcome, TrainingQuestion } from '../src/domain/training';
 import { focusedPool, focusedStatus, newOnlyCollection, reviewOnlyCollection, selectFocused } from '../src/domain/focused';
+import { a1Unit } from '../src/domain/a1-coverage';
 import { sameQuestion } from '../src/domain/review';
 import { withLearningPriority } from './learning-priorities';
 import { withReviewConcepts } from './review-concepts';
@@ -65,17 +66,19 @@ describe('復習専用の厳密な出題範囲', () => {
 });
 
 describe('新規分野専用の厳密な除外', () => {
-  it('既習分野、分野をまたぐ既習概念、版違い、再録、同内容をすべて除外する', () => {
+  it('A-2は既習分野・概念・版違い・再録・同内容を引き続きすべて除外する', () => {
     const seen = q('seen', { topic: 'ネットワーク', reviewConcepts: ['認証'], learning: { area: 'technology', concept: '認証方式', occurrences: 1 } });
     const excluded = [seen, q('same-topic', { topic: seen.topic }), q('related', { reviewConcepts: seen.reviewConcepts }),
       q('alias', { learning: seen.learning }), q('same-family', { groupId: seen.groupId }),
       q('same-content', { prompt: seen.prompt, choices: ['d', 'c', 'b', 'a'] }),
       q('seen', { version: 2, topic: '別の分野', reviewConcepts: ['別の概念'] })];
-    const fresh = q('fresh'); const history = [outcome(seen, 100, true)];
-    expect(focusedPool([...excluded, fresh], history, 'A-1', newOnlyCollection, now).map(x => x.question.id)).toEqual(['fresh']);
+    const fresh = q('fresh');
+    for (const item of [...excluded, fresh]) item.section = 'A-2';
+    const history = [outcome(seen, 100, true)];
+    expect(focusedPool([...excluded, fresh], history, 'A-2', newOnlyCollection, now).map(x => x.question.id)).toEqual(['fresh']);
     // Exposure still excludes a field after the old question is retired.
     const retired = { ...seen, review: { ...seen.review, status: 'retired' as const } };
-    expect(focusedPool([...excluded, fresh], [outcome(retired, 100)], 'A-1', newOnlyCollection, now).map(x => x.question.id)).toEqual(['fresh']);
+    expect(focusedPool([...excluded, fresh], [outcome(retired, 100)], 'A-2', newOnlyCollection, now).map(x => x.question.id)).toEqual(['fresh']);
   });
 
   it('別科目の履歴は除外に使わず、新規分野内では複数の分野を広く出す', () => {
@@ -85,8 +88,8 @@ describe('新規分野専用の厳密な除外', () => {
     expect(result.questions).toHaveLength(10); expect(new Set(result.questions.slice(0, 4).map(q => q.topic)).size).toBe(4);
     expect(result.available).toBe(40);
     const history = [outcome(bank[0], 1)];
-    expect(focusedPool(bank, history, 'A-1', newOnlyCollection, now)).toHaveLength(30);
-    expect(focusedPool(bank, history, 'A-1', newOnlyCollection, now).every(x => x.question.topic !== bank[0].topic)).toBe(true);
+    expect(focusedPool(bank, history, 'A-1', newOnlyCollection, now)).toHaveLength(39);
+    expect(focusedPool(bank, history, 'A-1', newOnlyCollection, now).some(x => x.question.topic === bank[0].topic)).toBe(true);
   });
 });
 
@@ -107,11 +110,11 @@ describe('保存・件数制限・実教材との接続', () => {
     for (const section of ['A-1', 'A-2'] as const) {
       const first = store.create(section, 'practice', count, newOnlyCollection);
       expect(first.questions).toHaveLength(count); expect(first.deadline).toBeNull();
-      expect(first.title).toBe(`${section} 新規分野専用（${count}問）`);
+      expect(first.title).toBe(`${section} ${section === 'A-1' ? '未着手の論点' : '新規分野専用'}（${count}問）`);
       expect(first.questions.every(q => q.correctIndex === undefined && q.reviewConcepts === undefined)).toBe(true);
       const reopened = new TrainingStore(store.directory); stores.push(reopened);
       expect(reopened.publicSession(reopened.session(first.id))).toEqual(first);
-      store.submit(first.id, first.revision);
+      store.submit(first.id, first.revision, { revision: first.revision, answers: Object.fromEntries(first.questions.map(q => [q.id, { ...blankAnswer(), confidence: 'unknown' }])), currentIndex: 0 });
       const status = store.dashboard().focused.find(s => s.section === section)!;
       expect(status).toMatchObject({ reviewAvailable: count, newAvailable: 70 - count });
       const review = store.create(section, 'practice', count, reviewOnlyCollection);
@@ -136,14 +139,14 @@ describe('保存・件数制限・実教材との接続', () => {
       expect(() => store.create('A-1', 'practice', 10, collection, { topic: 'test' })).toThrow('補強問題');
     }
     expect(store.sessions()).toHaveLength(0);
-    const first = store.create('A-1', 'practice', 10, newOnlyCollection); store.submit(first.id, first.revision);
+    const first = store.create('A-1', 'practice', 10, newOnlyCollection); store.submit(first.id, first.revision, { revision: first.revision, answers: Object.fromEntries(first.questions.map(q => [q.id, { ...blankAnswer(), confidence: 'unknown' }])), currentIndex: 0 });
     const original = store.session(first.id);
     expect(() => store.create('A-1', 'practice', 10, newOnlyCollection)).toThrow('出題できる問題は2問');
     expect(store.session(first.id)).toEqual(original);
     expect(store.sessions()).toHaveLength(1);
   });
 
-  it('実教材でも既習分野と関連概念が混ざらず、10問・30問の選抜数と画面用件数が一致する', () => {
+  it('実教材でもA-1は既習論点を、A-2は既習分野を除外し、選抜数と画面用件数が一致する', () => {
     const bank: TrainingQuestion[] = ['2025-spring', 'archive', 'a1-supplement', 'review-variants', 'focused-supplement']
       .flatMap(name => JSON.parse(readFileSync(`materials/${name}.json`, 'utf8')) as TrainingQuestion[]).map(withLearningPriority).map(withReviewConcepts);
     for (const section of ['A-1', 'A-2'] as const) {
@@ -154,7 +157,9 @@ describe('保存・件数制限・実教材との接続', () => {
       for (const count of [10, 30]) {
         const fresh = selectFocused(bank, history, section, newOnlyCollection, count, now);
         expect(fresh.available).toBe(status.newAvailable); expect(fresh.questions).toHaveLength(count);
-        expect(fresh.questions.every(q => !topics.has(q.topic) && !(q.reviewConcepts ?? q.tags).some(c => concepts.has(c)))).toBe(true);
+        expect(fresh.questions.every(q => section === 'A-1'
+          ? !seen.some(old => a1Unit(old)?.id === a1Unit(q)?.id) && !seen.some(old => sameQuestion(old, q))
+          : !topics.has(q.topic) && !(q.reviewConcepts ?? q.tags).some(c => concepts.has(c)))).toBe(true);
         const review = selectFocused(bank, history, section, reviewOnlyCollection, count, now);
         expect(review.available).toBe(status.reviewAvailable);
         expect(review.questions.every(q => history.some(r => r.question.groupId === q.groupId) || (q.reviewConcepts ?? q.tags).some(c => concepts.has(c)))).toBe(true);
@@ -237,7 +242,7 @@ describe('追加した目的別教材42問の確認', () => {
     try {
       const store = openStore(); stores.push(store);
       expect(store.bank().filter(q => q.id.startsWith('focused-'))).toHaveLength(42);
-      const first = store.create('A-1', 'practice', 10, newOnlyCollection); store.submit(first.id, first.revision);
+      const first = store.create('A-1', 'practice', 10, newOnlyCollection); store.submit(first.id, first.revision, { revision: first.revision, answers: Object.fromEntries(first.questions.map(q => [q.id, { ...blankAnswer(), confidence: 'unknown' }])), currentIndex: 0 });
       const saved = store.session(first.id);
       const reopened = openStore(); stores.push(reopened);
       expect(reopened.bank().filter(q => q.id.startsWith('focused-'))).toHaveLength(42);

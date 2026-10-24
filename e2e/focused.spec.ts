@@ -15,6 +15,11 @@ for (const section of ['A-1', 'A-2']) for (const count of [10, 30]) {
     if (section === 'A-2') await page.getByRole('button', { name: 'A-2', exact: true }).click();
     const focused = page.getByRole('region', { name: '目的を絞って10問・30問', exact: true });
     await expect(focused).toContainText('出題可能：');
+    if (section === 'A-1') {
+      await expect(page.getByRole('heading', { name: 'A-1の論点別の学習状況' })).toBeVisible();
+      await page.getByText('分野ごとの内訳と未着手の論点を見る', { exact: true }).click();
+      await expect(page.getByRole('columnheader', { name: '未着手', exact: true })).toBeVisible();
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     if (section === 'A-1' && count === 10) {
       await expect(page.getByRole('button', { name: '復習専用を10問', exact: true })).toBeDisabled();
@@ -22,10 +27,10 @@ for (const section of ['A-1', 'A-2']) for (const count of [10, 30]) {
       await focused.screenshot({ path: info.outputPath('focused-mobile.png') });
     }
     const started = page.waitForResponse(r => r.url().endsWith('/api/sessions') && r.request().method() === 'POST');
-    await page.getByRole('button', { name: `新規分野専用を${count}問`, exact: true }).click();
+    await page.getByRole('button', { name: `${section === 'A-1' ? '未着手の論点を' : '新規分野専用を'}${count}問`, exact: true }).click();
     const first = await (await started).json();
     expect(first.questions).toHaveLength(count); expect(first.practiceScope.collection).toBe('new-fields-only');
-    await expect(page.getByRole('heading', { name: `${section} 新規分野専用（${count}問）`, exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: `${section} ${section === 'A-1' ? '未着手の論点' : '新規分野専用'}（${count}問）`, exact: true })).toBeVisible();
     await page.getByRole('radio', { name: 'わからない', exact: true }).check();
     await page.getByRole('button', { name: 'この回答を確定する', exact: true }).click();
     await expect(page.locator('.explanation')).toBeVisible(); await page.reload();
@@ -33,10 +38,18 @@ for (const section of ['A-1', 'A-2']) for (const count of [10, 30]) {
     await page.getByRole('button', { name: 'セットを終了して結果を見る', exact: true }).click();
     await page.getByRole('button', { name: 'この回答で提出する', exact: true }).click();
     const continued = page.waitForResponse(r => r.url().endsWith('/api/sessions') && r.request().method() === 'POST');
-    await page.getByRole('button', { name: '新規分野専用を続ける →', exact: true }).click();
+    await page.getByRole('button', { name: section === 'A-1' ? '未着手の論点を続ける →' : '新規分野専用を続ける →', exact: true }).click();
     const next = await (await continued).json();
     expect(next.practiceScope.collection).toBe('new-fields-only'); expect(next.questions).toHaveLength(count);
-    expect(next.questions.every((q: { topic: string }) => !first.questions.some((old: { topic: string }) => old.topic === q.topic))).toBe(true);
+    if (section === 'A-1') {
+      expect(next.questions.every((q: { id: string }) => q.id !== first.questions[0].id)).toBe(true);
+      expect(next.questions.some((q: { topic: string }) => q.topic === first.questions[0].topic)).toBe(true);
+      const dashboard = await (await request.get('/api/dashboard')).json();
+      const coverage = dashboard.focused.find((f: { section: string }) => f.section === 'A-1').coverage;
+      expect(coverage.unseen + coverage.review + coverage.confirming + coverage.candidate).toBe(coverage.total);
+    } else {
+      expect(next.questions.every((q: { topic: string }) => !first.questions.some((old: { topic: string }) => old.topic === q.topic))).toBe(true);
+    }
     await request.post(`/api/sessions/${next.id}/submit`, { data: { revision: next.revision } });
     await page.goto('/');
     if (section === 'A-2') await page.getByRole('button', { name: 'A-2', exact: true }).click();

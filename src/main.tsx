@@ -49,6 +49,7 @@ function App() {
   }
   const rapid = dashboard?.rapid.find(r => r.section === section);
   const focused = dashboard?.focused.find(r => r.section === section);
+  const newPracticeLabel = section === 'A-1' ? '未着手の論点を学ぶ' : '新規分野専用';
   const analysis = dashboard?.analysis.find(a => a.section === section);
   const active = dashboard?.sessions.find(s => s.status === 'active');
   const completed = dashboard?.sessions.filter(s => s.status === 'submitted') ?? [];
@@ -91,15 +92,27 @@ function App() {
               <small>このモードでは既出問題も出題します。履歴がない場合や対象が10問未満の場合は開始できません。</small>
             </article>
             <article aria-labelledby="new-only-heading">
-              <p className="eyebrow">{section} · NEW FIELDS ONLY</p><h3 id="new-only-heading">新規分野専用</h3>
-              <p>過去に取り組んだ分野・復習概念を除外し、未回答分野だけを出題。同じ問題、版違い、同題や類題も除外します。</p>
-              <p>出題可能：<strong>{focused?.newAvailable ?? 0}問</strong></p>
-              <div className="actions">{([10, 30] as const).map(count => <button key={count} className={count === 30 ? 'secondary' : undefined} disabled={busy || !!active || (focused?.newAvailable ?? 0) < count} onClick={() => void start('practice', count, section, { collection: newOnlyCollection })}>新規分野専用を{count}問</button>)}</div>
-              <small>1問でも取り組んだ分野は、分野全体を対象外にします。未回答の問題でも、既習分野・概念に重なれば出題しません。</small>
+              <p className="eyebrow">{section} · {section === 'A-1' ? 'NEW CONCEPTS' : 'NEW FIELDS ONLY'}</p><h3 id="new-only-heading">{newPracticeLabel}</h3>
+              <p>{section === 'A-1' ? '解いたことのある分野でも、未着手の論点を出題します。同じ問題・版違い・同題や類題は除外します。' : '過去に取り組んだ分野・復習概念を除外し、未回答分野だけを出題。同じ問題、版違い、同題や類題も除外します。'}</p>
+              <p>出題可能：<strong>{focused?.newAvailable ?? 0}問</strong>{focused?.coverage && <> ／ 未着手 <strong>{focused.coverage.unseen}論点</strong></>}</p>
+              <div className="actions">{([10, 30] as const).map(count => <button key={count} className={count === 30 ? 'secondary' : undefined} disabled={busy || !!active || (focused?.newAvailable ?? 0) < count} onClick={() => void start('practice', count, section, { collection: newOnlyCollection })}>{section === 'A-1' ? '未着手の論点を' : '新規分野専用を'}{count}問</button>)}</div>
+              <small>{section === 'A-1' ? '1問解くと、その問題の主論点を着手済みにします。誤答・迷いは復習へ。未回答のまま提出した問題は着手に数えず、「わからない」での回答は数えます。' : '1問でも取り組んだ分野は、分野全体を対象外にします。未回答の問題でも、既習分野・概念に重なれば出題しません。'}</small>
             </article>
           </div>
           <p className="muted">どちらも年度指定に関係なく、検証済みの全教材から選びます。指定数に足りない場合は開始できません。10問・30問を完了した後も、同じモード・問題数で続けられます。</p>
         </section>
+        {section === 'A-1' && focused?.coverage && <section aria-labelledby="coverage-heading">
+          <h2 id="coverage-heading">A-1の論点別の学習状況</h2>
+          <p>収録教材の主論点 {focused.coverage.total}件：未着手 {focused.coverage.unseen} ／ 要復習 {focused.coverage.review} ／ 確認中 {focused.coverage.confirming} ／ 定着候補 {focused.coverage.candidate}</p>
+          <p className="muted">論点数と出題可能な問題数は異なります。確認中は確信のある正解がある状態、定着候補は最後の誤答・迷いの後に日をまたいで異なる問題を確信正解した状態です。試験範囲全体の習得率ではありません。</p>
+          {focused.coverage.unclassified > 0 && <p>分類待ち：{focused.coverage.unclassified}問。論点数と未着手論点の出題対象には含めていません。</p>}
+          <details><summary>分野ごとの内訳と未着手の論点を見る</summary>
+            <div className="coverage-table"><table><thead><tr><th scope="col">分野</th><th scope="col">未着手</th><th scope="col">要復習</th><th scope="col">確認中</th><th scope="col">定着候補</th></tr></thead>
+              <tbody>{focused.coverage.fields.map(f => <tr key={f.field}><th scope="row">{f.field}</th><td>{f.unseen}</td><td>{f.review}</td><td>{f.confirming}</td><td>{f.candidate}</td></tr>)}</tbody>
+            </table></div>
+            <p>未着手の論点：{focused.coverage.units.filter(u => u.status === 'unseen').map(u => u.label).join(' ／ ') || 'ありません'}</p>
+          </details>
+        </section>}
         {section === 'A-1' && supplementTopics.length > 0 && <section aria-labelledby="supplement-heading"><article>
           <p className="eyebrow">A-1 · TOPIC PRACTICE</p><h2 id="supplement-heading">分野別の細かな補強</h2>
           <p>{supplementTopics.length}分野・{supplementTopics.reduce((sum, t) => sum + t.count, 0)}問。用語の区別、計算、具体的な場面での判断を練習します。全問に正答の理由・各選択肢の説明・根拠資料があります。</p>
@@ -338,7 +351,7 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
     {error && <div className="message error" role="alert">{error}{unsaved && <button disabled={busy} onClick={() => void save()}>保存を再試行</button>}<button className="secondary" onClick={() => download(`unsaved-${session.id}.json`, session)}>回答の控えを保存</button></div>}
     {conflicts.length > 0 && <div className="message" role="alert">別の画面との競合などで未保存になった回答の控えを保持しています。現在の回答とは別にダウンロードできます。<button className="secondary" onClick={() => download(`conflicting-answers-${session.id}.json`, { sessionId: session.id, drafts: conflicts })}>競合した回答の控えを保存</button></div>}
     {timeoutError && !submitted && <div className="message error" role="alert">{timeoutError}</div>}
-    {submitted && <section className="result"><p className="eyebrow">{session.status === 'cancelled' ? '中止したセットの結果' : 'RESULT'}</p><h1 className="compact-title">{score}<span> / {session.status === 'cancelled' ? Object.keys(session.graded ?? {}).length : session.questions.length}問正解</span></h1><p>迷った・推測・わからない・自信度未入力の正解：{uncertain}問 · 未回答：{unanswered}問</p>{session.status === 'cancelled' && <p>回答済みの結果を保存しました。未回答の問題は学習履歴に記録していません。</p>}{session.practiceScope?.collection === rapidCollection && <p>今回確認した分野：{[...new Set(session.questions.map(q => q.topic))].join(' / ')}。次のセットも未着手の知識と別問題での復習を組み合わせます。</p>}<div className="actions"><button onClick={onNext}>{session.practiceScope?.collection === reviewOnlyCollection ? '復習専用を続ける →' : session.practiceScope?.collection === newOnlyCollection ? '新規分野専用を続ける →' : session.practiceScope?.collection === rapidCollection ? '短期集中テストを続ける →' : session.practiceScope?.collection === reviewCollection ? '苦手・復習の類題を続ける →' : session.practiceScope?.collection === supplementCollection ? '同じ範囲で続ける →' : '続けて問題を解く →'}</button><button className="secondary" onClick={onHome}>履歴・AI連携へ</button></div></section>}
+    {submitted && <section className="result"><p className="eyebrow">{session.status === 'cancelled' ? '中止したセットの結果' : 'RESULT'}</p><h1 className="compact-title">{score}<span> / {session.status === 'cancelled' ? Object.keys(session.graded ?? {}).length : session.questions.length}問正解</span></h1><p>迷った・推測・わからない・自信度未入力の正解：{uncertain}問 · 未回答：{unanswered}問</p>{session.status === 'cancelled' && <p>回答済みの結果を保存しました。未回答の問題は学習履歴に記録していません。</p>}{session.practiceScope?.collection === rapidCollection && <p>今回確認した分野：{[...new Set(session.questions.map(q => q.topic))].join(' / ')}。次のセットも未着手の知識と別問題での復習を組み合わせます。</p>}<div className="actions"><button onClick={onNext}>{session.practiceScope?.collection === reviewOnlyCollection ? '復習専用を続ける →' : session.practiceScope?.collection === newOnlyCollection ? session.section === 'A-1' ? '未着手の論点を続ける →' : '新規分野専用を続ける →' : session.practiceScope?.collection === rapidCollection ? '短期集中テストを続ける →' : session.practiceScope?.collection === reviewCollection ? '苦手・復習の類題を続ける →' : session.practiceScope?.collection === supplementCollection ? '同じ範囲で続ける →' : '続けて問題を解く →'}</button><button className="secondary" onClick={onHome}>履歴・AI連携へ</button></div></section>}
     <section className="exercise-heading"><div><p className="eyebrow">{session.section} / {submitted ? 'REVIEW' : 'PRACTICE'}</p><h2>{session.title}</h2></div>{remaining !== null && !submitted && <p className={`timer ${remaining < 300 ? 'urgent' : ''}`} aria-label="残り時間">残り {Math.floor(remaining / 60)}:{String(remaining % 60).padStart(2, '0')}</p>}</section>
     <div className="question-layout"><aside><p>{session.currentIndex + 1} / {session.questions.length}問</p><div className="question-map">{session.questions.map((x, i) => <button key={x.id} disabled={busy || expired || paused} aria-label={`問${i + 1}${session.answers[x.id]?.choice != null ? ' 回答済み' : ' 未回答'}${session.answers[x.id]?.flagged ? ' 見直し' : ''}`} aria-current={i === session.currentIndex ? 'step' : undefined} className={`${session.answers[x.id]?.choice != null ? 'answered' : ''} ${session.answers[x.id]?.flagged ? 'flagged' : ''}`} onClick={() => void move(i)}>{i + 1}</button>)}</div><p className="muted">色付き：回答済み<br />●：見直し</p>{!session.deadline && !submitted && <button className="secondary" onClick={() => { started.current = Date.now(); setPaused(!paused); }}>{paused ? '学習を再開' : '一時停止'}</button>}</aside>
       <article className="question-card">

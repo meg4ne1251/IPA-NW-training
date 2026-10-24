@@ -15,9 +15,9 @@ const seed: TrainingQuestion[] = supplement ? JSON.parse(readFileSync('materials
   source: { label: 'ブラウザーテスト用独自教材', url: 'https://example.com/source' },
   review: { status: 'verified', method: '独立した計算で検算', reviewer: 'test', at: '2026-10-16T00:00:00Z', references: ['https://example.com/source'] },
 }));
-if (focused) seed.forEach((q, n) => { q.topic = `未学習分野-${n}`; q.tags = [`論点-${n}`]; q.reviewConcepts = [`論点-${n}`]; });
+if (focused) seed.forEach((q, n) => { q.topic = `学習分野-${n % 4}`; q.tags = [`論点-${n}`]; q.reviewConcepts = [`論点-${n}`]; });
 if (rapid || focused) seed.push(...seed.map((q, n) => ({ ...q, id: `rapid-a2-${n}`, groupId: `rapid-a2-${n}`, section: 'A-2' as const,
-  topic: focused ? q.topic : n < 21 ? 'ネットワーク' : n < 29 ? 'セキュリティ' : 'システム構成要素' })));
+  topic: focused ? `未学習分野-${n}` : n < 21 ? 'ネットワーク' : n < 29 ? 'セキュリティ' : 'システム構成要素' })));
 const store = new TrainingStore(directory, seed); const server = createApp(store);
 server.listen(focused ? 3202 : rapid ? 3201 : supplement ? 3200 : 3199, '127.0.0.1');
 const stop = () => server.close(() => { store.close(); rmSync(directory, { recursive: true, force: true }); process.exit(0); });
