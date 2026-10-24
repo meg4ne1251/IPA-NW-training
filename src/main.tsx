@@ -57,7 +57,7 @@ function App() {
   const supplementCount = focusTag ? focusedTopic?.tags.find(t => t.tag === focusTag)?.count ?? 0 : focusedTopic?.count ?? supplementTopics.reduce((sum, t) => sum + t.count, 0);
   return <main>
     <KeyboardShortcuts />
-    <header><a className="brand" href="#" onClick={e => { e.preventDefault(); if (!session || session.status === 'submitted') void task(async () => { setSession(null); location.hash = ''; await refresh(); }); }}>NW <span>/ TRAINING</span></a><span className="pill">A-1を中心に、1日2時間</span></header>
+    <header><a className="brand" href="#" onClick={e => { e.preventDefault(); if (!session || session.status !== 'active') void task(async () => { setSession(null); location.hash = ''; await refresh(); }); }}>NW <span>/ TRAINING</span></a><span className="pill">A-1を中心に、1日2時間</span></header>
     {error && <div className="message error" role="alert">{error}<button className="text-button" onClick={() => setError('')}>閉じる</button></div>}
     {notice && <div className="message" role="status">{notice}</div>}
     {!dashboard && !session && !error && <p role="status">学習データを読み込んでいます…</p>}
@@ -130,7 +130,7 @@ function App() {
           {a.missingAlternatives > 0 && <p className="muted">{a.missingAlternatives}概念は利用できる別問題がありません。元の問題の再出題では埋めず、新しい類題の追加対象としてAI出力に含めます。</p>}
         </section>)}
         {dashboard.bank.map(b => <article className="topic-card" key={b.section}><h3>{b.section} · 収録問題で未着手の分野</h3><p>{b.unseenTopics.join(' / ') || '収録分野は一度ずつ取り組み済みです。'}</p><small>収録教材内の集計です。試験範囲全体の習得を意味しません。</small></article>)}
-        <section><h2>これまでの演習</h2><div className="history-list">{dashboard.sessions.map(s => <article key={s.id}><div><h3>{s.title}</h3><small>{date(s.startedAt)} · {s.status === 'submitted' ? `${s.correct} / ${s.count}問正解` : `${s.answered} / ${s.count}問回答済み`}</small></div><button className="secondary" disabled={busy} onClick={() => void task(() => open(s.id))}>{s.status === 'submitted' ? '結果を見る' : '再開する'}</button></article>)}</div></section>
+        <section><h2>これまでの演習</h2><div className="history-list">{dashboard.sessions.map(s => <article key={s.id}><div><h3>{s.title}</h3><small>{date(s.startedAt)} · {s.status === 'cancelled' && '中止済み · '}{s.status === 'submitted' ? `${s.correct} / ${s.count}問正解` : `${s.answered} / ${s.count}問回答済み`}</small></div><button className="secondary" disabled={busy} onClick={() => void task(() => open(s.id))}>{s.status !== 'active' ? '結果を見る' : '再開する'}</button></article>)}</div></section>
       </>}
       {tab === 'ai' && <>
         <section><p className="eyebrow">NEXT LEARNING SET</p><h1 className="compact-title">結果をAIに渡して、次の問題へ。</h1><p>1問の回答を確定したら結果を出力でき、この環境のAIに次セットの作成を依頼します。新しく作った問題は内容を検証してから出題します。</p><article><h2>1. 結果を出力する</h2><p>この環境にもJSONが保存されます。出力したファイルを読むようにAIへ依頼してください。</p><div className="actions">{(['A-1', 'A-2'] as const).map(s => <button disabled={busy} key={s} onClick={() => void task(async () => { const data = await api<{ requestId: string }>('/export', 'POST', { section: s }); download(`learning-context-${s}-${data.requestId}.json`, data); setNotice(`結果を data/exports/${data.requestId}/learning-context.json に保存しました。このファイルをAIに読み込ませてください。`); })}>{s}の結果を出力</button>)}</div></article></section>
@@ -165,7 +165,7 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
       setCaptureError(error instanceof Error && error.message.includes('HTTPS') ? error.message : '画像をコピーできませんでした。問題画像の読み込みとブラウザーのクリップボード権限を確認して、再試行してください。');
     } finally { setCapturing(false); }
   }
-  const [action, setAction] = useState<'grade' | 'submit' | 'home' | null>(null);
+  const [action, setAction] = useState<'grade' | 'submit' | 'cancel' | 'home' | null>(null);
   const busy = action !== null;
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(''); const [unsaved, setUnsaved] = useState(false);
@@ -233,8 +233,8 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
     return () => { clearInterval(tick); document.removeEventListener('visibilitychange', visibility); };
   }, [paused]);
   const q = session.questions[session.currentIndex]; const a = session.answers[q.id] ?? blankAnswer();
-  const submitted = session.status === 'submitted';
-  const revealed = submitted || !!session.graded?.[q.id];
+  const submitted = session.status !== 'active';
+  const revealed = session.status === 'submitted' || !!session.graded?.[q.id];
   const remaining = session.deadline ? Math.max(0, Math.ceil((Date.parse(session.deadline) - now) / 1000)) : null;
   const expired = remaining === 0 && !submitted;
   useEffect(() => {
@@ -244,7 +244,7 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
       try {
         const result = await api<PublicSession>(`/sessions/${session.id}`);
         if (cancelled) return;
-        if (result.status === 'submitted') {
+        if (result.status !== 'active') {
           sync.accept(result); setTimeoutError(''); return;
         }
       } catch {
@@ -259,14 +259,14 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
   function stage(next: PublicSession) {
     const current = sync.current;
     const question = current.questions[current.currentIndex];
-    const locked = current.status === 'submitted' || !!current.graded?.[question.id];
+    const locked = current.status !== 'active' || !!current.graded?.[question.id];
     const elapsed = locked ? 0 : visibleSeconds.current + (!document.hidden && !paused ? (Date.now() - started.current) / 1000 : 0);
     const answer = next.answers[question.id] ?? blankAnswer();
     visibleSeconds.current = 0; started.current = Date.now();
     sync.edit({ ...next, answers: { ...next.answers, [question.id]: { ...answer, seconds: Math.round((answer.seconds + elapsed) * 10) / 10 } } });
   }
   async function save() {
-    if (sync.current.status === 'submitted') return sync.current;
+    if (sync.current.status !== 'active') return sync.current;
     if (exclusive.current || expired) return null;
     setError(''); stage(sync.current);
     return sync.flush();
@@ -277,20 +277,20 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
     setError(''); stage({ ...current, answers: { ...current.answers, [id]: { ...(current.answers[id] ?? blankAnswer()), ...patch } } });
     void sync.flush();
   }
-  async function commit(command: 'grade' | 'submit') {
+  async function commit(command: 'grade' | 'submit' | 'cancel') {
     if (exclusive.current || expired) return;
     exclusive.current = true; setAction(command); setError('');
     const questionId = sync.current.questions[sync.current.currentIndex].id;
     stage(sync.current);
     try {
       const result = await sync.commit(command, questionId);
-      if (result?.status === 'submitted') window.scrollTo(0, 0);
+      if (result && result.status !== 'active') window.scrollTo(0, 0);
     } catch (e) {
       // The response can be lost after the server commits. Fetch only to recover
       // that confirmed result; never merge or overwrite answers from another tab.
       try {
         const result = await api<PublicSession>(`/sessions/${initial.id}`);
-        if (result.status === 'submitted' || (command === 'grade' && result.graded?.[questionId])) {
+        if (result.status !== 'active' || (command === 'grade' && result.graded?.[questionId])) {
           sync.accept(result); setError(''); return;
         }
       } catch { /* Keep the temporary draft available for an explicit retry. */ }
@@ -309,7 +309,7 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
   function move(index: number) {
     if (exclusive.current || expired || paused) return;
     const current = sync.current;
-    if (current.status === 'submitted') sync.accept({ ...current, currentIndex: index });
+    if (current.status !== 'active') sync.accept({ ...current, currentIndex: index });
     else {
       setError(''); stage({ ...current, currentIndex: index });
       void sync.flush();
@@ -334,11 +334,11 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
   const score = session.questions.filter(x => session.answers[x.id]?.choice === x.correctIndex).length;
   const uncertain = session.questions.filter(x => session.answers[x.id]?.choice === x.correctIndex && session.answers[x.id]?.confidence !== 'sure').length;
   return <>
-    <div className="exercise-top"><button className="text-button" disabled={busy || expired} onClick={() => void home()}>← 学習画面へ</button><span className="save-status" role="status">{submitted ? '提出済み・保存済み' : expired ? '提出結果を確認しています…' : busy && action !== 'home' ? '回答を確定しています…' : saving || action === 'home' ? '保存しています…' : unsaved ? '未保存の回答あり' : 'この環境に保存済み'}</span></div>
+    <div className="exercise-top"><button className="text-button" disabled={busy || expired} onClick={() => void home()}>← 学習画面へ</button><span className="save-status" role="status">{submitted ? (session.status === 'cancelled' ? '中止済み・保存済み' : '提出済み・保存済み') : expired ? '提出結果を確認しています…' : busy && action !== 'home' ? '回答を確定しています…' : saving || action === 'home' ? '保存しています…' : unsaved ? '未保存の回答あり' : 'この環境に保存済み'}</span></div>
     {error && <div className="message error" role="alert">{error}{unsaved && <button disabled={busy} onClick={() => void save()}>保存を再試行</button>}<button className="secondary" onClick={() => download(`unsaved-${session.id}.json`, session)}>回答の控えを保存</button></div>}
     {conflicts.length > 0 && <div className="message" role="alert">別の画面との競合などで未保存になった回答の控えを保持しています。現在の回答とは別にダウンロードできます。<button className="secondary" onClick={() => download(`conflicting-answers-${session.id}.json`, { sessionId: session.id, drafts: conflicts })}>競合した回答の控えを保存</button></div>}
     {timeoutError && !submitted && <div className="message error" role="alert">{timeoutError}</div>}
-    {submitted && <section className="result"><p className="eyebrow">RESULT</p><h1 className="compact-title">{score}<span> / {session.questions.length}問正解</span></h1><p>迷った・推測・わからない・自信度未入力の正解：{uncertain}問 · 未回答：{unanswered}問</p>{session.practiceScope?.collection === rapidCollection && <p>今回確認した分野：{[...new Set(session.questions.map(q => q.topic))].join(' / ')}。次のセットも未着手の知識と別問題での復習を組み合わせます。</p>}<div className="actions"><button onClick={onNext}>{session.practiceScope?.collection === reviewOnlyCollection ? '復習専用を続ける →' : session.practiceScope?.collection === newOnlyCollection ? '新規分野専用を続ける →' : session.practiceScope?.collection === rapidCollection ? '短期集中テストを続ける →' : session.practiceScope?.collection === reviewCollection ? '苦手・復習の類題を続ける →' : session.practiceScope?.collection === supplementCollection ? '同じ範囲で続ける →' : '続けて問題を解く →'}</button><button className="secondary" onClick={onHome}>履歴・AI連携へ</button></div></section>}
+    {submitted && <section className="result"><p className="eyebrow">{session.status === 'cancelled' ? '中止したセットの結果' : 'RESULT'}</p><h1 className="compact-title">{score}<span> / {session.status === 'cancelled' ? Object.keys(session.graded ?? {}).length : session.questions.length}問正解</span></h1><p>迷った・推測・わからない・自信度未入力の正解：{uncertain}問 · 未回答：{unanswered}問</p>{session.status === 'cancelled' && <p>回答済みの結果を保存しました。未回答の問題は学習履歴に記録していません。</p>}{session.practiceScope?.collection === rapidCollection && <p>今回確認した分野：{[...new Set(session.questions.map(q => q.topic))].join(' / ')}。次のセットも未着手の知識と別問題での復習を組み合わせます。</p>}<div className="actions"><button onClick={onNext}>{session.practiceScope?.collection === reviewOnlyCollection ? '復習専用を続ける →' : session.practiceScope?.collection === newOnlyCollection ? '新規分野専用を続ける →' : session.practiceScope?.collection === rapidCollection ? '短期集中テストを続ける →' : session.practiceScope?.collection === reviewCollection ? '苦手・復習の類題を続ける →' : session.practiceScope?.collection === supplementCollection ? '同じ範囲で続ける →' : '続けて問題を解く →'}</button><button className="secondary" onClick={onHome}>履歴・AI連携へ</button></div></section>}
     <section className="exercise-heading"><div><p className="eyebrow">{session.section} / {submitted ? 'REVIEW' : 'PRACTICE'}</p><h2>{session.title}</h2></div>{remaining !== null && !submitted && <p className={`timer ${remaining < 300 ? 'urgent' : ''}`} aria-label="残り時間">残り {Math.floor(remaining / 60)}:{String(remaining % 60).padStart(2, '0')}</p>}</section>
     <div className="question-layout"><aside><p>{session.currentIndex + 1} / {session.questions.length}問</p><div className="question-map">{session.questions.map((x, i) => <button key={x.id} disabled={busy || expired || paused} aria-label={`問${i + 1}${session.answers[x.id]?.choice != null ? ' 回答済み' : ' 未回答'}${session.answers[x.id]?.flagged ? ' 見直し' : ''}`} aria-current={i === session.currentIndex ? 'step' : undefined} className={`${session.answers[x.id]?.choice != null ? 'answered' : ''} ${session.answers[x.id]?.flagged ? 'flagged' : ''}`} onClick={() => void move(i)}>{i + 1}</button>)}</div><p className="muted">色付き：回答済み<br />●：見直し</p>{!session.deadline && !submitted && <button className="secondary" onClick={() => { started.current = Date.now(); setPaused(!paused); }}>{paused ? '学習を再開' : '一時停止'}</button>}</aside>
       <article className="question-card">
@@ -349,18 +349,19 @@ function Exercise({ initial, onHome, onChange, onNext }: { initial: PublicSessio
         <div ref={captureRef}><div className="section-heading"><p className="topic">{q.topic}{q.tags.length > 0 ? ` · ${q.tags.join(' / ')}` : ''}</p><span className="pill">{q.origin === 'past' ? '公式過去問' : q.origin === 'ai' ? 'AI類題・内容確認済み' : '独自問題'}</span></div><h2>{q.prompt}</h2>{session.selectionReasons[q.id] && <small>出題理由：{session.selectionReasons[q.id]}</small>}
         {!paused && <>
           {q.source.image && <><a className="question-image-link" href={q.source.image} target="_blank" rel="noreferrer"><img className="question-image" src={q.source.image} alt={`${q.source.label}の問題文・図表・選択肢。クリックで拡大できます。`} onError={() => setError('問題画像を読み込めません。原本PDFで該当ページを確認してください。')} /></a><small>問題部分を切り抜いて表示しています。問題文の変更はありません。画像を押すと拡大します。</small></>}
-          <fieldset disabled={revealed || busy || expired}><legend>解答を選んでください</legend><div className={q.source.image ? 'answer-grid' : 'answer-list'}>{q.choices.map((choice, i) => <label key={i} className={`${revealed && i === q.correctIndex ? 'correct-choice' : ''}`}><input type="radio" name="choice" checked={a.choice === i} onChange={() => void update({ choice: i })} />{choice === labels[i] ? choice : `${labels[i]}　${choice}`}</label>)}</div><div className="actions"><button className="text-button" type="button" disabled={revealed || busy || expired || a.choice === null} onClick={() => void update({ choice: null })}>回答を取り消す</button></div></fieldset>
+          <fieldset disabled={submitted || revealed || busy || expired}><legend>解答を選んでください</legend><div className={q.source.image ? 'answer-grid' : 'answer-list'}>{q.choices.map((choice, i) => <label key={i} className={`${revealed && i === q.correctIndex ? 'correct-choice' : ''}`}><input type="radio" name="choice" checked={a.choice === i} onChange={() => void update({ choice: i })} />{choice === labels[i] ? choice : `${labels[i]}　${choice}`}</label>)}</div><div className="actions"><button className="text-button" type="button" disabled={submitted || revealed || busy || expired || a.choice === null} onClick={() => void update({ choice: null })}>回答を取り消す</button></div></fieldset>
         </>}
         </div>
         {!paused && <>
-          <fieldset disabled={revealed || busy || expired}><legend>自信度</legend><div className="confidence">{([['sure', '確信あり'], ['unsure', '迷った'], ['guess', '推測'], ['unknown', 'わからない']] as const).map(([value, label]) => <label key={value}><input type="radio" name="confidence" checked={a.confidence === value} onChange={() => void update({ confidence: value })} />{label}</label>)}</div></fieldset>
+          <fieldset disabled={submitted || revealed || busy || expired}><legend>自信度</legend><div className="confidence">{([['sure', '確信あり'], ['unsure', '迷った'], ['guess', '推測'], ['unknown', 'わからない']] as const).map(([value, label]) => <label key={value}><input type="radio" name="confidence" checked={a.confidence === value} onChange={() => void update({ confidence: value })} />{label}</label>)}</div></fieldset>
           {!submitted && <label><input type="checkbox" checked={a.flagged} disabled={busy || expired} onChange={e => void update({ flagged: e.target.checked })} />後で見直す</label>}
-          {!revealed && <div className="answer-confirm"><p>解答と自信度を選び、1問ずつ正誤・解説を確認します。「わからない」は解答なしでも確定できます。</p><button data-answer-confirm disabled={busy || expired || paused || (a.choice === null && a.confidence !== 'unknown')} onClick={() => void commit('grade')}>この回答を確定する</button><small>キーボード：e で確定 · l で次の問題</small></div>}
+          {!submitted && !revealed && <div className="answer-confirm"><p>解答と自信度を選び、1問ずつ正誤・解説を確認します。「わからない」は解答なしでも確定できます。</p><button data-answer-confirm disabled={busy || expired || paused || (a.choice === null && a.confidence !== 'unknown')} onClick={() => void commit('grade')}>この回答を確定する</button><small>キーボード：e で確定 · l で次の問題</small></div>}
           {revealed && <div role="region" aria-label="この問題の採点結果" className={`explanation ${a.choice === q.correctIndex ? '' : 'incorrect'}`}><h3>{a.choice === q.correctIndex ? '正解' : a.choice === null ? (a.confidence === 'unknown' ? 'わからない' : '未回答') : '不正解'} · 正答 {labels[q.correctIndex!]}</h3><p>あなたの回答：{a.choice === null ? '未回答' : labels[a.choice]}</p><p>回答時の自信度：{a.confidence === null ? '未入力' : { sure: '確信あり', unsure: '迷った', guess: '推測', unknown: 'わからない' }[a.confidence]}</p><p className="explanation-body">{q.explanation}</p>{q.choiceExplanations && <ul>{q.choiceExplanations.map((explanation, i) => <li key={i}>{labels[i]}：{explanation}</li>)}</ul>}<small>{q.origin === 'past' ? '解説は本アプリ独自作成（追加分はAI生成）。公式解答は出典リンクで確認できます。' : '独自作成の問題・解説です。根拠資料と確認方法を下に表示しています。'}</small></div>}
         </>}
         <div className="source">{q.source.label}<br />{q.origin === 'past' ? <><a href={`${q.source.url}#page=${q.source.page || 1}`} target="_blank" rel="noreferrer">原本PDF {q.source.page ? `（${q.source.page}ページ）` : ''}</a>{revealed && q.source.answerUrl && <> · <a href={q.source.answerUrl} target="_blank" rel="noreferrer">公式解答PDF</a></>}{revealed && q.review.references.filter(url => url !== q.source.url && url !== q.source.answerUrl).length > 0 && <div className="actions">{q.review.references.filter(url => url !== q.source.url && url !== q.source.answerUrl).map((url, i) => <a key={url} href={url} target="_blank" rel="noreferrer">解説の参考資料{i + 1}</a>)}</div>}</> : revealed ? <><div className="actions">{q.review.references.map((url, i) => <a key={url} href={url} target="_blank" rel="noreferrer">根拠資料{i + 1}</a>)}</div><p>確認：{q.review.reviewer} · {date(q.review.at)}<br />{q.review.method}</p></> : '根拠資料と確認方法は回答の確定後に表示します。'}</div>
         <div className="question-nav"><button data-question-prev className="secondary" disabled={busy || expired || paused || session.currentIndex === 0} onClick={() => void move(session.currentIndex - 1)}>← 前の問題</button>{submitted && session.currentIndex === session.questions.length - 1 ? <button data-question-next onClick={onNext}>次の問題を続ける →</button> : <button data-question-next disabled={busy || expired || paused || session.currentIndex === session.questions.length - 1} onClick={() => void move(session.currentIndex + 1)}>次の問題 →</button>}</div>
       </article></div>
+    {!submitted && <section className="submit-panel"><p>途中で中止すると、選択済み・「わからない」の回答だけを採点して保存します。未回答は記録せず、このセットの再開はできなくなります。</p><button className="secondary" disabled={busy || expired} onClick={() => { if (window.confirm('このセットを途中で中止しますか？回答済みの結果だけを保存し、未回答は学習履歴に記録しません。中止後は再開できません。')) void commit('cancel'); }}>途中で中止する</button></section>}
     {!submitted && <section className="submit-panel"><p>{session.questions.length}問中 {Object.keys(session.graded ?? {}).length}問を採点済み。1問ずつ解説を確認して進めます。</p>{confirm ? <><p>このセットを終了します。未確定の回答も採点し、未回答は不正解として記録します。続けて学習する場合は見直しに戻ってください。</p><div className="actions"><button disabled={busy || expired || paused} onClick={() => void commit('submit')}>この回答で提出する</button><button className="secondary" disabled={busy} onClick={() => setConfirm(false)}>見直しに戻る</button></div></> : <button className="secondary" disabled={busy || expired || paused} onClick={() => setConfirm(true)}>セットを終了して結果を見る</button>}</section>}
   </>;
 }

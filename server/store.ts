@@ -118,7 +118,7 @@ export class TrainingStore {
     assert(!rapid || mode === 'practice', '短期集中テストは練習で利用してください。');
     assert(!supplement || (section === 'A-1' && mode === 'practice'), '補強問題はA-1の練習で利用してください。');
     assert(supplement || (!focus.topic && !focus.tag), '分野・論点の指定は補強問題で利用してください。');
-    assert(!this.sessions().some(s => s.status === 'active'), '途中の演習を再開して提出してください。');
+    assert(!this.sessions().some(s => s.status === 'active'), '途中の演習を再開して提出または中止してください。');
     const all = this.bank();
     const heldGroups = new Set(all.filter(q => q.heldOut).map(q => q.groupId));
     const bank = all.filter(q => !heldGroups.has(q.groupId) && (supplement ? isSupplement(q) : focused || rapid || review || !collection || q.source.url === collection)
@@ -168,7 +168,7 @@ export class TrainingStore {
   save(id: string, input: unknown) {
     return this.transaction(() => {
       let s = this.session(id);
-      if (s.status === 'submitted') return this.publicSession(s);
+      if (s.status !== 'active') return this.publicSession(s);
       // The last acknowledged answers remain authoritative when the exam has expired.
       if (s.deadline && Date.now() >= Date.parse(s.deadline)) return this.publicSession(this.finalize(s));
       s = this.applyDraft(s, input);
@@ -179,7 +179,7 @@ export class TrainingStore {
     return this.transaction(() => {
       let s = this.session(id);
       assert(typeof questionId === 'string' && s.questions.some(q => q.id === questionId), 'セットにない問題です。');
-      if (s.status === 'submitted' || s.graded?.[questionId]) return this.publicSession(s);
+      if (s.status !== 'active' || s.graded?.[questionId]) return this.publicSession(s);
       if (s.deadline && Date.now() >= Date.parse(s.deadline)) return this.publicSession(this.finalize(s));
       if (revision !== s.revision) throw new RevisionConflictError('回答が更新されています。保存済みの回答を再読込してください。');
       if (draft !== undefined) s = this.applyDraft(s, draft);
@@ -191,17 +191,34 @@ export class TrainingStore {
     });
   }
   finalize(s: Session) {
-    if (s.status === 'submitted') return s;
+    if (s.status !== 'active') return s;
     s.answers = validateAnswers(s.answers, s.questions); s.status = 'submitted';
     s.submittedAt = new Date().toISOString(); s.revision++; this.writeSession(s); return s;
   }
   submit(id: string, revision: number, draft?: unknown) {
     return this.transaction(() => {
-      let s = this.session(id); if (s.status === 'submitted') return s;
+      let s = this.session(id); if (s.status !== 'active') return s;
       if (s.deadline && Date.now() >= Date.parse(s.deadline)) return this.finalize(s);
       if (revision !== s.revision) throw new RevisionConflictError('回答が更新されています。保存済みの回答を再読込してください。');
       if (draft !== undefined) s = this.applyDraft(s, draft);
       return this.finalize(s);
+    });
+  }
+  cancel(id: string, revision: number, draft?: unknown) {
+    return this.transaction(() => {
+      let s = this.session(id);
+      if (s.status !== 'active') return this.publicSession(s);
+      if (s.deadline && Date.now() >= Date.parse(s.deadline)) return this.publicSession(this.finalize(s));
+      if (revision !== s.revision) throw new RevisionConflictError('回答が更新されています。保存済みの回答を再読込してください。');
+      if (draft !== undefined) s = this.applyDraft(s, draft);
+      const at = new Date().toISOString();
+      s.graded = { ...s.graded };
+      for (const q of s.questions) {
+        const answer = s.answers[q.id];
+        if (!s.graded[q.id] && (answer?.choice != null || answer?.confidence === 'unknown')) s.graded[q.id] = at;
+      }
+      s.status = 'cancelled'; s.submittedAt = at; s.revision++;
+      this.writeSession(s); return this.publicSession(s);
     });
   }
   expire() {
@@ -295,7 +312,7 @@ export class TrainingStore {
       const row = this.db.prepare('SELECT payload FROM imports WHERE id=?').get(requestId); assert(row, 'セットが見つかりません。');
       const record = JSON.parse(row.payload as string) as ImportRecord;
       if (record.sessionId) return this.publicSession(this.session(record.sessionId));
-      assert(!this.sessions().some(s => s.status === 'active'), '途中の演習を提出してください。');
+      assert(!this.sessions().some(s => s.status === 'active'), '途中の演習を提出または中止してください。');
       const selected = this.resolveImport(record);
       assert(selected.questions.length > 0, '出題可能な別問題がありません。検証済みの新しい類題を追加してください。');
       const session = this.newSession(record.section, 'imported', selected.questions, selected.reasons, `${record.title}（検証済み${selected.questions.length}問）`);

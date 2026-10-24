@@ -21,7 +21,7 @@ export type PublicQuestion = Omit<TrainingQuestion, 'correctIndex' | 'explanatio
 export interface Answer { choice: number | null; confidence: Confidence; reason: string; seconds: number; flagged: boolean }
 export interface Session {
   id: string; section: Section; mode: 'diagnostic' | 'practice' | 'exam' | 'imported'; title: string;
-  status: 'active' | 'submitted'; revision: number; startedAt: string; submittedAt: string | null;
+  status: 'active' | 'submitted' | 'cancelled'; revision: number; startedAt: string; submittedAt: string | null;
   deadline: string | null; currentIndex: number; questions: TrainingQuestion[]; answers: Record<string, Answer>;
   selectionReasons: Record<string, string>;
   graded?: Record<string, string>; // Question ID -> time of answer confirmation; absent in older sessions.

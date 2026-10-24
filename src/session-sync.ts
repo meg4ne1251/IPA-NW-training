@@ -1,7 +1,7 @@
 import type { PublicSession } from './domain/training';
 
 export type SessionDraft = Pick<PublicSession, 'answers' | 'currentIndex' | 'revision'>;
-type Command = 'draft' | 'grade' | 'submit';
+type Command = 'draft' | 'grade' | 'submit' | 'cancel';
 type Transport = (command: Command, draft: SessionDraft, questionId?: string) => Promise<PublicSession>;
 
 export const sessionDraft = ({ answers, currentIndex, revision }: PublicSession): SessionDraft => ({ answers, currentIndex, revision });
@@ -32,8 +32,8 @@ export class SessionSync {
   }
 
   accept(saved: PublicSession, version = this.version) {
-    if (saved.revision < this.current.revision || (this.current.status === 'submitted' && saved.status !== 'submitted')) return;
-    this.dirty = saved.status !== 'submitted' && version !== this.version;
+    if (saved.revision < this.current.revision || (this.current.status !== 'active' && saved.status === 'active')) return;
+    this.dirty = saved.status === 'active' && version !== this.version;
     this.current = this.dirty ? { ...saved, answers: this.current.answers, currentIndex: this.current.currentIndex } : saved;
     this.notify();
   }
@@ -60,14 +60,14 @@ export class SessionSync {
     } finally { this.saving = false; this.notify(); }
   }
 
-  async commit(command: 'grade' | 'submit', questionId?: string) {
+  async commit(command: 'grade' | 'submit' | 'cancel', questionId?: string) {
     if (this.held) return null;
     this.held = true;
     try {
       // Stop the drain after its current request. Include all remaining edits in
       // the confirmation request instead of waiting for a second draft request.
       if (this.inFlight && !await this.inFlight) return null;
-      if (this.current.status === 'submitted') return this.current;
+      if (this.current.status !== 'active') return this.current;
       this.saving = true; this.notify();
       const draft = sessionDraft(this.current);
       try {

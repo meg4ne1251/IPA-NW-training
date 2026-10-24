@@ -13,6 +13,37 @@ afterEach(() => { for (const store of stores.splice(0)) { try { store.close(); }
 function completed(store: TrainingStore) { const s = store.create('A-1', 'practice', 3); const saved = store.save(s.id, { revision: 0, currentIndex: 1, answers: { [s.questions[0].id]: { ...blankAnswer(), choice: 1, confidence: 'unsure' } } }); return store.submit(s.id, saved.revision); }
 
 describe('SQLiteでの学習とAI受け渡し', () => {
+  it('途中中止は回答済みだけを永続化し、未回答の学習状態を変えず、新しいセットを開始できる', () => {
+    const store = make(); const s = store.create('A-1', 'practice', 4);
+    const [first, second, unknown, untouched] = s.questions.map(q => q.id);
+    const graded = store.grade(s.id, first, 0, { revision: 0, currentIndex: 0,
+      answers: { [first]: { ...blankAnswer(), choice: 1, confidence: 'sure' } } });
+    const before = store.history()[0];
+    const result = store.cancel(s.id, graded.revision, { revision: graded.revision, currentIndex: 1,
+      answers: { ...graded.answers, [second]: { ...blankAnswer(), choice: 0 }, [unknown]: { ...blankAnswer(), confidence: 'unknown' } } });
+    expect(result.status).toBe('cancelled');
+    expect(store.history()).toHaveLength(3);
+    expect(store.history().find(r => r.question.id === first)).toEqual(before);
+    expect(store.history().some(r => r.question.id === untouched)).toBe(false);
+    expect(result.questions[3].correctIndex).toBeUndefined();
+    expect(store.exportContext('A-1').history).toHaveLength(3);
+    expect(store.cancel(s.id, 0)).toEqual(result);
+    expect(store.save(s.id, { revision: 0 })).toEqual(result);
+    expect(store.grade(s.id, untouched, 0)).toEqual(result);
+    expect(store.publicSession(store.submit(s.id, 0))).toEqual(result);
+    const reopened = new TrainingStore(store.directory); stores.push(reopened);
+    expect(reopened.publicSession(reopened.session(s.id))).toEqual(result);
+    expect(reopened.history()).toHaveLength(3);
+    expect(reopened.create('A-1', 'practice', 2).status).toBe('active');
+  });
+  it('全問未回答の中止と、競合する中止で学習履歴を増やさない', () => {
+    const store = make(); const s = store.create('A-1', 'practice', 2);
+    expect(() => store.cancel(s.id, 99)).toThrow('回答が更新');
+    expect(store.session(s.id).status).toBe('active');
+    expect(store.cancel(s.id, 0).status).toBe('cancelled');
+    expect(store.history()).toHaveLength(0);
+    expect(store.dashboard().stats).toHaveLength(0);
+  });
   it('最新回答の保存と採点を同じトランザクションで確定し、再送で変更しない', () => {
     const store = make(); const s = store.create('A-1', 'practice', 2); const id = s.questions[0].id;
     const draft = { revision: 0, currentIndex: 0, answers: { [id]: { ...blankAnswer(), choice: 1, confidence: 'unsure', seconds: 12 } } };
