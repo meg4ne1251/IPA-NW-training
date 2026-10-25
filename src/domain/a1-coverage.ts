@@ -63,7 +63,8 @@ export function a1Coverage(bank: TrainingQuestion[], history: Outcome[]) {
     const sure = reliable.filter(r => r.at > lastWeak && r.correct && r.answer.confidence === 'sure');
     const transfer = last?.question.review.status === 'verified' && !last.question.heldOut && sure.some(a => sure.some(b => !sameQuestion(a.question, b.question) && a.at.slice(0, 10) !== b.at.slice(0, 10)));
     const status: UnitStatus = !last ? 'unseen' : riskOf(last) > 0 ? 'review' : transfer ? 'candidate' : 'confirming';
-    return { id: unit.id, label: unit.label, field: unit.field, status };
+    return { id: unit.id, label: unit.label, field: unit.field, status,
+      attempts: attempts.length, risk: last ? riskOf(last) : 0, lastAt: last?.at ?? null };
   });
   const counts = (items: typeof progress) => ({ total: items.length,
     unseen: items.filter(u => u.status === 'unseen').length, review: items.filter(u => u.status === 'review').length,

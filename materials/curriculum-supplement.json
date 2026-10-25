@@ -1,0 +1,1684 @@
+[
+  {
+    "id": "supplement-a1-adaptive-power-average",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成",
+    "tags": [
+      "省電力と平均電流"
+    ],
+    "reviewConcepts": [
+      "省電力と平均電流"
+    ],
+    "prompt": "センサーは10秒ごとに、動作状態で2秒間40mA、残り8秒間は待機状態で2mAを消費する。切替時の消費を無視すると平均電流はどれか。",
+    "choices": [
+      "9.6mA",
+      "21mA",
+      "8mA",
+      "42mA"
+    ],
+    "correctIndex": 0,
+    "explanation": "(40×2＋2×8)÷10＝9.6mA。各状態の継続時間で重み付けする。\n\n電流×時間を合計して全時間で割る。まず1周期の消費電荷を求めると、待機電流の計上漏れを防げる。",
+    "choiceExplanations": [
+      "(40×2＋2×8)÷10＝9.6mA。各状態の継続時間で重み付けする。",
+      "単純平均(40＋2)÷2であり、状態の時間比が異なることを無視している。",
+      "動作中だけを計算し、待機中の16mA・秒を落としている。",
+      "電流を単に足しており、異なる時刻の状態を同時消費のように扱っている。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-power-average",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.bipm.org/en/measurement-units/si-base-units"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.bipm.org/en/measurement-units/si-base-units"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-power-duty",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成",
+    "tags": [
+      "省電力と平均電流"
+    ],
+    "reviewConcepts": [
+      "省電力と平均電流"
+    ],
+    "prompt": "動作時30mA、待機時3mAの機器を、利用可能容量540mAhの電池で60時間動かす。切替損失・自己放電を無視し、動作時間の割合を一定にする。動作時間の割合の上限はどれか。",
+    "choices": [
+      "1/3",
+      "1/5",
+      "2/3",
+      "2/9"
+    ],
+    "correctIndex": 3,
+    "explanation": "平均電流の上限は540÷60＝9mA。30d＋3(1−d)≦9よりd≦6/27＝2/9。\n\n平均値から時間割合を逆算する問題。容量(mAh)÷時間(h)で平均電流(mA)の許容値を先に決める。",
+    "choiceExplanations": [
+      "d＝1/3では平均12mAで45時間しか動作できない。",
+      "1/5なら条件を満たすが、上限2/9より小さいため最大ではない。",
+      "d＝2/3では平均21mAとなり、60時間に届かない。",
+      "平均電流の上限は540÷60＝9mA。30d＋3(1−d)≦9よりd≦6/27＝2/9。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-power-duty",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.bipm.org/en/measurement-units/si-base-units"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.bipm.org/en/measurement-units/si-base-units"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-crash-bottleneck",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクト管理",
+    "tags": [
+      "工程短縮"
+    ],
+    "reviewConcepts": [
+      "工程短縮"
+    ],
+    "prompt": "開始から完了までの並行経路PとQの所要日数は12日と11日で、両経路の完了後にプロジェクトを終了する。Pだけを3日短縮し、Qを変更しない場合、全体の所要日数はどれか。",
+    "choices": [
+      "10日",
+      "8日",
+      "11日",
+      "9日"
+    ],
+    "correctIndex": 2,
+    "explanation": "短縮後はP＝9日、Q＝11日。両方の完了を待つのでmax(9,11)＝11日。\n\n元の最長経路を短縮すると別の経路が最長になる。短縮後は全経路を再計算する。",
+    "choiceExplanations": [
+      "PとQの平均を取ってもプロジェクトの完了日は求められない。",
+      "元の全体12日から無条件に4日を引く根拠はなく、Qだけでも11日かかる。",
+      "短縮後はP＝9日、Q＝11日。両方の完了を待つのでmax(9,11)＝11日。",
+      "Pだけの所要日数であり、Qの完了を待っていない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-crash-bottleneck",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.pmi.org/learning/library/generating-crash-analysis-calculating-costs-6224"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.pmi.org/learning/library/generating-crash-analysis-calculating-costs-6224"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-crash-cost",
+    "version": 1,
+    "section": "A-1",
+    "topic": "プロジェクト管理",
+    "tags": [
+      "工程短縮"
+    ],
+    "reviewConcepts": [
+      "工程短縮"
+    ],
+    "prompt": "開始から完了までの経路はA→CとB→C。Aは6日、Bは6日、共通作業Cは4日である。各作業は最大1日だけ短縮でき、費用はAが3万円、Bが4万円、Cが5万円。全体を10日から9日以内にする最小追加費用はどれか。",
+    "choices": [
+      "7万円",
+      "5万円",
+      "3万円",
+      "4万円"
+    ],
+    "correctIndex": 1,
+    "explanation": "共通のCを1日短縮すれば両経路が9日になり5万円。AとBを両方短縮する7万円より安い。\n\n複数のクリティカルパスでは、共通作業の短縮と各経路の同時短縮を比較する。",
+    "choiceExplanations": [
+      "AとBを同時に短縮すれば9日になるが、共通Cの短縮5万円より高い。",
+      "共通のCを1日短縮すれば両経路が9日になり5万円。AとBを両方短縮する7万円より安い。",
+      "Aだけを短縮してもB→Cが10日のまま残る。",
+      "Bだけを短縮してもA→Cが10日のまま残る。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-crash-cost",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.pmi.org/learning/library/generating-crash-analysis-calculating-costs-6224"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.pmi.org/learning/library/generating-crash-analysis-calculating-costs-6224"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-procedure-location",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース",
+    "tags": [
+      "ストアドプロシージャ"
+    ],
+    "reviewConcepts": [
+      "ストアドプロシージャ"
+    ],
+    "prompt": "複数の業務アプリから同じ在庫引当処理を利用したい。SQLを含む手続きをDBMS内に定義・保存し、アプリが明示的に呼び出す仕組みはどれか。",
+    "choices": [
+      "ストアドプロシージャ",
+      "ビュー",
+      "インデックス",
+      "DBトリガー"
+    ],
+    "correctIndex": 0,
+    "explanation": "DBMSに手続きを保存し、引数などを渡して明示的に呼び出す仕組みである。\n\n保存場所、起動契機、目的を分けて覚える。プロシージャがあるだけで、どんな処理も必ず高速化するわけではない。",
+    "choiceExplanations": [
+      "DBMSに手続きを保存し、引数などを渡して明示的に呼び出す仕組みである。",
+      "ビューは問合せに基づく仮想的な表の定義であり、一般の手続きそのものではない。",
+      "インデックスは検索などのアクセスを支援する構造で、業務手続きを保存・実行する仕組みではない。",
+      "トリガーは指定されたDBイベントを契機に起動する。アプリが手続きを明示的に呼び出すという条件と異なる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-procedure-location",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.postgresql.org/docs/current/sql-createprocedure.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.postgresql.org/docs/current/sql-createprocedure.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-procedure-call",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース",
+    "tags": [
+      "ストアドプロシージャ"
+    ],
+    "reviewConcepts": [
+      "ストアドプロシージャ"
+    ],
+    "prompt": "PostgreSQLで CREATE PROCEDURE close_month(IN target_month integer) として手続きを定義した。整数10を渡して実行する文はどれか。",
+    "choices": [
+      "SELECT * FROM close_month;",
+      "CREATE INDEX close_month ON sales(month);",
+      "DROP PROCEDURE close_month(integer);",
+      "CALL close_month(10);"
+    ],
+    "correctIndex": 3,
+    "explanation": "CALLはプロシージャを実行する文で、引数10を渡す。\n\nPostgreSQLのプロシージャはCALL、関数の呼出しはSELECTなどを使う。DBMSごとの構文を一般的な概念と区別する。",
+    "choiceExplanations": [
+      "FROMに関係名として置くだけでは、このプロシージャの呼出しにはならない。",
+      "CREATE INDEXは索引の定義であり、保存した業務処理の実行ではない。",
+      "DROP PROCEDUREは手続きの削除であり、処理の実行ではない。",
+      "CALLはプロシージャを実行する文で、引数10を渡す。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-procedure-call",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.postgresql.org/docs/current/sql-createprocedure.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.postgresql.org/docs/current/sql-createprocedure.html",
+        "https://www.postgresql.org/docs/current/sql-call.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-hash-size",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "暗号学的ハッシュ"
+    ],
+    "reviewConcepts": [
+      "暗号学的ハッシュ"
+    ],
+    "prompt": "SHA-256を用いて1バイトのデータと1MBのデータのダイジェストを別々に求めた。出力を省略せず16進数で表した場合、それぞれの桁数はどれか。",
+    "choices": [
+      "どちらも32桁",
+      "どちらも256桁",
+      "どちらも64桁",
+      "それぞれ2桁と2097152桁"
+    ],
+    "correctIndex": 2,
+    "explanation": "256ビット÷4ビット/16進1桁＝64桁。SHA-256の出力長は入力長によらず一定。\n\nビット・バイト・16進桁数を区別する。入力が短くてもSHA-256の出力は256ビットである。",
+    "choiceExplanations": [
+      "32はバイト数。16進数では1バイトが2桁なので64桁になる。",
+      "256はビット数。16進数の1桁は4ビットなので256桁ではない。",
+      "256ビット÷4ビット/16進1桁＝64桁。SHA-256の出力長は入力長によらず一定。",
+      "これは入力をそのまま16進表記したときの桁数で、ダイジェストの長さではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-hash-size",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://docs.python.org/3/library/hashlib.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://docs.python.org/3/library/hashlib.html",
+        "https://csrc.nist.gov/pubs/fips/180-4/upd1/final"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-hash-authenticity",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "暗号学的ハッシュ"
+    ],
+    "reviewConcepts": [
+      "暗号学的ハッシュ"
+    ],
+    "prompt": "配布サイトでファイルとSHA-256値を公開している。攻撃者が両方を書き換えられる場合、受信者がファイルのSHA-256値を再計算して公開値と一致させるだけでは不足する理由はどれか。",
+    "choices": [
+      "SHA-256では異なる入力が必ず同じ値になる",
+      "改変後のファイルに対応する値も公開でき、正当な配布者の認証にならない",
+      "SHA-256は暗号化なので復号鍵を公開する必要がある",
+      "SHA-256の出力長が入力の大きさに比例してしまう"
+    ],
+    "correctIndex": 1,
+    "explanation": "鍵なしのハッシュは誰でも計算できる。配布者を信頼できる経路や署名など、値の真正性を確かめる仕組みが必要。\n\n一致の確認と、期待した値を誰が提供したかの確認は別。共有秘密鍵がある場合のHMACはメッセージ認証の方法となる。",
+    "choiceExplanations": [
+      "衝突の可能性はあるが、異なる全入力が必ず同じ値になるという性質ではない。",
+      "鍵なしのハッシュは誰でも計算できる。配布者を信頼できる経路や署名など、値の真正性を確かめる仕組みが必要。",
+      "ハッシュは復号を前提にした暗号化ではなく、復号鍵は存在しない。",
+      "SHA-256の出力は入力サイズにかかわらず256ビット。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-hash-authenticity",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://docs.python.org/3/library/hashlib.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://docs.python.org/3/library/hashlib.html",
+        "https://www.rfc-editor.org/rfc/rfc2104.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-queue-operations",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズムとデータ構造",
+    "tags": [
+      "キュー"
+    ],
+    "reviewConcepts": [
+      "キュー"
+    ],
+    "prompt": "空のキューにAを入れ、Bを入れ、1個取り出し、Cを入れ、さらに1個取り出した。キューは先入れ先出しである。最後に取り出した値と、残る値の組合せはどれか。",
+    "choices": [
+      "取り出しB、残りC",
+      "取り出しC、残りA",
+      "取り出しA、残りC",
+      "取り出しB、残りA"
+    ],
+    "correctIndex": 0,
+    "explanation": "[A]→[A,B]→[B]→[B,C]→[C]。2回目に出るのはB。\n\nキューは待ち行列。操作ごとに先頭から末尾の並びを書き、スタックの後入れ先出しと混同しない。",
+    "choiceExplanations": [
+      "[A]→[A,B]→[B]→[B,C]→[C]。2回目に出るのはB。",
+      "後から入れたCを先に出すのは、先入れ先出しの条件と異なる。",
+      "Aは最初の取出しで既に除かれている。",
+      "Aは最初に取り出されているため最後には残らない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-queue-operations",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://docs.python.org/3/library/collections.html#collections.deque"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-queue-bfs",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズムとデータ構造",
+    "tags": [
+      "キュー"
+    ],
+    "reviewConcepts": [
+      "キュー"
+    ],
+    "prompt": "探索木の根Rの子はA、B、Aの子はC、D、Bの子はEである。根から幅優先探索し、子は記載順に待ち行列へ追加する。訪問順はどれか。",
+    "choices": [
+      "R,A,C,D,B,E",
+      "R,B,E,A,C,D",
+      "R,C,A,D,B,E",
+      "R,A,B,C,D,E"
+    ],
+    "correctIndex": 3,
+    "explanation": "根の次に同じ深さのA,Bを訪問し、その次にC,D,Eを訪問する。先入れ先出しのキューで実現できる。\n\n幅優先では浅い層の未処理ノードが先にキューへ入る。層ごとに並べる方法でも検算できる。",
+    "choiceExplanations": [
+      "Aの子をBより先に全て訪ねており、深さ優先の順序に相当する。",
+      "BをAより先に訪問しており、指定された子の追加順と異なる。",
+      "CはAを訪問するまで待ち行列に追加されず、Aより先には訪問しない。",
+      "根の次に同じ深さのA,Bを訪問し、その次にC,D,Eを訪問する。先入れ先出しのキューで実現できる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-queue-bfs",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://docs.python.org/3/library/collections.html#collections.deque"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://docs.python.org/3/library/collections.html#collections.deque"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-raid-capacity",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成",
+    "tags": [
+      "RAID"
+    ],
+    "reviewConcepts": [
+      "RAID"
+    ],
+    "prompt": "同容量2TBのディスク5台でRAID 5を構成する。分散パリティにディスク1台分を使い、予備ディスク・管理領域・TBとTiBの違いを無視する。データの実効容量はどれか。",
+    "choices": [
+      "5TB",
+      "2TB",
+      "8TB",
+      "10TB"
+    ],
+    "correctIndex": 2,
+    "explanation": "(5−1)×2＝8TB。パリティは分散配置されるが合計で1台分を使用する。\n\nRAID 5のパリティは専用の1台にだけ置くわけではない。「1台分」と配置場所を区別する。",
+    "choiceExplanations": [
+      "単純な半分はRAID 5の容量計算ではない。",
+      "パリティ相当の容量だけであり、データ領域の容量ではない。",
+      "(5−1)×2＝8TB。パリティは分散配置されるが合計で1台分を使用する。",
+      "5台の物理容量合計であり、パリティ分を差し引いていない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-raid-capacity",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://docs.kernel.org/admin-guide/md.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://docs.kernel.org/admin-guide/md.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-raid-mirror-failure",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム構成",
+    "tags": [
+      "RAID"
+    ],
+    "reviewConcepts": [
+      "RAID"
+    ],
+    "prompt": "RAID 10で、ミラー組M1=(ディスクA,B)とM2=(C,D)の間をストライピングする。各ミラーは片方だけでも動作できる。2台故障したときにデータ全体を読み出せなくなる組合せはどれか。",
+    "choices": [
+      "BとC",
+      "AとB",
+      "AとC",
+      "AとD"
+    ],
+    "correctIndex": 1,
+    "explanation": "M1の両方を失うため、M1に記録したデータを読めなくなる。\n\n耐故障性は故障台数だけでなく故障位置にも依存する。RAIDは誤削除や全体被災に対するバックアップの代わりにはならない。",
+    "choiceExplanations": [
+      "M1はA、M2はDで動作できる。",
+      "M1の両方を失うため、M1に記録したデータを読めなくなる。",
+      "M1はB、M2はDで動作できる。",
+      "M1はB、M2はCで動作できる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-raid-mirror-failure",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://docs.kernel.org/admin-guide/md.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://docs.kernel.org/admin-guide/md.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-join-cardinality",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース",
+    "tags": [
+      "SQLの結合"
+    ],
+    "reviewConcepts": [
+      "SQLの結合"
+    ],
+    "prompt": "顧客表には顧客IDが1と2の2行、注文表には(注文ID,顧客ID)が(10,1),(11,1),(12,3)の3行ある。顧客LEFT JOIN注文を顧客IDの一致条件で行い、WHERE条件もDISTINCTも付けない。結果の行数はどれか。",
+    "choices": [
+      "3行",
+      "2行",
+      "4行",
+      "6行"
+    ],
+    "correctIndex": 0,
+    "explanation": "顧客1は2件の注文と結合し2行。顧客2は注文側NULLの1行。合計3行。\n\n外部結合は左表の各行を少なくとも1行残す。右表に複数の一致行があれば行数が増える。",
+    "choiceExplanations": [
+      "顧客1は2件の注文と結合し2行。顧客2は注文側NULLの1行。合計3行。",
+      "左側の1行が右側の複数行に一致すれば複数行になるため、顧客数と同じとは限らない。",
+      "顧客3は左側に存在しないので、その注文だけの行は追加されない。",
+      "6行は無条件の直積2×3であり、結合条件を適用していない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-join-cardinality",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-join-where",
+    "version": 1,
+    "section": "A-1",
+    "topic": "データベース",
+    "tags": [
+      "SQLの結合"
+    ],
+    "reviewConcepts": [
+      "SQLの結合"
+    ],
+    "prompt": "顧客LEFT JOIN注文を顧客IDの一致で行うと、顧客1の行は注文金額200、顧客2の行は注文金額NULLとなった。最後に WHERE 注文金額 > 100 を付けると結果はどれか。",
+    "choices": [
+      "顧客1と顧客2が残る",
+      "顧客2だけ残る",
+      "2行とも残りNULLが0に置き換わる",
+      "顧客1だけ残る"
+    ],
+    "correctIndex": 3,
+    "explanation": "200>100は真。NULL>100は不明で、WHEREは真の行だけ残すため顧客2は除外される。\n\n右表の条件をONに書く場合と、結合後のWHEREに書く場合の差を確認する。",
+    "choiceExplanations": [
+      "LEFT JOINで作ったNULL行も、その後のWHERE条件によって除かれる。",
+      "NULL>100は真にならず、200>100は真なので逆である。",
+      "WHERE比較だけではNULLを0へ置き換えない。置換にはCOALESCEなどを明示する。",
+      "200>100は真。NULL>100は不明で、WHEREは真の行だけ残すため顧客2は除外される。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-join-where",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.postgresql.org/docs/current/queries-table-expressions.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-session-regenerate",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "セッションの保護"
+    ],
+    "reviewConcepts": [
+      "セッションの保護"
+    ],
+    "prompt": "ログイン前に発行したセッションIDをログイン後も変えずに使うWebアプリがある。攻撃者が事前に用意したIDを利用者に使わせる攻撃への直接的な対策はどれか。",
+    "choices": [
+      "セッションIDをURLに付けて共有しやすくする",
+      "セッションIDを全利用者で共通にする",
+      "認証成功時に新しいセッションIDを発行し、旧IDを無効化する",
+      "認証成功時も同じIDを使い続ける"
+    ],
+    "correctIndex": 2,
+    "explanation": "認証など権限が変わる際にIDを更新すると、事前に知られたIDの引継ぎを防げる。\n\nセッション固定攻撃と、確立済みIDの窃取を区別する。ID更新に加え、推測困難性や安全なCookie属性も必要。",
+    "choiceExplanations": [
+      "URL経由の共有・履歴・参照元などを通じたID漏えいを招き得る。",
+      "共通IDでは利用者ごとの認証状態を分離できず、不正利用を許す。",
+      "認証など権限が変わる際にIDを更新すると、事前に知られたIDの引継ぎを防げる。",
+      "同じIDを引き継ぐことがセッション固定攻撃の成立要因となる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-session-regenerate",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-session-cookie",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "セッションの保護"
+    ],
+    "reviewConcepts": [
+      "セッションの保護"
+    ],
+    "prompt": "CookieのセッションIDがJavaScriptから読み取られることを抑えるために付ける属性はどれか。",
+    "choices": [
+      "Max-Age",
+      "HttpOnly",
+      "Secure",
+      "SameSite"
+    ],
+    "correctIndex": 1,
+    "explanation": "HttpOnlyはJavaScriptからのCookieアクセスを制限し、IDの読取りを抑える。\n\nHttpOnlyだけでXSSそのものや、XSSによる認証済みリクエストを防げるわけではない。属性ごとの役割を区別する。",
+    "choiceExplanations": [
+      "Max-AgeはCookieの有効期間を秒単位で指定する。",
+      "HttpOnlyはJavaScriptからのCookieアクセスを制限し、IDの読取りを抑える。",
+      "SecureはCookieの送信をHTTPSへ制限する属性で、スクリプトからの読取り制限とは異なる。",
+      "SameSiteはサイトをまたぐリクエストへのCookie送信条件を制限する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-session-cookie",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-dns-entropy",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "DNSキャッシュポイズニング"
+    ],
+    "reviewConcepts": [
+      "DNSキャッシュポイズニング"
+    ],
+    "prompt": "DNSリゾルバーの外向きUDP問合せに対する、応答を見られない外部攻撃者の偽造応答を受け入れにくくしたい。対策として最も適切なものはどれか。",
+    "choices": [
+      "トランザクションIDと送信元ポートを予測困難にし、応答の対応関係を照合する",
+      "送信元ポートとIDを常に同じ値にする",
+      "受信した全応答を問合せとの対応確認なしに採用する",
+      "TTLを長くすれば応答の真正性が検証できるので照合しない"
+    ],
+    "correctIndex": 0,
+    "explanation": "予測困難なID・ポートと問合せ内容等の照合によって、外部から応答を当てる難しさを高める。\n\nDNSキャッシュポイズニングは偽の対応関係をキャッシュさせる攻撃。単なるキャッシュ時間の調整と応答検証を混同しない。",
+    "choiceExplanations": [
+      "予測困難なID・ポートと問合せ内容等の照合によって、外部から応答を当てる難しさを高める。",
+      "攻撃者が応答で一致させるべき値を予測しやすくする。",
+      "対応しない応答も取り込むと偽情報の受入れにつながる。",
+      "TTLはキャッシュ期間であり、送信者や応答内容の真正性を証明しない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-dns-entropy",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.rfc-editor.org/rfc/rfc5452.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc5452.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-dns-match",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "DNSキャッシュポイズニング"
+    ],
+    "reviewConcepts": [
+      "DNSキャッシュポイズニング"
+    ],
+    "prompt": "DNSリゾルバーがAレコードを問い合わせた。要求のトランザクションIDとポートが一致する応答でも、問合せ名が要求した名前と異なる。キャッシュへ採用する前の処理として適切なものはどれか。",
+    "choices": [
+      "IDだけ一致していれば異なる名前の応答を採用する",
+      "TTLが大きい方を優先して採用する",
+      "応答に含まれる全ての追加情報を無条件で登録する",
+      "要求との問合せ名・型等の対応を確認し、この不一致応答は採用しない"
+    ],
+    "correctIndex": 3,
+    "explanation": "ID・ポートだけでなく、要求した問合せ名・クラス・型なども対応付けて確認する。\n\n複数の検証条件を組み合わせる。予測困難化と要求・応答の一致確認は相互に補う対策である。",
+    "choiceExplanations": [
+      "IDの一致だけでは要求への正当な応答とは確認できない。",
+      "TTLの大きさは問合せと応答の一致や正当性を保証しない。",
+      "問合せへの関係や信頼範囲を確かめず追加情報を取り込むのは危険。",
+      "ID・ポートだけでなく、要求した問合せ名・クラス・型なども対応付けて確認する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-dns-match",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.rfc-editor.org/rfc/rfc5452.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc5452.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-sso-roles",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "シングルサインオン"
+    ],
+    "reviewConcepts": [
+      "シングルサインオン"
+    ],
+    "prompt": "SAMLによるシングルサインオンで、利用者を認証してアサーションを発行する役割と、それを検証して自サービスへのアクセスに利用する役割の組合せはどれか。",
+    "choices": [
+      "発行：DNS、利用：NTP",
+      "発行：利用者の公開鍵、利用：IPアドレス",
+      "発行：IdP、利用：SP",
+      "発行：SP、利用：IdP"
+    ],
+    "correctIndex": 2,
+    "explanation": "IdPが認証結果を発行し、SPが信頼設定などに従い検証して利用する。\n\nSPは受け取った結果を無条件には信頼しない。信頼する発行者、署名、対象サービス、有効期間等の検証が必要。",
+    "choiceExplanations": [
+      "DNSは名前解決、NTPは時刻同期であり、SAMLの役割名ではない。",
+      "公開鍵とIPアドレスはIdP/SPという主体の役割名ではない。",
+      "IdPが認証結果を発行し、SPが信頼設定などに従い検証して利用する。",
+      "認証アサーションの発行者と、その認証結果を使うサービスの役割が逆。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-sso-roles",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/SAML_Security_Cheat_Sheet.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SAML_Security_Cheat_Sheet.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-sso-audience",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "シングルサインオン"
+    ],
+    "reviewConcepts": [
+      "シングルサインオン"
+    ],
+    "prompt": "信頼するIdPが署名したSAMLアサーションを受け取ったが、対象サービス(Audience)が自サービスではなく、有効期限も過ぎている。SPの適切な処理はどれか。",
+    "choices": [
+      "Audienceを自サービス名に書き換えて受理する",
+      "署名だけで受理せず、対象サービスと有効期間も検証して拒否する",
+      "署名が正しければ対象サービスも期限も無視して受理する",
+      "利用者名を知っているので常に受理する"
+    ],
+    "correctIndex": 1,
+    "explanation": "信頼する署名だけでは十分でなく、対象サービスと時間条件なども満たす必要がある。\n\n認証連携では、誰の認証結果かに加え「誰向け・いつまで・どの要求への応答か」を検証する。",
+    "choiceExplanations": [
+      "署名対象の改変は検証に失敗し、対象サービスが違う認証結果を有効にはできない。",
+      "信頼する署名だけでは十分でなく、対象サービスと時間条件なども満たす必要がある。",
+      "他サービス向けや期限切れのアサーションを受理すると、誤用・再利用の危険がある。",
+      "利用者名の知識は認証結果の有効性を証明しない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-sso-audience",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/SAML_Security_Cheat_Sheet.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/SAML_Security_Cheat_Sheet.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-forensics-copy",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "デジタルフォレンジックス"
+    ],
+    "reviewConcepts": [
+      "デジタルフォレンジックス"
+    ],
+    "prompt": "インシデント調査でディスクの証拠を保全する。許可された収集手順に従い取得したイメージを分析する際、原本への変更を抑え、以後の同一性確認にも役立つ方法はどれか。",
+    "choices": [
+      "原本を保護して複製上で解析し、取得・複製時のハッシュと取扱記録を保存する",
+      "原本へ直接書き込みながら解析し、記録を残さない",
+      "疑わしいファイルを先に消してから証拠を収集する",
+      "更新日時だけ同じなら内容も必ず同一と判定する"
+    ],
+    "correctIndex": 0,
+    "explanation": "原本への変更を抑え、ハッシュや取扱履歴によって後から同一性・取扱経緯を確認できるようにする。\n\nハッシュ値だけで「取得前から改変されていない」ことや犯人を証明するわけではない。取得の手順と取扱記録も合わせて残す。",
+    "choiceExplanations": [
+      "原本への変更を抑え、ハッシュや取扱履歴によって後から同一性・取扱経緯を確認できるようにする。",
+      "原本への書込みで証拠が変わるおそれがあり、取扱経緯も確認できない。",
+      "削除すると必要な情報を失うおそれがあり、保全の手順にならない。",
+      "更新日時は内容の同一性を証明せず、改変も可能。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-forensics-copy",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.rfc-editor.org/rfc/rfc3227.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3227.html",
+        "https://csrc.nist.gov/pubs/sp/800/86/final"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-forensics-volatile",
+    "version": 1,
+    "section": "A-1",
+    "topic": "セキュリティ",
+    "tags": [
+      "デジタルフォレンジックス"
+    ],
+    "reviewConcepts": [
+      "デジタルフォレンジックス"
+    ],
+    "prompt": "安全確保・被害封じ込め後、調査責任者が稼働中サーバーからの証拠収集を許可した。電源断で失われる情報を先に集める方針の下、ディスク上の保存済みログの複製より先に取得を検討するものはどれか。",
+    "choices": [
+      "書込み禁止で保管済みのバックアップ媒体",
+      "印刷済みのネットワーク構成図",
+      "保管庫にある契約書",
+      "RAM上のプロセス情報と現在のネットワーク接続情報"
+    ],
+    "correctIndex": 3,
+    "explanation": "プロセスや接続状態などの揮発性情報は電源断等で失われやすく、方針に沿って優先的な収集を検討する。\n\n実環境では安全・封じ込め・証拠収集の優先度を責任者が判断する。本問は収集許可と優先方針を明示した条件下の順序を問う。",
+    "choiceExplanations": [
+      "保管済み媒体はRAMほど揮発性が高くない。",
+      "紙の構成図は対象サーバーの電源断で消える情報ではない。",
+      "保管庫の文書は稼働中サーバーの揮発性情報ではない。",
+      "プロセスや接続状態などの揮発性情報は電源断等で失われやすく、方針に沿って優先的な収集を検討する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-forensics-volatile",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.rfc-editor.org/rfc/rfc3227.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc3227.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-stack-postfix",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズムとデータ構造",
+    "tags": [
+      "スタックと後置記法"
+    ],
+    "reviewConcepts": [
+      "スタックと後置記法"
+    ],
+    "prompt": "後置記法の式「8 3 2 * - 4 +」を、数をスタックへ積み演算子で上の2個を取り出して評価する。減算では後から取り出した値を左辺にする。結果はどれか。",
+    "choices": [
+      "−6",
+      "24",
+      "6",
+      "14"
+    ],
+    "correctIndex": 2,
+    "explanation": "3×2＝6、8−6＝2、2＋4＝6。減算の左右の順を守る。\n\n数値は積み、二項演算では右辺、左辺の順に取り出す。スタック内容を各段階で書くと減算の向きを検算できる。",
+    "choiceExplanations": [
+      "減算や最後の加算の扱いを取り違えた値で、正しい逐次評価ではない。",
+      "式の最後に乗算はなく、最後の演算は2＋4である。",
+      "3×2＝6、8−6＝2、2＋4＝6。減算の左右の順を守る。",
+      "8＋(3×2)＝14とするだけでは、減算と最後の加算を反映していない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-stack-postfix",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-stack-parentheses",
+    "version": 1,
+    "section": "A-1",
+    "topic": "アルゴリズムとデータ構造",
+    "tags": [
+      "スタックと後置記法"
+    ],
+    "reviewConcepts": [
+      "スタックと後置記法"
+    ],
+    "prompt": "括弧列を左から読み、開き括弧をスタックへ積み、閉じ括弧ではスタックの一番上と種類を照合して取り出す。走査中に矛盾せず、最後にスタックが空になる列はどれか。",
+    "choices": [
+      "())(",
+      "([{}])",
+      "([)]",
+      "(()"
+    ],
+    "correctIndex": 1,
+    "explanation": "(、[、{を順に積み、}、]、)が逆順で一致するので、最後に空になる。\n\n最後に開いた括弧を最初に閉じる入れ子構造は、後入れ先出しのスタックで検証できる。",
+    "choiceExplanations": [
+      "3文字目の)で対応する開き括弧がなく、走査途中で矛盾する。",
+      "(、[、{を順に積み、}、]、)が逆順で一致するので、最後に空になる。",
+      "]より前に)が現れた時点でスタックの一番上[と種類が一致しない。",
+      "走査後も開き括弧(が残る。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-stack-parentheses",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-concurrent",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営と技術戦略",
+    "tags": [
+      "コンカレントエンジニアリング"
+    ],
+    "reviewConcepts": [
+      "コンカレントエンジニアリング"
+    ],
+    "prompt": "新製品の設計において、設計部門が図面を完成させた後で初めて製造・保守部門が確認すると、手戻りが多かった。コンカレントエンジニアリングとして適切な改善はどれか。",
+    "choices": [
+      "設計の初期から製造・保守部門も参加し、並行して条件を検討する",
+      "完成図面が出るまで製造・保守部門に情報を一切渡さない",
+      "工程間の相談を減らすため設計変更を各部門が独立に進める",
+      "全工程を順番に終えてから初めて整合性を確認する"
+    ],
+    "correctIndex": 0,
+    "explanation": "関係部門が初期から連携し並行して検討することで、後工程の要件を早く反映できる。\n\n単に作業を同時に始めるだけでなく、関係部門の知識を早期に統合する。",
+    "choiceExplanations": [
+      "関係部門が初期から連携し並行して検討することで、後工程の要件を早く反映できる。",
+      "従来の逐次方式を維持しており、後からの手戻り低減につながらない。",
+      "並行であっても情報の共有と整合が必要で、独立した変更は不整合を招く。",
+      "整合確認が遅く、後工程からの制約を初期に反映できない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-concurrent",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/CDF/What_is_concurrent_engineering"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/CDF/What_is_concurrent_engineering"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-rpa",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営と技術戦略",
+    "tags": [
+      "RPA"
+    ],
+    "reviewConcepts": [
+      "RPA"
+    ],
+    "prompt": "毎日、担当者が決まった手順でメールの添付表を開き、既存アプリの画面へ転記している。画面操作を記録し、同じルールで自動実行するRPAの適用例はどれか。",
+    "choices": [
+      "人が契約書の法的解釈を毎回ゼロから決める",
+      "未経験の全業務をルールも確認もなく完全に判断する",
+      "サーバーの物理配線を変更する",
+      "定型の画面操作と転記をソフトウェアで実行する"
+    ],
+    "correctIndex": 3,
+    "explanation": "RPAは定型的でルールのある作業を、画面操作などを通じて自動化できる。\n\nRPAはAIと同義ではない。対象業務のルール・例外・画面変更時の保守を確認する。",
+    "choiceExplanations": [
+      "判断の根拠やルールを決めずに、法的解釈そのものをRPAで置き換える例ではない。",
+      "RPAだから未知の判断を無条件にできるわけではなく、例外処理や検証も必要。",
+      "物理配線の変更は、例示したソフトウェアによる画面操作の自動化ではない。",
+      "RPAは定型的でルールのある作業を、画面操作などを通じて自動化できる。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-rpa",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://learn.microsoft.com/en-us/power-automate/desktop-flows/introduction"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://learn.microsoft.com/en-us/power-automate/desktop-flows/introduction"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-leadership",
+    "version": 1,
+    "section": "A-1",
+    "topic": "企業活動と会計",
+    "tags": [
+      "リーダーシップ"
+    ],
+    "reviewConcepts": [
+      "リーダーシップ"
+    ],
+    "prompt": "経験ある開発チームの自己管理を支援するリーダーが、達成すべき目標と制約を共有した。チームの自律的な判断を支える行動として最も適切なものはどれか。",
+    "choices": [
+      "問題の報告を禁じ、支援の依頼を受け付けない",
+      "役割や制約を共有せず、結果の責任も誰にも持たせない",
+      "進め方はチームに任せ、障害の解消や必要な情報の提供を支援する",
+      "目標を説明せず全ての操作を常に細かく命令する"
+    ],
+    "correctIndex": 2,
+    "explanation": "自己管理するチームの判断を尊重しながら、障害除去等で目標達成を支援する。\n\n状況に応じた支援の例であり、どのチームにも同じ指揮方法が常に最適という意味ではない。",
+    "choiceExplanations": [
+      "問題の共有や支援を遮断すると、改善や目標達成を妨げる。",
+      "自律性は目標や責任の不在ではなく、共有した条件の下で判断すること。",
+      "自己管理するチームの判断を尊重しながら、障害除去等で目標達成を支援する。",
+      "全てを指示して判断を奪う行動は、設問の自律性を支える方針と一致しない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-leadership",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://scrumguides.org/scrum-guide.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://scrumguides.org/scrum-guide.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-mobile-slicing",
+    "version": 1,
+    "section": "A-1",
+    "topic": "ネットワーク",
+    "tags": [
+      "モバイル通信"
+    ],
+    "reviewConcepts": [
+      "モバイル通信"
+    ],
+    "prompt": "5Gで、同じ物理基盤上に、動画向けと低遅延制御向けなど用途に応じた論理的なネットワークを構成する技術はどれか。",
+    "choices": [
+      "全利用者の通信を無条件に同じ品質へ固定すること",
+      "ネットワークスライシング",
+      "単一の共有パスワードへの統一",
+      "DNSラウンドロビンだけによる名前解決"
+    ],
+    "correctIndex": 1,
+    "explanation": "共有基盤から用途の要件に合わせた論理ネットワークを構成する仕組み。\n\nスライスは用途ごとの機能・資源等を論理的に構成する。用語だけで個々の通信品質が無条件に保証されるわけではない。",
+    "choiceExplanations": [
+      "用途によって論理ネットワークを分ける説明とは逆の運用。",
+      "共有基盤から用途の要件に合わせた論理ネットワークを構成する仕組み。",
+      "認証情報の共通化は、用途ごとの論理ネットワーク構成ではない。",
+      "DNS応答の振分けだけでは5Gの論理ネットワークを用途ごとに構成できない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-mobile-slicing",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.itu.int/epublications/es/publication/itu-t-y-3159-2023-10-framework-for-classifying-network-slice-level-in-future-networks-including-imt-2020/en"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.itu.int/epublications/es/publication/itu-t-y-3159-2023-10-framework-for-classifying-network-slice-level-in-future-networks-including-imt-2020/en"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-aggregation",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営と技術戦略",
+    "tags": [
+      "アグリゲーションサービス"
+    ],
+    "reviewConcepts": [
+      "アグリゲーションサービス"
+    ],
+    "prompt": "利用者が複数の金融機関に持つ口座の残高・取引情報を、本人の同意に基づいて取得し、一つの画面に集めて一覧できるサービスの主な特徴はどれか。",
+    "choices": [
+      "複数の提供元の情報を集約し、利用者がまとめて把握できるようにする",
+      "自社の単一口座の利息を計算するだけで他社情報は使わない",
+      "利用者の同意を不要にして全口座のパスワードを公開する",
+      "取引情報を消去して残高を把握できなくする"
+    ],
+    "correctIndex": 0,
+    "explanation": "複数の提供元の情報をまとめて付加価値を提供するアグリゲーションの例。\n\n情報の集約による利便性と、本人の同意・アクセス権・情報保護を合わせて考える。",
+    "choiceExplanations": [
+      "複数の提供元の情報をまとめて付加価値を提供するアグリゲーションの例。",
+      "単一の自社情報だけでは、複数提供元の情報を集めるという設問の特徴がない。",
+      "情報集約は、本人の同意や適切な認証・情報管理を不要にするものではない。",
+      "情報を一覧して把握できるようにする目的と逆。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-aggregation",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://plaid.com/docs/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://plaid.com/docs/"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-activity-parallel",
+    "version": 1,
+    "section": "A-1",
+    "topic": "開発",
+    "tags": [
+      "UMLアクティビティ図"
+    ],
+    "reviewConcepts": [
+      "UMLアクティビティ図"
+    ],
+    "prompt": "UMLアクティビティ図で、Aの後にBとCを並行して開始し、両方の完了後にDへ進めたい。通常のフォークとジョインの組合せはどれか。",
+    "choices": [
+      "Aの後で条件分岐し、BかCの片方だけを実行する",
+      "BとCを常に直列に実行する",
+      "BとCの完了を待たずにDだけを開始する",
+      "Aの後でフォークし、BとCをジョインしてDへ進む"
+    ],
+    "correctIndex": 3,
+    "explanation": "フォークで並行フローへ分け、通常のジョインで両フローを同期する。\n\n判定・マージとフォーク・ジョインを区別する。本問は特殊なjoinSpecを使わない通常の同期を前提とする。",
+    "choiceExplanations": [
+      "条件によって片方だけを選ぶ分岐では、両方を並行実行する要件を満たさない。",
+      "直列では並行開始という条件を満たさない。",
+      "両方の完了後にDへ進むという同期条件を満たさない。",
+      "フォークで並行フローへ分け、通常のジョインで両フローを同期する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-activity-parallel",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://sparxsystems.com/enterprise_architect_user_guide/17.0/model_simulation/bpmn_simulation_comparison.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://sparxsystems.com/enterprise_architect_user_guide/17.0/model_simulation/bpmn_simulation_comparison.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-bi",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略と企画",
+    "tags": [
+      "BIと情報活用"
+    ],
+    "reviewConcepts": [
+      "BIと情報活用"
+    ],
+    "prompt": "店舗ごとに分散した売上・在庫データを統合し、月別・商品別の推移を可視化して仕入れの意思決定に使う。BIの目的に最も近いものはどれか。",
+    "choices": [
+      "CPUの物理コア数を増やすことだけを目的とする",
+      "データの内容を見ずに乱数だけで仕入れ量を決める",
+      "組織のデータを分析し、業務上の判断に役立つ情報を得る",
+      "記録済みのデータを全て削除する"
+    ],
+    "correctIndex": 2,
+    "explanation": "BIはデータの収集・管理・分析を通じて、業務や戦略上の意思決定を支援する。\n\n可視化は手段。異常や傾向を把握し、判断に結び付ける目的を押さえる。",
+    "choiceExplanations": [
+      "ハードウェア増強自体は、業務データから意味ある情報を得るBIの目的ではない。",
+      "データに基づく分析を利用しておらず設問の目的と異なる。",
+      "BIはデータの収集・管理・分析を通じて、業務や戦略上の意思決定を支援する。",
+      "削除だけではデータに基づく把握や判断を支援できない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-bi",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.ibm.com/think/topics/business-intelligence"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.ibm.com/think/topics/business-intelligence"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-benchmark",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営と技術戦略",
+    "tags": [
+      "ベンチマーキング"
+    ],
+    "reviewConcepts": [
+      "ベンチマーキング"
+    ],
+    "prompt": "自社の受注処理に時間がかかる。優れた他社の業務プロセスと指標を比較し、差の原因を調べて自社に合う改善へつなげる手法はどれか。",
+    "choices": [
+      "デルファイ法",
+      "ベンチマーキング",
+      "損益分岐点分析",
+      "ABC分析"
+    ],
+    "correctIndex": 1,
+    "explanation": "優れた組織等との比較から差や実践方法を学び、業務改善に使う手法。\n\n単に数値の優劣を並べるだけでなく、差を生むプロセスを学び、自社の条件へ適応する。",
+    "choiceExplanations": [
+      "専門家への反復的な意見照会で予測等を収束させる方法であり、業務の比較手法ではない。",
+      "優れた組織等との比較から差や実践方法を学び、業務改善に使う手法。",
+      "固定費・変動費・売上等から利益がゼロとなる点を分析する手法で、他社プロセス比較とは異なる。",
+      "金額等の重要度により品目などを区分する方法で、他社の実践との比較手法そのものではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-benchmark",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://asq.org/quality-resources/benchmarking"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://asq.org/quality-resources/benchmarking"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-soe",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略と企画",
+    "tags": [
+      "SoE"
+    ],
+    "reviewConcepts": [
+      "SoE"
+    ],
+    "prompt": "取引を正確に記録する基幹系SoRと連携し、利用者からの反応を取り込んで顧客との継続的な接点を改善するアプリを作る。SoEの主な役割として適切なものはどれか。",
+    "choices": [
+      "顧客などとの対話・関係を深め、利用体験を改善する",
+      "取引記録を正確に保存する基幹処理だけを担当する",
+      "すべての記録を廃棄する",
+      "CPU命令の実行順を決める"
+    ],
+    "correctIndex": 0,
+    "explanation": "SoEは人との接点や関係を中心に考え、SoRの情報とも連携して利用体験を支える。\n\nSoRとSoEは連携し得る。SoEだから正確なデータ管理が不要になるわけではない。",
+    "choiceExplanations": [
+      "SoEは人との接点や関係を中心に考え、SoRの情報とも連携して利用体験を支える。",
+      "主としてSoR側の役割の説明であり、設問の対話・接点の改善と異なる。",
+      "記録の廃棄はSoEの目的ではなく、SoRとの連携も不要という意味ではない。",
+      "CPU制御の説明であり、システムの事業上の役割の区分ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-soe",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.redbooks.ibm.com/abstracts/tips1218.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.redbooks.ibm.com/abstracts/tips1218.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-labor-hours",
+    "version": 1,
+    "section": "A-1",
+    "topic": "法務と標準化",
+    "tags": [
+      "労働法"
+    ],
+    "reviewConcepts": [
+      "労働法"
+    ],
+    "prompt": "日本の労働基準法第32条による原則の法定労働時間の組合せはどれか。変形労働時間制、特例、適用除外等は考えない。",
+    "choices": [
+      "1日8時間、1週48時間",
+      "1日10時間、1週40時間",
+      "1日6時間、1週30時間",
+      "1日8時間、1週40時間"
+    ],
+    "correctIndex": 3,
+    "explanation": "原則の法定労働時間は、休憩時間を除いて1日8時間・1週40時間である。\n\n法定労働時間と、会社が定める所定労働時間を区別する。時間外労働に必要な協定や割増賃金は別の論点。",
+    "choiceExplanations": [
+      "週48時間は、設問で特例等を除いた原則の上限ではない。",
+      "1日10時間は、設問で制度上の例外を除いた原則の上限ではない。",
+      "6時間・30時間を契約上の所定時間にすることはあり得るが、法定の原則の上限とは違う。",
+      "原則の法定労働時間は、休憩時間を除いて1日8時間・1週40時間である。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-labor-hours",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.check-roudou.mhlw.go.jp/qa/roudousya/roudoujikan/q4.html"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.check-roudou.mhlw.go.jp/qa/roudousya/roudoujikan/q4.html"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-quantum-measure",
+    "version": 1,
+    "section": "A-1",
+    "topic": "コンピュータ構成",
+    "tags": [
+      "量子コンピュータ"
+    ],
+    "reviewConcepts": [
+      "量子コンピュータ"
+    ],
+    "prompt": "1個の量子ビットが、計算基底で0と1をそれぞれ確率1/2で得る重ね合わせ状態にある。これを計算基底で1回測定する結果の説明はどれか。",
+    "choices": [
+      "必ず数値0.5を得る",
+      "測定すれば任意の計算問題の答えが必ず一度で得られる",
+      "0または1のどちらか一つを得る",
+      "1回の測定で0と1を別々の完全な古典データとして両方得る"
+    ],
+    "correctIndex": 2,
+    "explanation": "1回の測定結果は0か1であり、設問の状態ではそれぞれの確率が1/2。\n\n状態の重ね合わせと、測定で取り出せる古典的な結果を区別する。",
+    "choiceExplanations": [
+      "0.5はこの例の確率であり、計算基底での測定結果そのものではない。",
+      "量子計算でもアルゴリズムと適した問題構造が必要で、全問題を一度で解けるわけではない。",
+      "1回の測定結果は0か1であり、設問の状態ではそれぞれの確率が1/2。",
+      "重ね合わせの全成分を1回の測定でそれぞれ古典値として読み出せるわけではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-quantum-measure",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://quantum.cloud.ibm.com/docs/en/guides/measure-qubits"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://quantum.cloud.ibm.com/docs/en/guides/measure-qubits"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-signature-presumption",
+    "version": 1,
+    "section": "A-1",
+    "topic": "法務と標準化",
+    "tags": [
+      "電子署名法"
+    ],
+    "reviewConcepts": [
+      "電子署名法"
+    ],
+    "prompt": "電子署名法第3条の要件を満たす本人による電子署名が電磁的記録に行われた場合、同条による推定の対象はどれか。",
+    "choices": [
+      "全ての契約が無条件に有効であること",
+      "その電磁的記録が真正に成立したこと",
+      "記載された内容がすべて客観的な事実であること",
+      "記録が必ず暗号化され第三者に読めないこと"
+    ],
+    "correctIndex": 1,
+    "explanation": "同条は、所定の要件を満たす場合に電磁的記録の成立の真正を推定する。\n\n本人だけが行えるよう符号・物件を適正管理する等の要件がある。真正成立の推定と内容の真実性・契約の有効性を区別する。",
+    "choiceExplanations": [
+      "契約内容や有効性の要件まで無条件に満たすことを推定する規定ではない。",
+      "同条は、所定の要件を満たす場合に電磁的記録の成立の真正を推定する。",
+      "成立の真正の推定は、記載内容の真実性を一律に保証するものではない。",
+      "電子署名は機密性のための暗号化と同じではなく、同条が第三者の読取り不能を推定するわけではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-signature-presumption",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://www.digital.go.jp/policies/digitalsign/digitalsign_law"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://www.digital.go.jp/policies/digitalsign/digitalsign_law",
+        "https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/35c2afb2-01d8-49b4-b0a8-2cc656d1733e/20211213_meeting_trust_dx_06.pdf"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-tco",
+    "version": 1,
+    "section": "A-1",
+    "topic": "システム戦略と企画",
+    "tags": [
+      "TCO"
+    ],
+    "reviewConcepts": [
+      "TCO"
+    ],
+    "prompt": "システムを3年間利用する。初期導入120万円、運用費が毎年30万円、保守費が毎年10万円、3年後の廃棄費が6万円である。他の費用・割引現在価値を考えないTCOはどれか。",
+    "choices": [
+      "246万円",
+      "120万円",
+      "160万円",
+      "240万円"
+    ],
+    "correctIndex": 0,
+    "explanation": "120＋3×(30＋10)＋6＝246万円。導入だけでなく利用期間全体の費用を含める。\n\nTCOは総保有費用。比較では利用期間や含める費用項目を揃える。",
+    "choiceExplanations": [
+      "120＋3×(30＋10)＋6＝246万円。導入だけでなく利用期間全体の費用を含める。",
+      "初期費用だけで、運用・保守・廃棄の費用を含めていない。",
+      "120＋30＋10で1年分だけを含め、残り2年と廃棄費を落としている。",
+      "120＋3×40で廃棄費6万円を落としている。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-tco",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://about.usps.com/manuals/spp102019/html/spp1_026.htm"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://about.usps.com/manuals/spp102019/html/spp1_026.htm"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-lean-startup",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営と技術戦略",
+    "tags": [
+      "リーンスタートアップ"
+    ],
+    "reviewConcepts": [
+      "リーンスタートアップ"
+    ],
+    "prompt": "新サービスの需要が不確かなため、最小限の機能を試作品として提供し、顧客の利用結果を測定して仮説を修正する。この進め方で重視するものはどれか。",
+    "choices": [
+      "顧客へ一度も見せず全機能の完成まで検証を先送りする",
+      "利用結果が仮説に反しても必ず同じ計画を維持する",
+      "試作品なので顧客の反応を一切記録しない",
+      "構築・計測・学習を繰り返し、顧客に関する仮説を検証する"
+    ],
+    "correctIndex": 3,
+    "explanation": "リーンスタートアップでは小さな実験から学び、継続や方向転換を判断する。\n\nMVPは単に低品質な製品を作ることではなく、学びたい仮説を検証するための最小限の実験として考える。",
+    "choiceExplanations": [
+      "完成まで仮説の検証を遅らせると、需要のない製品を作り込むおそれがある。",
+      "仮説と結果の差を無視するのでは、学習を次の意思決定に反映できない。",
+      "結果を測定しなければ仮説の検証に使える学習を得にくい。",
+      "リーンスタートアップでは小さな実験から学び、継続や方向転換を判断する。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-lean-startup",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://theleanstartup.com/principles"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://theleanstartup.com/principles"
+      ]
+    }
+  },
+  {
+    "id": "supplement-a1-adaptive-xbrl",
+    "version": 1,
+    "section": "A-1",
+    "topic": "経営と技術戦略",
+    "tags": [
+      "XBRL"
+    ],
+    "reviewConcepts": [
+      "XBRL"
+    ],
+    "prompt": "財務報告の数値に、項目の意味、対象期間、通貨単位などを機械で解釈できる形で関連付け、異なる企業の情報を処理しやすくする標準はどれか。",
+    "choices": [
+      "SMTP",
+      "RAID",
+      "XBRL",
+      "JPEG"
+    ],
+    "correctIndex": 2,
+    "explanation": "XBRLは財務・事業報告の情報を意味付けし、電子的な交換や分析を支える標準。\n\n数値を単に文字列として並べることと、概念・期間・単位等を付けて処理可能にすることを区別する。",
+    "choiceExplanations": [
+      "SMTPは電子メールの転送プロトコルであり、財務報告の意味付け形式ではない。",
+      "RAIDは複数ディスクの構成技術で、報告データの意味付けではない。",
+      "XBRLは財務・事業報告の情報を意味付けし、電子的な交換や分析を支える標準。",
+      "JPEGは画像の符号化形式で、財務項目の意味付けを目的とする標準ではない。"
+    ],
+    "origin": "ai",
+    "groupId": "supplement-a1-adaptive-xbrl",
+    "heldOut": false,
+    "source": {
+      "label": "AI作成・資料照合／独立検算済みの補強問題（2026-10-25）",
+      "url": "https://in.xbrl.org/about-us/what-is-xbrl/"
+    },
+    "review": {
+      "status": "verified",
+      "method": "一次資料の定義と照合。明示条件から正答の一意性と全選択肢の理由を確認。計算・操作問題は別手順の列挙、実行、SQL、ハッシュ計算で検算。",
+      "reviewer": "Codex（AIによる資料照合・検算、人の監修なし）",
+      "at": "2026-10-25T08:31:08.584231Z",
+      "references": [
+        "https://in.xbrl.org/about-us/what-is-xbrl/"
+      ]
+    }
+  }
+]

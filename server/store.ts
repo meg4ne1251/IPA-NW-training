@@ -1,3 +1,4 @@
+import { curriculumCollection, curriculumStatus, selectCurriculum } from '../src/domain/curriculum.ts';
 import { withReviewConcepts } from './review-concepts.ts';
 import { conceptKeys, isFresh, relatedProgress, reviewIndex, reviewAnalysis, reviewCollection } from '../src/domain/review.ts';
 import { withOfficialExplanation } from './official-explanations.ts';
@@ -54,7 +55,11 @@ export class TrainingStore {
   }
   writeSession(s: Session) { this.db.prepare('INSERT OR REPLACE INTO sessions VALUES (?, ?)').run(s.id, JSON.stringify(s)); }
   publicSession(s: Session): PublicSession {
-    return { ...s, questions: s.questions.map(original => {
+    const selectionReasons = s.practiceScope?.collection === curriculumCollection
+      ? Object.fromEntries(s.questions.map(q => [q.id, s.status === 'submitted' || s.graded?.[q.id]
+        ? s.selectionReasons[q.id] : s.selectionReasons[q.id]?.replace(/：.*（/, '（') ?? '履歴に基づくおすすめ演習']))
+      : s.selectionReasons;
+    return { ...s, selectionReasons, questions: s.questions.map(original => {
       const q = withOfficialExplanation(original);
       if (s.status === 'submitted' || s.graded?.[q.id]) return q;
       const { correctIndex: _correct, explanation: _explanation, choiceExplanations: _choices, learning: _learning, reviewConcepts: _reviewConcepts, ...safe } = q;
@@ -80,6 +85,7 @@ export class TrainingStore {
       analysis: (['A-1', 'A-2'] as const).map(section => reviewAnalysis(bank, history, section)),
       stats: topicStats(history), revision: this.revision(),
       rapid: (['A-1', 'A-2'] as const).map(section => rapidStatus(bank, history, section)),
+      curriculum: curriculumStatus(bank, history),
       focused: (['A-1', 'A-2'] as const).map(section => focusedStatus(bank, history, section)),
       supplements: [...new Set(supplements.map(q => q.topic))].sort((a, b) => a.localeCompare(b, 'ja')).map(topic => {
         const items = supplements.filter(q => q.topic === topic);
@@ -111,6 +117,8 @@ export class TrainingStore {
     const supplement = collection === supplementCollection;
     const rapid = collection === rapidCollection;
     const review = collection === reviewCollection;
+    const curriculum = collection === curriculumCollection;
+    assert(!curriculum || (section === 'A-1' && mode === 'practice' && [10, 30].includes(count)), 'おすすめ演習はA-1の練習10問・30問で利用してください。');
     const focused = collection === reviewOnlyCollection || collection === newOnlyCollection;
     assert(!focused || mode === 'practice', '復習専用・新規分野専用は練習で利用してください。');
     assert(!focused || count === 10 || count === 30, '復習専用・新規分野専用の問題数は10問または30問です。');
@@ -121,14 +129,15 @@ export class TrainingStore {
     assert(!this.sessions().some(s => s.status === 'active'), '途中の演習を再開して提出または中止してください。');
     const all = this.bank();
     const heldGroups = new Set(all.filter(q => q.heldOut).map(q => q.groupId));
-    const bank = all.filter(q => !heldGroups.has(q.groupId) && (supplement ? isSupplement(q) : focused || rapid || review || !collection || q.source.url === collection)
+    const bank = all.filter(q => !heldGroups.has(q.groupId) && (supplement ? isSupplement(q) : curriculum || focused || rapid || review || !collection || q.source.url === collection)
       && (!focus.topic || q.topic === focus.topic) && (!focus.tag || q.tags.includes(focus.tag)));
     const history = this.history(); const index = reviewIndex(history, section);
     const reviewBank = review ? bank.filter(q => relatedProgress(q, index).some(s => s.risk > 0 || Date.parse(s.dueAt) <= Date.now())) : bank;
     // The explicit supplement exercise is entirely AI-authored. Mixed practice keeps its 20% limit.
-    const selected = focused ? selectFocused(bank, history, section, collection, count)
+    const selected = curriculum ? selectCurriculum(bank, history, count) : focused ? selectFocused(bank, history, section, collection, count)
       : rapid ? selectRapid(bank, history, section, count)
       : selectPractice(reviewBank, history, section, count, Date.now(), supplement ? count : Math.floor(count / 5));
+    assert(!curriculum || selected.shortage === 0, 'おすすめ演習の問題数が不足しています。復習の間隔を空けるか、別の出題モードを利用してください。');
     assert(!focused || selected.shortage === 0, `${collection === reviewOnlyCollection ? '復習専用' : section === 'A-1' ? '未着手の論点' : '新規分野専用'}で出題できる問題は${selected.questions.length}問です。${count}問に不足するため開始できません。対象外の問題による補充は行いません。`);
     if (mode !== 'practice') {
       const fullCount = section === 'A-1' ? 30 : 25;
@@ -139,7 +148,7 @@ export class TrainingStore {
     }
     assert(selected.questions.length > 0, 'この範囲で出題可能な別問題がありません。出題範囲を広げるか、AIに新しい類題の追加を依頼してください。');
     return this.newSession(section, mode, selected.questions, selected.reasons,
-      mode === 'practice' ? `${collection === reviewOnlyCollection ? `${section} 復習専用` : collection === newOnlyCollection ? `${section} ${section === 'A-1' ? '未着手の論点' : '新規分野専用'}` : rapid ? `${section} 短期集中テスト` : review ? `${section} 苦手・復習の類題` : supplement ? `A-1補強 · ${focus.tag || focus.topic || '全分野'}` : '弱点と未着手の演習'}（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`,
+      mode === 'practice' ? `${curriculum ? 'A-1 おすすめ演習' : collection === reviewOnlyCollection ? `${section} 復習専用` : collection === newOnlyCollection ? `${section} ${section === 'A-1' ? '未着手の論点' : '新規分野専用'}` : rapid ? `${section} 短期集中テスト` : review ? `${section} 苦手・復習の類題` : supplement ? `A-1補強 · ${focus.tag || focus.topic || '全分野'}` : '弱点と未着手の演習'}（${selected.questions.length}問）` : `${selected.questions[0].source.label.replace(/^出典：/, '').replace(/\s*問\d+$/, '')} ${mode === 'diagnostic' ? '診断' : '本番形式'}`,
       mode === 'practice' ? { collection, ...focus } : undefined);
   }
   newSession(section: Section, mode: Session['mode'], questions: TrainingQuestion[], reasons: Record<string, string>, title: string, practiceScope?: PracticeScope) {
@@ -340,7 +349,7 @@ interface ImportInput {
 }
 interface ImportRecord extends ImportInput { importedAt: string; sessionId: string | null }
 export function openStore() {
-  const seed = ['materials/2025-spring.json', 'materials/archive.json', 'materials/a1-supplement.json', 'materials/review-variants.json', 'materials/focused-supplement.json'].flatMap(name => {
+  const seed = ['materials/2025-spring.json', 'materials/archive.json', 'materials/a1-supplement.json', 'materials/review-variants.json', 'materials/focused-supplement.json', 'materials/curriculum-supplement.json'].flatMap(name => {
     const path = resolve(name); return existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) as TrainingQuestion[] : [];
   });
   const directory = process.env.TRAINING_DATA_DIR || resolve('data');

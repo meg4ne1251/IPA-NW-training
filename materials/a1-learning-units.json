@@ -277,7 +277,9 @@
         "ipa-2021r03h-koudo-am1-02",
         "ipa-2020r02o-koudo-am1-01",
         "ipa-2018h30h-koudo-am1-03",
-        "supplement-a1-structure-01"
+        "supplement-a1-structure-01",
+        "supplement-a1-adaptive-stack-postfix",
+        "supplement-a1-adaptive-stack-parentheses"
       ],
       "aliases": [
         "スタック",
@@ -291,7 +293,9 @@
       "field": "アルゴリズムとデータ構造",
       "label": "キュー",
       "questionIds": [
-        "supplement-a1-structure-02"
+        "supplement-a1-structure-02",
+        "supplement-a1-adaptive-queue-operations",
+        "supplement-a1-adaptive-queue-bfs"
       ],
       "aliases": []
     },
@@ -477,7 +481,8 @@
       "field": "コンピュータ構成",
       "label": "量子コンピュータ",
       "questionIds": [
-        "ipa-2024r06h-koudo-am1-04"
+        "ipa-2024r06h-koudo-am1-04",
+        "supplement-a1-adaptive-quantum-measure"
       ],
       "aliases": [
         "量子ゲート方式の量子コンピュータ"
@@ -542,7 +547,9 @@
       "label": "省電力と平均電流",
       "questionIds": [
         "ipa-2025-spring-a1-07",
-        "review-a1-power"
+        "review-a1-power",
+        "supplement-a1-adaptive-power-average",
+        "supplement-a1-adaptive-power-duty"
       ],
       "aliases": [
         "センサーノードの省電力化",
@@ -611,7 +618,9 @@
       "field": "システム構成",
       "label": "RAID",
       "questionIds": [
-        "supplement-a1-reliability-04"
+        "supplement-a1-reliability-04",
+        "supplement-a1-adaptive-raid-capacity",
+        "supplement-a1-adaptive-raid-mirror-failure"
       ],
       "aliases": [
         "RAID 5"
@@ -959,7 +968,9 @@
       "field": "データベース",
       "label": "SQLの結合",
       "questionIds": [
-        "supplement-a1-sql-03"
+        "supplement-a1-sql-03",
+        "supplement-a1-adaptive-join-cardinality",
+        "supplement-a1-adaptive-join-where"
       ],
       "aliases": [
         "外部結合"
@@ -1035,7 +1046,9 @@
       "field": "データベース",
       "label": "ストアドプロシージャ",
       "questionIds": [
-        "ipa-2024r06h-koudo-am1-09"
+        "ipa-2024r06h-koudo-am1-09",
+        "supplement-a1-adaptive-procedure-location",
+        "supplement-a1-adaptive-procedure-call"
       ],
       "aliases": [
         "ストアドプロシージャの利点"
@@ -1297,7 +1310,8 @@
       "field": "ネットワーク",
       "label": "モバイル通信",
       "questionIds": [
-        "ipa-2023r05h-koudo-am1-11"
+        "ipa-2023r05h-koudo-am1-11",
+        "supplement-a1-adaptive-mobile-slicing"
       ],
       "aliases": [
         "モバイル通信サービス"
@@ -1370,7 +1384,9 @@
       "field": "セキュリティ",
       "label": "暗号学的ハッシュ",
       "questionIds": [
-        "ipa-2021r03h-koudo-am1-12"
+        "ipa-2021r03h-koudo-am1-12",
+        "supplement-a1-adaptive-hash-size",
+        "supplement-a1-adaptive-hash-authenticity"
       ],
       "aliases": [
         "ハッシュ関数の原像計算困難性"
@@ -1405,7 +1421,9 @@
       "field": "セキュリティ",
       "label": "シングルサインオン",
       "questionIds": [
-        "ipa-2022r04h-koudo-am1-13"
+        "ipa-2022r04h-koudo-am1-13",
+        "supplement-a1-adaptive-sso-roles",
+        "supplement-a1-adaptive-sso-audience"
       ],
       "aliases": [
         "シングルサインオンシステム"
@@ -1478,7 +1496,9 @@
       "label": "セッションの保護",
       "questionIds": [
         "ipa-2021r03h-koudo-am1-15",
-        "ipa-2018h30h-koudo-am1-15"
+        "ipa-2018h30h-koudo-am1-15",
+        "supplement-a1-adaptive-session-regenerate",
+        "supplement-a1-adaptive-session-cookie"
       ],
       "aliases": [
         "セッションハイジャック対策"
@@ -1505,7 +1525,9 @@
       "field": "セキュリティ",
       "label": "DNSキャッシュポイズニング",
       "questionIds": [
-        "ipa-2024r06a-koudo-am1-15"
+        "ipa-2024r06a-koudo-am1-15",
+        "supplement-a1-adaptive-dns-entropy",
+        "supplement-a1-adaptive-dns-match"
       ],
       "aliases": [
         "DNSキャッシュポイズニング対策"
@@ -1570,7 +1592,9 @@
       "label": "デジタルフォレンジックス",
       "questionIds": [
         "ipa-2023r05h-koudo-am1-13",
-        "ipa-2019h31h-koudo-am1-13"
+        "ipa-2019h31h-koudo-am1-13",
+        "supplement-a1-adaptive-forensics-copy",
+        "supplement-a1-adaptive-forensics-volatile"
       ],
       "aliases": [
         "デジタルフォレンジックスの手順"
@@ -1664,7 +1688,8 @@
         "ipa-2022r04h-koudo-am1-25",
         "ipa-2021r03a-koudo-am1-16",
         "ipa-2020r02o-koudo-am1-16",
-        "ipa-2017h29h-koudo-am1-25"
+        "ipa-2017h29h-koudo-am1-25",
+        "supplement-a1-adaptive-activity-parallel"
       ],
       "aliases": [
         "アクティビティ図",
@@ -1961,7 +1986,9 @@
       "questionIds": [
         "ipa-2025-spring-a1-19",
         "ipa-2024r06a-koudo-am1-19",
-        "review-a1-schedule"
+        "review-a1-schedule",
+        "supplement-a1-adaptive-crash-bottleneck",
+        "supplement-a1-adaptive-crash-cost"
       ],
       "aliases": [
         "クラッシング",
@@ -2422,7 +2449,8 @@
       "field": "システム戦略と企画",
       "label": "BIと情報活用",
       "questionIds": [
-        "ipa-2016h28a-koudo-am1-24"
+        "ipa-2016h28a-koudo-am1-24",
+        "supplement-a1-adaptive-bi"
       ],
       "aliases": [
         "BIの活用事例"
@@ -2458,7 +2486,8 @@
       "field": "システム戦略と企画",
       "label": "SoE",
       "questionIds": [
-        "ipa-2020r02o-koudo-am1-28"
+        "ipa-2020r02o-koudo-am1-28",
+        "supplement-a1-adaptive-soe"
       ],
       "aliases": [
         "SoEの説明はどれか"
@@ -2469,7 +2498,8 @@
       "field": "システム戦略と企画",
       "label": "TCO",
       "questionIds": [
-        "supplement-a1-planning-04"
+        "supplement-a1-planning-04",
+        "supplement-a1-adaptive-tco"
       ],
       "aliases": []
     },
@@ -2567,7 +2597,8 @@
       "field": "経営と技術戦略",
       "label": "ベンチマーキング",
       "questionIds": [
-        "ipa-2016h28a-koudo-am1-26"
+        "ipa-2016h28a-koudo-am1-26",
+        "supplement-a1-adaptive-benchmark"
       ],
       "aliases": [
         "ベンチマーキングを説明したもの"
@@ -2615,7 +2646,8 @@
       "field": "経営と技術戦略",
       "label": "リーンスタートアップ",
       "questionIds": [
-        "ipa-2021r03a-koudo-am1-27"
+        "ipa-2021r03a-koudo-am1-27",
+        "supplement-a1-adaptive-lean-startup"
       ],
       "aliases": [
         "リーンスタートアップの説明はどれか"
@@ -2639,7 +2671,8 @@
       "field": "経営と技術戦略",
       "label": "RPA",
       "questionIds": [
-        "ipa-2019r01a-koudo-am1-28"
+        "ipa-2019r01a-koudo-am1-28",
+        "supplement-a1-adaptive-rpa"
       ],
       "aliases": [
         "RPAの説明はどれか"
@@ -2717,7 +2750,8 @@
       "label": "アグリゲーションサービス",
       "questionIds": [
         "ipa-2023r05h-koudo-am1-28",
-        "ipa-2021r03h-koudo-am1-28"
+        "ipa-2021r03h-koudo-am1-28",
+        "supplement-a1-adaptive-aggregation"
       ],
       "aliases": []
     },
@@ -2726,7 +2760,8 @@
       "field": "経営と技術戦略",
       "label": "XBRL",
       "questionIds": [
-        "ipa-2022r04h-koudo-am1-28"
+        "ipa-2022r04h-koudo-am1-28",
+        "supplement-a1-adaptive-xbrl"
       ],
       "aliases": []
     },
@@ -2735,7 +2770,8 @@
       "field": "経営と技術戦略",
       "label": "コンカレントエンジニアリング",
       "questionIds": [
-        "ipa-2016h28h-koudo-am1-28"
+        "ipa-2016h28h-koudo-am1-28",
+        "supplement-a1-adaptive-concurrent"
       ],
       "aliases": [
         "製品開発のスピードアップ手法"
@@ -2820,7 +2856,8 @@
       "field": "企業活動と会計",
       "label": "リーダーシップ",
       "questionIds": [
-        "ipa-2022r04h-koudo-am1-29"
+        "ipa-2022r04h-koudo-am1-29",
+        "supplement-a1-adaptive-leadership"
       ],
       "aliases": [
         "PM理論の特徴はどれか"
@@ -2891,7 +2928,8 @@
       "field": "法務と標準化",
       "label": "労働法",
       "questionIds": [
-        "ipa-2021r03a-koudo-am1-30"
+        "ipa-2021r03a-koudo-am1-30",
+        "supplement-a1-adaptive-labor-hours"
       ],
       "aliases": [
         "労働基準法で定める36協定"
@@ -2950,7 +2988,8 @@
       "field": "法務と標準化",
       "label": "電子署名法",
       "questionIds": [
-        "ipa-2021r03h-koudo-am1-30"
+        "ipa-2021r03h-koudo-am1-30",
+        "supplement-a1-adaptive-signature-presumption"
       ],
       "aliases": [
         "電子署名法に関する記述"

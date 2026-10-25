@@ -8,7 +8,7 @@ import { withLearningPriority } from './learning-priorities';
 import { withReviewConcepts } from './review-concepts';
 import catalogue from '../materials/a1-learning-units.json';
 
-const bank: TrainingQuestion[] = ['2025-spring', 'archive', 'a1-supplement', 'review-variants', 'focused-supplement']
+const bank: TrainingQuestion[] = ['2025-spring', 'archive', 'a1-supplement', 'review-variants', 'focused-supplement', 'curriculum-supplement']
   .flatMap(name => JSON.parse(readFileSync(`materials/${name}.json`, 'utf8')) as TrainingQuestion[])
   .map(withLearningPriority).map(withReviewConcepts);
 const get = (id: string) => bank.find(q => q.id === id)!;
@@ -17,10 +17,10 @@ const result = (question: TrainingQuestion, at = '2026-10-20T12:00:00Z', correct
 });
 
 describe('A-1の共通論点分類', () => {
-  it('全738問を1つずつ分類し、同じ問題群が別論点へ分裂しない', () => {
+  it('全収録問題を1つずつ分類し、同じ問題群が別論点へ分裂しない', () => {
     const a1 = bank.filter(q => q.section === 'A-1');
     const assigned = catalogue.units.flatMap(u => u.questionIds);
-    expect(assigned).toHaveLength(738); expect(new Set(assigned)).toEqual(new Set(a1.map(q => q.id)));
+    expect(assigned).toHaveLength(a1.length); expect(new Set(assigned)).toEqual(new Set(a1.map(q => q.id)));
     expect(new Set(catalogue.units.map(u => u.id)).size).toBe(catalogue.units.length);
     const families = new Map<string, string>();
     for (const q of a1) {
