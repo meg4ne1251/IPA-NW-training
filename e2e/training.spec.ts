@@ -12,7 +12,7 @@ test.beforeEach(async ({ request }) => finishActive(request));
 test.afterEach(async ({ request }) => finishActive(request));
 
 test('演習→保存・再読込→提出→AIファイル出力・取り込み→再演習', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/choice');
   await page.getByRole('button', { name: '10問を解く', exact: true }).click();
   await expect(page.getByRole('heading', { name: /確認問題/ })).toBeVisible();
   await page.route('**/api/sessions/*/draft', route => route.abort('failed'));
@@ -55,7 +55,7 @@ test('演習→保存・再読込→提出→AIファイル出力・取り込み
 });
 
 test('スマートフォン幅で画面がはみ出さず、キーボードで操作できる', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/');
+  await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/choice');
   await expect(page.getByRole('heading', { name: /一問ずつ解いて、.*苦手を減らしていく。/ })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.getByRole('button', { name: '履歴と苦手分野', exact: true }).focus(); await page.keyboard.press('Enter');
@@ -65,7 +65,7 @@ test('スマートフォン幅で画面がはみ出さず、キーボードで�
 
 test('わからないの永続化・vim移動・全ボタンのヒント操作', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 780 });
-  await page.goto('/');
+  await page.goto('/choice');
   await page.getByRole('button', { name: '10問を解く', exact: true }).click();
   await page.getByRole('radio', { name: 'わからない', exact: true }).check();
   await expect(page.getByRole('status')).toContainText('保存済み');

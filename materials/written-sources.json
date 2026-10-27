@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-27",
+  "sources": [
+    {
+      "file": "2025r07h_nw_pm1_ans.pdf",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_ans.pdf",
+      "sha256": "5d5d07ee7d387a664ff0444ad7c374bdc6b9c908b40027ff041f1e72ac40047b"
+    },
+    {
+      "file": "2025r07h_nw_pm1_cmnt.pdf",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_cmnt.pdf",
+      "sha256": "bc43bec5178008b32c3e26cf4abd6fedbbef26a36f33aff9e359f0443a931a19"
+    },
+    {
+      "file": "2025r07h_nw_pm1_qs.pdf",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_qs.pdf",
+      "sha256": "1abc5b0c9408d462635b112d391d675ed9063b2589239bc22101da28d81d8dd6"
+    },
+    {
+      "file": "2025r07h_nw_pm2_ans.pdf",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm2_ans.pdf",
+      "sha256": "183d1ef391786cd4ba69ea61431bbd5262607ffbc98d4988e259f50fd48d9a29"
+    },
+    {
+      "file": "2025r07h_nw_pm2_cmnt.pdf",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm2_cmnt.pdf",
+      "sha256": "5c7a31656a6e0dabe1fd81e7abd3335bfb2e121bcae5676853b6e3a101dd5fed"
+    },
+    {
+      "file": "2025r07h_nw_pm2_qs.pdf",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm2_qs.pdf",
+      "sha256": "ad53e9fb57e0b3b57f5afe92eca717c10744836fbc8fb5cf01caa079b07aa5dd"
+    }
+  ]
+}

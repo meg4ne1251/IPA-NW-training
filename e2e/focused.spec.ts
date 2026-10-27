@@ -11,7 +11,7 @@ test.afterEach(async ({ request }) => {
 
 for (const section of ['A-1', 'A-2']) for (const count of [10, 30]) {
   test(`${section}の新規分野・復習専用${count}問を開始・再開・同じ問題数で継続する`, async ({ page, request }, info) => {
-    await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/');
+    await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/choice');
     if (section === 'A-2') await page.getByRole('button', { name: 'A-2', exact: true }).click();
     const focused = page.getByRole('region', { name: '目的を絞って10問・30問', exact: true });
     await expect(focused).toContainText('出題可能：');
@@ -51,7 +51,7 @@ for (const section of ['A-1', 'A-2']) for (const count of [10, 30]) {
       expect(next.questions.every((q: { topic: string }) => !first.questions.some((old: { topic: string }) => old.topic === q.topic))).toBe(true);
     }
     await request.post(`/api/sessions/${next.id}/submit`, { data: { revision: next.revision } });
-    await page.goto('/');
+    await page.goto('/choice');
     if (section === 'A-2') await page.getByRole('button', { name: 'A-2', exact: true }).click();
     const reviewing = page.waitForResponse(r => r.url().endsWith('/api/sessions') && r.request().method() === 'POST');
     await page.getByRole('button', { name: `復習専用を${count}問`, exact: true }).click();

@@ -1,0 +1,808 @@
+[
+  {
+    "id": "2025-b1-q1",
+    "version": 1,
+    "year": 2025,
+    "season": "春期",
+    "section": "B-1",
+    "number": 1,
+    "title": "企業ネットワークの更改",
+    "tags": [
+      "OSPF",
+      "VRRP",
+      "経路制御"
+    ],
+    "minutes": 45,
+    "pages": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "questionPages": [
+      7
+    ],
+    "source": {
+      "label": "IPA 令和7年度春期 NW 午後Ⅰ 問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_cmnt.pdf",
+      "localPdf": "/written/2025/2025r07h_nw_pm1_qs.pdf",
+      "localAnswer": "/written/2025/2025r07h_nw_pm1_ans.pdf",
+      "localComment": "/written/2025/2025r07h_nw_pm1_cmnt.pdf"
+    },
+    "guide": [
+      "OSPFの隣接関係・経路収束と、VRRPの役割を分けて整理しましょう。",
+      "更改手順は、通信経路がどう変わるかを図に書き込みながら追います。切戻しの容易さも確認しましょう。",
+      "記述では「何を防ぐか」「なぜその操作が必要か」を、本文の条件に結び付けて説明します。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 (1) a",
+        "example": "バックボーン"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 (1) b",
+        "example": "ルータ"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 (1) c",
+        "example": "デフォルトゲートウェイ"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 (2)",
+        "example": "不正なOSPFルータと隣接関係になり経路交換してしまう問題",
+        "limit": 35
+      },
+      {
+        "id": "s5",
+        "label": "設問1 (3)",
+        "example": "長くする。"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 (4)",
+        "example": "OSPFの経路情報が収束した状態",
+        "limit": 25
+      },
+      {
+        "id": "s7",
+        "label": "設問2 (1) 大阪本社",
+        "example": "(ウ)"
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (1) 東京支社",
+        "example": "(ア)，(イ)"
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (2)",
+        "example": "65535といった十分大きな値に変更する。",
+        "limit": 30
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (3)",
+        "example": "物理インタフェース閉塞の方が素早く切り戻せるから",
+        "limit": 30
+      },
+      {
+        "id": "s11",
+        "label": "設問2 (4)",
+        "example": "イーサネットケーブルにラベルを付与する。",
+        "limit": 25
+      },
+      {
+        "id": "s12",
+        "label": "設問2 (5) 4機器",
+        "example": "L3SW10，R11，R20，R30"
+      }
+    ]
+  },
+  {
+    "id": "2025-b1-q2",
+    "version": 1,
+    "year": 2025,
+    "season": "春期",
+    "section": "B-1",
+    "number": 2,
+    "title": "ネットワークの改善",
+    "tags": [
+      "HTTP/2",
+      "HTTP/3",
+      "NAPT",
+      "障害切り分け"
+    ],
+    "minutes": 45,
+    "pages": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "questionPages": [
+      13,
+      14
+    ],
+    "source": {
+      "label": "IPA 令和7年度春期 NW 午後Ⅰ 問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_cmnt.pdf",
+      "localPdf": "/written/2025/2025r07h_nw_pm1_qs.pdf",
+      "localAnswer": "/written/2025/2025r07h_nw_pm1_ans.pdf",
+      "localComment": "/written/2025/2025r07h_nw_pm1_cmnt.pdf"
+    },
+    "guide": [
+      "通信帯域の不足とNAPT変換エントリーの不足は、影響するPCの範囲やログを使って切り分けます。",
+      "計算問題では、PC当たりのフロー数と保持時間を整理し、上限の端数処理を確認しましょう。",
+      "HTTPの多重化とトランスポートの違いを押さえ、未使用フローの保持時間がNAPTに与える影響を考えましょう。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 (1) a",
+        "example": "プライベート"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 (1) b",
+        "example": "グローバル"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 (1) c",
+        "example": "PoE+"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 (2)",
+        "example": "PCが属するセグメント",
+        "limit": 15
+      },
+      {
+        "id": "s5",
+        "label": "設問2 (1)",
+        "example": "ログイン画面が表示されない事象が一部かつ不特定のPCだから",
+        "limit": 40
+      },
+      {
+        "id": "s6",
+        "label": "設問2 (2) d",
+        "example": "帯域確保"
+      },
+      {
+        "id": "s7",
+        "label": "設問2 (3)",
+        "example": "(ⅲ)，(ⅳ)"
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (4) PC台数",
+        "example": "327"
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (4) エントリー数",
+        "example": "120,000"
+      },
+      {
+        "id": "s10",
+        "label": "設問3 (1)",
+        "example": "先行の処理が終わるまで後続の処理が待たされるから",
+        "limit": 30
+      },
+      {
+        "id": "s11",
+        "label": "設問3 (2) e",
+        "example": "リクエスト"
+      },
+      {
+        "id": "s12",
+        "label": "設問3 (2) f",
+        "example": "レスポンス"
+      },
+      {
+        "id": "s13",
+        "label": "設問3 (2) g",
+        "example": "ストリームID"
+      },
+      {
+        "id": "s14",
+        "label": "設問3 (2) h",
+        "example": "並列"
+      },
+      {
+        "id": "s15",
+        "label": "設問3 (3) 調整",
+        "example": "UDPの保持時間を300秒より小さくする。",
+        "limit": 25
+      },
+      {
+        "id": "s16",
+        "label": "設問3 (3) 効果",
+        "example": "未使用のUDPフローによるNAPT変換エントリーを早期に削除できる。",
+        "limit": 45
+      }
+    ]
+  },
+  {
+    "id": "2025-b1-q3",
+    "version": 1,
+    "year": 2025,
+    "season": "春期",
+    "section": "B-1",
+    "number": 3,
+    "title": "Webアクセスのセキュリティ対策",
+    "tags": [
+      "SWG",
+      "TLS",
+      "プロキシ",
+      "移行設計"
+    ],
+    "minutes": 45,
+    "pages": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "questionPages": [
+      19,
+      20
+    ],
+    "source": {
+      "label": "IPA 令和7年度春期 NW 午後Ⅰ 問3",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm1_cmnt.pdf",
+      "localPdf": "/written/2025/2025r07h_nw_pm1_qs.pdf",
+      "localAnswer": "/written/2025/2025r07h_nw_pm1_ans.pdf",
+      "localComment": "/written/2025/2025r07h_nw_pm1_cmnt.pdf"
+    },
+    "guide": [
+      "ログの時刻同期・利用者の特定・アクセス制御を、それぞれの機器やサービスの役割に対応させます。",
+      "TLSの通信経路と証明書の信頼関係を整理し、どのルート証明書が必要かを考えましょう。",
+      "移行前後の経路と送信元IPアドレスを比較し、削除するルールと追加・変更するルールを区別します。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 (1)",
+        "example": "複数機器のログを時系列で確認するため",
+        "limit": 25
+      },
+      {
+        "id": "s2",
+        "label": "設問1 (2) ①",
+        "example": "登録したFQDNやIPアドレス宛ての通信をブロックするため",
+        "limit": 35
+      },
+      {
+        "id": "s3",
+        "label": "設問1 (2) ②",
+        "example": "Webサイトへのアクセス履歴の確認のため／利用者認証を行うため（いずれか）",
+        "limit": 35
+      },
+      {
+        "id": "s4",
+        "label": "設問1 (3)",
+        "example": "L3SWのDHCPリースログ"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 (4) a",
+        "example": "syslogサーバ"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 (4) b",
+        "example": "認証サーバ"
+      },
+      {
+        "id": "s7",
+        "label": "設問1 (5) c",
+        "example": "10080"
+      },
+      {
+        "id": "s8",
+        "label": "設問1 (5) d",
+        "example": "443"
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (1)",
+        "example": "SWGサービスのルート証明書",
+        "limit": 20
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (2)",
+        "example": "C&Cサーバ"
+      },
+      {
+        "id": "s11",
+        "label": "設問3 (1) 2項番",
+        "example": "2，7"
+      },
+      {
+        "id": "s12",
+        "label": "設問3 (2)",
+        "example": "(B)，(A)，(H)，(I)，(E)，(I)，(K)"
+      },
+      {
+        "id": "s13",
+        "label": "設問3 (3) 送信元",
+        "example": "内部セグメント 又は ソフトE"
+      },
+      {
+        "id": "s14",
+        "label": "設問3 (3) 宛先",
+        "example": "SWGサービス"
+      },
+      {
+        "id": "s15",
+        "label": "設問3 (3) プロトコル/宛先ポート",
+        "example": "TCP/443"
+      },
+      {
+        "id": "s16",
+        "label": "設問3 (4)",
+        "example": "アクセスを許可する送信元をSWG-GIPに変更する。",
+        "limit": 35
+      },
+      {
+        "id": "s17",
+        "label": "設問3 (5)",
+        "example": "FW（L3SW，回線，経由機器）の負荷軽減／RTTの短縮（レスポンス改善）／可用性の向上（セキュリティ向上）。直接通信・経路短縮による利点を記述。",
+        "limit": 10
+      }
+    ]
+  },
+  {
+    "id": "2025-b2-q1",
+    "version": 1,
+    "year": 2025,
+    "season": "春期",
+    "section": "B-2",
+    "number": 1,
+    "title": "社内ネットワークのIPv6対応",
+    "tags": [
+      "IPv6",
+      "DNS",
+      "SLAAC",
+      "経路制御"
+    ],
+    "minutes": 120,
+    "pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "questionPages": [
+      13,
+      14
+    ],
+    "source": {
+      "label": "IPA 令和7年度春期 NW 午後Ⅱ 問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm2_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm2_cmnt.pdf",
+      "localPdf": "/written/2025/2025r07h_nw_pm2_qs.pdf",
+      "localAnswer": "/written/2025/2025r07h_nw_pm2_ans.pdf",
+      "localComment": "/written/2025/2025r07h_nw_pm2_cmnt.pdf"
+    },
+    "guide": [
+      "IPv6アドレスのプレフィックスとインタフェースIDを分け、SLAAC・重複アドレス検出・RAの流れを図で追いましょう。",
+      "DNSの名前解決とIPv4へのフォールバックを分け、IPv6通信の不具合が見えにくい理由を考えます。",
+      "経路表は最長一致で選ばれる経路を確認します。デフォルト経路だけでは転送ループになる場面を追いましょう。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 a",
+        "example": "宛先IPアドレス"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 b",
+        "example": "ブロード"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 c",
+        "example": "リプライ"
+      },
+      {
+        "id": "s4",
+        "label": "設問2 (1) d",
+        "example": "16"
+      },
+      {
+        "id": "s5",
+        "label": "設問2 (1) e",
+        "example": "48"
+      },
+      {
+        "id": "s6",
+        "label": "設問2 (1) f",
+        "example": "64"
+      },
+      {
+        "id": "s7",
+        "label": "設問2 (2)",
+        "example": "データリンク層で通信可能な範囲",
+        "limit": 20
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (3)",
+        "example": "同じデータリンク層上に同じIPv6アドレスを使用しているノードがいないことを確認するため",
+        "limit": 55
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (4) GUA",
+        "example": "2001:db8:aabb:1:8:800:200c:417a"
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (4) プレフィックス長",
+        "example": "64"
+      },
+      {
+        "id": "s11",
+        "label": "設問2 (5) g",
+        "example": "デフォルトルータ 又は デフォルトゲートウェイ"
+      },
+      {
+        "id": "s12",
+        "label": "設問2 (6)",
+        "example": "PCを特定しづらくなるから",
+        "limit": 20
+      },
+      {
+        "id": "s13",
+        "label": "設問3 (1) h",
+        "example": "TCP"
+      },
+      {
+        "id": "s14",
+        "label": "設問3 (2) IPv6アドレス",
+        "example": "2001:db8:xxxx::10，2001:db8:xxxx::20"
+      },
+      {
+        "id": "s15",
+        "label": "設問3 (2) FQDN",
+        "example": "ns1.example.net.，ns2.example.net."
+      },
+      {
+        "id": "s16",
+        "label": "設問3 (3)",
+        "example": "IPv4にフォールバックしてSaaSの同じWebページにアクセスするから",
+        "limit": 45
+      },
+      {
+        "id": "s17",
+        "label": "設問4 (1)",
+        "example": "インターネットからルータA，ルータB及びFWにアクセスできないようにするため",
+        "limit": 50
+      },
+      {
+        "id": "s18",
+        "label": "設問4 (2)",
+        "example": "traceroute6を利用して調べるときに各機器を識別しやすくする。",
+        "limit": 45
+      },
+      {
+        "id": "s19",
+        "label": "設問4 (3)",
+        "example": "PCが送信したRSメッセージに対してRAメッセージを応答する。",
+        "limit": 40
+      },
+      {
+        "id": "s20",
+        "label": "設問4 (4) ア",
+        "example": "fe80::1"
+      },
+      {
+        "id": "s21",
+        "label": "設問4 (4) イ",
+        "example": "b"
+      },
+      {
+        "id": "s22",
+        "label": "設問4 (4) ウ",
+        "example": "fe80::2"
+      },
+      {
+        "id": "s23",
+        "label": "設問4 (4) エ",
+        "example": "c"
+      },
+      {
+        "id": "s24",
+        "label": "設問4 (4) オ",
+        "example": "fe80::1"
+      },
+      {
+        "id": "s25",
+        "label": "設問4 (4) カ",
+        "example": "d"
+      },
+      {
+        "id": "s26",
+        "label": "設問4 (4) キ",
+        "example": "fe80::2"
+      },
+      {
+        "id": "s27",
+        "label": "設問4 (4) ク",
+        "example": "f"
+      },
+      {
+        "id": "s28",
+        "label": "設問4 (4) ケ",
+        "example": "fe80::1"
+      },
+      {
+        "id": "s29",
+        "label": "設問4 (5)",
+        "example": "ホップリミットが0になるまで相互に転送し合い，廃棄する。",
+        "limit": 35
+      },
+      {
+        "id": "s30",
+        "label": "設問4 (6)",
+        "example": "ロンゲストマッチによって選択されるから",
+        "limit": 25
+      },
+      {
+        "id": "s31",
+        "label": "設問4 (7) i",
+        "example": "NAPT"
+      },
+      {
+        "id": "s32",
+        "label": "設問4 (8)",
+        "example": "通信経路における最小のMTU",
+        "limit": 20
+      }
+    ]
+  },
+  {
+    "id": "2025-b2-q2",
+    "version": 1,
+    "year": 2025,
+    "season": "春期",
+    "section": "B-2",
+    "number": 2,
+    "title": "IoTシステムの設計",
+    "tags": [
+      "LPWA",
+      "CoAP",
+      "DTLS",
+      "IoT"
+    ],
+    "minutes": 120,
+    "pages": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "questionPages": [
+      25
+    ],
+    "source": {
+      "label": "IPA 令和7年度春期 NW 午後Ⅱ 問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm2_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/nl10bi0000009lh8-att/2025r07h_nw_pm2_cmnt.pdf",
+      "localPdf": "/written/2025/2025r07h_nw_pm2_qs.pdf",
+      "localAnswer": "/written/2025/2025r07h_nw_pm2_ans.pdf",
+      "localComment": "/written/2025/2025r07h_nw_pm2_cmnt.pdf"
+    },
+    "guide": [
+      "LPWAの方式と利用条件、消費電力を比較し、閉域網とインターネット経由の通信を区別します。",
+      "CoAPのメッセージIDは重複検出、トークンは要求と応答の対応付けに使われることを図で確認します。",
+      "攻撃対策の記述では、偽装する情報・攻撃の仕組み・サーバが確認できることを分けて書きましょう。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 a",
+        "example": "消費"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 b",
+        "example": "非セルラー"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 c",
+        "example": "セルラー"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 d",
+        "example": "ISM"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 e",
+        "example": "干渉"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 f",
+        "example": "3GPP"
+      },
+      {
+        "id": "s7",
+        "label": "設問2 g",
+        "example": "2"
+      },
+      {
+        "id": "s8",
+        "label": "設問2 h",
+        "example": "Gメーター管理サーバ"
+      },
+      {
+        "id": "s9",
+        "label": "設問2 i",
+        "example": "SIM"
+      },
+      {
+        "id": "s10",
+        "label": "設問2 j",
+        "example": "372"
+      },
+      {
+        "id": "s11",
+        "label": "設問2 k",
+        "example": "RESTful"
+      },
+      {
+        "id": "s12",
+        "label": "設問3 (1) l",
+        "example": "トランスポート"
+      },
+      {
+        "id": "s13",
+        "label": "設問3 (1) m",
+        "example": "順不同"
+      },
+      {
+        "id": "s14",
+        "label": "設問3 (1) n",
+        "example": "重複"
+      },
+      {
+        "id": "s15",
+        "label": "設問3 (1) o",
+        "example": "同期"
+      },
+      {
+        "id": "s16",
+        "label": "設問3 (1) p",
+        "example": "バックオフ"
+      },
+      {
+        "id": "s17",
+        "label": "設問3 (2) メッセージ",
+        "example": "ⅷ"
+      },
+      {
+        "id": "s18",
+        "label": "設問3 (2) 理由",
+        "example": "トークン値が一致するから",
+        "limit": 15
+      },
+      {
+        "id": "s19",
+        "label": "設問3 (3) ACK",
+        "example": "ⅴ"
+      },
+      {
+        "id": "s20",
+        "label": "設問3 (4) 理由",
+        "example": "二つのパケットのメッセージIDが同じだから",
+        "limit": 30
+      },
+      {
+        "id": "s21",
+        "label": "設問3 (4) 処理",
+        "example": "受信した(ⅶ)のACKは処理済みなので無視する。",
+        "limit": 30
+      },
+      {
+        "id": "s22",
+        "label": "設問3 (5) 内容",
+        "example": "送信元IPアドレスを，攻撃対象のホストのIPアドレスに偽装する。",
+        "limit": 40
+      },
+      {
+        "id": "s23",
+        "label": "設問3 (5) 攻撃名",
+        "example": "リフレクション"
+      },
+      {
+        "id": "s24",
+        "label": "設問3 (6) 判断できること",
+        "example": "(ⅰ)の送信元が，偽装されたものでないこと",
+        "limit": 30
+      },
+      {
+        "id": "s25",
+        "label": "設問3 (6) 対応",
+        "example": "(ⅳ)を送信せず，ハンドシェークを終了する。",
+        "limit": 30
+      },
+      {
+        "id": "s26",
+        "label": "設問4 (1)",
+        "example": "Gメーター管理サーバやネットワークへの負荷の集中が避けられる。",
+        "limit": 35
+      },
+      {
+        "id": "s27",
+        "label": "設問4 (2)",
+        "example": "Gメーターの消費電力を抑えることができる。",
+        "limit": 25
+      },
+      {
+        "id": "s28",
+        "label": "設問4 (3)",
+        "example": "TCPコネクション確立とコネクション切断の処理が行われるから",
+        "limit": 35
+      },
+      {
+        "id": "s29",
+        "label": "設問4 (4)",
+        "example": "CoAP通信は，Y社向けの閉域網の中で行われるから",
+        "limit": 30
+      },
+      {
+        "id": "s30",
+        "label": "設問4 (5)",
+        "example": "測定と送信が誤った時刻に行われることになる。",
+        "limit": 30
+      },
+      {
+        "id": "s31",
+        "label": "設問4 (6)",
+        "example": "Gメーター管理サーバから現在時刻を取得して，Gメーターの時刻を更新する。",
+        "limit": 40
+      }
+    ]
+  }
+]

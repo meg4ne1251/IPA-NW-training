@@ -1,3 +1,4 @@
+import { WrittenStore } from './written.ts';
 import { curriculumCollection, curriculumStatus, selectCurriculum } from '../src/domain/curriculum.ts';
 import { withReviewConcepts } from './review-concepts.ts';
 import { conceptKeys, isFresh, relatedProgress, reviewIndex, reviewAnalysis, reviewCollection } from '../src/domain/review.ts';
@@ -17,7 +18,7 @@ import type { PracticeScope } from '../src/domain/training.ts';
 export class RevisionConflictError extends Error {}
 
 export class TrainingStore {
-  db: DatabaseSync; directory: string;
+  db: DatabaseSync; directory: string; written: WrittenStore;
   constructor(directory = resolve('data'), seed: TrainingQuestion[] = []) {
     this.directory = resolve(directory); mkdirSync(this.directory, { recursive: true });
     this.db = new DatabaseSync(join(this.directory, 'training.sqlite'));
@@ -29,6 +30,7 @@ export class TrainingStore {
       CREATE TABLE IF NOT EXISTS requests (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS imports (id TEXT PRIMARY KEY, payload TEXT NOT NULL);
       PRAGMA user_version=1;`);
+    this.written = new WrittenStore(this.db);
     this.transaction(() => { for (const q of seed) {
       validateQuestion(q);
       this.db.prepare('INSERT OR IGNORE INTO questions VALUES (?, ?, ?)').run(q.id, q.version, JSON.stringify(q));
@@ -339,7 +341,7 @@ export class TrainingStore {
     const stamp = new Date().toISOString().replace(/[:.]/g, '-'); const base = join(directory, stamp);
     this.db.prepare('VACUUM INTO ?').run(`${base}.sqlite`);
     writeFileSync(`${base}.json`, JSON.stringify({ schemaVersion: 1, createdAt: new Date().toISOString(),
-      questions: this.records('questions'), sessions: this.records('sessions'), requests: this.records('requests'), imports: this.records('imports') }, null, 2));
+      questions: this.records('questions'), sessions: this.records('sessions'), requests: this.records('requests'), imports: this.records('imports'), writtenSessions: this.written.records() }, null, 2));
     return { sqlite: `${base}.sqlite`, json: `${base}.json` };
   }
 }

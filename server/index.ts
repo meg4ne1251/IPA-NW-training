@@ -2,6 +2,7 @@ import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { WrittenConflictError } from './written.ts';
 import { openStore, RevisionConflictError } from './store.ts';
 import type { TrainingStore } from './store.ts';
 import type { Section, Session } from '../src/domain/training.ts';
@@ -26,6 +27,14 @@ export function createApp(store: TrainingStore, staticRoot = resolve('dist')) {
           for await (const chunk of req) { length += chunk.length; if (length > 2_000_000) return json(413, { error: 'ファイルは2MB以内にしてください。' }); parts.push(chunk); }
           try { body = JSON.parse(Buffer.concat(parts).toString('utf8')); } catch { return json(400, { error: 'JSONを読み取れません。' }); }
         }
+        if (req.method === 'GET' && path === '/api/written/dashboard') return json(200, store.written.dashboard());
+        if (req.method === 'POST' && path === '/api/written/sessions') return json(201, store.written.create(body.questionId));
+        const written = path.match(/^\/api\/written\/sessions\/([a-zA-Z0-9-]+)(?:\/(draft|reveal|complete))?$/);
+        if (written) {
+          if (req.method === 'GET' && !written[2]) return json(200, store.written.public(store.written.get(written[1])));
+          if (req.method === 'PUT' && written[2] === 'draft') return json(200, store.written.update(written[1], body, 'draft'));
+          if (req.method === 'POST' && (written[2] === 'reveal' || written[2] === 'complete')) return json(200, store.written.update(written[1], body, written[2]));
+        }
         if (req.method === 'GET' && path === '/api/dashboard') return json(200, store.dashboard());
         if (req.method === 'POST' && path === '/api/sessions') return json(201, store.create(body.section, body.mode, body.count, body.collection, { topic: body.topic, tag: body.tag }));
         const match = path.match(/^\/api\/sessions\/([a-zA-Z0-9-]+)(?:\/(draft|submit|grade|cancel))?$/);
@@ -46,7 +55,7 @@ export function createApp(store: TrainingStore, staticRoot = resolve('dist')) {
       if (req.method !== 'GET' && req.method !== 'HEAD') return json(405, { error: '許可されていない操作です。' });
       const isMaterial = path.startsWith('/assets/2025-spring/') || path.startsWith('/assets/archive/');
       const root = isMaterial ? resolve(store.directory, 'assets') : staticRoot;
-      const relative = isMaterial ? path.slice('/assets/'.length) : path === '/' ? 'index.html' : decodeURIComponent(path.slice(1));
+      const relative = isMaterial ? path.slice('/assets/'.length) : ['/', '/choice', '/choice/', '/written', '/written/'].includes(path) ? 'index.html' : decodeURIComponent(path.slice(1));
       const file = resolve(root, relative);
       if (!file.startsWith(root + sep)) return json(403, { error: 'このファイルは開けません。' });
       const allowed: Record<string, string> = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.pdf': 'application/pdf', '.svg': 'image/svg+xml' };
@@ -61,13 +70,13 @@ export function createApp(store: TrainingStore, staticRoot = resolve('dist')) {
         const content = req.method === 'HEAD' ? undefined : await readFile(file);
         res.writeHead(200, headers); res.end(content);
       } catch { return json(404, { error: isMaterial ? '教材画像がありません。npm run setup:materials を確認してください。' : 'ビルドがありません。npm run build を実行してください。' }); }
-    } catch (error) { json(error instanceof RevisionConflictError ? 409 : 400, { error: error instanceof Error ? error.message : '処理に失敗しました。' }); }
+    } catch (error) { json((error instanceof RevisionConflictError || error instanceof WrittenConflictError) ? 409 : 400, { error: error instanceof Error ? error.message : '処理に失敗しました。' }); }
   });
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const store = openStore(); const port = Number(process.env.PORT || 3001);
   const host = process.env.HOST || '127.0.0.1';
-  if (store.sessions().length) store.backup();
+  if (store.sessions().length || store.written.records().length) store.backup();
   const server = createApp(store); server.listen(port, host, () => console.log(`NW Training: http://${host}:${port}`));
   const interval = setInterval(() => { try { store.expire(); } catch (error) { console.error('時間切れの保存に失敗しました。', error); } }, 5000);
   const daily = setInterval(() => { try { store.backup(); } catch (error) { console.error('バックアップに失敗しました。', error); } }, 86400000);

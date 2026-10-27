@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('問題と選択済み解答欄をPNGでクリップボードにコピーする', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-  await page.goto('/');
+  await page.goto('/choice');
   await page.getByRole('button', { name: '10問を解く', exact: true }).click();
   await page.getByRole('radio', { name: 'イ　30', exact: true }).check();
   await page.getByRole('button', { name: 'スクリーンショットをコピー', exact: true }).click();

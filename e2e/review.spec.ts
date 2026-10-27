@@ -13,7 +13,7 @@ test('概念別分析から別問題の復習を開始し、確定前は正答�
   const confirmed = await (await request.post(`/api/sessions/${original.id}/grade`, { data: { questionId: id, revision: original.revision,
     draft: { revision: original.revision, currentIndex: 0, answers: { [id]: { choice: null, confidence: 'unknown', reason: '', seconds: 20, flagged: false } } } } })).json();
   await request.post(`/api/sessions/${original.id}/submit`, { data: { revision: confirmed.revision } });
-  await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/');
+  await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/choice');
   await expect(page.getByRole('heading', { name: '苦手な概念を、別の問題で確かめる' })).toBeVisible();
   await page.getByRole('button', { name: '履歴と苦手分野', exact: true }).click();
   const analysis = page.getByRole('region', { name: 'A-1の概念別分析' });

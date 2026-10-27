@@ -10,7 +10,7 @@ test.afterEach(async ({ request }) => {
 });
 
 test('実教材の分野・論点を選び、解説を読み、別問題がない範囲では再出題しない', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/choice');
   await expect(page.getByText('24分野・120問。', { exact: false })).toBeVisible();
   await page.getByRole('combobox', { name: '補強する分野' }).selectOption('ネットワーク・アドレス');
   await expect(page.getByText('選択中の範囲：5問。', { exact: false })).toBeVisible();
@@ -31,7 +31,7 @@ test('実教材の分野・論点を選び、解説を読み、別問題がな�
 });
 
 test('スマートフォンでも分野を選べ、A-2へ切り替えるとA-1補強を表示しない', async ({ page }, testInfo) => {
-  await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/');
+  await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/choice');
   await expect(page.getByRole('heading', { name: '分野別の細かな補強' })).toBeVisible();
   await page.getByRole('combobox', { name: '補強する分野' }).selectOption('企業活動・会計');
   await page.getByRole('combobox', { name: '細かな論点' }).selectOption('損益分岐点');

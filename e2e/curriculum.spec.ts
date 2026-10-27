@@ -10,7 +10,7 @@ test.afterEach(async ({ request }) => {
 });
 
 for (const count of [10, 30]) test(`おすすめ演習${count}問を開始・確定・再開し同じ件数で続ける`, async ({ page }, info) => {
-  await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/');
+  await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/choice');
   const curriculum = page.getByRole('region', { name: '解答結果からのおすすめ演習', exact: true });
   await expect(curriculum).toBeVisible(); await expect(curriculum).toContainText(`${count}問の構成：`);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
