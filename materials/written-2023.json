@@ -1,0 +1,805 @@
+[
+  {
+    "id": "2023-b1-q1",
+    "version": 1,
+    "year": 2023,
+    "season": "春期",
+    "section": "B-1",
+    "number": 1,
+    "title": "Webシステムの更改",
+    "tags": [
+      "HTTP/2",
+      "TLS",
+      "ALPN",
+      "クラウド",
+      "ロードバランサー"
+    ],
+    "minutes": 45,
+    "pages": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "questionPages": [
+      7
+    ],
+    "source": {
+      "label": "IPA 令和5年度春期 NW 午後Ⅰ 問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm1_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm1_cmnt.pdf",
+      "localPdf": "/written/2023/2023r05h_nw_pm1_qs.pdf",
+      "localAnswer": "/written/2023/2023r05h_nw_pm1_ans.pdf",
+      "localComment": "/written/2023/2023r05h_nw_pm1_cmnt.pdf"
+    },
+    "guide": [
+      "HTTP/1.1とHTTP/2で、要求と応答の順序や多重化の扱いがどう変わるか整理しましょう。",
+      "TLSハンドシェイク中のALPNを、暗号アルゴリズムの選択と区別して確認します。",
+      "クラウド移行後の戻りの経路と、負荷分散装置がプロトコル変換する位置を図で追います。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 a",
+        "example": "リバース"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 b",
+        "example": "権威"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 c",
+        "example": "キャッシュ"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 d",
+        "example": "ストリーム"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 e",
+        "example": ":method"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 f",
+        "example": "TLS"
+      },
+      {
+        "id": "s7",
+        "label": "設問2 (1)",
+        "example": "リクエストを受けたのと同じ順序でレスポンスを返す必要がある。",
+        "limit": 35
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (2)",
+        "example": "通信開始時にTCPの上位のプロトコルを決定するため",
+        "limit": 30
+      },
+      {
+        "id": "s9",
+        "label": "設問3 (1)",
+        "example": "(d)，(e)"
+      },
+      {
+        "id": "s10",
+        "label": "設問3 (2)",
+        "example": "クライアントが利用可能なアプリケーション層のプロトコル",
+        "limit": 35
+      },
+      {
+        "id": "s11",
+        "label": "設問4 (1) ア",
+        "example": "172.21.10.0/24"
+      },
+      {
+        "id": "s12",
+        "label": "設問4 (1) イ",
+        "example": "172.21.11.2"
+      },
+      {
+        "id": "s13",
+        "label": "設問4 (1) ウ",
+        "example": "172.21.11.1"
+      },
+      {
+        "id": "s14",
+        "label": "設問4 (2) 動作モード",
+        "example": "アプリケーションモード"
+      },
+      {
+        "id": "s15",
+        "label": "設問4 (2) 理由",
+        "example": "HTTP/2リクエストをHTTP/1.1に変換して負荷分散するから",
+        "limit": 35
+      }
+    ]
+  },
+  {
+    "id": "2023-b1-q2",
+    "version": 1,
+    "year": 2023,
+    "season": "春期",
+    "section": "B-1",
+    "number": 2,
+    "title": "IPマルチキャストによる映像配信の導入",
+    "tags": [
+      "マルチキャスト",
+      "PIM-SM",
+      "SSM",
+      "IGMPv3",
+      "映像配信"
+    ],
+    "minutes": 45,
+    "pages": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "questionPages": [
+      13
+    ],
+    "source": {
+      "label": "IPA 令和5年度春期 NW 午後Ⅰ 問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm1_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm1_cmnt.pdf",
+      "localPdf": "/written/2023/2023r05h_nw_pm1_qs.pdf",
+      "localAnswer": "/written/2023/2023r05h_nw_pm1_ans.pdf",
+      "localComment": "/written/2023/2023r05h_nw_pm1_cmnt.pdf"
+    },
+    "guide": [
+      "ユニキャストとマルチキャストについて、送信元の通信量と受信先の数の関係を整理しましょう。",
+      "IGMPv2とIGMPv3で配信元を識別する方法が異なることを、アドレス設計と対応させます。",
+      "変更が必要なL3機器とL2機器を区別し、受信要求から転送経路ができる流れを確認します。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 ア",
+        "example": "フラッディング"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 イ",
+        "example": "IGMP"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 ウ",
+        "example": "マルチキャスト"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 エ",
+        "example": "ツリー"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 オ",
+        "example": "PIM-SM"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 カ",
+        "example": "SSM"
+      },
+      {
+        "id": "s7",
+        "label": "設問1 キ",
+        "example": "復号"
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (1)",
+        "example": "配信先のレシーバの数に応じてソースの通信量が増加する。",
+        "limit": 35
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (2)",
+        "example": "160"
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (3)",
+        "example": "全てのIPカメラに個別のIPアドレス及び個別のグループアドレスを使用する。",
+        "limit": 45
+      },
+      {
+        "id": "s11",
+        "label": "設問3 (1)",
+        "example": "グループアドレスの設計が容易になる。",
+        "limit": 25
+      },
+      {
+        "id": "s12",
+        "label": "設問3 (2) ①",
+        "example": "グループアドレス"
+      },
+      {
+        "id": "s13",
+        "label": "設問3 (2) ②",
+        "example": "インタフェース"
+      },
+      {
+        "id": "s14",
+        "label": "設問3 (3) Ⅰ",
+        "example": "カメラ管理サーバ"
+      },
+      {
+        "id": "s15",
+        "label": "設問3 (3) Ⅱ",
+        "example": "443"
+      },
+      {
+        "id": "s16",
+        "label": "設問4 (1) (a)",
+        "example": "L3SW11，L3SW21"
+      },
+      {
+        "id": "s17",
+        "label": "設問4 (1) (b)",
+        "example": "L2SW11，L2SW21"
+      },
+      {
+        "id": "s18",
+        "label": "設問4 (1) (c)",
+        "example": "IGMPv3"
+      },
+      {
+        "id": "s19",
+        "label": "設問4 (2)",
+        "example": "Webページを改修するだけで対応完了できる。",
+        "limit": 25
+      }
+    ]
+  },
+  {
+    "id": "2023-b1-q3",
+    "version": 1,
+    "year": 2023,
+    "season": "春期",
+    "section": "B-1",
+    "number": 3,
+    "title": "高速無線LANの導入",
+    "tags": [
+      "Wi-Fi6",
+      "無線LAN",
+      "PoE",
+      "リンクアグリゲーション",
+      "DHCP"
+    ],
+    "minutes": 45,
+    "pages": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "questionPages": [
+      18,
+      19
+    ],
+    "source": {
+      "label": "IPA 令和5年度春期 NW 午後Ⅰ 問3",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm1_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm1_cmnt.pdf",
+      "localPdf": "/written/2023/2023r05h_nw_pm1_qs.pdf",
+      "localAnswer": "/written/2023/2023r05h_nw_pm1_ans.pdf",
+      "localComment": "/written/2023/2023r05h_nw_pm1_cmnt.pdf"
+    },
+    "guide": [
+      "周波数帯ごとの利用条件と、レーダーを検知した際の動作及び端末への影響を分けて整理しましょう。",
+      "端末からAP、フロアスイッチへ流れるトラフィックを積み上げ、必要帯域を検算します。",
+      "スタックとリンクアグリゲーションによる帯域活用を確認し、保守作業時のループ発生箇所を考えます。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 a",
+        "example": "トライバンド"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 b",
+        "example": "アンテナ"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 c",
+        "example": "パスワード"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 d",
+        "example": "チャネルボンディング"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 e",
+        "example": "PoE++"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 f",
+        "example": "マルチギガビットイーサネット"
+      },
+      {
+        "id": "s7",
+        "label": "設問1 g",
+        "example": "スタック"
+      },
+      {
+        "id": "s8",
+        "label": "設問1 h",
+        "example": "DHCPリレーエージェント"
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (1) 周波数帯 ①",
+        "example": "W52/W53"
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (1) 周波数帯 ②",
+        "example": "W56"
+      },
+      {
+        "id": "s11",
+        "label": "設問2 (1) 利点",
+        "example": "より多くのWLAN端末が安定して通信できる。",
+        "limit": 30
+      },
+      {
+        "id": "s12",
+        "label": "設問2 (2) 周波数帯 ①",
+        "example": "W53"
+      },
+      {
+        "id": "s13",
+        "label": "設問2 (2) 周波数帯 ②",
+        "example": "W56"
+      },
+      {
+        "id": "s14",
+        "label": "設問2 (2) 動作",
+        "example": "検知したチャネルの電波を停止し，他のチャネルに遷移して再開する。",
+        "limit": 40
+      },
+      {
+        "id": "s15",
+        "label": "設問2 (2) 影響",
+        "example": "APとの接続断や通信断が不定期に発生する。",
+        "limit": 25
+      },
+      {
+        "id": "s16",
+        "label": "設問3 (1)",
+        "example": "800"
+      },
+      {
+        "id": "s17",
+        "label": "設問3 (2) 区間",
+        "example": "(ii)"
+      },
+      {
+        "id": "s18",
+        "label": "設問3 (2) 理由",
+        "example": "平常時にリンク本数分の帯域を同時に利用できるから",
+        "limit": 30
+      },
+      {
+        "id": "s19",
+        "label": "設問3 (3) 機器（3種類）",
+        "example": "AP，フロアL2SW，動画コンテンツサーバ"
+      },
+      {
+        "id": "s20",
+        "label": "設問3 (3) 作業ミス",
+        "example": "ループ状態になるような誤接続や設定ミス",
+        "limit": 25
+      }
+    ]
+  },
+  {
+    "id": "2023-b2-q1",
+    "version": 1,
+    "year": 2023,
+    "season": "春期",
+    "section": "B-2",
+    "number": 1,
+    "title": "マルチクラウド利用による可用性向上",
+    "tags": [
+      "マルチクラウド",
+      "BGP",
+      "VRRP",
+      "DNS",
+      "プロキシ"
+    ],
+    "minutes": 120,
+    "pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "questionPages": [
+      10,
+      11
+    ],
+    "source": {
+      "label": "IPA 令和5年度春期 NW 午後Ⅱ 問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm2_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm2_cmnt.pdf",
+      "localPdf": "/written/2023/2023r05h_nw_pm2_qs.pdf",
+      "localAnswer": "/written/2023/2023r05h_nw_pm2_ans.pdf",
+      "localComment": "/written/2023/2023r05h_nw_pm2_cmnt.pdf"
+    },
+    "guide": [
+      "DNSキャッシュとプロキシの動作を、障害検知や接続先切替の遅延に結び付けて確認しましょう。",
+      "BGPの経路保持とVRRPのマスター切替を分け、障害時にパケットを転送できる条件を整理します。",
+      "経路切替後のループ、送信元IPアドレスの変化、SaaSのアクセス制限を、往復の通信経路で検討します。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 (1)",
+        "example": "DNSラウンドロビン"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 (2)",
+        "example": "プロキシサーバのアプリケーションプロセスが停止した場合に検知できないから",
+        "limit": 40
+      },
+      {
+        "id": "s3",
+        "label": "設問1 (3)",
+        "example": "192.168.2.145"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 (4)",
+        "example": "キャッシュDNSサーバがキャッシュを保持する時間を短くするため",
+        "limit": 40
+      },
+      {
+        "id": "s5",
+        "label": "設問1 (5) 方法",
+        "example": "プロキシ自動設定機能を利用する。",
+        "limit": 20
+      },
+      {
+        "id": "s6",
+        "label": "設問1 (5) 制限事項",
+        "example": "対応するPCやサーバでしか利用できない。",
+        "limit": 25
+      },
+      {
+        "id": "s7",
+        "label": "設問2 (1) a",
+        "example": "AS"
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (1) b",
+        "example": "ピア"
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (1) c",
+        "example": "UPDATE"
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (1) d",
+        "example": "KEEPALIVE"
+      },
+      {
+        "id": "s11",
+        "label": "設問2 (1) e",
+        "example": "ルーティングテーブル"
+      },
+      {
+        "id": "s12",
+        "label": "設問2 (1) f",
+        "example": "大きい"
+      },
+      {
+        "id": "s13",
+        "label": "設問2 (2)",
+        "example": "自身のIPアドレス",
+        "limit": 15
+      },
+      {
+        "id": "s14",
+        "label": "設問2 (3) タイプ",
+        "example": "4"
+      },
+      {
+        "id": "s15",
+        "label": "設問2 (3) 動作",
+        "example": "BGP接続を切断し，経路情報がクリアされる。",
+        "limit": 30
+      },
+      {
+        "id": "s16",
+        "label": "設問2 (4)",
+        "example": "VRRPマスターになったR13が経路情報を保持していないと受信したパケットを転送できないから",
+        "limit": 50
+      },
+      {
+        "id": "s17",
+        "label": "設問2 (5) 確認すべき内容",
+        "example": "パケットロスが発生しないこと",
+        "limit": 20
+      },
+      {
+        "id": "s18",
+        "label": "設問2 (5) ① 送信元・宛先",
+        "example": "送信元R13・宛先FW10 又は 送信元FW10・宛先R13 又は 送信元R13・宛先R11 又は 送信元R11・宛先R13（①と②は順不同）"
+      },
+      {
+        "id": "s19",
+        "label": "設問2 (5) ② 送信元・宛先",
+        "example": "送信元R13・宛先R14 又は 送信元R14・宛先R13（①と②は順不同）"
+      },
+      {
+        "id": "s20",
+        "label": "設問2 (6)",
+        "example": "経路情報は，BGPと比較して静的経路制御の方が優先されるから",
+        "limit": 40
+      },
+      {
+        "id": "s21",
+        "label": "設問2 (7) 障害発生箇所（6か所）",
+        "example": "R11，R13，R11とR12とを接続する回線，R13とR14とを接続する回線，R11とL2SW10とを接続する回線，R13とL2SW10とを接続する回線"
+      },
+      {
+        "id": "s22",
+        "label": "設問3 (1)",
+        "example": "ルーティングのループが発生する。",
+        "limit": 25
+      },
+      {
+        "id": "s23",
+        "label": "設問3 (2)",
+        "example": "送信元IPアドレスが変わるから",
+        "limit": 20
+      },
+      {
+        "id": "s24",
+        "label": "設問3 (3)",
+        "example": "送信元IPアドレスがプロキシサーバAで宛先IPアドレスがインターネットであった場合にネクストホップをR10とする設定",
+        "limit": 70
+      },
+      {
+        "id": "s25",
+        "label": "設問3 (4)",
+        "example": "SaaSの送信元IPアドレスによるアクセス制限の設定変更",
+        "limit": 40
+      }
+    ]
+  },
+  {
+    "id": "2023-b2-q2",
+    "version": 1,
+    "year": 2023,
+    "season": "春期",
+    "section": "B-2",
+    "number": 2,
+    "title": "ECサーバの増強",
+    "tags": [
+      "ロードバランサー",
+      "TLS",
+      "Cookie",
+      "SAML",
+      "IdP"
+    ],
+    "minutes": 120,
+    "pages": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "questionPages": [
+      21,
+      22
+    ],
+    "source": {
+      "label": "IPA 令和5年度春期 NW 午後Ⅱ 問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm2_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/ps6vr70000010d6y-att/2023r05h_nw_pm2_cmnt.pdf",
+      "localPdf": "/written/2023/2023r05h_nw_pm2_qs.pdf",
+      "localAnswer": "/written/2023/2023r05h_nw_pm2_ans.pdf",
+      "localComment": "/written/2023/2023r05h_nw_pm2_cmnt.pdf"
+    },
+    "guide": [
+      "既設と増強後の通信経路で、NATと仮想IPアドレスがそれぞれ変換するアドレスを追いましょう。",
+      "TLSを終端する装置と、証明書及び秘密鍵を保持する装置を対応させます。",
+      "Cookieによるセッション維持と、SAMLによる認証連携を区別し、署名を誰の鍵で検証するか確認します。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 a",
+        "example": "NS"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 b",
+        "example": "MX"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 c",
+        "example": "100.α.β.1"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 d",
+        "example": "100.α.β.3"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 e",
+        "example": "192.168.1.1"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 f",
+        "example": "192.168.1.3"
+      },
+      {
+        "id": "s7",
+        "label": "設問2 (1)",
+        "example": "コモン名とURLのドメインとが異なるから",
+        "limit": 25
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (2)",
+        "example": "L3SW，FWz，L2SW"
+      },
+      {
+        "id": "s9",
+        "label": "設問3 (1) g",
+        "example": "アップ"
+      },
+      {
+        "id": "s10",
+        "label": "設問3 (1) h",
+        "example": "アウト"
+      },
+      {
+        "id": "s11",
+        "label": "設問3 (2)",
+        "example": "1台故障時にも，ECサイトの応答速度の低下を発生させないため",
+        "limit": 35
+      },
+      {
+        "id": "s12",
+        "label": "設問3 (3) i",
+        "example": "100.α.β.2"
+      },
+      {
+        "id": "s13",
+        "label": "設問3 (3) j",
+        "example": "192.168.1.2"
+      },
+      {
+        "id": "s14",
+        "label": "設問3 (3) k",
+        "example": "192.168.1.4"
+      },
+      {
+        "id": "s15",
+        "label": "設問4 (1) どの機器",
+        "example": "LB"
+      },
+      {
+        "id": "s16",
+        "label": "設問4 (1) IPアドレスの呼称",
+        "example": "仮想IPアドレス"
+      },
+      {
+        "id": "s17",
+        "label": "設問4 (2)",
+        "example": "（自身の）IPアドレス"
+      },
+      {
+        "id": "s18",
+        "label": "設問4 (3)",
+        "example": "FWzからLBに変更"
+      },
+      {
+        "id": "s19",
+        "label": "設問4 (4)",
+        "example": "ECサーバに，アクセス元PCのIPアドレスを通知するため",
+        "limit": 35
+      },
+      {
+        "id": "s20",
+        "label": "設問4 (5)",
+        "example": "既設ECサーバにインストールされているサーバ証明書と秘密鍵のペアを，LBに移す。",
+        "limit": 50
+      },
+      {
+        "id": "s21",
+        "label": "設問5 (1)",
+        "example": "TCPコネクションが再設定されるたびに，ポート番号が変わる可能性があるから",
+        "limit": 50
+      },
+      {
+        "id": "s22",
+        "label": "設問5 (2)",
+        "example": "サーバからの応答に含まれるCookie中のセッションIDが，セッション管理テーブルに存在しない場合",
+        "limit": 60
+      },
+      {
+        "id": "s23",
+        "label": "設問5 (3)",
+        "example": "サービスが稼働しているかどうか検査しないから",
+        "limit": 25
+      },
+      {
+        "id": "s24",
+        "label": "設問6 (1)",
+        "example": "アクセス元の購買担当者が所属している会員企業の情報",
+        "limit": 30
+      },
+      {
+        "id": "s25",
+        "label": "設問6 (2)",
+        "example": "IdPの公開鍵証明書",
+        "limit": 15
+      },
+      {
+        "id": "s26",
+        "label": "設問6 (3)",
+        "example": "IdPの鍵を所有していないから",
+        "limit": 20
+      },
+      {
+        "id": "s27",
+        "label": "設問6 (4) ①",
+        "example": "信頼関係のあるIdPが生成したものであること",
+        "limit": 25
+      },
+      {
+        "id": "s28",
+        "label": "設問6 (4) ②",
+        "example": "SAMLアサーションが改ざんされていないこと",
+        "limit": 25
+      }
+    ]
+  }
+]

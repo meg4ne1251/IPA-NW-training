@@ -1,0 +1,790 @@
+[
+  {
+    "id": "2024-b1-q1",
+    "version": 1,
+    "year": 2024,
+    "season": "春期",
+    "section": "B-1",
+    "number": 1,
+    "title": "コンテンツ配信ネットワーク",
+    "tags": [
+      "CDN",
+      "BGP",
+      "DDoS",
+      "ロードバランサー"
+    ],
+    "minutes": 45,
+    "pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "questionPages": [
+      7,
+      8
+    ],
+    "source": {
+      "label": "IPA 令和6年度春期 NW 午後Ⅰ 問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm1_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm1_cmnt.pdf",
+      "localPdf": "/written/2024/2024r06h_nw_pm1_qs.pdf",
+      "localAnswer": "/written/2024/2024r06h_nw_pm1_ans.pdf",
+      "localComment": "/written/2024/2024r06h_nw_pm1_cmnt.pdf"
+    },
+    "guide": [
+      "障害監視は、ICMPで分かる範囲とHTTPの動作確認が必要な範囲を区別しましょう。",
+      "BGPで受け取る経路がどちら向きの通信を左右するかを、構成図で追って確認します。",
+      "RTBHとBGP Flowspecは、遮断する場所と条件の細かさに着目して比較しましょう。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 (1)",
+        "example": "ICMP Echoに応答するがHTTPサーバのプロセスが停止している状態を検知できない。",
+        "limit": 50
+      },
+      {
+        "id": "s2",
+        "label": "設問1 (2) ア",
+        "example": "最少接続数"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 (2) イ",
+        "example": "172.22.1.0/24"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 (3)",
+        "example": "LB"
+      },
+      {
+        "id": "s5",
+        "label": "設問2 (1) ウ",
+        "example": "大きい"
+      },
+      {
+        "id": "s6",
+        "label": "設問2 (1) エ",
+        "example": "小さい"
+      },
+      {
+        "id": "s7",
+        "label": "設問2 (2)",
+        "example": "IX"
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (3)",
+        "example": "不正なBGP接続",
+        "limit": 10
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (4)",
+        "example": "不正な経路に含まれるアドレスブロックへのコンテンツ配信ができなくなる。",
+        "limit": 40
+      },
+      {
+        "id": "s10",
+        "label": "設問3 (1)",
+        "example": "攻撃パケットを攻撃元に近いところで遮断できる。",
+        "limit": 30
+      },
+      {
+        "id": "s11",
+        "label": "設問3 (2)",
+        "example": "より細かい条件で選別して破棄することができる。",
+        "limit": 30
+      }
+    ]
+  },
+  {
+    "id": "2024-b1-q2",
+    "version": 1,
+    "year": 2024,
+    "season": "春期",
+    "section": "B-1",
+    "number": 2,
+    "title": "SD-WANによる拠点間接続",
+    "tags": [
+      "SD-WAN",
+      "BGP",
+      "OSPF",
+      "IPsec",
+      "BFD"
+    ],
+    "minutes": 45,
+    "pages": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "questionPages": [
+      14,
+      15
+    ],
+    "source": {
+      "label": "IPA 令和6年度春期 NW 午後Ⅰ 問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm1_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm1_cmnt.pdf",
+      "localPdf": "/written/2024/2024r06h_nw_pm1_qs.pdf",
+      "localAnswer": "/written/2024/2024r06h_nw_pm1_ans.pdf",
+      "localComment": "/written/2024/2024r06h_nw_pm1_cmnt.pdf"
+    },
+    "guide": [
+      "AS番号の置換とAS Pathの変化を、送信元から受信先まで順に書き出しましょう。",
+      "OSPFのLSAの種類と生成元を区別し、経路の再配布でループが起こる条件を確認します。",
+      "通常時と回線障害時の両方について、実際に通過するIPsecトンネルを図で追います。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 ア",
+        "example": "カスタマー"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 イ",
+        "example": "再配布"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 ウ",
+        "example": "DMZ"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 エ",
+        "example": "eBGP"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 オ",
+        "example": "プライベート"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 カ",
+        "example": "ポリシーベース"
+      },
+      {
+        "id": "s7",
+        "label": "設問2 (1) a",
+        "example": "10.3.0.0/16"
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (1) b",
+        "example": "64500 64500"
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (2) c",
+        "example": "65500"
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (2) d",
+        "example": "65500"
+      },
+      {
+        "id": "s11",
+        "label": "設問2 (2) e",
+        "example": "65500"
+      },
+      {
+        "id": "s12",
+        "label": "設問2 (2) f",
+        "example": "65500"
+      },
+      {
+        "id": "s13",
+        "label": "設問3 (1)",
+        "example": "ルーティングループによる障害",
+        "limit": 20
+      },
+      {
+        "id": "s14",
+        "label": "設問3 (2) タイプ",
+        "example": "Type5 又は 外部LSA"
+      },
+      {
+        "id": "s15",
+        "label": "設問3 (2) 機器",
+        "example": "ルータ3"
+      },
+      {
+        "id": "s16",
+        "label": "設問4 (1) ①",
+        "example": "IPsecトンネル確立のためのIPアドレス",
+        "limit": 25
+      },
+      {
+        "id": "s17",
+        "label": "設問4 (1) ②",
+        "example": "IPsecトンネル確立のための鍵情報",
+        "limit": 25
+      },
+      {
+        "id": "s18",
+        "label": "設問4 (2)",
+        "example": "IPsecトンネルに障害があった場合の検出を高速にする。",
+        "limit": 35
+      },
+      {
+        "id": "s19",
+        "label": "設問5 (1)",
+        "example": "TE023，TE032"
+      },
+      {
+        "id": "s20",
+        "label": "設問5 (2)",
+        "example": "TE123，TE132"
+      }
+    ]
+  },
+  {
+    "id": "2024-b1-q3",
+    "version": 1,
+    "year": 2024,
+    "season": "春期",
+    "section": "B-1",
+    "number": 3,
+    "title": "ローカルブレイクアウトによる負荷軽減",
+    "tags": [
+      "IPsec",
+      "VPN",
+      "PAC",
+      "WPAD",
+      "プロキシ"
+    ],
+    "minutes": 45,
+    "pages": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "questionPages": [
+      20,
+      21
+    ],
+    "source": {
+      "label": "IPA 令和6年度春期 NW 午後Ⅰ 問3",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm1_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm1_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm1_cmnt.pdf",
+      "localPdf": "/written/2024/2024r06h_nw_pm1_qs.pdf",
+      "localAnswer": "/written/2024/2024r06h_nw_pm1_ans.pdf",
+      "localComment": "/written/2024/2024r06h_nw_pm1_cmnt.pdf"
+    },
+    "guide": [
+      "IPsecのトランスポートモードとトンネルモードについて、暗号化される範囲を図と対応させましょう。",
+      "PACファイルは条件分岐を上から追い、宛先ごとに使うプロキシ又は直接接続を判断します。",
+      "WPADによる自動設定の便利さと、不正なサーバを利用してしまう危険を整理しましょう。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 (1) ア",
+        "example": "ハブアンドスポーク"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 (2)",
+        "example": "事前共有鍵"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 (3)",
+        "example": "鍵が漏えいした際の影響範囲を小さくできる。",
+        "limit": 25
+      },
+      {
+        "id": "s4",
+        "label": "設問1 (4)",
+        "example": "IPヘッダー，元のIPパケット，ESPトレーラ"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 (5)",
+        "example": "インタフェースにIPアドレスの割当てを行わない設定",
+        "limit": 30
+      },
+      {
+        "id": "s6",
+        "label": "設問1 (6)",
+        "example": "転送負荷の増大",
+        "limit": 10
+      },
+      {
+        "id": "s7",
+        "label": "設問2 (1)",
+        "example": "利用しない"
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (2)",
+        "example": "proxy.a-sha.jp"
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (3) 最初",
+        "example": "172.16.0.0"
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (3) 最後",
+        "example": "172.31.255.255"
+      },
+      {
+        "id": "s11",
+        "label": "設問2 (4)",
+        "example": "本社のプロキシサーバの負荷軽減",
+        "limit": 20
+      },
+      {
+        "id": "s12",
+        "label": "設問2 (5)",
+        "example": "UTMプロキシサーバのFQDNが異なるから",
+        "limit": 25
+      },
+      {
+        "id": "s13",
+        "label": "設問3 (1) イ",
+        "example": "DHCP（ウと順不同）"
+      },
+      {
+        "id": "s14",
+        "label": "設問3 (1) ウ",
+        "example": "DNS（イと順不同）"
+      },
+      {
+        "id": "s15",
+        "label": "設問3 (1) エ",
+        "example": "HTTP"
+      },
+      {
+        "id": "s16",
+        "label": "設問3 (1) オ",
+        "example": "URL"
+      },
+      {
+        "id": "s17",
+        "label": "設問3 (2)",
+        "example": "不正なプロキシサーバに中継される。",
+        "limit": 25
+      }
+    ]
+  },
+  {
+    "id": "2024-b2-q1",
+    "version": 1,
+    "year": 2024,
+    "season": "春期",
+    "section": "B-2",
+    "number": 1,
+    "title": "データセンターのネットワークの検討",
+    "tags": [
+      "VXLAN",
+      "EVPN",
+      "VTEP",
+      "OSPF",
+      "BGP"
+    ],
+    "minutes": 120,
+    "pages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "questionPages": [
+      12,
+      13
+    ],
+    "source": {
+      "label": "IPA 令和6年度春期 NW 午後Ⅱ 問1",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm2_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm2_cmnt.pdf",
+      "localPdf": "/written/2024/2024r06h_nw_pm2_qs.pdf",
+      "localAnswer": "/written/2024/2024r06h_nw_pm2_ans.pdf",
+      "localComment": "/written/2024/2024r06h_nw_pm2_cmnt.pdf"
+    },
+    "guide": [
+      "VXLANのカプセル化を内側から描き、VNI、MACアドレス、VTEPのIPアドレスを区別しましょう。",
+      "OSPFのルータIDと経路コスト、BGPのルートリフレクターの役割を整理します。",
+      "フラッディングで学習する構成とEVPNで経路を交換する構成について、転送先の決まり方を比較します。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 (1) a",
+        "example": "24"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 (1) b",
+        "example": "3"
+      },
+      {
+        "id": "s3",
+        "label": "設問1 (1) c",
+        "example": "UDP"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 (2) ①",
+        "example": "イーサネットフレーム"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 (2) ②",
+        "example": "VXLANヘッダー"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 (2) ③",
+        "example": "IPv4ヘッダー"
+      },
+      {
+        "id": "s7",
+        "label": "設問1 (3)",
+        "example": "同じレイヤー2のネットワークをもつ全てのリモートVTEPに転送するため",
+        "limit": 45
+      },
+      {
+        "id": "s8",
+        "label": "設問2 (1) d",
+        "example": "LSDB"
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (1) e",
+        "example": "最短経路"
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (2)",
+        "example": "OSPFが動作する各L3SW",
+        "limit": 20
+      },
+      {
+        "id": "s11",
+        "label": "設問2 (3)",
+        "example": "複数ある経路のそれぞれの経路について，コストの合計値を同じ値にする。",
+        "limit": 45
+      },
+      {
+        "id": "s12",
+        "label": "設問2 (4)",
+        "example": "一つの物理インタフェースに障害があってもVTEPとして動作できるから",
+        "limit": 45
+      },
+      {
+        "id": "s13",
+        "label": "設問2 (5) ア",
+        "example": "×"
+      },
+      {
+        "id": "s14",
+        "label": "設問2 (5) イ",
+        "example": "×"
+      },
+      {
+        "id": "s15",
+        "label": "設問2 (5) ウ",
+        "example": "×"
+      },
+      {
+        "id": "s16",
+        "label": "設問2 (5) エ",
+        "example": "×"
+      },
+      {
+        "id": "s17",
+        "label": "設問2 (5) オ",
+        "example": "○"
+      },
+      {
+        "id": "s18",
+        "label": "設問2 (5) カ",
+        "example": "×"
+      },
+      {
+        "id": "s19",
+        "label": "設問3 (1)",
+        "example": "239.0.0.1"
+      },
+      {
+        "id": "s20",
+        "label": "設問3 (2)",
+        "example": "VM11のMACアドレス，VNI及びL3SW11のVTEPのIPアドレス",
+        "limit": 45
+      },
+      {
+        "id": "s21",
+        "label": "設問3 (3) キ",
+        "example": "10010"
+      },
+      {
+        "id": "s22",
+        "label": "設問3 (3) ク",
+        "example": "10.0.0.31"
+      },
+      {
+        "id": "s23",
+        "label": "設問3 (3) ケ",
+        "example": "10010"
+      },
+      {
+        "id": "s24",
+        "label": "設問3 (3) コ",
+        "example": "10.0.0.11"
+      },
+      {
+        "id": "s25",
+        "label": "設問4 (1) 利点",
+        "example": "iBGPピアの数を減らすことができる。",
+        "limit": 25
+      },
+      {
+        "id": "s26",
+        "label": "設問4 (1) 名称",
+        "example": "クラスターID"
+      },
+      {
+        "id": "s27",
+        "label": "設問4 (2) f",
+        "example": "Unknown Unicast"
+      },
+      {
+        "id": "s28",
+        "label": "設問4 (2) g",
+        "example": "ESI"
+      },
+      {
+        "id": "s29",
+        "label": "設問4 (3)",
+        "example": "二つの回線の帯域を有効に利用できる。",
+        "limit": 25
+      },
+      {
+        "id": "s30",
+        "label": "設問4 (4)",
+        "example": "MP-BGPを用いて学習する。",
+        "limit": 20
+      },
+      {
+        "id": "s31",
+        "label": "設問4 (5)",
+        "example": "VLAN IDに対応するVNIをもつ全てのリモートVTEP",
+        "limit": 40
+      }
+    ]
+  },
+  {
+    "id": "2024-b2-q2",
+    "version": 1,
+    "year": 2024,
+    "season": "春期",
+    "section": "B-2",
+    "number": 2,
+    "title": "電子メールを用いた製品サポート",
+    "tags": [
+      "DNS",
+      "SMTP",
+      "SPF",
+      "DKIM",
+      "送信ドメイン認証"
+    ],
+    "minutes": 120,
+    "pages": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "questionPages": [
+      22,
+      23
+    ],
+    "source": {
+      "label": "IPA 令和6年度春期 NW 午後Ⅱ 問2",
+      "url": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm2_qs.pdf",
+      "answerUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm2_ans.pdf",
+      "commentUrl": "https://www.ipa.go.jp/shiken/mondai-kaiotu/m42obm000000afqx-att/2024r06h_nw_pm2_cmnt.pdf",
+      "localPdf": "/written/2024/2024r06h_nw_pm2_qs.pdf",
+      "localAnswer": "/written/2024/2024r06h_nw_pm2_ans.pdf",
+      "localComment": "/written/2024/2024r06h_nw_pm2_cmnt.pdf"
+    },
+    "guide": [
+      "DNSのレコードとTTLを、メール中継先の選択や負荷分散の仕組みに結び付けて説明しましょう。",
+      "SPFが検証する送信元と、DKIMが検証する電子署名を区別し、外部委託時の経路を追います。",
+      "委託先からの正規メールとなりすましメールについて、同じ中継サーバを通ることの影響を確認します。"
+    ],
+    "slots": [
+      {
+        "id": "s1",
+        "label": "設問1 (1)",
+        "example": "mail.y-sha.lan"
+      },
+      {
+        "id": "s2",
+        "label": "設問1 (2)",
+        "example": "TTLを60秒と短い値にしている。",
+        "limit": 25
+      },
+      {
+        "id": "s3",
+        "label": "設問1 (3) a",
+        "example": "Preference"
+      },
+      {
+        "id": "s4",
+        "label": "設問1 (3) b",
+        "example": "y-mail2"
+      },
+      {
+        "id": "s5",
+        "label": "設問1 (3) c",
+        "example": "逆引き"
+      },
+      {
+        "id": "s6",
+        "label": "設問1 (4) ア",
+        "example": "200.a.b.1"
+      },
+      {
+        "id": "s7",
+        "label": "設問1 (4) イ",
+        "example": "192.168.0.1"
+      },
+      {
+        "id": "s8",
+        "label": "設問1 (5)",
+        "example": "メールサーバのFQDNに，詐称したメールアドレスのドメイン名を登録する。",
+        "limit": 45
+      },
+      {
+        "id": "s9",
+        "label": "設問2 (1) ウ",
+        "example": "200.a.b.1（エと順不同）"
+      },
+      {
+        "id": "s10",
+        "label": "設問2 (1) エ",
+        "example": "200.a.b.2（ウと順不同）"
+      },
+      {
+        "id": "s11",
+        "label": "設問2 (2) d",
+        "example": "SMTP"
+      },
+      {
+        "id": "s12",
+        "label": "設問2 (2) e",
+        "example": "MAIL FROM"
+      },
+      {
+        "id": "s13",
+        "label": "設問2 (2) f",
+        "example": "y-sha.com"
+      },
+      {
+        "id": "s14",
+        "label": "設問2 (3)",
+        "example": "送信元のメールサーバのIPアドレスが，SPFレコードの中に登録されていること",
+        "limit": 50
+      },
+      {
+        "id": "s15",
+        "label": "設問3 (1) g",
+        "example": "ヘッダー"
+      },
+      {
+        "id": "s16",
+        "label": "設問3 (1) h",
+        "example": "UDP"
+      },
+      {
+        "id": "s17",
+        "label": "設問3 (1) i",
+        "example": "512"
+      },
+      {
+        "id": "s18",
+        "label": "設問3 (2) アルゴリズム名",
+        "example": "RSA"
+      },
+      {
+        "id": "s19",
+        "label": "設問3 (2) オ",
+        "example": "公開鍵"
+      },
+      {
+        "id": "s20",
+        "label": "設問3 (3)",
+        "example": "受信したメールが正規のメールサーバから送信されたものかどうかが分かるから",
+        "limit": 50
+      },
+      {
+        "id": "s21",
+        "label": "設問4 (1) DNSサーバ名",
+        "example": "外部DNSサーバY 又は y-ns1"
+      },
+      {
+        "id": "s22",
+        "label": "設問4 (1) 登録する情報",
+        "example": "メール中継サーバZのIPアドレス 又は z-mail1のIPアドレス"
+      },
+      {
+        "id": "s23",
+        "label": "設問4 (2) j",
+        "example": "y-sha.com"
+      },
+      {
+        "id": "s24",
+        "label": "設問4 (3)",
+        "example": "メール中継サーバZから鍵が漏えいしても，Y社で実施中のDKIMの処理は影響を受けない。",
+        "limit": 50
+      },
+      {
+        "id": "s25",
+        "label": "設問4 (4)",
+        "example": "なりすましメールも，メール中継サーバZから社外に転送されるから",
+        "limit": 40
+      }
+    ],
+    "notice": {
+      "text": "IPAは問題不備により設問5 (1)〜(3)が成立しないと公表しています。本アプリでは設問5を回答・自己評価の対象から除外しています。原本には設問5も掲載されています。",
+      "url": "https://www.ipa.go.jp/news/2024/shiken_20240607.html"
+    }
+  }
+]

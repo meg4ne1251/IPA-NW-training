@@ -6,6 +6,7 @@ export interface WrittenQuestion {
   id: string; version: number; year: number; season: string; section: WrittenSection; number: number;
   title: string; tags: string[]; minutes: number; pages: number[]; questionPages: number[];
   source: { label: string; url: string; localPdf: string; answerUrl?: string; commentUrl?: string; localAnswer?: string; localComment?: string };
+  notice?: { text: string; url: string };
   guide?: string[]; slots: WrittenSlot[];
 }
 export interface WrittenSession {

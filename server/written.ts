@@ -4,7 +4,8 @@ import type { DatabaseSync } from 'node:sqlite';
 import type { Assessment, WrittenDraft, WrittenQuestion, WrittenSession, WrittenDashboard } from '../src/domain/written.ts';
 
 export class WrittenConflictError extends Error {}
-const bank = JSON.parse(readFileSync(new URL('../materials/written-2025.json', import.meta.url), 'utf8')) as WrittenQuestion[];
+const bank = [2025, 2024, 2023].flatMap(year =>
+  JSON.parse(readFileSync(new URL(`../materials/written-${year}.json`, import.meta.url), 'utf8')) as WrittenQuestion[]);
 function check(value: unknown, message: string): asserts value { if (!value) throw new Error(message); }
 function record(value: unknown): value is Record<string, unknown> { return !!value && typeof value === 'object' && !Array.isArray(value); }
 

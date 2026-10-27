@@ -8,8 +8,10 @@ async function start(page: Page, request: import('@playwright/test').APIRequestC
 test('トップは記述対策で、科目の絞り込みと従来の選択式への移動ができる',async({page})=>{
   await page.setViewportSize({width:390,height:844}); await page.goto('/');
   await expect(page.getByRole('heading',{name:/知識を、\s*伝わる解答に。/})).toBeVisible();
-  await expect(page.locator('.w-question-card')).toHaveCount(5);
+  await expect(page.locator('.w-question-card')).toHaveCount(15);
   await page.getByRole('button',{name:'B-2 / 旧午後Ⅱ',exact:true}).click();
+  await expect(page.locator('.w-question-card')).toHaveCount(6);
+  await page.getByLabel('年度',{exact:true}).selectOption('2025');
   await expect(page.locator('.w-question-card')).toHaveCount(2);
   await page.getByRole('searchbox',{name:'問題を検索'}).fill('CoAP');
   await expect(page.locator('.w-question-card')).toHaveCount(1);
@@ -18,7 +20,52 @@ test('トップは記述対策で、科目の絞り込みと従来の選択式�
   await page.getByRole('link',{name:/科目A 選択式対策/}).click();
   await expect(page.getByRole('button',{name:'今日の学習',exact:true})).toBeVisible();
   await page.getByRole('link',{name:'科目B 記述対策へ →'}).click();
-  await expect(page.locator('.w-question-card')).toHaveCount(5);
+  await expect(page.locator('.w-question-card')).toHaveCount(15);
+});
+test('年度・科目・キーワードを組み合わせて絞り込み、解除できる', async ({page}) => {
+  await page.setViewportSize({width:390,height:844}); await page.goto('/');
+  await expect(page.getByLabel('年度',{exact:true})).toBeVisible();
+  for (const year of ['2024', '2023']) {
+    await page.getByLabel('年度',{exact:true}).selectOption(year);
+    await expect(page.locator('.w-question-card')).toHaveCount(5);
+    for (const card of await page.locator('.w-question-card').all()) await expect(card).toContainText(`${year}年`);
+  }
+  await page.getByRole('button',{name:'B-1 / 旧午後Ⅰ',exact:true}).click();
+  await expect(page.locator('.w-question-card')).toHaveCount(3);
+  await page.getByRole('searchbox',{name:'問題を検索'}).fill('HTTP/2');
+  await expect(page.locator('.w-question-card')).toHaveCount(1);
+  await expect(page.getByRole('heading',{name:'Webシステムの更改',exact:true})).toBeVisible();
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByRole('searchbox',{name:'問題を検索'}).fill('該当しない検索語');
+  await page.getByRole('button',{name:'絞り込みを解除',exact:true}).click();
+  await expect(page.getByLabel('年度',{exact:true})).toHaveValue('all');
+  await expect(page.locator('.w-question-card')).toHaveCount(15);
+});
+test('追加2年分の両科目で正しい年度の画像・解答例を開ける', async ({page,request}) => {
+  for (const [questionId,year,part,answer] of [
+    ['2024-b1-q1','2024','1','ICMP Echo'], ['2024-b2-q2','2024','2','mail.y-sha.lan'],
+    ['2023-b1-q1','2023','1','リバース'], ['2023-b2-q2','2023','2','NS'],
+  ]) {
+    const s = await start(page,request,questionId);
+    await expect(page.locator('.w-page-viewer img')).toHaveAttribute('src',`/written/${year}/pm${part}-p${s.question.pages[0]}.png`);
+    await expect(page.locator('.w-page-viewer img')).toBeVisible();
+    await expect.poll(()=>page.locator('.w-page-viewer img').evaluate((img:HTMLImageElement)=>img.complete&&img.naturalWidth>0)).toBe(true);
+    await page.getByRole('button',{name:'設問のページへ ↓'}).click();
+    await expect(page.getByLabel('問題ページ')).toHaveValue(String(s.question.questionPages[0]));
+    if (questionId === '2024-b2-q2') {
+      await expect(page.getByRole('complementary',{name:'公式問題の注意事項'})).toContainText('設問5を回答・自己評価の対象から除外');
+      await expect(page.locator('.w-answer-label')).toHaveCount(25);
+      await expect(page.locator('.w-answer-label').filter({hasText:'設問5'})).toHaveCount(0);
+    }
+    await page.getByRole('button',{name:'公式解答例で答え合わせ →'}).click();
+    await page.getByRole('button',{name:'未回答を含めて解答例を見る'}).click();
+    await expect(page.locator('.w-example').first()).toContainText(answer);
+    for (const name of ['公式解答例PDF ↗', '公式採点講評PDF ↗']) {
+      const href = await page.getByRole('link',{name,exact:true}).getAttribute('href');
+      expect(href).toMatch(new RegExp(`^/written/${year}/`));
+      expect((await request.get(href!)).ok()).toBe(true);
+    }
+  }
 });
 test('記述回答を再開し、未回答も比較・自己評価して、履歴を残して解き直せる',async({page,request})=>{
   const s=await start(page,request,'2025-b1-q1');
