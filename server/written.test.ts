@@ -102,3 +102,58 @@ test('不正な問題・ページ・回答・評価を保存しない', () => {
   expect(store.written.get(s.id).revision).toBe(0);
   expect(() => store.written.update(s.id,draft(s),'complete')).toThrow('先に');
 });
+
+const correctedSlotGroups = [
+  ['2025-b1-q3', ['s2','s3']],
+  ['2024-b1-q2', ['s16','s17']],
+  ['2023-b1-q2', ['s12','s13']],
+  ['2023-b1-q3', ['s9','s10','s12','s13']],
+  ['2023-b2-q2', ['s27','s28']],
+] as const;
+
+test.each(correctedSlotGroups)('%s の列挙解答には全対象欄で順不同の説明がある', (questionId, slotIds) => {
+  const store = make(); let s = store.written.create(questionId);
+  s = store.written.update(s.id, draft(s), 'reveal');
+  for (const id of slotIds) {
+    const slot = s.question.slots.find(slot => slot.id === id)!;
+    expect(slot.example).toContain('①・②は順不同');
+    expect(slot.exampleRevision).toBe(1);
+    if (questionId === '2025-b1-q3') {
+      for (const text of ['異なる2項目','ブロック','アクセス履歴','利用者認証']) expect(slot.example).toContain(text);
+      expect(slot.limit).toBe(35);
+    }
+  }
+  if (questionId === '2025-b1-q3') expect(s.question.slots[1].example).toBe(s.question.slots[2].example);
+});
+
+test.each(correctedSlotGroups)('%s の古い記録にも解答例の補正だけを適用し、回答と保存版を維持する', (questionId, slotIds) => {
+  const store = make(); const created = store.written.create(questionId);
+  const current = store.written.get(created.id);
+  for (const status of ['writing','reviewing','completed'] as const) {
+    const legacy = structuredClone(current);
+    legacy.status = status;
+    legacy.answers[slotIds[0]] = '保存済みの自分の回答'; legacy.notes = '元のメモ';
+    if (status !== 'writing') legacy.assessments[slotIds[0]] = 'review';
+    legacy.question.guide = ['元のスナップショットのヒント'];
+    legacy.question.slots.forEach(slot => {
+      if ((slotIds as readonly string[]).includes(slot.id)) { slot.example = '修正前の解答例'; delete slot.exampleRevision; }
+    });
+    store.written.write(legacy);
+    const visible = store.written.public(store.written.get(legacy.id));
+    expect(visible).toMatchObject({answers:legacy.answers, assessments:legacy.assessments, notes:legacy.notes, revision:legacy.revision, updatedAt:legacy.updatedAt});
+    expect(store.written.get(legacy.id)).toEqual(legacy);
+    for (const slot of visible.question.slots) {
+      if (status === 'writing') expect(slot.example).toBeUndefined();
+      else expect(slot).toEqual(current.question.slots.find(original => original.id === slot.id));
+    }
+    if (status !== 'writing') expect(visible.question.guide).toEqual(legacy.question.guide);
+  }
+});
+
+test('異なる版の設問のスナップショットには表示補正を適用しない', () => {
+  const store = make(); const created = store.written.create('2025-b1-q3');
+  const snapshot = store.written.get(created.id);
+  snapshot.status = 'reviewing'; snapshot.question.version = 99;
+  snapshot.question.slots[1].example = '異なる版の解答例'; delete snapshot.question.slots[1].exampleRevision;
+  expect(store.written.public(snapshot)).toEqual(snapshot);
+});

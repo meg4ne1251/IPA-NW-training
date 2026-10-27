@@ -1,7 +1,7 @@
 export type WrittenSection = 'B-1' | 'B-2';
 export type Assessment = 'good' | 'partial' | 'review';
 export const assessmentLabels: Record<Assessment, string> = { good: 'できた', partial: '一部できた', review: '要復習' };
-export interface WrittenSlot { id: string; label: string; limit?: number; example?: string }
+export interface WrittenSlot { id: string; label: string; limit?: number; example?: string; exampleRevision?: number }
 export interface WrittenQuestion {
   id: string; version: number; year: number; season: string; section: WrittenSection; number: number;
   title: string; tags: string[]; minutes: number; pages: number[]; questionPages: number[];

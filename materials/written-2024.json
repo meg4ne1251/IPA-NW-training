@@ -226,14 +226,16 @@
       {
         "id": "s16",
         "label": "設問4 (1) ①",
-        "example": "IPsecトンネル確立のためのIPアドレス",
-        "limit": 25
+        "example": "IPsecトンネル確立のためのIPアドレス（①・②は順不同）",
+        "limit": 25,
+        "exampleRevision": 1
       },
       {
         "id": "s17",
         "label": "設問4 (1) ②",
-        "example": "IPsecトンネル確立のための鍵情報",
-        "limit": 25
+        "example": "IPsecトンネル確立のための鍵情報（①・②は順不同）",
+        "limit": 25,
+        "exampleRevision": 1
       },
       {
         "id": "s18",

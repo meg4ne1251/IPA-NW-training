@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Assessment, WrittenCatalog, WrittenDashboard, WrittenSession, WrittenSummary } from './domain/written';
 import { assessmentLabels, characterCount } from './domain/written';
 import { WrittenSync, writtenApi, writtenDraft } from './written-sync';
@@ -15,25 +15,29 @@ export default function WrittenApp() {
   const [dashboard, setDashboard] = useState<WrittenDashboard>(); const [session, setSession] = useState<WrittenSession>();
   const [section, setSection] = useState('all'); const [year, setYear] = useState('all'); const [filter, setFilter] = useState('all'); const [query, setQuery] = useState('');
   const [tab, setTab] = useState<'practice' | 'history'>('practice'); const [busy, setBusy] = useState(false); const [error, setError] = useState('');
+  const loadGeneration = useRef(0);
   async function refresh() { setDashboard(await writtenApi<WrittenDashboard>('/dashboard')); }
-  function show(s: WrittenSession) { setSession(s); history.pushState(null, '', `#written/${s.id}`); window.scrollTo(0, 0); }
+  function show(s: WrittenSession) { loadGeneration.current++; setSession(s); history.pushState(null, '', `#written/${s.id}`); window.scrollTo(0, 0); }
   async function task(action: () => Promise<void>) { setBusy(true); setError(''); try { await action(); } catch (e) { setError(e instanceof Error ? e.message : '通信に失敗しました。'); } finally { setBusy(false); } }
+  const load = useCallback(async () => {
+    const generation = ++loadGeneration.current;
+    const hash = location.hash;
+    const match = hash.match(/^#written\/([a-zA-Z0-9-]+)$/);
+    try {
+      const [d, s] = await Promise.all([writtenApi<WrittenDashboard>('/dashboard'), match ? writtenApi<WrittenSession>(`/sessions/${match[1]}`) : Promise.resolve(undefined)]);
+      if (generation === loadGeneration.current && hash === location.hash) { setDashboard(d); setSession(s); setError(''); }
+    } catch (e) {
+      if (generation === loadGeneration.current && hash === location.hash) setError(e instanceof Error ? e.message : '読み込めませんでした。');
+    }
+  }, []);
   useEffect(() => {
     document.title = 'NW / WRITE — ネットワークスペシャリスト 記述対策';
-    let alive = true;
-    const load = async () => {
-      const match = location.hash.match(/^#written\/([a-zA-Z0-9-]+)$/);
-      try {
-        const [d, s] = await Promise.all([writtenApi<WrittenDashboard>('/dashboard'), match ? writtenApi<WrittenSession>(`/sessions/${match[1]}`) : Promise.resolve(undefined)]);
-        if (alive) { setDashboard(d); setSession(s); setError(''); }
-      } catch (e) { if (alive) setError(e instanceof Error ? e.message : '読み込めませんでした。'); }
-    };
     void load(); window.addEventListener('hashchange', load); window.addEventListener('popstate', load);
-    return () => { alive = false; window.removeEventListener('hashchange', load); window.removeEventListener('popstate', load); };
-  }, []);
+    return () => { loadGeneration.current++; window.removeEventListener('hashchange', load); window.removeEventListener('popstate', load); };
+  }, [load]);
   async function open(id: string) { await task(async () => show(await writtenApi<WrittenSession>(`/sessions/${id}`))); }
   async function start(q: WrittenCatalog) { await task(async () => show(await writtenApi<WrittenSession>('/sessions', 'POST', { questionId: q.id }))); }
-  async function home() { setTab('practice'); setSession(undefined); history.pushState(null, '', location.pathname); window.scrollTo(0, 0); await task(refresh); }
+  async function home() { loadGeneration.current++; setTab('practice'); setSession(undefined); history.pushState(null, '', location.pathname); window.scrollTo(0, 0); await task(refresh); }
   const latest = (id: string) => dashboard?.sessions.find(s => s.questionId === id);
   const needsReview = (id: string) => { const s = latest(id); return s && (s.partial > 0 || s.review > 0); };
   const questions = dashboard?.questions.filter(q => (section === 'all' || q.section === section)
@@ -48,7 +52,7 @@ export default function WrittenApp() {
     <a className="w-skip" href="#w-content" onClick={e => { e.preventDefault(); document.getElementById('w-content')?.focus(); }}>本文へ移動</a>
     <header className="w-header"><a className="w-brand" href="/" aria-label="NW WRITE ホーム">NW<span className="w-brand-slash">/</span>WRITE<span className="w-brand-caption">NETWORK SPECIALIST</span></a><nav aria-label="サイト切替"><span className="w-current">科目B 記述対策</span><a href="/choice">科目A 選択式対策 <span aria-hidden="true">↗</span></a></nav></header>
     <main id="w-content" tabIndex={-1} className={session ? 'w-main w-main-exercise' : 'w-main'}>
-      {error && <div className="w-alert" role="alert">{error}<button onClick={() => void task(refresh)}>再接続</button><button onClick={() => void home()}>ホームへ</button></div>}
+      {error && <div className="w-alert" role="alert">{error}<button disabled={busy} onClick={() => void task(load)}>再接続</button><button onClick={() => void home()}>ホームへ</button></div>}
       {session ? <WrittenExercise key={session.id} initial={session} onHome={home} onUpdated={() => void refresh().catch(() => {})} /> : <>
         <nav className="w-tabs" aria-label="学習メニュー"><button aria-current={tab === 'practice' ? 'page' : undefined} onClick={() => setTab('practice')}>過去問を解く</button><button aria-current={tab === 'history' ? 'page' : undefined} onClick={() => setTab('history')}>学習の記録 <span>{dashboard?.sessions.length ?? 0}</span></button></nav>
         {!dashboard && !error && <p role="status" className="w-loading">学習データを読み込んでいます…</p>}

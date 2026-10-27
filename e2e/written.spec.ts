@@ -129,3 +129,34 @@ test('別タブの更新を上書きせず、競合した回答を控えとし�
   expect(server.answers.s1).toBe('最初の画面の回答');
   await expect(other.getByLabel('設問1 a',{exact:true})).toHaveValue('別タブの回答');
 });
+
+test('演習の読込失敗後に再接続すると同じ回答と閲覧ページを復元する', async ({page,request}) => {
+  const s = await (await request.post('/api/written/sessions',{data:{questionId:'2025-b1-q1'}})).json();
+  const savedDraft = await request.put(`/api/written/sessions/${s.id}/draft`, {data:{
+    revision:s.revision, answers:{...s.answers,s1:'再接続前の回答'}, assessments:s.assessments, notes:'保存済みのメモ', page:7,
+  }});
+  expect(savedDraft.ok()).toBe(true);
+  await page.route(`**/api/written/sessions/${s.id}`,route=>route.abort());
+  await page.goto(`/#written/${s.id}`);
+  await expect(page.getByRole('alert')).toBeVisible();
+  // A retry that still fails must keep the recovery controls visible.
+  await page.getByRole('button',{name:'再接続',exact:true}).click();
+  await expect(page.getByRole('alert')).toBeVisible();
+  await page.unroute(`**/api/written/sessions/${s.id}`);
+  await page.getByRole('button',{name:'再接続',exact:true}).click();
+  await expect(page.getByRole('textbox',{name:'設問1 (1) a',exact:true})).toHaveValue('再接続前の回答');
+  await expect(page.getByLabel('考えた根拠・復習メモ')).toHaveValue('保存済みのメモ');
+  await expect(page.getByLabel('問題ページ')).toHaveValue('7');
+  await expect(page.getByRole('alert')).toHaveCount(0);
+  expect(page.url()).toContain(s.id);
+});
+
+test('三つの候補から二つ選ぶ解答例を両欄に表示する', async ({page,request}) => {
+  await start(page,request,'2025-b1-q3');
+  await page.getByRole('button',{name:'公式解答例で答え合わせ →'}).click();
+  await page.getByRole('button',{name:'未回答を含めて解答例を見る'}).click();
+  for (const id of ['s2','s3']) {
+    const example = page.locator('.w-answer-item').filter({has:page.locator(`#answer-${id}`)}).locator('.w-example');
+    for (const candidate of ['異なる2項目','順不同','ブロック','アクセス履歴','利用者認証']) await expect(example).toContainText(candidate);
+  }
+});

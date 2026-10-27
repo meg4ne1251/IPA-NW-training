@@ -224,12 +224,14 @@
       {
         "id": "s12",
         "label": "設問3 (2) ①",
-        "example": "グループアドレス"
+        "example": "グループアドレス（①・②は順不同）",
+        "exampleRevision": 1
       },
       {
         "id": "s13",
         "label": "設問3 (2) ②",
-        "example": "インタフェース"
+        "example": "インタフェース（①・②は順不同）",
+        "exampleRevision": 1
       },
       {
         "id": "s14",
@@ -350,12 +352,14 @@
       {
         "id": "s9",
         "label": "設問2 (1) 周波数帯 ①",
-        "example": "W52/W53"
+        "example": "W52/W53（①・②は順不同）",
+        "exampleRevision": 1
       },
       {
         "id": "s10",
         "label": "設問2 (1) 周波数帯 ②",
-        "example": "W56"
+        "example": "W56（①・②は順不同）",
+        "exampleRevision": 1
       },
       {
         "id": "s11",
@@ -366,12 +370,14 @@
       {
         "id": "s12",
         "label": "設問2 (2) 周波数帯 ①",
-        "example": "W53"
+        "example": "W53（①・②は順不同）",
+        "exampleRevision": 1
       },
       {
         "id": "s13",
         "label": "設問2 (2) 周波数帯 ②",
-        "example": "W56"
+        "example": "W56（①・②は順不同）",
+        "exampleRevision": 1
       },
       {
         "id": "s14",
@@ -791,14 +797,16 @@
       {
         "id": "s27",
         "label": "設問6 (4) ①",
-        "example": "信頼関係のあるIdPが生成したものであること",
-        "limit": 25
+        "example": "信頼関係のあるIdPが生成したものであること（①・②は順不同）",
+        "limit": 25,
+        "exampleRevision": 1
       },
       {
         "id": "s28",
         "label": "設問6 (4) ②",
-        "example": "SAMLアサーションが改ざんされていないこと",
-        "limit": 25
+        "example": "SAMLアサーションが改ざんされていないこと（①・②は順不同）",
+        "limit": 25,
+        "exampleRevision": 1
       }
     ]
   }

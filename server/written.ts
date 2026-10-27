@@ -30,7 +30,18 @@ export class WrittenStore {
     check(row, '記述演習が見つかりません。'); return JSON.parse(row.payload as string);
   }
   public(s: WrittenSession): WrittenSession {
-    if (s.status !== 'writing') return s;
+    if (s.status !== 'writing') {
+      // Apply reviewed display corrections to older attempts without rewriting
+      // their question snapshots, answers, assessments, or save revisions.
+      const current = bank.find(q => q.id === s.question.id && q.version === s.question.version);
+      if (!current) return s;
+      return { ...s, question: { ...s.question, slots: s.question.slots.map(slot => {
+        const correction = current.slots.find(candidate => candidate.id === slot.id);
+        if (!correction || (correction.exampleRevision ?? 0) <= (slot.exampleRevision ?? 0)
+          || correction.label !== slot.label || correction.limit !== slot.limit) return slot;
+        return { ...slot, example: correction.example, exampleRevision: correction.exampleRevision };
+      }) } };
+    }
     const { guide: _guide, source, slots, ...question } = s.question;
     const { answerUrl: _a, commentUrl: _c, localAnswer: _la, localComment: _lc, ...safeSource } = source;
     return { ...s, question: { ...question, source: safeSource, slots: slots.map(({ example: _e, ...slot }) => slot) } };
